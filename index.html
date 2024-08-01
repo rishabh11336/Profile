@@ -1,155 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rishabh Singh - Portfolio</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <title>Portfolio</title>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <a class="navbar-brand" href="#">Rishabh Singh</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-                <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
-                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/skins/color-4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
+    <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
+    <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
+    <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
+
+    <link rel="stylesheet" href="css/style-switcher.css">
+
+</head>
+
+<body class="dark">
+
+    <div class="main-container">
+
+        <div class="aside">
+            <div class="logo">
+                <a href="#"><span>Rishabh</span></a>
+            </div>
+
+            <div class="nav-toggler">
+                <span></span>
+            </div>
+
+            <ul class="nav">
+                <li><a href="#home" class="nav-item active"><i class="fa fa-home"></i>Home</a></li>
+                <li><a href="#about" class="nav-item"><i class="fa fa-user"></i>About</a></li>
+                <li><a href="#services" class="nav-item"><i class="fa fa-list"></i>Services</a></li>
+                <li><a href="#portfolio" class="nav-item"><i class="fa fa-briefcase"></i>Portfolio</a></li>
+                <li><a href="#contact" class="nav-item""><i class="fa fa-comments"></i>Contact</a></li>
             </ul>
         </div>
-    </nav>
 
-    <!-- Header -->
-    <header class="bg-primary text-white text-center py-5">
-        <div class="container my-4">
-            <h1 class="display-4 animate__animated animate__fadeInDown">Rishabh Singh</h1>
-            <p class="lead animate__animated animate__fadeInUp">Aspiring Data Scientist | Machine Learning Enthusiast</p>
-            <a href="mailto:asusrishabh@outlook.com" class="btn btn-secondary animate__animated animate__zoomIn">Contact Me</a>
-            <a href="Rishabh7388587293.pdf" class="btn btn-secondary animate__animated animate__zoomIn ml-2">Download CV</a>
-        </div>
-    </header>
+        <div class="main-content">
+            <section class="home section " id="home">
+                <div class="container">
+                    <div class="row">
+                        <div class="home-info padd-15">
+                            <h3 class="hello">Hey there! I'm <span class="name">Rishabh Singh</span></h3>
+                            <h3 class="my-profission">I'm all about that <span class="typing">Data Science</span> magic!
+                            </h3>
+                            <!-- <h3 class="my-profession">I'm a <span class="typing">Back-end Developer</span></h3> -->
+                            <br>
+                            <p>As an student of IIT Madras with a Bachelor of Science in Data Science and Applications, my journey has been a blend of academic rigor and practical expertise. At iNeuron.ai, our team developed a machine learning model that predicts domain authenticity, bolstering cybersecurity defenses.
 
-    <!-- Education Section -->
-    <section id="education" class="py-5">
-        <div class="container">
-            <h2 class="text-center">Education</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="card mb-3 animate__animated animate__fadeInLeft">
-                        <div class="card-body">
-                            <h5 class="card-title">Indian Institute of Technology Madras</h5>
-                            <p class="card-text">Bachelor of Science in Data Science and Applications</p>
-                            <p class="card-text">Expected May 2025 | GPA: 7.83 / 10.0</p>
-                            <p class="card-text"><strong>Relevant Coursework:</strong> Data Structures and Algorithms (Python), Probability & Statistics, DBMS (PostgreSQL), Linear Algebra, Machine Learning Practice (Python), SE/ST, SDLC, Linux</p>
+                                My core competencies lie in Python, Git, and Machine Learning. Motivated by challenges and driven by data, I aim to contribute to innovative solutions in the field of data science.!<br><br>
+                                Let's make some magic together !
+                            </p>
+                            <a href="#contact" class="btn hire-me">Hire Me</a>
+                        </div>
+                        <div class="home-img padd-15">
+                            <div class="half-circle"></div>
+                            <img src="images/me.png" alt="">
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
+            <section class="about section " id="about">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>About Me</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="about-content padd-15">
+                            <div class="row">
+                                <div class="about-text padd-15">
+                                    <h3>I'm Rishabh Singh <span>Machine Learning Engineer</span></h3>
+                                    <p>As an student of IIT Madras with a Bachelor of Science in Data Science and Applications, my journey has been a blend of academic rigor and practical expertise. At iNeuron.ai, our team developed a machine learning model that predicts domain authenticity, bolstering cybersecurity defenses.
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center">Experience</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="card mb-3 animate__animated animate__fadeInRight">
-                        <div class="card-body">
-                            <h5 class="card-title">Machine Learning Intern</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">iNeuron.ai | Mar 2024 – Apr 2024</h6>
-                            <p class="card-text">Developed UI/API to check the credibility of URLs using a RandomForest model and Flask RestAPI. Deployed the app on Azure.</p>
-                            <a href="https://urlphishingdetection.azurewebsites.net" class="card-link">Deployed App</a>
-                            <p class="card-text"><strong>Tech Stack:</strong> RandomForest, FlaskAPI, Azure, Python</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                                        My core competencies lie in Python, Git, and Machine Learning. Motivated by challenges and driven by data, I aim to contribute to innovative solutions in the field of data science.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="personal-info padd-15">
+                                    <ul class="info-list row">
+                                        <li class="info-item padd-15">
+                                            <p>Degree : <span>Data Science and Applications</span></p>
+                                        </li>
+                                        <li class="info-item padd-15">
+                                            <p>Location : <span>Delhi, India</span></p>
+                                        </li>
+                                        <li class="info-item padd-15">
+                                            <p>Leadership : <span> oneArena Flask / Machine Learning Trainer </span></p>
+                                        </li>
+                                        <li class="info-item padd-15">
+                                            <p>Competition : <span> Rank-3 Codechef Competition </span></p>
+                                        </li>
+                                    </ul>
+                                    <div class="row">
+                                        <div class="buttons padd-15">
+                                            <a href="#contact" class="btn hire-me">Hire Me</a>
+                                            <a href="CV/Rishabh7388587293.pdf" class="btn outlined-btn">Download CV</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="padd-15 skills">
+                                    <ul class="skills-list row">
+                                        <li class="skill-item padd-15">
+                                            <h5>Python</h5>
+                                            <div class="progress">
+                                                <div class="progress-in" style="width: 90%;"></div>
+                                                <div class="skill-percent">90%</div>
+                                            </div>
+                                        </li>
+                                        <li class="skill-item padd-15">
+                                            <h5>Machine Learning</h5>
+                                            <div class="progress">
+                                                <div class="progress-in" style="width: 80%;"></div>
+                                                <div class="skill-percent">80%</div>
+                                            </div>
+                                        </li>
+                                        <li class="skill-item padd-15">
+                                            <h5>Git & GitHub</h5>
+                                            <div class="progress">
+                                                <div class="progress-in" style="width: 90%;"></div>
+                                                <div class="skill-percent">90%</div>
+                                            </div>
+                                        </li>
+                                        <li class="skill-item padd-15">
+                                            <h5> PostgreSQL & SQL </h5>
+                                            <div class="progress">
+                                                <div class="progress-in" style="width: 80%;"></div>
+                                                <div class="skill-percent">80%</div>
+                                            </div>
+                                        </li>
+                                        <li class="skill-item padd-15">
+                                            <h5> Azure </h5>
+                                            <div class="progress">
+                                                <div class="progress-in" style="width: 77%;"></div>
+                                                <div class="skill-percent">75%</div>
+                                            </div>
+                                        </li>
+                                        <li class="skill-item padd-15">
+                                            <h5> PyTorch</h5>
+                                            <div class="progress">
+                                                <div class="progress-in" style="width: 80%;"></div>
+                                                <div class="skill-percent">80%</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-5">
-        <div class="container">
-            <h2 class="text-center">Projects</h2>
-            <div class="row">
-                <!-- Project 1 -->
-                <div class="col-lg-6 mb-4">
-                    <div class="card animate__animated animate__fadeInUp">
-                        <div class="card-body">
-                            <h5 class="card-title">Constituency Election Results Analysis</h5>
-                            <p class="card-text">Conducted an unbiased analysis of the 2014 and 2019 elections in India using Python, Pandas, Matplotlib, and Seaborn.</p>
-                            <a href="https://github.com/rishabh11336/Constituency_election_results_2014-2019.git" class="card-link">GitHub Repository</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="col-lg-6 mb-4">
-                    <div class="card animate__animated animate__fadeInUp">
-                        <div class="card-body">
-                            <h5 class="card-title">Sex and STD Case Study</h5>
-                            <p class="card-text">In-depth case study on STDs in the United States using Tableau. Published on Tableau Public.</p>
-                            <a href="https://public.tableau.com/views/SexnSTD/SexnSTD?:language=en-US&:sid=&:display_count=n&:origin=viz_share_link" class="card-link">Tableau Public Link</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="col-lg-6 mb-4">
-                    <div class="card animate__animated animate__fadeInUp">
-                        <div class="card-body">
-                            <h5 class="card-title">Phishing Domain Detection</h5>
-                            <p class="card-text">Developed a UI/API solution for detecting phishing threats using Python, Flask, Jinja2, Azure, Bootstrap, and scikit-learn.</p>
-                            <a href="https://github.com/rishabh11336/Phishing-Domain-Detection.git" class="card-link">GitHub Repository</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                            </div>
+                            <div class="row">
+                                <div class="education padd-15">
+                                    <h3 class="title">Education</h3>
+                                    <div class="row">
+                                        <div class="timeline-box padd-15">
+                                            <div class="timeline shadow-dark">
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center">Technical Skills</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <ul class="list-group animate__animated animate__fadeInLeft">
-                        <li class="list-group-item">Languages: Python, JavaScript</li>
-                        <li class="list-group-item">Technologies: Pandas, scikit-learn, Tableau, Google Sheet, PostgreSQL, Git, PyTorch, TensorFlow, Django, Flask, Bootstrap,
-                            RestAPI, Vue.js, MongoDB, bash, jira</li>
-                        <li class="list-group-item">Concepts: Artificial Intelligence, Machine Learning, Neural Networks, Large Language Model, API, DBMS, Linux, Cloud
-                            Computing</li>
+                                                <div class="timeline-item">
+                                                    <div class="circle-dot"></div>
+                                                    <h3 class="timeline-date">
+                                                        <i class="fa fa-calendar"></i> Sep 2021- April 2025 (Expected)
+                                                    </h3>
+                                                    <h4 class="timeline-title">B.S. in Data Science and Applications</h4>
+                                                    <p class="timeline-text">Indian Institute of Technology, Madras (IITM)<br> CGPA: 7.83</b></p>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="experience padd-15">
+                                    <h3 class="title">Experience</h3>
+                                    <div class="row">
+                                        <div class="timeline-box padd-15">
+                                            <div class="timeline shadow-dark">
+                                                <div class="timeline-item">
+                                                    <div class="circle-dot"></div>
+
+                                                    <h3 class="timeline-date">
+                                                        <i class="fa fa-calendar"></i> Jun 2023 - Nov 2023
+                                                    </h3>
+                                                    <h4 class="timeline-title">ML Intern @ iNeuron.ai | Cybersecurity, ML Model
+                                                    </h4>
+                                                    <p class="timeline-text">
+                                                        <ul class="timeline-text">
+                                                        <li>📌scikit-learn, restAPI, Azure</li>
+                                                        <li>📌Predicts whether domains are real or malicious</li>
+                                                        <li>📌Enhancing cyber-security.</li>
+                                                        <li>📌ML model is Brain.</li>
+                                                        </ul>
+                                                    </p>
+                                                </div>
+                            
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="service section " id="services">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title">
+                            <h2>Services</h2>
+                        </div>
+                        <h2>What I'm Doing ?</h2>
+                    </div>
+                    <ul class="services-list row">
+                        <li class="service-item padd-15">
+                            <div class="service-item-inner">
+                                <div class="icon">
+                                    <i class="fa fa-laptop-code"></i>
+                                </div>
+                                <h4>Back-end Development</h4>
+                                <p>Specialized in architecting, developing, and deploying robust and scalable back-end
+                                    systems using Flask and Django frameworks.</p>
+                            </div>
+                        </li>
+                        <li class="service-item padd-15">
+                            <div class="service-item-inner">
+                                <div class="icon">
+                                    <i class="fa fa-solid fa-desktop"></i>
+                                </div>
+                                <h4>Machine Learning Apps</h4>
+                                <p>Proficient in creating interactive Machine Learning Applications and visualizations. Using scikit-learn, PyTorch and other famous ML Tools.</p>
+                            </div>
+                        </li>
+                        <li class="service-item padd-15">
+                            <div class="service-item-inner">
+                                <div class="icon">
+                                    <i class="fa fa-solid fa-search"></i>
+                                </div>
+                                <h4>Research in Machine Learning</h4>
+                                <p>Passionate about exploring advanced topics and staying updated with the latest
+                                    methodologies in Machine Learning research.</p>
+                            </div>
+                        </li>
+                        <li class="service-item padd-15">
+                            <div class="service-item-inner">
+                                <div class="icon">
+                                    <i class="fa fa-solid fa-book-open"></i>
+                                </div>
+                                <h4>Self-learning</h4>
+                                <p>Self-learner in reading Machine/Deep Learning Research Paper for better understanding. Driven
+                                    by curiosity to improve skills & know latest trends.</p>
+                            </div>
+                        </li>
+                        <li class="service-item padd-15">
+                            <div class="service-item-inner">
+                                <div class="icon">
+                                    <i class="fa fa-solid fa-people-robbery"></i>
+                                </div>
+                                <h4>Mentorship and Guidance</h4>
+                                <p>Mentoring ML, dev & version control, empowering with guidance. Inspiring
+                                    enthusiasts, sharing knowledge at Medium & Live Class.</p>
+                            </div>
+                        </li>
                     </ul>
                 </div>
-            </div>
-        </div>
-    </section>
+            </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-5">
-        <div class="container">
-            <h2 class="text-center">Contact</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <ul class="list-group animate__animated animate__fadeInRight">
-                        <li class="list-group-item"><strong>Email:</strong> <a href="mailto:asusrishabh@outlook.com">asusrishabh@outlook.com</a></li>
-                        <li class="list-group-item"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/rishabh11336/">rishabh11336</a></li>
-                        <li class="list-group-item"><strong>GitHub:</strong> <a href="https://github.com/rishabh11336">rishabh11336</a></li>
-                    </ul>
+            <section class="portfolio section " id="portfolio">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>Portfolio</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="portfolio-heading padd-15">
+                            <h2>My Last Projects :</h2>
+                            <center><h2>Comming Soon! Contact me 👇</h2></center>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
+            <section class="contact section" id="contact">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>Contact Me</h2>
+                        </div>
+                    </div>
+                    <h3 class="contact-title padd-15">Have You Any Questions ?</h3>
+                    <h4 class="contact-sub-title padd-15"> I'M AT YOUR SERVICES</h4>
+                    <ul class="contact-info-list row">
+                        <li class="contact-info-item padd-15">
+                            <div class="icon">
+                                <a href="mailto:rishabh11336@gmail.com"><i class="fa fa-solid fa-envelope"></i></a>
+                            </div>
+                            <h4>Email</h4>
+                        </li>
+                        <li class="contact-info-item padd-15">
+                            <div class="icon">
+                                <a href="https://github.com/rishabh11336" aria-label="github" target="_blank"><i class="fa fa-brands fa-github"></i></a>
+                            </div>
+                            <h4>Github</h4>
+                        </li>
+                        <li class="contact-info-item padd-15">
+                            <div class="icon">
+                                <a href="https://www.linkedin.com/in/rishabh11336/" target="_blank"><i class="fa fa-brands fa-linkedin"></i></a>
+                            </div>
+                            <h4>Linkedin</h4>
+                        </li>
+                        <li class="contact-info-item padd-15">
+                            <div class="icon">
+                                <a href="https://medium.com/@asusrishabh" target="_blank"><i class="fa fa-brands fa-medium"></i></a>
+                            </div>
+                            <h4>Medium</h4>
+                        </li>
+                    </ul>
+                    <h3 class="contact-title padd-15">SEND ME ANY EMAIL</h3>
+                    <h4 class="contact-sub-title padd-15"> I'M VERY RESPONSIVE TO MESSAGES</h4>
+                </div>
+            </section>
         </div>
-    </section>
+    </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <div class="style-switcher">
+        <div class="style-switcher-toggler s-icon">
+            <i class="fas fa-cog fa-spin"></i>
+        </div>
+        <div class="day-night s-icon">
+            <i class="fas "></i>
+        </div>
+        <h4>Theme Colors</h4>
+        <div class="colors">
+            <span class="color-1" onclick="setActiveStyle('color-1')"></span>
+            <span class="color-2" onclick="setActiveStyle('color-2')"></span>
+            <span class="color-3" onclick="setActiveStyle('color-3')"></span>
+            <span class="color-4" onclick="setActiveStyle('color-4')"></span>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"
+        integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/script.js"></script>
+    <script src="js/style-switcher.js"></script>
 </body>
+
 </html>
