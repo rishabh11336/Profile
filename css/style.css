@@ -165,9 +165,6 @@ ul{
     z-index: 10;
     height: 100%;
     padding: 30px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
     border-right: 1px solid var(--bg-black-50);
 }
 
@@ -176,6 +173,10 @@ ul{
     top: 50px;
     font-size: 30px;
     text-transform: capitalize;
+    left: 50%; /* Move the element's left edge to the center */
+    transform: translateX(-50%); /* Pull the element back by half its own width */
+    width: 100%; /* Ensure the container takes up space */
+    text-align: center; /* Center the image inside the container */
 }
 
 
@@ -224,7 +225,7 @@ ul{
 }
 
 .aside .nav{
-    margin-top: 50px;
+    margin-top: 270px; /* Increased margin to push the nav down */
 }
 
 .aside .nav li {
