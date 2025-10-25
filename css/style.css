@@ -629,29 +629,131 @@ h3.my-profission{
     font-weight: 500;
 }
 
-.portfolio .portfolio-item{
-    flex: 0 0 33.33%;
-    max-width: 33.33%;
-    margin-bottom: 30px;
+.portfolio .portfolio-items {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 10px 0;
 }
 
-.portfolio .portfolio-item h2{
-    color: var(--text-black-900);
-    text-align: center;
-    font-size: 20px;
+.portfolio .portfolio-item {
+    flex: 0 0 calc(33.333% - 14px);
+    max-width: calc(33.333% - 14px);
 }
 
-.portfolio .portfolio-item-inner{
-    border: 6px solid var(--bg-black-100);
+@media (max-width: 991px) {
+    .portfolio .portfolio-items {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .portfolio .portfolio-item {
+        flex: 0 0 100%;
+        max-width: 400px;
+    }
+}
+
+.portfolio .portfolio-item-inner {
+    background: var(--bg-black-100);
     border-radius: 10px;
     overflow: hidden;
-    cursor: pointer;
+    box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
 }
 
-.portfolio .portfolio-item-inner .portfolio-img img{
+.portfolio .portfolio-item-inner .portfolio-img {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+}
+
+.portfolio .portfolio-item-inner .portfolio-img img {
     width: 100%;
-    height: 230px;
-    display: block;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.portfolio .portfolio-item-inner:hover .portfolio-img img {
+    transform: scale(1.1);
+}
+
+.portfolio .portfolio-info {
+    padding: 25px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.portfolio .portfolio-info h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-black-900);
+    margin-bottom: 20px;
+    min-height: 46px;
+    line-height: 1.3;
+}
+
+.portfolio .portfolio-tags {
+    margin-bottom: 20px;
+    min-height: 35px;
+}
+
+.portfolio .portfolio-tags .tag {
+    display: inline-block;
+    padding: 6px 12px;
+    background: var(--skin-color);
+    color: #ffffff;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-right: 6px;
+    margin-bottom: 8px;
+}
+
+.portfolio .portfolio-info p {
+    color: var(--text-black-700);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    min-height: 90px;
+}
+
+.portfolio .portfolio-links {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--bg-black-50);
+    display: flex;
+    gap: 15px;
+}
+
+.portfolio .portfolio-links a {
+    font-size: 22px;
+    transition: color 0.3s ease;
+}
+
+.portfolio .portfolio-links a:hover {
+    color: var(--skin-color);
+}
+
+.portfolio .portfolio-links {
+    display: flex;
+    gap: 15px;
+}
+
+.portfolio .portfolio-links a {
+    color: var(--text-black-900);
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+.portfolio .portfolio-links a:hover {
+    color: var(--skin-color);
+}
+
+@media (max-width: 991px) {
+    .portfolio .portfolio-item {
+        flex: 0 0 calc(100% - 30px);
+        max-width: calc(100% - 30px);
+    }
 }
 
 .contact-title{
