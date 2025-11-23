@@ -950,29 +950,29 @@ iframe[src*="mapmyvisitors.com"]{
 /* Map card styling: rectangular card to hold the visitor map ---------------------- */
 .map-card{
     width: 100%;
-    max-width: 980px; /* card max width */
-    margin: 30px auto;
+    max-width: 1100px; /* match site container */
+    margin: 20px auto;
     background: var(--bg-black-100);
     border: 1px solid var(--bg-black-50);
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(48,46,77,0.08);
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(48,46,77,0.08);
     overflow: hidden;
 }
 
-.map-card.container{
-    padding-left: 0;
-    padding-right: 0;
+.map-card.padd-15{
+    padding: 0 15px;
 }
 
+
 .map-card .card-header{
-    padding: 14px 20px;
+    padding: 12px 16px;
     background: transparent;
     border-bottom: 1px solid var(--bg-black-50);
 }
 
 .map-card .card-header h3{
     margin: 0;
-    font-size: 18px;
+    font-size: 16px;
     color: var(--text-black-900);
     font-weight: 700;
 }
@@ -984,8 +984,12 @@ iframe[src*="mapmyvisitors.com"]{
 /* ensure map wrapper sits flush inside the card */
 .mapmyvisitors-wrapper{
     width: 100%;
+    background: var(--bg-black-100);
 }
 
 @media (max-width: 767px){
     .map-card{ margin: 20px 12px; border-radius: 10px; }
 }
+
+/* Small helper to keep card visually consistent with service cards */
+.map-card .card-body .map-placeholder{ display:block; padding:18px; color:var(--text-black-700); }
