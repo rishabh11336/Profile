@@ -950,8 +950,8 @@ iframe[src*="mapmyvisitors.com"]{
 /* Map card styling: rectangular card to hold the visitor map ---------------------- */
 .map-card{
     width: 100%;
-    max-width: 1100px; /* match site container */
-    margin: 20px auto;
+    max-width: 900px;
+    margin: 32px auto 32px auto;
     background: var(--bg-black-100);
     border: 1px solid var(--bg-black-50);
     border-radius: 10px;
@@ -965,30 +965,51 @@ iframe[src*="mapmyvisitors.com"]{
 
 
 .map-card .card-header{
-    padding: 12px 16px;
+    padding: 18px 24px 8px 24px;
     background: transparent;
     border-bottom: 1px solid var(--bg-black-50);
 }
 
 .map-card .card-header h3{
     margin: 0;
-    font-size: 16px;
+    font-size: 2rem;
     color: var(--text-black-900);
     font-weight: 700;
+    letter-spacing: -1px;
 }
 
 .map-card .card-body{
-    padding: 0; /* map wrapper handles spacing */
+    padding: 0;
+    background: var(--bg-black-900);
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* ensure map wrapper sits flush inside the card */
+.mapmyvisitors-area{
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--bg-black-100);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(48,46,77,0.04);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .mapmyvisitors-wrapper{
     width: 100%;
-    background: var(--bg-black-100);
+    background: transparent;
 }
 
 @media (max-width: 767px){
-    .map-card{ margin: 20px 12px; border-radius: 10px; }
+    .map-card{ margin: 16px 4px; border-radius: 8px; }
+    .map-card .card-header{ padding: 12px 8px 6px 8px; }
+    .mapmyvisitors-area{ max-width: 100%; border-radius: 6px; }
 }
 
 /* Small helper to keep card visually consistent with service cards */
