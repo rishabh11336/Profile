@@ -946,3 +946,46 @@ iframe[src*="mapmyvisitors.com"]{
     /* use taller ratio on narrow screens for readability */
     .mapmyvisitors-wrapper{ --map-aspect-ratio: 66.6667%; }
 }
+
+/* Map card styling: rectangular card to hold the visitor map ---------------------- */
+.map-card{
+    width: 100%;
+    max-width: 980px; /* card max width */
+    margin: 30px auto;
+    background: var(--bg-black-100);
+    border: 1px solid var(--bg-black-50);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(48,46,77,0.08);
+    overflow: hidden;
+}
+
+.map-card.container{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.map-card .card-header{
+    padding: 14px 20px;
+    background: transparent;
+    border-bottom: 1px solid var(--bg-black-50);
+}
+
+.map-card .card-header h3{
+    margin: 0;
+    font-size: 18px;
+    color: var(--text-black-900);
+    font-weight: 700;
+}
+
+.map-card .card-body{
+    padding: 0; /* map wrapper handles spacing */
+}
+
+/* ensure map wrapper sits flush inside the card */
+.mapmyvisitors-wrapper{
+    width: 100%;
+}
+
+@media (max-width: 767px){
+    .map-card{ margin: 20px 12px; border-radius: 10px; }
+}
