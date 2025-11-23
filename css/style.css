@@ -901,116 +901,157 @@ h3.my-profission{
     }
 }
 
-/* MapMyVisitors responsive wrapper ------------------------------------------------- */
-.mapmyvisitors-wrapper{
-    width: 100%;
+/* ========================================
+   Visitors Map Section - Professional Styling
+   ======================================== */
+
+.visitors-map .map-content {
+    flex: 0 0 100%;
     max-width: 100%;
-    margin: 25px 0 0 0;
-    /* provide an intrinsic aspect ratio (16:9) which can be adjusted if needed */
-    --map-aspect-ratio: 56.25%; /* 9/16 = 56.25% */
-    position: relative;
-    background: transparent;
 }
 
-.mapmyvisitors-wrapper::before{
-    /* create responsive box for iframe using padding trick */
-    content: "";
-    display: block;
-    padding-bottom: var(--map-aspect-ratio);
-}
-
-.mapmyvisitors-wrapper > iframe,
-.mapmyvisitors-wrapper iframe,
-.mapmyvisitors-wrapper > div iframe,
-iframe[src*="mapmyvisitors.com"]{
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    max-width: 100% !important;
-    border: 0 !important;
-    display: block !important;
-}
-
-/* fallback: if MapMyVisitors injects a fixed-size element (div), make that element responsive too */
-.mapmyvisitors-wrapper > div,
-.mapmyvisitors-wrapper > div > *{
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-}
-
-@media (max-width: 991px) {
-    /* use taller ratio on narrow screens for readability */
-    .mapmyvisitors-wrapper{ --map-aspect-ratio: 66.6667%; }
-}
-
-/* Map card styling: rectangular card to hold the visitor map ---------------------- */
-.map-card{
-    width: 100%;
-    max-width: 900px;
-    margin: 32px auto 32px auto;
+.visitors-map .map-card {
     background: var(--bg-black-100);
     border: 1px solid var(--bg-black-50);
     border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(48,46,77,0.08);
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
+    transition: all 0.3s ease;
+}
+
+.visitors-map .map-card:hover {
+    box-shadow: 0 0 30px rgba(48, 46, 77, 0.25);
+    transform: translateY(-5px);
+}
+
+.visitors-map .map-card-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--bg-black-50);
+}
+
+.visitors-map .map-header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.visitors-map .map-header-content i {
+    font-size: 32px;
+    color: var(--skin-color);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+.visitors-map .map-header-content h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-black-900);
+    margin: 0;
+}
+
+.visitors-map .map-description {
+    font-size: 16px;
+    color: var(--text-black-700);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.visitors-map .map-tracker {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    background: var(--bg-black-50);
+}
+
+.visitors-map .map-tracker a {
+    display: block;
+    position: relative;
     overflow: hidden;
 }
 
-.map-card.padd-15{
-    padding: 0 15px;
-}
-
-
-.map-card .card-header{
-    padding: 18px 24px 8px 24px;
-    background: transparent;
-    border-bottom: 1px solid var(--bg-black-50);
-}
-
-.map-card .card-header h3{
-    margin: 0;
-    font-size: 2rem;
-    color: var(--text-black-900);
-    font-weight: 700;
-    letter-spacing: -1px;
-}
-
-.map-card .card-body{
-    padding: 0;
-    background: var(--bg-black-900);
-    min-height: 340px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* ensure map wrapper sits flush inside the card */
-.mapmyvisitors-area{
+.visitors-map .map-tracker img {
     width: 100%;
-    max-width: 700px;
-    margin: 0 auto;
-    background: var(--bg-black-100);
+    height: auto;
+    display: block;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(48,46,77,0.04);
-    padding: 0;
+    transition: transform 0.3s ease;
+}
+
+.visitors-map .map-tracker:hover img {
+    transform: scale(1.02);
+}
+
+.visitors-map .map-footer {
+    margin-top: 20px;
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--bg-black-50);
+}
+
+.visitors-map .map-footer p {
+    color: var(--text-black-700);
+    font-size: 14px;
+    margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
 }
 
-.mapmyvisitors-wrapper{
-    width: 100%;
-    background: transparent;
+.visitors-map .map-footer i {
+    color: var(--skin-color);
+    font-size: 16px;
 }
 
-@media (max-width: 767px){
-    .map-card{ margin: 16px 4px; border-radius: 8px; }
-    .map-card .card-header{ padding: 12px 8px 6px 8px; }
-    .mapmyvisitors-area{ max-width: 100%; border-radius: 6px; }
+/* Responsive adjustments for Visitors Map */
+@media (max-width: 991px) {
+    .visitors-map .map-card {
+        padding: 20px;
+    }
+    
+    .visitors-map .map-header-content h3 {
+        font-size: 20px;
+    }
+    
+    .visitors-map .map-header-content i {
+        font-size: 28px;
+    }
 }
 
-/* Small helper to keep card visually consistent with service cards */
-.map-card .card-body .map-placeholder{ display:block; padding:18px; color:var(--text-black-700); }
+@media (max-width: 767px) {
+    .visitors-map .map-card {
+        padding: 15px;
+    }
+    
+    .visitors-map .map-header-content {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .visitors-map .map-header-content h3 {
+        font-size: 18px;
+    }
+    
+    .visitors-map .map-description {
+        font-size: 14px;
+    }
+    
+    .visitors-map .map-footer p {
+        font-size: 12px;
+    }
+}
