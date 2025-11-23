@@ -900,3 +900,49 @@ h3.my-profission{
         max-width: 100%;
     }
 }
+
+/* MapMyVisitors responsive wrapper ------------------------------------------------- */
+.mapmyvisitors-wrapper{
+    width: 100%;
+    max-width: 100%;
+    margin: 25px 0 0 0;
+    /* provide an intrinsic aspect ratio (16:9) which can be adjusted if needed */
+    --map-aspect-ratio: 56.25%; /* 9/16 = 56.25% */
+    position: relative;
+    background: transparent;
+}
+
+.mapmyvisitors-wrapper::before{
+    /* create responsive box for iframe using padding trick */
+    content: "";
+    display: block;
+    padding-bottom: var(--map-aspect-ratio);
+}
+
+.mapmyvisitors-wrapper > iframe,
+.mapmyvisitors-wrapper iframe,
+.mapmyvisitors-wrapper > div iframe,
+iframe[src*="mapmyvisitors.com"]{
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    border: 0 !important;
+    display: block !important;
+}
+
+/* fallback: if MapMyVisitors injects a fixed-size element (div), make that element responsive too */
+.mapmyvisitors-wrapper > div,
+.mapmyvisitors-wrapper > div > *{
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+@media (max-width: 991px) {
+    /* use taller ratio on narrow screens for readability */
+    .mapmyvisitors-wrapper{ --map-aspect-ratio: 66.6667%; }
+}
