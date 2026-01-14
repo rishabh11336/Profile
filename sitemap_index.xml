@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Homepage (Single Page) -->
+  <!-- Main Domain -->
   <url>
     <loc>https://rishabhsingh.me/</loc>
     <lastmod>2026-01-15</lastmod>
@@ -9,12 +9,7 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Sections within the page (anchors) -->
-  <url>
-    <loc>https://rishabhsingh.me/#home</loc>
-    <priority>0.9</priority>
-  </url>
-
+  <!-- Main Domain Sections (SPA Anchors) -->
   <url>
     <loc>https://rishabhsingh.me/#about</loc>
     <priority>0.8</priority>
@@ -32,12 +27,23 @@
 
   <url>
     <loc>https://rishabhsingh.me/#contact</loc>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 
+  <!-- Subdomain: Compass -->
   <url>
-    <loc>https://rishabhsingh.me/#visitors</loc>
-    <priority>0.6</priority>
+    <loc>https://compass.rishabhsingh.me/</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Subdomain: Parking Management System -->
+  <url>
+    <loc>https://parking.rishabhsingh.me/</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
 </urlset>
