@@ -98,6 +98,7 @@
     <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
     <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
     <link rel="stylesheet" href="css/style-switcher.css">
+    <link rel="stylesheet" href="css/lazy-skeleton.css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="images/Logo.svg">
@@ -353,166 +354,33 @@
                 </div>
             </section>
 
-            <section class="service section " id="services">
+            <!-- Services Section - Lazy Loaded -->
+            <section class="service section lazy-section" id="services" data-src="sections/services.html">
                 <div class="container">
-                    <div class="row">
-                        <div class="section-title">
-                            <h2>Services</h2>
+                    <div class="section-skeleton">
+                        <div class="skeleton-title"></div>
+                        <div class="skeleton-subtitle"></div>
+                        <div class="skeleton-grid">
+                            <div class="skeleton-card"></div>
+                            <div class="skeleton-card"></div>
+                            <div class="skeleton-card"></div>
+                            <div class="skeleton-card"></div>
+                            <div class="skeleton-card"></div>
                         </div>
-                        <h2>What I'm Doing ?</h2>
                     </div>
-                    <ul class="services-list row">
-                        <li class="service-item padd-15">
-                            <div class="service-item-inner">
-                                <div class="icon">
-                                    <i class="fa fa-laptop-code"></i>
-                                </div>
-                                <h4>Back-end Development</h4>
-                                <p>Specialized in architecting, developing, and deploying robust and scalable back-end
-                                    systems using Flask and Django frameworks.</p>
-                            </div>
-                        </li>
-                        <li class="service-item padd-15">
-                            <div class="service-item-inner">
-                                <div class="icon">
-                                    <i class="fa fa-solid fa-desktop"></i>
-                                </div>
-                                <h4>Machine Learning Apps</h4>
-                                <p>Proficient in creating interactive Machine Learning Applications and visualizations.
-                                    Using scikit-learn, PyTorch and other famous ML Tools.</p>
-                            </div>
-                        </li>
-                        <li class="service-item padd-15">
-                            <div class="service-item-inner">
-                                <div class="icon">
-                                    <i class="fa fa-solid fa-search"></i>
-                                </div>
-                                <h4>Research in Machine Learning</h4>
-                                <p>Passionate about exploring advanced topics and staying updated with the latest
-                                    methodologies in Machine Learning research.</p>
-                            </div>
-                        </li>
-                        <li class="service-item padd-15">
-                            <div class="service-item-inner">
-                                <div class="icon">
-                                    <i class="fa fa-solid fa-book-open"></i>
-                                </div>
-                                <h4>Self-learning</h4>
-                                <p>Self-learner in reading Machine/Deep Learning Research Paper for better
-                                    understanding. Driven
-                                    by curiosity to improve skills & know latest trends.</p>
-                            </div>
-                        </li>
-                        <li class="service-item padd-15">
-                            <div class="service-item-inner">
-                                <div class="icon">
-                                    <i class="fa fa-solid fa-people-robbery"></i>
-                                </div>
-                                <h4>Mentorship and Guidance</h4>
-                                <p>Mentoring ML, dev & version control, empowering with guidance. Inspiring
-                                    enthusiasts, sharing knowledge at Medium & Live Class.</p>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
             </section>
 
-            <section class="portfolio section " id="portfolio">
+            <!-- Portfolio Section - Lazy Loaded -->
+            <section class="portfolio section lazy-section" id="portfolio" data-src="sections/portfolio.html">
                 <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>Portfolio</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="portfolio-heading padd-15">
-                            <h2>My Last Projects :</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="portfolio-items padd-15">
-                            <!-- Project Card 1 -->
-                            <div class="portfolio-item">
-                                <div class="portfolio-item-inner shadow-dark">
-                                    <div class="portfolio-img">
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5QSaKrmae-MCimSBr67asYrZWzNvN4VFBJw&s"
-                                            alt="ML Project">
-                                    </div>
-                                    <div class="portfolio-info">
-                                        <h4>Parking Management System</h4>
-                                        <div class="portfolio-tags">
-                                            <span class="tag">Flask</span>
-                                            <span class="tag">VueJs</span>
-                                            <span class="tag">Azure</span>
-                                            <span class="tag">Redis</span>
-                                            <span class="tag">Celery</span>
-                                            <span class="tag">Webhook</span>
-                                        </div>
-                                        <p>Advanced parking management system modern Technology</p>
-                                        <div class="portfolio-links">
-                                            <a href="https://parking.rishabhsingh.me" target="_blank"><i
-                                                    class="fa fa-github"></i></a>
-                                            <a href="https://parking.rishabhsingh.me" target="_blank"
-                                                class="live-demo"><i class="fa fa-link"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Project Card 2 -->
-                            <div class="portfolio-item">
-                                <div class="portfolio-item-inner shadow-dark">
-                                    <div class="portfolio-img">
-                                        <img src="https://raw.githubusercontent.com/rishabh11336/Images-for-project/refs/heads/main/Screenshot%20Compass.png"
-                                            alt="Compass">
-                                    </div>
-                                    <div class="portfolio-info">
-                                        <h4>Bloglite - Compass</h4>
-                                        <div class="portfolio-tags">
-                                            <span class="tag">Flask</span>
-                                            <span class="tag">HTML</span>
-                                            <span class="tag">CSS</span>
-                                            <span class="tag">js</span>
-                                            <span class="tag">PostgreSQL</span>
-                                            <span class="tag">Supabase</span>
-                                        </div>
-                                        <p>Compass is my first web development project — a simple blogging platform that
-                                            lets users create and manage posts while helping me learn the basics of
-                                            Flask, HTML, CSS, and JavaScript.</p>
-                                        <div class="portfolio-links">
-                                            <a href="https://github.com/rishabh11336/Blogsite.git" target="_blank"><i
-                                                    class="fa fa-github"></i></a>
-                                            <a href="https://compass.rishabhsingh.me" class="live-demo"
-                                                target="_blank"><i class="fa fa-link"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Project Card 3 -->
-                            <div class="portfolio-item">
-                                <div class="portfolio-item-inner shadow-dark">
-                                    <div class="portfolio-img">
-                                        <img src="https://img.freepik.com/free-vector/coming-soon-background-with-focus-light-effect-design_1017-27277.jpg?semt=ais_hybrid&w=740&q=80"
-                                            alt="Dashboard">
-                                    </div>
-                                    <div class="portfolio-info">
-                                        <h4>coming soon...</h4>
-                                        <div class="portfolio-tags">
-                                            <span class="tag">ML</span>
-                                            <span class="tag">SQL</span>
-                                            <span class="tag">DL</span>
-                                        </div>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad laborum est
-                                            praesentium dignissimos consequuntur fuga alias impedit eligendi similique.
-                                            Vel consectetur accusamus possimus molestiae sapiente dolores ullam,
-                                            voluptatibus maiores modi.</p>
-                                        <div class="portfolio-links">
-                                            <a href="https://github.com/rishabh11336/analytics-dashboard"
-                                                target="_blank"><i class="fa fa-github"></i></a>
-                                            <a href="#" class="live-demo"><i class="fa fa-link"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="section-skeleton">
+                        <div class="skeleton-title"></div>
+                        <div class="skeleton-subtitle"></div>
+                        <div class="skeleton-grid">
+                            <div class="skeleton-card skeleton-portfolio"></div>
+                            <div class="skeleton-card skeleton-portfolio"></div>
+                            <div class="skeleton-card skeleton-portfolio"></div>
                         </div>
                     </div>
                 </div>
@@ -559,37 +427,13 @@
                     <h4 class="contact-sub-title padd-15"> I'M VERY RESPONSIVE TO MESSAGES</h4>
                 </div>
             </section>
-            <!-- Visitors Map Section -->
-            <section class="visitors-map section" id="visitors">
+            <!-- Visitors Map Section - Lazy Loaded -->
+            <section class="visitors-map section lazy-section" id="visitors" data-src="sections/visitors.html">
                 <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>Global Reach</h2>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="map-content padd-15">
-                            <div class="map-card">
-                                <div class="map-card-header">
-                                    <div class="map-header-content">
-                                        <i class="fas fa-globe"></i>
-                                        <h3>Visitors Around the World</h3>
-                                    </div>
-                                    <p class="map-description">See where my portfolio visitors are connecting from
-                                        across the globe</p>
-                                </div>
-                                <div class="map-tracker">
-                                    <a href="https://mapmyvisitors.com/web/1c0tu" title="Visit tracker" target="_blank"
-                                        rel="noopener noreferrer" aria-label="Open visitors map in a new tab">
-                                        <img src="https://mapmyvisitors.com/map.png?cl=0e1633&w=900&t=n&d=RoZbRwr1002BRTY6exFofc0AvldqsSEiznlvac9R0qY&co=0b4975&ct=cdd4d9"
-                                            alt="Visit tracker map showing global visitor locations" loading="lazy">
-                                    </a>
-                                </div>
-                                <div class="map-footer">
-                                    <p><i class="fas fa-info-circle"></i> Click the map to view detailed statistics</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="section-skeleton">
+                        <div class="skeleton-title"></div>
+                        <div class="skeleton-text"></div>
+                        <div class="skeleton-map"></div>
                     </div>
                 </div>
             </section>
@@ -612,11 +456,33 @@
         </div>
     </div>
 
+    <!-- Lazy Loader Script (loads first for early initialization) -->
+    <script src="js/lazy-loader.js"></script>
+
+    <!-- Other Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"
         integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="js/script.js"></script>
-    <script src="js/style-switcher.js"></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/style-switcher.js" defer></script>
+
+    <!-- Noscript Fallback -->
+    <noscript>
+        <style>
+            .lazy-section .section-skeleton {
+                display: none;
+            }
+
+            .lazy-section::after {
+                content: "Please enable JavaScript to view this content.";
+                display: block;
+                padding: 40px;
+                text-align: center;
+                font-size: 1.2rem;
+                color: var(--text-black-900);
+            }
+        </style>
+    </noscript>
 
     <!-- Map card removed (moved inside main-content section) -->
 </body>

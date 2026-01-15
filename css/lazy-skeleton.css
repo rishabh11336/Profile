@@ -1,0 +1,182 @@
+/**
+ * Lazy Loading Skeleton Styles
+ * Provides visual feedback while sections are being loaded
+ */
+
+/* Skeleton Container */
+.section-skeleton {
+    padding: 60px 15px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Loading State */
+.lazy-section.loading {
+    min-height: 400px;
+    position: relative;
+}
+
+.lazy-section.loading .section-skeleton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255,255,255,0.05) 50%, 
+        transparent 100%
+    );
+    animation: shimmer 2s infinite;
+}
+
+/* Loaded State - Fade In */
+.lazy-section.loaded {
+    animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Pulse Animation for Skeletons */
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Shimmer Effect */
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Skeleton Elements */
+.skeleton-title,
+.skeleton-subtitle,
+.skeleton-text,
+.skeleton-card,
+.skeleton-map {
+    background: linear-gradient(90deg, 
+        var(--bg-black-100) 25%, 
+        var(--bg-black-50) 50%, 
+        var(--bg-black-100) 75%
+    );
+    background-size: 200% 100%;
+    border-radius: 8px;
+}
+
+/* Skeleton Title */
+.skeleton-title {
+    height: 40px;
+    width: 300px;
+    margin: 0 auto 20px;
+    max-width: 100%;
+}
+
+/* Skeleton Subtitle */
+.skeleton-subtitle {
+    height: 35px;
+    width: 250px;
+    margin: 0 auto 40px;
+    max-width: 100%;
+}
+
+/* Skeleton Text */
+.skeleton-text {
+    height: 20px;
+    width: 80%;
+    margin: 0 auto 30px;
+}
+
+/* Skeleton Grid Container */
+.skeleton-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+/* Skeleton Service Cards */
+.skeleton-card {
+    height: 250px;
+    border-radius: 10px;
+}
+
+/* Skeleton Portfolio Cards (taller) */
+.skeleton-card.skeleton-portfolio {
+    height: 450px;
+}
+
+/* Skeleton Map */
+.skeleton-map {
+    height: 400px;
+    width: 100%;
+    margin-top: 30px;
+    border-radius: 12px;
+}
+
+/* Error State */
+.lazy-section.error {
+    min-height: 200px;
+}
+
+.section-error {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.section-error p {
+    color: var(--skin-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+    .skeleton-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .skeleton-card {
+        height: 220px;
+    }
+    
+    .skeleton-card.skeleton-portfolio {
+        height: 400px;
+    }
+    
+    .skeleton-map {
+        height: 300px;
+    }
+}
+
+/* Accessibility - Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    .section-skeleton,
+    .lazy-section.loading .section-skeleton::before,
+    .lazy-section.loaded {
+        animation: none;
+    }
+    
+    .lazy-section.loaded {
+        opacity: 1;
+        transform: none;
+    }
+}
