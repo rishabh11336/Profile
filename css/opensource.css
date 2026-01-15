@@ -1,0 +1,223 @@
+/**
+ * Open Source Contributions Section Styles
+ */
+
+/* Open Source Section */
+.opensource.section {
+    padding: 60px 0;
+}
+
+.opensource-heading {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.opensource-heading h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--text-black-700);
+    margin: 0;
+}
+
+/* Open Source Items Grid */
+.opensource-items {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.opensource-item {
+    width: 100%;
+}
+
+.opensource-item-inner {
+    border: 1px solid var(--bg-black-50);
+    border-radius: 10px;
+    padding: 30px 20px;
+    background: var(--bg-black-100);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+}
+
+.opensource-item-inner:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--outer-shadow);
+}
+
+/* Logo Section */
+.opensource-logo {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-black-50);
+    border-radius: 10px;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.opensource-logo:hover {
+    background: var(--skin-color);
+    transform: scale(1.05);
+}
+
+.opensource-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.opensource-logo.text-logo {
+    font-size: 2.5rem;
+    color: var(--skin-color);
+}
+
+.opensource-logo.text-logo:hover {
+    color: var(--bg-black-900);
+}
+
+.opensource-logo.text-logo i {
+    transition: all 0.3s ease;
+}
+
+/* Contribution Info */
+.opensource-info {
+    flex: 1;
+}
+
+.opensource-info h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-black-900);
+    margin: 0 0 10px;
+}
+
+.contribution-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-black-700);
+    margin-bottom: 15px;
+}
+
+/* Contribution Meta */
+.contribution-meta {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.pr-badge,
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.pr-badge {
+    background: var(--bg-black-50);
+    color: var(--text-black-700);
+}
+
+.status-badge.merged {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+}
+
+.status-badge.open {
+    background: rgba(59, 130, 246, 0.15);
+    color: #3b82f6;
+}
+
+.status-badge i {
+    font-size: 0.75rem;
+}
+
+/* View PR Button */
+.view-pr-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: var(--skin-color);
+    color: #fff;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.view-pr-btn:hover {
+    background: var(--text-black-900);
+    transform: translateX(5px);
+}
+
+.view-pr-btn i {
+    font-size: 0.85rem;
+}
+
+/* Skeleton for Open Source */
+.skeleton-card.skeleton-opensource {
+    height: 180px;
+}
+
+/* Responsive Design */
+@media (max-width: 991px) {
+    .opensource-items {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .opensource-item-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 25px 15px;
+    }
+
+    .opensource-logo {
+        margin-bottom: 15px;
+    }
+
+    .contribution-meta {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 767px) {
+    .opensource-items {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .opensource-heading h3 {
+        font-size: 1.2rem;
+    }
+
+    .opensource-info h4 {
+        font-size: 1.3rem;
+    }
+
+    .opensource-logo {
+        width: 70px;
+        height: 70px;
+    }
+
+    .contribution-description {
+        font-size: 0.95rem;
+    }
+
+    .skeleton-card.skeleton-opensource {
+        height: 200px;
+    }
+}

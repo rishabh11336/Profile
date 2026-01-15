@@ -37,6 +37,12 @@
   </url>
 
   <url>
+    <loc>https://rishabhsingh.me/#opensource</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
     <loc>https://rishabhsingh.me/#contact</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>

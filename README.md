@@ -68,7 +68,31 @@ Delhi, India
 
 ---
 
-## 🛠️ Technical Stack
+## � Open Source Contributions
+
+Contributing to the open-source community and major Python ecosystem projects:
+
+### Featured Contributions
+
+1. **<a href="https://github.com/conda/conda-build/pull/4782"><img src="https://anaconda.org/static/img/anaconda_org_logo.svg" title="Conda" alt="Conda" width="40"/></a> Conda Build**
+   - [PR #4782](https://github.com/conda/conda-build/pull/4782) - Conda package management improvements
+   - Contributing to the Anaconda ecosystem
+
+2. **<a href="https://github.com/python/cpython/pull/134804"><img src="https://s3.dualstack.us-east-2.amazonaws.com/pythondotorg-assets/media/files/python-logo-only.svg" title="Python" alt="Python" width="30"/></a> Python (CPython)**
+   - [PR #134804](https://github.com/python/cpython/pull/134804) - Core Python language contributions
+   - Contributing to Python's official implementation
+
+3. **Applied Machine Learning Course**
+   - [PR #1](https://github.com/moshesipper/Applied-Machine-Learning-Course/pull/1)
+   - Educational content improvements for ML learning resources
+
+4. **<a href="https://github.com/kdmdelhincr/events/pull/4"><img src="https://github.com/user-attachments/assets/44d15235-8728-4aee-9927-119c1b6cc563" title="kdmdelhincr" alt="kdmdelhincr" width="20"/></a> KDM Delhi Events**
+   - [PR #4](https://github.com/kdmdelhincr/events/pull/4)
+   - Contributing to local tech community initiatives
+
+---
+
+## �🛠️ Technical Stack
 
 ### Languages & Core Skills
 - **Python** (90% proficiency)
@@ -286,7 +310,7 @@ Deploy to any static hosting:
 [![GitHub](https://img.shields.io/badge/GitHub-rishabh11336-black?logo=github)](https://github.com/rishabh11336)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-rishabh11336-blue?logo=linkedin)](https://www.linkedin.com/in/rishabh11336/)
 [![Medium](https://img.shields.io/badge/Medium-@asusrishabh-green?logo=medium)](https://medium.com/@asusrishabh)
-[![Email](https://img.shields.io/badge/Email-rishabh11336@gmail.com-red?logo=gmail)](mailto:rishabh11336@gmail.com)
+[![Email](https://img.shields.io/badge/Email-asusrishabh@outlook.com-red?logo=gmail)](mailto:asusrishabh@outlook.com)
 
 ---
 
