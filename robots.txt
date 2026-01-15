@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://rishabhsingh.me/sitemap.xml
+
+# Disallow crawling of script files (optional optimization)
+Disallow: /js/
+Disallow: /css/
+
+# Allow CSS and JS for rendering (Google recommendation)
+Allow: /css/*.css
+Allow: /js/*.js

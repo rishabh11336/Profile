@@ -1,49 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Main Domain -->
-  <url>
-    <loc>https://rishabhsingh.me/</loc>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Main Portfolio Sitemap -->
+  <sitemap>
+    <loc>https://rishabhsingh.me/sitemap.xml</loc>
     <lastmod>2026-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <!-- Main Domain Sections (SPA Anchors) -->
-  <url>
-    <loc>https://rishabhsingh.me/#about</loc>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://rishabhsingh.me/#services</loc>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://rishabhsingh.me/#portfolio</loc>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://rishabhsingh.me/#contact</loc>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Subdomain: Compass -->
-  <url>
-    <loc>https://compass.rishabhsingh.me/</loc>
+  </sitemap>
+  
+  <!-- Compass Project Sitemap (LIVE) -->
+  <sitemap>
+    <loc>https://compass.rishabhsingh.me/sitemap.xml</loc>
     <lastmod>2026-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Subdomain: Parking Management System -->
-  <url>
-    <loc>https://parking.rishabhsingh.me/</loc>
+  </sitemap>
+  
+  <!-- Parking Management System Sitemap (LIVE) -->
+  <sitemap>
+    <loc>https://parking.rishabhsingh.me/sitemap.xml</loc>
     <lastmod>2026-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
+  </sitemap>
 
-</urlset>
+</sitemapindex>
