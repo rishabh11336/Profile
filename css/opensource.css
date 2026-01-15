@@ -1,5 +1,6 @@
 /**
  * Open Source Contributions Section Styles
+ * Design harmonized with Projects section
  */
 
 /* Open Source Section */
@@ -19,11 +20,11 @@
     margin: 0;
 }
 
-/* Open Source Items Grid */
+/* Open Source Items Grid - Matches Projects 3-column layout */
 .opensource-items {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
@@ -31,33 +32,35 @@
     width: 100%;
 }
 
+/* Card Styling - Matches Projects cards */
 .opensource-item-inner {
     border: 1px solid var(--bg-black-50);
     border-radius: 10px;
-    padding: 30px 20px;
+    padding: 30px 15px;
     background: var(--bg-black-100);
     transition: all 0.3s ease;
+    text-align: center;
     display: flex;
-    align-items: flex-start;
-    gap: 25px;
+    flex-direction: column;
+    height: 100%;
 }
 
 .opensource-item-inner:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
     box-shadow: var(--outer-shadow);
 }
 
-/* Logo Section */
+/* Logo Section - Centered vertical layout */
 .opensource-logo {
-    flex-shrink: 0;
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 20px;
+    padding: 20px;
     background: var(--bg-black-50);
     border-radius: 10px;
-    padding: 15px;
     transition: all 0.3s ease;
 }
 
@@ -67,13 +70,13 @@
 }
 
 .opensource-logo img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 80%;
+    max-height: 80%;
     object-fit: contain;
 }
 
 .opensource-logo.text-logo {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: var(--skin-color);
 }
 
@@ -81,35 +84,36 @@
     color: var(--bg-black-900);
 }
 
-.opensource-logo.text-logo i {
-    transition: all 0.3s ease;
-}
-
 /* Contribution Info */
 .opensource-info {
     flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .opensource-info h4 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 600;
     color: var(--text-black-900);
-    margin: 0 0 10px;
+    margin: 0 0 15px;
+    line-height: 1.3;
 }
 
 .contribution-description {
-    font-size: 1rem;
+    font-size: 0.95rem;
     line-height: 1.6;
     color: var(--text-black-700);
     margin-bottom: 15px;
+    flex: 1;
 }
 
-/* Contribution Meta */
+/* Contribution Meta - Centered */
 .contribution-meta {
     display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
+    gap: 10px;
+    margin-bottom: 20px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .pr-badge,
@@ -119,7 +123,7 @@
     gap: 5px;
     padding: 5px 12px;
     border-radius: 15px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 500;
 }
 
@@ -133,21 +137,16 @@
     color: #22c55e;
 }
 
-.status-badge.open {
-    background: rgba(59, 130, 246, 0.15);
-    color: #3b82f6;
-}
-
 .status-badge i {
     font-size: 0.75rem;
 }
 
-/* View PR Button */
+/* View PR Button - Matches portfolio links style */
 .view-pr-btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 8px 20px;
+    padding: 10px 25px;
     background: var(--skin-color);
     color: #fff;
     border-radius: 25px;
@@ -155,11 +154,12 @@
     font-weight: 500;
     font-size: 0.95rem;
     transition: all 0.3s ease;
+    margin-top: auto;
+    align-self: center;
 }
 
 .view-pr-btn:hover {
     background: var(--text-black-900);
-    transform: translateX(5px);
 }
 
 .view-pr-btn i {
@@ -168,29 +168,29 @@
 
 /* Skeleton for Open Source */
 .skeleton-card.skeleton-opensource {
-    height: 180px;
+    height: 380px;
 }
 
-/* Responsive Design */
+/* Responsive Design - Matches Projects breakpoints */
+@media (max-width: 1199px) {
+    .opensource-items {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+}
+
 @media (max-width: 991px) {
     .opensource-items {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
     }
 
-    .opensource-item-inner {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 25px 15px;
-    }
-
     .opensource-logo {
-        margin-bottom: 15px;
+        height: 100px;
     }
 
-    .contribution-meta {
-        justify-content: center;
+    .opensource-info h4 {
+        font-size: 1.3rem;
     }
 }
 
@@ -205,19 +205,18 @@
     }
 
     .opensource-info h4 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
 
     .opensource-logo {
-        width: 70px;
-        height: 70px;
+        height: 90px;
     }
 
     .contribution-description {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
     }
 
     .skeleton-card.skeleton-opensource {
-        height: 200px;
+        height: 350px;
     }
 }
