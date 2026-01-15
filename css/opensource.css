@@ -99,6 +99,7 @@
     min-height: 300px;
     display: flex;
     flex-direction: column;
+    flex: 1;
     text-align: center;
 }
 
@@ -150,8 +151,34 @@
     color: #22c55e;
 }
 
+.status-badge.closed {
+    background: rgba(251, 146, 60, 0.15);
+    color: #fb923c;
+}
+
 .status-badge i {
     font-size: 0.75rem;
+}
+
+/* PR Note - Additional context */
+.pr-note {
+    color: var(--text-black-600);
+    font-size: 0.75rem;
+    line-height: 1.5;
+    margin-bottom: 0;
+    padding: 8px 12px;
+    background: var(--bg-black-50);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: center;
+    min-height: auto;
+}
+
+.pr-note i {
+    font-size: 0.7rem;
+    color: var(--skin-color);
 }
 
 /* View PR Button - Matches portfolio links style */
