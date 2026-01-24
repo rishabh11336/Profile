@@ -1072,6 +1072,69 @@ h3.my-profission {
         flex: 0 0 100%;
         max-width: 100%;
     }
+
+    /* FIX: Portfolio items container - change to column layout on mobile */
+    .portfolio .portfolio-items {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 20px;
+    }
+
+    /* FIX: Portfolio cards - remove fixed height to prevent overflow */
+    .portfolio .portfolio-item {
+        flex: 0 0 auto !important;
+        max-width: 100% !important;
+        width: 100%;
+        height: auto !important;
+        margin-bottom: 0;
+    }
+
+    .portfolio .portfolio-item-inner {
+        height: auto;
+        min-height: unset;
+    }
+
+    .portfolio .portfolio-item-inner .portfolio-img {
+        height: 200px;
+    }
+
+    .portfolio .portfolio-info {
+        padding: 15px;
+    }
+
+    .portfolio .portfolio-info h4 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    .portfolio .portfolio-info p {
+        font-size: 14px;
+        -webkit-line-clamp: unset;
+        max-height: none;
+    }
+
+    /* FIX: Opensource cards - ensure proper height on mobile */
+    .opensource-item-inner {
+        height: auto;
+    }
+
+    .opensource-info {
+        min-height: unset;
+        padding: 20px;
+    }
+
+    .opensource-info h4 {
+        min-height: unset;
+    }
+
+    .contribution-description {
+        min-height: unset;
+    }
+
+    .contribution-meta {
+        min-height: unset;
+    }
 }
 
 /* ========================================
