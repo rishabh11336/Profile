@@ -167,6 +167,11 @@ ul {
     height: 100%;
     padding: 30px;
     border-right: 1px solid var(--bg-black-50);
+    transition: left 0.3s ease;
+}
+
+.aside.open {
+    left: 0;
 }
 
 .aside .logo {
@@ -192,13 +197,29 @@ ul {
     border: 1px solid var(--bg-black-50);
     cursor: pointer;
     position: fixed;
-    left: 300px;
+    right: 20px;
     top: 20px;
     border-radius: 5px;
     background: var(--bg-black-100);
     display: none;
     align-items: center;
     justify-content: center;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.aside .nav-toggler.open span {
+    background-color: transparent;
+}
+
+.aside .nav-toggler.open span::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.aside .nav-toggler.open span::after {
+    transform: rotate(-45deg);
+    top: 0;
 }
 
 .aside .nav-toggler span {
@@ -876,6 +897,14 @@ h3.my-profission {
         left: -270px;
     }
 
+    .aside.open {
+        left: 0;
+    }
+
+    .aside .nav-toggler {
+        display: flex;
+    }
+
     .main-content {
         padding-left: 0;
     }
@@ -906,6 +935,131 @@ h3.my-profission {
 }
 
 @media (max-width:767px) {
+
+    /* Hide style switcher on mobile to prevent overlap */
+    .style-switcher {
+        display: none !important;
+    }
+
+    /* Prevent horizontal overflow */
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Fix logo size for mobile */
+    .aside .logo {
+        top: 30px;
+    }
+
+    .aside .logo img {
+        max-width: 120px;
+        width: 100%;
+        height: auto;
+    }
+
+    /* Adjust navigation for mobile */
+    .aside .nav {
+        margin-top: 180px;
+    }
+
+    /* Adjust section padding for mobile */
+    .section {
+        padding: 0 15px;
+    }
+
+    .section .container {
+        padding-top: 40px;
+        padding-bottom: 50px;
+    }
+
+    /* Typography adjustments */
+    .section-title h2 {
+        font-size: 28px;
+    }
+
+    h3.hello {
+        font-size: 20px;
+        line-height: 1.4;
+    }
+
+    h3.my-profission {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    /* Home section adjustments */
+    .home-info p {
+        font-size: 15px;
+        margin-bottom: 30px;
+        text-align: left;
+        line-height: 1.6;
+    }
+
+    /* Hide home image decorative elements on very small screens */
+    .home-img::after,
+    .home-img::before {
+        display: none;
+    }
+
+    /* Ensure profile image is responsive */
+    .home .home-img img {
+        max-height: 300px;
+        height: auto;
+        width: auto;
+        max-width: 100%;
+    }
+
+    /* About section text alignment */
+    .about .about-content .about-text p {
+        text-align: left;
+    }
+
+    /* Button improvements for mobile */
+    .about .about-content .personal-info .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .about .about-content .personal-info .buttons .btn {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    /* Skills - ensure single column */
+    .about .about-content .skills .skill-item {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    /* Timeline adjustments */
+    .about .about-content .timeline {
+        padding: 20px 10px;
+    }
+
+    .about .about-content .timeline .timeline-item {
+        padding-left: 30px;
+    }
+
+    .about .about-content .timeline .timeline-title {
+        font-size: 16px;
+    }
+
+    .about .about-content .timeline .timeline-text {
+        font-size: 14px;
+        text-align: left;
+    }
+
+    /* Contact section */
+    .contact-title {
+        font-size: 20px;
+    }
+
+    .contact-sub-title {
+        font-size: 14px;
+    }
 
     .contact .contact-form .col-6,
     .contact .contact-info-item,

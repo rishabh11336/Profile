@@ -5,12 +5,29 @@ var typed = new Typed('.typing', {
     loop: true
 })
 
+// Navigation toggle for mobile
+const navToggler = document.querySelector('.nav-toggler');
+const aside = document.querySelector('.aside');
+
+if (navToggler && aside) {
+    navToggler.addEventListener('click', () => {
+        aside.classList.toggle('open');
+        navToggler.classList.toggle('open');
+    });
+}
+
 const navItems = document.querySelectorAll('.nav-item');
 
 navItems.forEach(item => {
     item.addEventListener('click', () => {
         navItems.forEach(nav => nav.classList.remove('active'));
         item.classList.add('active');
+        
+        // Close sidebar on mobile when nav item is clicked
+        if (window.innerWidth <= 1199 && aside && navToggler) {
+            aside.classList.remove('open');
+            navToggler.classList.remove('open');
+        }
     });
 });
 

@@ -492,8 +492,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"
         integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="js/script.js" defer></script>
+    <script src="js/script.js?v=1.1" defer></script>
     <script src="js/style-switcher.js" defer></script>
+
+    <!-- Inline Navigation Toggle (ensures immediate functionality) -->
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            const navToggler = document.querySelector('.nav-toggler');
+            const aside = document.querySelector('.aside');
+
+            if (navToggler && aside) {
+                // Toggle sidebar on hamburger click
+                navToggler.addEventListener('click', function () {
+                    aside.classList.toggle('open');
+                    navToggler.classList.toggle('open');
+                });
+
+                // Close sidebar when clicking nav items on mobile
+                const navItems = document.querySelectorAll('.nav-item');
+                navItems.forEach(function (item) {
+                    item.addEventListener('click', function () {
+                        if (window.innerWidth <= 1199) {
+                            aside.classList.remove('open');
+                            navToggler.classList.remove('open');
+                        }
+                    });
+                });
+            }
+        });
+    </script>
 
     <!-- Noscript Fallback -->
     <noscript>
