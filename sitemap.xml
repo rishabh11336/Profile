@@ -1,81 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <!-- Main Portfolio Homepage -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- ── Core Pages ── -->
+
   <url>
     <loc>https://rishabhsingh.me/</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Portfolio Sections (Single Page Application Anchors) -->
-  <!-- Note: Google may not index SPA hash anchors, but including for completeness -->
-  
+  <!-- ── Blog ── -->
+
   <url>
-    <loc>https://rishabhsingh.me/#home</loc>
+    <loc>https://rishabhsingh.me/blog/</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://rishabhsingh.me/#about</loc>
+    <loc>https://rishabhsingh.me/blog/transformers-in-a-minute.html</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/1*adMgf9eqWEMHr7L-dPNaWQ.png</image:loc>
+      <image:title>Transformer Architecture — Encoder and Decoder Diagram</image:title>
+      <image:caption>Transformer Architecture: encoder layer processes inputs, decoder layer generates outputs.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:640/format:webp/1*phR1pi8piCoLXhk8H1v4YA.png</image:loc>
+      <image:title>Multi-Head Attention Diagram — Q, K, V projections</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/1*ggWYxdcvOPpCwPXI6sVUBg.png</image:loc>
+      <image:title>NLP Model Architectures Best Use Cases — Decoder Only, Encoder Only, Encoder-Decoder</image:title>
+    </image:image>
   </url>
 
   <url>
-    <loc>https://rishabhsingh.me/#services</loc>
+    <loc>https://rishabhsingh.me/blog/forecasting-in-a-minute.html</loc>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/0*DwsxFugEzwMEt0cX.jpg</image:loc>
+      <image:title>FORECAST — Forecasting in a Minute</image:title>
+      <image:caption>Forecasting: using what you know to make an educated guess about what comes next.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/1*TQhx5U17IcCggvt8-5DpuA.png</image:loc>
+      <image:title>Forecasting use cases across Banking, Retail, Healthcare, Government, Startups</image:title>
+    </image:image>
   </url>
 
-  <url>
-    <loc>https://rishabhsingh.me/#portfolio</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
+  <!-- ── CV / Resume ── -->
 
   <url>
-    <loc>https://rishabhsingh.me/#opensource</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://rishabhsingh.me/#contact</loc>
+    <loc>https://rishabhsingh.me/CV/Rishabh7388587293.pdf</loc>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <url>
-    <loc>https://rishabhsingh.me/#visitors</loc>
-    <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
 
-  <url>
-    <loc>https://rishabhsingh.me/llm.txt</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <!-- External Projects/Portfolio Items -->
-  <!-- These link to your live projects on subdomains -->
-  
-  <url>
-    <loc>https://compass.rishabhsingh.me/</loc>
-    <lastmod>2026-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <url>
-    <loc>https://parking.rishabhsingh.me/</loc>
-    <lastmod>2026-01-15</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
 </urlset>
-

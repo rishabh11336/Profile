@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <!-- Main Portfolio Sitemap -->
+
   <sitemap>
     <loc>https://rishabhsingh.me/sitemap.xml</loc>
-    <lastmod>2026-01-15</lastmod>
-  </sitemap>
-  
-  <!-- Compass Project Sitemap (LIVE) -->
-  <sitemap>
-    <loc>https://compass.rishabhsingh.me/sitemap.xml</loc>
-    <lastmod>2026-01-15</lastmod>
-  </sitemap>
-  
-  <!-- Parking Management System Sitemap (LIVE) -->
-  <sitemap>
-    <loc>https://parking.rishabhsingh.me/sitemap.xml</loc>
-    <lastmod>2026-01-15</lastmod>
+    <lastmod>2026-06-17</lastmod>
   </sitemap>
 
 </sitemapindex>

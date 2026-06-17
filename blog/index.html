@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Blog | Rishabh Singh</title>
+    <meta name="description" content="Writing on AI, Machine Learning, and System Design by Rishabh Singh — Data Scientist at Chryselys, IIT Madras.">
+    <meta name="author" content="Rishabh Singh">
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://rishabhsingh.me/blog/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rishabhsingh.me/blog/">
+    <meta property="og:title" content="Blog | Rishabh Singh">
+    <meta property="og:description" content="Writing on AI, Machine Learning, and System Design by Rishabh Singh.">
+    <meta property="og:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/1*adMgf9eqWEMHr7L-dPNaWQ.png">
+    <meta property="og:image:alt" content="Transformer Architecture Diagram">
+    <meta property="og:site_name" content="Rishabh Singh Portfolio">
+    <meta property="og:locale" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://rishabhsingh.me/blog/">
+    <meta name="twitter:title" content="Blog | Rishabh Singh">
+    <meta name="twitter:description" content="Writing on AI, Machine Learning, and System Design by Rishabh Singh.">
+    <meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/1*adMgf9eqWEMHr7L-dPNaWQ.png">
+    <meta name="twitter:creator" content="@rishabhsingh">
+
+    <link rel="sitemap" type="application/xml" href="../sitemap_index.xml">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "@id": "https://rishabhsingh.me/blog/#blog",
+      "name": "Rishabh Singh — Blog",
+      "url": "https://rishabhsingh.me/blog/",
+      "description": "Writing on AI, Machine Learning, and System Design by Rishabh Singh — Data Scientist, IIT Madras.",
+      "inLanguage": "en-US",
+      "author": {
+        "@type": "Person",
+        "@id": "https://rishabhsingh.me/#person",
+        "name": "Rishabh Singh",
+        "url": "https://rishabhsingh.me"
+      },
+      "blogPost": [
+        {
+          "@type": "BlogPosting",
+          "headline": "Transformers in a Minute",
+          "url": "https://rishabhsingh.me/blog/transformers-in-a-minute.html",
+          "datePublished": "2026-06-01",
+          "dateModified": "2026-06-17",
+          "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/1*adMgf9eqWEMHr7L-dPNaWQ.png",
+          "description": "A concise breakdown of the Transformer architecture — 6 components, the Attention formula, tokenization, and O(n²) complexity.",
+          "keywords": ["Transformers", "Machine Learning", "AI", "LLM", "Attention", "BERT", "GPT"]
+        },
+        {
+          "@type": "BlogPosting",
+          "headline": "Forecasting in a Minute",
+          "url": "https://rishabhsingh.me/blog/forecasting-in-a-minute.html",
+          "datePublished": "2026-03-13",
+          "dateModified": "2026-06-17",
+          "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/0*DwsxFugEzwMEt0cX.jpg",
+          "description": "What forecasting is, why it matters, 6 types, and how inline forecasting embeds predictions into decision models — with a real interest-rate walkthrough.",
+          "keywords": ["Forecasting", "Analytics", "Finance", "Time Series", "Inline Forecasting", "Data Science"]
+        }
+      ]
+    }
+    </script>
+
+    <link rel="icon" type="image/svg+xml" href="../images/Logo.svg">
+    <link rel="apple-touch-icon" href="../images/Logo.svg">
+
+    <link rel="stylesheet" href="../css/style.css?v=1.4">
+    <link rel="stylesheet" href="../css/skins/color-4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
+    <link rel="stylesheet" href="../css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
+    <link rel="stylesheet" href="../css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
+    <link rel="stylesheet" href="../css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
+    <link rel="stylesheet" href="../css/style-switcher.css">
+    <link rel="stylesheet" href="../css/blog.css">
+
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+</head>
+
+<body class="dark">
+
+    <div class="main-container">
+
+        <div class="aside">
+            <div class="logo">
+                <a href="../index.html" aria-label="Back to portfolio">
+                    <img src="../images/Logo.svg" width="300" alt="Rishabh Singh Portfolio Logo">
+                </a>
+            </div>
+            <div class="nav-toggler"><span></span></div>
+            <ul class="nav">
+                <li><a href="../index.html#home"       class="nav-item"><i class="fa fa-home"></i>Home</a></li>
+                <li><a href="../index.html#about"      class="nav-item"><i class="fa fa-user"></i>About</a></li>
+                <li><a href="../index.html#services"   class="nav-item"><i class="fa fa-list"></i>Services</a></li>
+                <li><a href="../index.html#portfolio"  class="nav-item"><i class="fa fa-briefcase"></i>Projects</a></li>
+                <li><a href="../index.html#opensource" class="nav-item"><i class="fa fa-code-branch"></i>Open Source</a></li>
+                <li><a href="../index.html#blog"       class="nav-item active"><i class="fa fa-newspaper"></i>Blog</a></li>
+                <li><a href="../index.html#contact"    class="nav-item"><i class="fa fa-comments"></i>Contact</a></li>
+                <li><a href="../index.html#visitors"   class="nav-item"><i class="fa fa-globe"></i>Visitors</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <section class="blog-index section" id="blog-index">
+                <div class="container">
+
+                    <!-- Page Title -->
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>Blog</h2>
+                        </div>
+                    </div>
+
+                    <div class="blog-index-intro padd-15">
+                        <p>Writing on AI, Machine Learning, and System Design. Posts grouped by series.</p>
+                    </div>
+
+                    <!-- ════════════════════════════════
+                         SERIES: In a Minute
+                         ════════════════════════════════ -->
+                    <div class="blog-series padd-15">
+                        <div class="blog-series-header">
+                            <div class="blog-series-label">
+                                <i class="fa fa-bolt"></i> Series
+                            </div>
+                            <h3 class="blog-series-title">In a Minute</h3>
+                            <p class="blog-series-desc">
+                                Dense, visual breakdowns of complex ML concepts — built to understand the big picture in a single read.
+                            </p>
+                            <span class="blog-series-count">2 posts</span>
+                        </div>
+
+                        <div class="blog-index-cards">
+
+                            <!-- Post: Transformers in a Minute (Jun 2026 — newest first) -->
+                            <article class="blog-index-card shadow-dark">
+                                <a href="transformers-in-a-minute.html" class="blog-index-card-img-link">
+                                    <div class="blog-index-card-img">
+                                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*adMgf9eqWEMHr7L-dPNaWQ.png"
+                                             alt="Transformer Architecture diagram"
+                                             loading="lazy" decoding="async">
+                                    </div>
+                                </a>
+                                <div class="blog-index-card-body">
+                                    <div class="blog-index-card-meta">
+                                        <span><i class="fa fa-calendar"></i> June 2026</span>
+                                        <span><i class="fa fa-clock"></i> 3 min read</span>
+                                        <span class="blog-series-badge"><i class="fa fa-bolt"></i> In a Minute</span>
+                                    </div>
+                                    <h4><a href="transformers-in-a-minute.html">Transformers in a Minute</a></h4>
+                                    <p>The architecture behind GPT, BERT, T5, and LLaMA — all 6 components, the Attention formula, tokenization, and O(n²) complexity, in one read.</p>
+                                    <div class="blog-index-card-tags">
+                                        <span class="blog-tag">Transformers</span>
+                                        <span class="blog-tag">AI</span>
+                                        <span class="blog-tag">Machine Learning</span>
+                                        <span class="blog-tag">LLM</span>
+                                    </div>
+                                    <div class="blog-index-card-links">
+                                        <a href="transformers-in-a-minute.html" class="blog-read-btn">
+                                            Read Article <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                        <a href="https://medium.com/stackademic/transformers-in-a-minute-00bfb19b2225"
+                                           target="_blank" rel="noopener noreferrer" class="blog-medium-btn">
+                                            <i class="fa fa-brands fa-medium"></i> Medium
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Post: Forecasting in a Minute (Mar 2026) -->
+                            <article class="blog-index-card shadow-dark">
+                                <a href="forecasting-in-a-minute.html" class="blog-index-card-img-link">
+                                    <div class="blog-index-card-img">
+                                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*DwsxFugEzwMEt0cX.jpg"
+                                             alt="FORECAST wooden blocks with green upward arrow"
+                                             loading="lazy" decoding="async">
+                                    </div>
+                                </a>
+                                <div class="blog-index-card-body">
+                                    <div class="blog-index-card-meta">
+                                        <span><i class="fa fa-calendar"></i> Mar 13, 2026</span>
+                                        <span><i class="fa fa-clock"></i> 5 min read</span>
+                                        <span class="blog-series-badge"><i class="fa fa-bolt"></i> In a Minute</span>
+                                    </div>
+                                    <h4><a href="forecasting-in-a-minute.html">Forecasting in a Minute</a></h4>
+                                    <p>What forecasting is, why every business depends on it, 6 types to know, and how inline forecasting embeds predictions directly into decision models — with a real interest-rate walkthrough.</p>
+                                    <div class="blog-index-card-tags">
+                                        <span class="blog-tag">Forecasting</span>
+                                        <span class="blog-tag">Analytics</span>
+                                        <span class="blog-tag">Finance</span>
+                                        <span class="blog-tag">Time Series</span>
+                                    </div>
+                                    <div class="blog-index-card-links">
+                                        <a href="forecasting-in-a-minute.html" class="blog-read-btn">
+                                            Read Article <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                        <a href="https://medium.com/@asusrishabh/forecasting-in-a-minute-f145fc6d2e16"
+                                           target="_blank" rel="noopener noreferrer" class="blog-medium-btn">
+                                            <i class="fa fa-brands fa-medium"></i> Medium
+                                        </a>
+                                    </div>
+                                </div>
+                            </article>
+
+                        </div>
+                    </div>
+                    <!-- END SERIES: In a Minute -->
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Style Switcher -->
+    <div class="style-switcher">
+        <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
+        <div class="day-night s-icon"><i class="fas"></i></div>
+        <h4>Theme Colors</h4>
+        <div class="colors">
+            <span class="color-1" onclick="setActiveStyle('color-1')"></span>
+            <span class="color-2" onclick="setActiveStyle('color-2')"></span>
+            <span class="color-3" onclick="setActiveStyle('color-3')"></span>
+            <span class="color-4" onclick="setActiveStyle('color-4')"></span>
+        </div>
+    </div>
+
+    <script src="../js/style-switcher.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navToggler = document.querySelector('.nav-toggler');
+            const aside = document.querySelector('.aside');
+            if (navToggler && aside) {
+                navToggler.addEventListener('click', function () {
+                    aside.classList.toggle('open');
+                    navToggler.classList.toggle('open');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

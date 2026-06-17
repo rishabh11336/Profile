@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Forecasting in a Minute | Rishabh Singh</title>
+    <meta name="description" content="What is forecasting, why it matters, 6 types, and how inline forecasting works — with a real interest-rate decision model walkthrough.">
+    <meta name="author" content="Rishabh Singh">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="Forecasting, Time Series, Inline Forecasting, Analytics, Finance, Data Science, Python">
+
+    <link rel="canonical" href="https://rishabhsingh.me/blog/forecasting-in-a-minute.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rishabhsingh.me/blog/forecasting-in-a-minute.html">
+    <meta property="og:title" content="Forecasting in a Minute | Rishabh Singh">
+    <meta property="og:description" content="What is forecasting, why it matters, 6 types, and how inline forecasting works — with a real interest-rate decision model walkthrough.">
+    <meta property="og:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/0*DwsxFugEzwMEt0cX.jpg">
+    <meta property="og:image:alt" content="FORECAST wooden blocks with green upward arrow">
+    <meta property="og:site_name" content="Rishabh Singh Portfolio">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:author" content="Rishabh Singh">
+    <meta property="article:published_time" content="2026-03-13">
+    <meta property="article:tag" content="Forecasting">
+    <meta property="article:tag" content="Analytics">
+    <meta property="article:tag" content="Finance">
+    <meta property="article:tag" content="Time Series">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://rishabhsingh.me/blog/forecasting-in-a-minute.html">
+    <meta name="twitter:title" content="Forecasting in a Minute | Rishabh Singh">
+    <meta name="twitter:description" content="What is forecasting, why it matters, 6 types, and how inline forecasting works — with a real model walkthrough.">
+    <meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/0*DwsxFugEzwMEt0cX.jpg">
+    <meta name="twitter:creator" content="@rishabhsingh">
+
+    <link rel="sitemap" type="application/xml" href="../sitemap_index.xml">
+    <link rel="icon" type="image/svg+xml" href="../images/Logo.svg">
+    <link rel="apple-touch-icon" href="../images/Logo.svg">
+
+    <link rel="stylesheet" href="../css/style.css?v=1.4">
+    <link rel="stylesheet" href="../css/skins/color-4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
+    <link rel="stylesheet" href="../css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
+    <link rel="stylesheet" href="../css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
+    <link rel="stylesheet" href="../css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
+    <link rel="stylesheet" href="../css/style-switcher.css">
+    <link rel="stylesheet" href="../css/blog.css">
+
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Forecasting in a Minute",
+      "description": "What is forecasting, why it matters, 6 types, and how inline forecasting works — with a real interest-rate decision model.",
+      "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/0*DwsxFugEzwMEt0cX.jpg",
+      "author": {
+        "@type": "Person",
+        "@id": "https://rishabhsingh.me/#person",
+        "name": "Rishabh Singh",
+        "url": "https://rishabhsingh.me"
+      },
+      "publisher": { "@type": "Person", "name": "Rishabh Singh" },
+      "datePublished": "2026-03-13",
+      "dateModified": "2026-06-17",
+      "url": "https://rishabhsingh.me/blog/forecasting-in-a-minute.html",
+      "keywords": ["Forecasting", "Analytics", "Finance", "Time Series", "Inline Forecasting", "Data Science"]
+    }
+    </script>
+</head>
+
+<body class="dark">
+
+    <div class="main-container">
+
+        <div class="aside">
+            <div class="logo">
+                <a href="../index.html" aria-label="Back to portfolio">
+                    <img src="../images/Logo.svg" width="300" alt="Rishabh Singh Portfolio Logo">
+                </a>
+            </div>
+            <div class="nav-toggler"><span></span></div>
+            <ul class="nav">
+                <li><a href="../index.html#home"       class="nav-item"><i class="fa fa-home"></i>Home</a></li>
+                <li><a href="../index.html#about"      class="nav-item"><i class="fa fa-user"></i>About</a></li>
+                <li><a href="../index.html#services"   class="nav-item"><i class="fa fa-list"></i>Services</a></li>
+                <li><a href="../index.html#portfolio"  class="nav-item"><i class="fa fa-briefcase"></i>Projects</a></li>
+                <li><a href="../index.html#opensource" class="nav-item"><i class="fa fa-code-branch"></i>Open Source</a></li>
+                <li><a href="../index.html#blog"       class="nav-item active"><i class="fa fa-newspaper"></i>Blog</a></li>
+                <li><a href="../index.html#contact"    class="nav-item"><i class="fa fa-comments"></i>Contact</a></li>
+                <li><a href="../index.html#visitors"   class="nav-item"><i class="fa fa-globe"></i>Visitors</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <section class="blog-article section" id="blog-article">
+                <div class="container">
+
+                    <a href="index.html" class="blog-back-link">
+                        <i class="fa fa-arrow-left"></i> Back to Blog
+                    </a>
+
+                    <!-- ── Header ── -->
+                    <div class="blog-header">
+                        <h1>Forecasting in a Minute</h1>
+                        <p class="blog-subtitle">What forecasting is, why every business depends on it, 6 types you should know, and how inline forecasting embeds predictions directly into decision models.</p>
+                        <div class="blog-meta">
+                            <span><i class="fa fa-user"></i> Rishabh Singh</span>
+                            <span><i class="fa fa-calendar"></i> Mar 13, 2026</span>
+                            <span><i class="fa fa-clock"></i> 5 min read</span>
+                            <span>
+                                <i class="fa fa-brands fa-medium"></i>
+                                <a href="https://medium.com/@asusrishabh/forecasting-in-a-minute-f145fc6d2e16"
+                                   target="_blank" rel="noopener noreferrer"
+                                   style="color:var(--text-black-700);">Originally on Medium</a>
+                            </span>
+                        </div>
+                        <div class="blog-tags">
+                            <span class="blog-tag">Forecasting</span>
+                            <span class="blog-tag">Analytics</span>
+                            <span class="blog-tag">Finance</span>
+                            <span class="blog-tag">Time Series</span>
+                            <span class="blog-tag">Python</span>
+                        </div>
+                    </div>
+
+                    <!-- ── Hero Image ── -->
+                    <figure class="blog-figure">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*DwsxFugEzwMEt0cX.jpg"
+                             alt="FORECAST wooden blocks with a person holding a green upward arrow"
+                             loading="eager">
+                        <figcaption>Forecasting: using what you know to make an educated guess about what comes next.</figcaption>
+                    </figure>
+
+                    <!-- ── Body ── -->
+                    <div class="blog-body">
+
+                        <!-- What Is Forecasting -->
+                        <h2>What Is Forecasting?</h2>
+                        <p>
+                            <strong>Forecasting is the process of using what you already know to make an educated guess about what will happen next.</strong>
+                        </p>
+                        <p>
+                            Think about how you prepare for an exam. You don't study everything in the textbook from cover to cover.
+                            Instead, you make predictions — which chapters did the teacher emphasize?
+                            Which questions appeared in last year's paper? What topics were marked "important"?
+                            That mental model is forecasting. You're using past signals to prioritize future effort.
+                        </p>
+
+                        <!-- Student analogy image -->
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*kvei-dq4GL21BWDw.jpeg"
+                                 alt="Student stressed with books in a library, representing the challenge of predicting what to study"
+                                 loading="lazy">
+                            <figcaption>Everyone forecasts — even students deciding what's worth studying before an exam.</figcaption>
+                        </figure>
+
+                        <!-- Why Does It Matter -->
+                        <h2>Why Does It Matter?</h2>
+                        <p>
+                            Without forecasting, every business decision is a coin flip. You're not managing risk — you're ignoring it.
+                            Forecasting replaces random guessing with structured thinking. It forces you to make your assumptions visible
+                            and traceable, so when reality diverges from the plan, you know exactly which assumption broke down.
+                        </p>
+                        <p>Key decisions that depend on forecasting:</p>
+                        <ul>
+                            <li>What interest rate should we charge to maximize profit after defaults?</li>
+                            <li>How much capital do we need to invest this quarter?</li>
+                            <li>What revenue should we project accounting for customer churn?</li>
+                        </ul>
+
+                        <!-- How Is Forecasting Used -->
+                        <h2>How Is Forecasting Used?</h2>
+                        <p>Forecasting appears everywhere. The specific metric changes, but the underlying logic is the same — use known data to estimate unknown outcomes.</p>
+
+                        <!-- Industry table image -->
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*TQhx5U17IcCggvt8-5DpuA.png"
+                                 alt="Table showing forecasting use cases across Banking & Lending, Retail, Healthcare, Government, and Startups"
+                                 loading="lazy">
+                            <figcaption>Forecasting across industries — the metric changes, but the discipline is identical.</figcaption>
+                        </figure>
+
+                        <!-- Types of Forecasting -->
+                        <h2>Types of Forecasting</h2>
+
+                        <div class="blog-component">
+                            <h3><span class="component-number">1</span> Time Series Forecasting</h3>
+                            <p>Uses historical time-ordered data to predict future values. Assumes patterns (trends, seasonality, cycles) will continue. Examples: ARIMA, Prophet, LSTM.</p>
+                        </div>
+
+                        <div class="blog-component">
+                            <h3><span class="component-number">2</span> Qualitative Forecasting</h3>
+                            <p>Uses expert judgment, surveys, and market research instead of historical data. Best when data is scarce — new product launches, emerging markets.</p>
+                        </div>
+
+                        <div class="blog-component">
+                            <h3><span class="component-number">3</span> Causal / Regression Forecasting</h3>
+                            <p>Models the relationship between an outcome and its drivers. "Sales increase by X for every Y drop in price." Uses regression and statistical models.</p>
+                        </div>
+
+                        <div class="blog-component">
+                            <h3><span class="component-number">4</span> Scenario Forecasting</h3>
+                            <p>Builds multiple futures (optimistic, base, pessimistic) to bound uncertainty. Standard in strategic planning and risk management.</p>
+                        </div>
+
+                        <div class="blog-component">
+                            <h3><span class="component-number">5</span> Market Sizing / Top-Down Forecasting</h3>
+                            <p>Starts from a total addressable market and works down using penetration rate assumptions. Common in startup pitches and new business cases.</p>
+                        </div>
+
+                        <div class="blog-component">
+                            <h3><span class="component-number">6</span> Inline Forecasting</h3>
+                            <p>The forecast is <em>not a separate document</em>. It's woven directly into the decision model itself — future projections live in the same spreadsheet as the baseline, auto-updating when any assumption changes.</p>
+                        </div>
+
+                        <!-- Inline Forecasting deep-dive -->
+                        <h2>Inline Forecasting — Deep Dive</h2>
+                        <p>
+                            Most forecasting approaches produce a separate report that gets attached to a decision. Inline forecasting eliminates that gap.
+                            The model structure uses columns for years 2026–2029, with 2026 as the baseline calculation and future years using identical logic with updated growth assumptions.
+                            Change one cell — say, the default rate — and every year's profit projection updates automatically.
+                        </p>
+                        <div class="blog-insight">
+                            "The forecast is not a separate document. It's woven directly into the decision model itself."
+                        </div>
+
+                        <!-- Sample Problem -->
+                        <h2>Sample Problem: Which Interest Rate Should We Choose?</h2>
+                        <p>
+                            A lending company is deciding between <strong>30%</strong> and <strong>35%</strong> annual interest rates on $10,000 loans with 12-month repayment.
+                            Higher rates mean more revenue per loan — but also higher default risk.
+                            Which generates greater profit after accounting for defaults?
+                        </p>
+                        <p>
+                            The inline model runs both scenarios side by side, projecting customer growth at +5% annually from a 2026 baseline of 375,649 customers.
+                        </p>
+
+                        <!-- Inline forecast table image -->
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*kDwxeGq9ffOWS6Xj8xzwNw.png"
+                                 alt="Inline forecast table: Customers Acquired and Profit (35% rate) projected for 2026, 2027, 2028, 2029"
+                                 loading="lazy">
+                            <figcaption>The inline model: 2026 baseline, +5% growth assumption, profit projected automatically through 2029.</figcaption>
+                        </figure>
+
+                        <p>
+                            <strong>Result:</strong> The 35% rate generates approximately <strong>$67M more profit</strong> than the 30% rate — making it the financially superior choice at the modeled default rate.
+                            The key insight isn't just the answer; it's that the model lets you instantly re-run the comparison if the default rate assumption changes.
+                        </p>
+
+                        <a href="https://docs.google.com/spreadsheets/d/1MySpj9e3pidjslyZtCg9BGJ5fko7bRPHEX3Ij1bs_AY/edit?usp=sharing"
+                           target="_blank" rel="noopener noreferrer" class="btn"
+                           style="display:inline-flex;align-items:center;gap:8px;margin:10px 0 30px;">
+                            <i class="fa fa-table"></i> View the Model (Google Sheets)
+                        </a>
+
+                        <!-- Key Takeaways -->
+                        <h2>Key Takeaways</h2>
+                        <ul>
+                            <li><strong>Forecasting reduces uncertainty</strong> by making assumptions explicit and traceable — not by eliminating uncertainty.</li>
+                            <li><strong>Inline forecasting</strong> consolidates assumptions, current calculations, and projections in one place, eliminating the static-report problem.</li>
+                            <li><strong>Forecast quality = assumption quality.</strong> Garbage in, garbage out — but now you can see exactly where the garbage came from.</li>
+                            <li><strong>Forecasting enables comparison.</strong> Without a model, you can't quantify the difference between two options.</li>
+                        </ul>
+
+                        <div class="blog-reference">
+                            <i class="fa fa-circle-info"></i>
+                            <strong>Disclaimer:</strong> The interest-rate example is simplified for educational purposes and does not constitute financial or investment advice. Real institutional models are significantly more complex.
+                        </div>
+
+                    </div>
+
+                    <!-- ── Footer ── -->
+                    <div class="blog-footer">
+                        <a href="index.html" class="blog-back-link" style="margin:0;">
+                            <i class="fa fa-arrow-left"></i> Back to Blog
+                        </a>
+                        <a href="https://medium.com/@asusrishabh/forecasting-in-a-minute-f145fc6d2e16"
+                           target="_blank" rel="noopener noreferrer" class="btn">
+                            Read on Medium&nbsp;<i class="fa fa-external-link-alt" style="font-size:13px;"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Style Switcher -->
+    <div class="style-switcher">
+        <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
+        <div class="day-night s-icon"><i class="fas"></i></div>
+        <h4>Theme Colors</h4>
+        <div class="colors">
+            <span class="color-1" onclick="setActiveStyle('color-1')"></span>
+            <span class="color-2" onclick="setActiveStyle('color-2')"></span>
+            <span class="color-3" onclick="setActiveStyle('color-3')"></span>
+            <span class="color-4" onclick="setActiveStyle('color-4')"></span>
+        </div>
+    </div>
+
+    <script src="../js/style-switcher.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navToggler = document.querySelector('.nav-toggler');
+            const aside = document.querySelector('.aside');
+            if (navToggler && aside) {
+                navToggler.addEventListener('click', function () {
+                    aside.classList.toggle('open');
+                    navToggler.classList.toggle('open');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

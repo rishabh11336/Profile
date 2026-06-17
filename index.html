@@ -58,35 +58,75 @@
 
     <!-- Structured Data (JSON-LD) for Rich Results -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Rishabh Singh",
-      "url": "https://rishabhsingh.me",
-      "image": "https://rishabhsingh.me/images/me.png",
-      "jobTitle": "Data Scientist",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "Chryselys"
+    [
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://rishabhsingh.me/#person",
+        "name": "Rishabh Singh",
+        "url": "https://rishabhsingh.me",
+        "image": "https://rishabhsingh.me/images/me.png",
+        "jobTitle": "Data Scientist",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Chryselys"
+        },
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "Indian Institute of Technology Madras",
+          "sameAs": "https://www.iitm.ac.in/"
+        },
+        "knowsAbout": ["Data Science", "Machine Learning", "Python", "System Architecture", "Flask", "Django", "PyTorch", "AI Engineering", "Backend Development", "Transformers", "LLMs"],
+        "sameAs": [
+          "https://www.linkedin.com/in/rishabh11336/",
+          "https://github.com/rishabh11336",
+          "https://medium.com/@asusrishabh"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Delhi",
+          "addressCountry": "IN"
+        },
+        "description": "Data Scientist and ML Engineer specializing in machine learning, system design, and full-stack development. Graduate from IIT Madras with expertise in Python, Flask, Django, and AI architecture."
       },
-      "alumniOf": {
-        "@type": "EducationalOrganization",
-        "name": "Indian Institute of Technology Madras",
-        "sameAs": "https://www.iitm.ac.in/"
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://rishabhsingh.me/#website",
+        "name": "Rishabh Singh — Data Scientist Portfolio",
+        "url": "https://rishabhsingh.me",
+        "description": "Portfolio and blog of Rishabh Singh, Data Scientist and AI Engineer.",
+        "author": { "@id": "https://rishabhsingh.me/#person" },
+        "inLanguage": "en-US"
       },
-      "knowsAbout": ["Data Science", "Machine Learning", "Python", "System Architecture", "Flask", "Django", "PyTorch", "AI Engineering", "Backend Development"],
-      "sameAs": [
-        "https://www.linkedin.com/in/rishabh11336/",
-        "https://github.com/rishabh11336",
-        "https://medium.com/@asusrishabh"
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Delhi",
-        "addressCountry": "IN"
-      },
-      "description": "Data Scientist and ML Engineer specializing in machine learning, system design, and full-stack development. Graduate from IIT Madras with expertise in Python, Flask, Django, and AI architecture."
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "@id": "https://rishabhsingh.me/blog/#blog",
+        "name": "Rishabh Singh — Blog",
+        "url": "https://rishabhsingh.me/blog/",
+        "description": "Writing on AI, Machine Learning, and System Design by Rishabh Singh.",
+        "author": { "@id": "https://rishabhsingh.me/#person" },
+        "blogPost": [
+          {
+            "@type": "BlogPosting",
+            "headline": "Transformers in a Minute",
+            "url": "https://rishabhsingh.me/blog/transformers-in-a-minute.html",
+            "datePublished": "2026-06-01",
+            "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/1*adMgf9eqWEMHr7L-dPNaWQ.png",
+            "keywords": ["Transformers", "Machine Learning", "AI", "LLM", "Attention"]
+          },
+          {
+            "@type": "BlogPosting",
+            "headline": "Forecasting in a Minute",
+            "url": "https://rishabhsingh.me/blog/forecasting-in-a-minute.html",
+            "datePublished": "2026-03-13",
+            "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/0*DwsxFugEzwMEt0cX.jpg",
+            "keywords": ["Forecasting", "Analytics", "Finance", "Time Series", "Inline Forecasting"]
+          }
+        ]
+      }
+    ]
     </script>
 
     <!-- Stylesheets -->
@@ -100,6 +140,7 @@
     <link rel="stylesheet" href="css/style-switcher.css">
     <link rel="stylesheet" href="css/lazy-skeleton.css">
     <link rel="stylesheet" href="css/opensource.css?v=1.1">
+    <link rel="stylesheet" href="css/blog.css">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="images/Logo.svg">
@@ -137,6 +178,7 @@
                 <li><a href="#services" class="nav-item"><i class="fa fa-list"></i>Services</a></li>
                 <li><a href="#portfolio" class="nav-item"><i class="fa fa-briefcase"></i>Projects</a></li>
                 <li><a href="#opensource" class="nav-item"><i class="fa fa-code-branch"></i>Open Source</a></li>
+                <li><a href="#blog" class="nav-item"><i class="fa fa-newspaper"></i>Blog</a></li>
                 <li><a href="#contact" class="nav-item"><i class="fa fa-comments"></i>Contact</a></li>
                 <li><a href="#visitors" class="nav-item"><i class="fa fa-globe"></i>Visitors</a></li>
             </ul>
@@ -411,6 +453,20 @@
                             <div class="skeleton-card skeleton-opensource"></div>
                             <div class="skeleton-card skeleton-opensource"></div>
                             <div class="skeleton-card skeleton-opensource"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Blog Section - Lazy Loaded -->
+            <section class="blog section lazy-section" id="blog" data-src="sections/blog.html">
+                <div class="container">
+                    <div class="section-skeleton">
+                        <div class="skeleton-title"></div>
+                        <div class="skeleton-subtitle"></div>
+                        <div class="skeleton-grid">
+                            <div class="skeleton-card skeleton-portfolio"></div>
+                            <div class="skeleton-card skeleton-portfolio"></div>
                         </div>
                     </div>
                 </div>

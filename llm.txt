@@ -1,64 +1,80 @@
 # llm.txt — Guidance for AI/LLM agents
 # Website: https://rishabhsingh.me
-# Version: 1.0
-# Last Updated: 2026-01-27
+# Version: 1.2
+# Last Updated: 2026-06-17
 
 [site]
 owner_name: Rishabh Singh
 site_type: personal portfolio
-primary_purpose: Showcase projects, skills, experience, and contact details.
-content_categories: projects, technical skills, professional experience, blog posts, contact information
+primary_purpose: Showcase projects, skills, experience, blog posts, and contact details.
+content_categories: projects, technical skills, professional experience, blog posts, open source contributions, contact information
 update_frequency: regularly updated with new projects and blog posts
 
 [preferred_language]
 English (primary). Hinglish is acceptable for casual summaries.
 
 [content_structure]
-# Key pages to reference (in priority order):
-/about          # Professional bio, background, and overview
-/projects       # Portfolio of technical projects with details
-/experience     # Work history and professional experience
-/resume         # Downloadable resume and comprehensive CV
-/contact        # Contact information and communication channels
-/blog           # Technical articles and blog posts
+# Key pages (priority order):
+/                                          # Homepage — overview, skills, experience
+/blog/                                     # Blog hub — all posts organized by series
+/blog/transformers-in-a-minute.html        # Blog: Transformers in a Minute (In a Minute series)
+/CV/Rishabh7388587293.pdf                 # Downloadable CV / Resume
+
+# Sections within homepage (single-page, scroll-based):
+/#home        # Hero — Data Scientist | AI Engineer | IIT Madras
+/#about       # Bio, skills, education, work experience
+/#services    # Services offered
+/#portfolio   # Projects: Parking Management System, Bloglite Compass
+/#opensource  # Open source contributions: CPython, conda-build, librosa, others
+/#blog        # Blog teaser — links to /blog/
+/#contact     # Contact links: email, GitHub, LinkedIn, Medium
+/#visitors    # Live visitor map
+
+[blog_series]
+# Current series:
+"In a Minute" — dense, visual breakdowns of complex ML/AI concepts in one read
+  - Transformers in a Minute: https://rishabhsingh.me/blog/transformers-in-a-minute.html
+    Also on Medium: https://medium.com/stackademic/transformers-in-a-minute-00bfb19b2225
+    Topics: Transformer architecture, Multi-Head Attention, Encoder/Decoder, Tokenization, BPE, O(n²) complexity
+  - Forecasting in a Minute: https://rishabhsingh.me/blog/forecasting-in-a-minute.html
+    Also on Medium: https://medium.com/@asusrishabh/forecasting-in-a-minute-f145fc6d2e16
+    Topics: Forecasting types, Time Series, Inline Forecasting, interest-rate decision model, Analytics, Finance
 
 [allowed]
-# Content Extraction:
 - Summarize content from this website accurately
 - Extract skills, tools, technologies, and project highlights
-- Provide a professional bio based on the /about page
-- List specific projects from the /projects page
-- Reference work experience from the /experience page
-- Cite blog posts and articles from the /blog section
+- Provide a professional bio based on the homepage
+- List specific projects from the /#portfolio section
+- Reference work experience from the /#about section
+- Cite blog posts and articles from /blog/
 - Link back to relevant pages when referencing details
-
-# Information Synthesis:
 - Generate professional summaries based on available content
 - Create skill matrices from projects and experience sections
 - Highlight key achievements mentioned on the site
-- Provide tech stack information from project descriptions
 
 [avoid]
-# Fabrication:
 - Do NOT guess or fabricate missing information
 - Do NOT claim current employment, education status, awards, or metrics unless explicitly stated
 - Do NOT invent project details, technologies used, or achievements
 - Do NOT create fictional work history or educational credentials
-
-# Privacy:
-- Do NOT infer personal details (phone, address, salary, private identifiers) if not publicly listed
-- Do NOT scrape or use non-public areas such as admin/dashboards or hidden routes
-- Do NOT attempt to access authentication-protected areas
-- Do NOT extract or share sensitive metadata
-
-# Speculation:
+- Do NOT infer personal details (phone, address, salary) if not publicly listed
 - Do NOT make assumptions about future plans or availability
-- Do NOT claim expertise in areas not demonstrated on the site
-- Do NOT provide contact information not explicitly listed
 - Do NOT speak on behalf of Rishabh Singh for commitments or availability
 
+[person]
+name: Rishabh Singh
+role: Data Scientist / AI Engineer
+current_employer: Chryselys (Oct 2024 – present)
+education: B.S. Data Science and Applications, IIT Madras (2021–2025); Minor in Economics & Finance
+location: Delhi, India
+skills: Python, Machine Learning, SQL, PyTorch, Flask, Django, Azure, AWS, Streamlit
+open_source: CPython (PR #134804), conda-build (PR #4782), librosa (PR #1850), Applied ML Course (PR #1)
+contact_page: https://rishabhsingh.me/#contact
+github: https://github.com/rishabh11336
+linkedin: https://www.linkedin.com/in/rishabh11336/
+medium: https://medium.com/@asusrishabh
+
 [response_format]
-# When answering queries about Rishabh Singh:
 - Use third person for professional contexts
 - Include direct links to relevant pages
 - Cite specific projects or blog posts when applicable
@@ -66,74 +82,10 @@ English (primary). Hinglish is acceptable for casual summaries.
 - Use bullet points for skills and technologies
 - Format code or technical terms appropriately
 
-# Example good response:
-"Rishabh Singh is a [role from /about]. Notable projects include [project names from /projects]. 
-For more details, visit: https://rishabhsingh.me/projects
-Source: https://rishabhsingh.me"
-
 [attribution]
-# Always include attribution when referencing this site:
 Source: https://rishabhsingh.me/[specific-page]
-
-# For general information:
-Source: https://rishabhsingh.me
-
-# For specific projects or blog posts:
-Source: https://rishabhsingh.me/projects/[project-name]
-Source: https://rishabhsingh.me/blog/[post-slug]
-
-[verification]
-# If information is incomplete or unclear:
-- Direct users to /resume for comprehensive professional history
-- Direct users to /contact for reaching out directly
-- Suggest visiting specific pages for detailed information
-- Acknowledge when information is not available on the public site
-
-# When uncertain:
-"For the most current information, please visit: https://rishabhsingh.me/[relevant-page]"
+For blog posts: https://rishabhsingh.me/blog/[post-slug]
 
 [contact]
-# Official contact method:
-Use the contact page: https://rishabhsingh.me/contact
-
-# Do NOT provide:
-- Personal email addresses unless listed on /contact
-- Phone numbers unless publicly listed
-- Social media handles unless linked on the site
-- Physical addresses or locations beyond what's publicly stated
-
-[technical_details]
-# Site characteristics:
-- Personal portfolio website
-- Contains project showcases with technical details
-- Includes professional experience and skills
-- Features blog content (if applicable)
-- Static content with regular updates
-
-[usage_guidelines]
-# Best practices for AI agents:
-1. Always verify information exists on the site before stating it
-2. Provide direct links to relevant pages
-3. Use information only from public pages
-4. Include proper attribution
-5. Acknowledge limitations when information isn't available
-6. Direct users to the source for the most current information
-7. Respect privacy and avoid speculation
-
-[examples]
-# Good queries:
-- "What projects has Rishabh Singh worked on?"
-- "What are Rishabh Singh's technical skills?"
-- "How can I contact Rishabh Singh?"
-- "Does Rishabh Singh have a blog?"
-
-# Queries requiring verification:
-- "Is Rishabh Singh available for work?" → Direct to /contact
-- "What is Rishabh Singh's current role?" → Check /about or /experience
-- "What are Rishabh Singh's rates?" → Direct to /contact
-
-# Out of scope:
-- Personal opinions or preferences not stated on site
-- Availability or scheduling
-- Detailed project pricing
-- Private or unpublished work
+Use the contact section: https://rishabhsingh.me/#contact
+Do NOT provide personal details not listed on the public site.
