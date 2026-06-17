@@ -1,8 +1,4 @@
 User-agent: *
 Allow: /
 
-# Block private/build artifacts — none on this static site
-# Google needs CSS + JS to render pages; do NOT disallow them
-
-Sitemap: https://rishabhsingh.me/sitemap_index.xml
 Sitemap: https://rishabhsingh.me/sitemap.xml
