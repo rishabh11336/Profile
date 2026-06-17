@@ -6,28 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Transformers in a Minute | Rishabh Singh</title>
-    <meta name="description" content="A concise, visual breakdown of the Transformer architecture — from Input Embedding to Encoder/Decoder stacks, including the Attention formula.">
+    <!-- Primary: keyword-rich title targets "transformer architecture", "how transformers work" -->
+    <title>Transformer Architecture Explained — Transformers in a Minute | Rishabh Singh</title>
+    <meta name="description" content="Transformer architecture explained in 5 minutes: 6 core components, the Attention formula (Q·K·V/√dₖ), encoder vs decoder, GPT vs BERT, tokenization, and O(n²) complexity. Visual, no fluff.">
+    <meta name="keywords" content="Transformer architecture, how transformers work, self-attention mechanism, multi-head attention, encoder decoder transformer, BERT GPT difference, attention formula QKV, transformer neural network, LLM architecture, positional encoding">
     <meta name="author" content="Rishabh Singh">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
     <link rel="canonical" href="https://rishabhsingh.me/blog/transformers-in-a-minute.html">
 
+    <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://rishabhsingh.me/blog/transformers-in-a-minute.html">
-    <meta property="og:title" content="Transformers in a Minute | Rishabh Singh">
-    <meta property="og:description" content="A concise, visual breakdown of the Transformer architecture — from Input Embedding to Encoder/Decoder stacks, including the Attention formula.">
+    <meta property="og:title" content="Transformer Architecture Explained — Transformers in a Minute">
+    <meta property="og:description" content="Transformer architecture explained in 5 minutes: 6 components, Attention formula, encoder vs decoder, GPT vs BERT. Visual breakdown, no fluff.">
     <meta property="og:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/1*adMgf9eqWEMHr7L-dPNaWQ.png">
+    <meta property="og:image:alt" content="Transformer Architecture diagram showing encoder and decoder layers">
+    <meta property="og:image:width" content="720">
+    <meta property="og:site_name" content="Rishabh Singh — Blog">
+    <meta property="og:locale" content="en_US">
     <meta property="article:author" content="Rishabh Singh">
     <meta property="article:published_time" content="2026-06-01">
-    <meta property="article:tag" content="Transformers">
+    <meta property="article:modified_time" content="2026-06-17">
+    <meta property="article:section" content="Machine Learning">
+    <meta property="article:tag" content="Transformer Architecture">
     <meta property="article:tag" content="Machine Learning">
     <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="LLM">
+    <meta property="article:tag" content="Attention Mechanism">
 
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://rishabhsingh.me/blog/transformers-in-a-minute.html">
-    <meta name="twitter:title" content="Transformers in a Minute | Rishabh Singh">
-    <meta name="twitter:description" content="A concise, visual breakdown of the Transformer architecture — from Input Embedding to Encoder/Decoder stacks, including the Attention formula.">
+    <meta name="twitter:title" content="Transformer Architecture Explained — Transformers in a Minute">
+    <meta name="twitter:description" content="6 components, Attention formula, encoder vs decoder, GPT vs BERT — explained in 5 minutes. Visual, no fluff.">
     <meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/1*adMgf9eqWEMHr7L-dPNaWQ.png">
     <meta name="twitter:creator" content="@rishabhsingh">
 
@@ -50,18 +62,138 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
 
+    <!-- Schema 1: BlogPosting — rich article result -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "Transformers in a Minute",
-      "description": "A concise breakdown of the Transformer architecture powering modern AI.",
-      "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/1*adMgf9eqWEMHr7L-dPNaWQ.png",
-      "author": { "@type": "Person", "name": "Rishabh Singh", "url": "https://rishabhsingh.me" },
+      "@id": "https://rishabhsingh.me/blog/transformers-in-a-minute.html#article",
+      "headline": "Transformer Architecture Explained — Transformers in a Minute",
+      "name": "Transformers in a Minute",
+      "description": "Transformer architecture explained in 5 minutes: 6 core components, the Attention formula, encoder vs decoder, GPT vs BERT, tokenization, and O(n²) complexity.",
+      "image": [
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*adMgf9eqWEMHr7L-dPNaWQ.png",
+        "https://miro.medium.com/v2/resize:fit:640/format:webp/1*phR1pi8piCoLXhk8H1v4YA.png",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*ggWYxdcvOPpCwPXI6sVUBg.png"
+      ],
+      "author": {
+        "@type": "Person",
+        "@id": "https://rishabhsingh.me/#person",
+        "name": "Rishabh Singh",
+        "url": "https://rishabhsingh.me",
+        "sameAs": ["https://github.com/rishabh11336", "https://www.linkedin.com/in/rishabh11336/"]
+      },
+      "publisher": {
+        "@type": "Person",
+        "@id": "https://rishabhsingh.me/#person",
+        "name": "Rishabh Singh"
+      },
       "datePublished": "2026-06-01",
-      "publisher": { "@type": "Person", "name": "Rishabh Singh" },
+      "dateModified": "2026-06-17",
       "url": "https://rishabhsingh.me/blog/transformers-in-a-minute.html",
-      "keywords": ["Transformers", "Machine Learning", "AI", "LLM", "Attention"]
+      "mainEntityOfPage": "https://rishabhsingh.me/blog/transformers-in-a-minute.html",
+      "articleSection": "Machine Learning",
+      "wordCount": 800,
+      "timeRequired": "PT5M",
+      "inLanguage": "en-US",
+      "about": [
+        { "@type": "Thing", "name": "Transformer (machine learning model)" },
+        { "@type": "Thing", "name": "Attention mechanism" },
+        { "@type": "Thing", "name": "Large language model" }
+      ],
+      "mentions": [
+        { "@type": "SoftwareApplication", "name": "GPT" },
+        { "@type": "SoftwareApplication", "name": "BERT" },
+        { "@type": "SoftwareApplication", "name": "T5" },
+        { "@type": "SoftwareApplication", "name": "LLaMA" }
+      ],
+      "keywords": "Transformer architecture, attention mechanism, multi-head self-attention, encoder decoder, GPT BERT difference, LLM, positional encoding, feed forward network"
+    }
+    </script>
+
+    <!-- Schema 2: FAQPage — expands as Q&A sections directly in Google SERP -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a Transformer model in AI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Transformer is a deep learning architecture that uses self-attention to process all tokens in a sequence simultaneously, rather than one at a time like RNNs. It is the backbone of GPT, BERT, T5, LLaMA, and virtually every modern large language model (LLM)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the 6 core components of a Transformer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The 6 core components of the Transformer architecture are: (1) Input Embedding — converts tokens to vectors; (2) Positional Encoding — adds order information; (3) Multi-Head Self-Attention — each token attends to every other; (4) Feed Forward Network — per-token transformation; (5) Layer Normalization and Residual Connections — training stability; (6) Encoder/Decoder Stacks — encoders process input, decoders generate output."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the Attention formula in Transformers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Attention formula is: Attention(Q, K, V) = softmax(QKᵀ / √dₖ) × V. Q is the Query (what am I looking for?), K is the Key (what do I represent?), V is the Value (what do I contribute?). The √dₖ scaling prevents dot products from growing too large, which would collapse the softmax gradient and break training."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are Transformers better than RNNs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Transformers outperform RNNs for two key reasons: (1) Parallelism — all tokens are processed at once, making training orders of magnitude faster; (2) Global context — self-attention gives every token direct access to every other token, eliminating the vanishing-gradient context collapse that plagues RNNs on long sequences."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between GPT and BERT?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GPT uses a decoder-only Transformer and is optimized for text generation (autoregressive). BERT uses an encoder-only Transformer and is optimized for text understanding — classification, embeddings, named-entity recognition. Models like T5 and BART use the full encoder-decoder Transformer for translation and summarization."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Multi-Head Attention?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multi-Head Attention runs h independent attention operations (heads) in parallel on the same input, then concatenates and projects their outputs. Each head learns to focus on a different type of relationship — one head may capture syntactic dependencies, another semantic similarity, another co-reference. This lets the model represent multiple aspects of context simultaneously."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Schema 3: BreadcrumbList — shows path in Google search result snippet -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rishabhsingh.me/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://rishabhsingh.me/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Transformers in a Minute",
+          "item": "https://rishabhsingh.me/blog/transformers-in-a-minute.html"
+        }
+      ]
     }
     </script>
 </head>
@@ -93,9 +225,14 @@
             <section class="blog-article section" id="blog-article">
                 <div class="container">
 
-                    <a href="index.html" class="blog-back-link">
-                        <i class="fa fa-arrow-left"></i> Back to Blog
-                    </a>
+                    <!-- Breadcrumb — visible + matches BreadcrumbList schema -->
+                    <nav class="blog-breadcrumb" aria-label="breadcrumb">
+                        <a href="../index.html">Home</a>
+                        <span aria-hidden="true">/</span>
+                        <a href="index.html">Blog</a>
+                        <span aria-hidden="true">/</span>
+                        <span>Transformers in a Minute</span>
+                    </nav>
 
                     <!-- ── Header ── -->
                     <div class="blog-header">
@@ -252,6 +389,36 @@
                             <li><strong>Sparse Attention</strong> — attends to a subset of tokens per head</li>
                             <li><strong>Grouped-Query Attention (GQA)</strong> — shares K/V heads across Q heads, used in LLaMA 2+</li>
                         </ul>
+
+                        <!-- FAQ — must be visible on page for Google FAQ rich results -->
+                        <h2>Frequently Asked Questions</h2>
+
+                        <div class="blog-faq">
+                            <details class="faq-item">
+                                <summary>What is a Transformer model in AI?</summary>
+                                <p>A Transformer is a deep learning architecture that uses self-attention to process all tokens simultaneously, rather than one at a time like RNNs. It is the backbone of GPT, BERT, T5, LLaMA, and virtually every modern LLM.</p>
+                            </details>
+                            <details class="faq-item">
+                                <summary>What are the 6 core components of a Transformer?</summary>
+                                <p>Input Embedding, Positional Encoding, Multi-Head Self-Attention, Feed Forward Network, Layer Normalization + Residual Connections, and Encoder/Decoder Stacks.</p>
+                            </details>
+                            <details class="faq-item">
+                                <summary>What is the Attention formula?</summary>
+                                <p><strong>Attention(Q, K, V) = softmax(QKᵀ / √dₖ) × V.</strong> Q = query, K = key, V = value. The √dₖ scaling prevents exploding dot products that collapse the softmax gradient.</p>
+                            </details>
+                            <details class="faq-item">
+                                <summary>Why are Transformers better than RNNs?</summary>
+                                <p>Two reasons: (1) all tokens are processed in parallel — much faster training; (2) self-attention gives every token direct access to every other token, solving the vanishing-gradient context problem that RNNs suffer on long sequences.</p>
+                            </details>
+                            <details class="faq-item">
+                                <summary>What is the difference between GPT and BERT?</summary>
+                                <p>GPT is decoder-only, trained for text generation. BERT is encoder-only, trained for text understanding (classification, embeddings). T5 and BART use the full encoder-decoder setup for translation and summarization.</p>
+                            </details>
+                            <details class="faq-item">
+                                <summary>What is Multi-Head Attention?</summary>
+                                <p>Running h attention heads in parallel on the same input, each learning different relationships (syntax, semantics, co-reference), then concatenating and projecting the results.</p>
+                            </details>
+                        </div>
 
                         <!-- Reference -->
                         <div class="blog-reference">
