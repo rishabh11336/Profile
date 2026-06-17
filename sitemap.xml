@@ -114,6 +114,54 @@
     </image:image>
   </url>
 
+  <url>
+    <loc>https://rishabhsingh.me/blog/list-vs-set-in-a-minute.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/1*VNv0DCA6RjMlSuc2EXQWFA.png</image:loc>
+      <image:title>Python List vs Set Performance Comparison</image:title>
+      <image:caption>List vs Set — same surface, completely different engines underneath.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:2000/format:webp/1*3QMiiabMz6gf3rHbqogxfQ.png</image:loc>
+      <image:title>Full benchmark chart: list vs set across iteration and membership testing</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/1*1Nw0V--ctqXU2T7z6dCNXg.png</image:loc>
+      <image:title>List iteration speed benchmark vs set iteration speed</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/1*1ANXbKi_PvS19K3xzPx9eg.png</image:loc>
+      <image:title>Set membership testing O(1) vs list O(n) benchmark</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/svms-kernel-trick-in-a-minute.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:640/format:webp/0*bjKsTZda4iyyAEnw</image:loc>
+      <image:title>Support Vector Machine — SVM concept overview</image:title>
+      <image:caption>SVMs: find the hyperplane that maximizes the margin between classes.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/1*KPnfSH9yiX3jF6UNGwtcgw.png</image:loc>
+      <image:title>SVM decision boundary with maximum margin hyperplane and support vectors</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/1*WdyvJuTbjr1KeglRUmzL3w.gif</image:loc>
+      <image:title>RBF kernel animation — SVM decision boundary</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/1*LM06-o8pwzsalHiTOydgyQ.jpeg</image:loc>
+      <image:title>SVM kernel comparison summary — Linear, Polynomial, RBF, Sigmoid</image:title>
+    </image:image>
+  </url>
+
   <!-- ── CV / Resume ── -->
   <url>
     <loc>https://rishabhsingh.me/CV/Rishabh7388587293.pdf</loc>

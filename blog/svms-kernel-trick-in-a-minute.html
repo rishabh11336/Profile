@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>SVMs & Kernel Trick Explained — Support Vector Machines in a Minute | Rishabh Singh</title>
+    <meta name="description" content="Support Vector Machines explained: optimal hyperplane, support vectors, the kernel trick, and 4 kernel types (Linear, Polynomial, RBF, Sigmoid) — with gamma tuning.">
+    <meta name="author" content="Rishabh Singh">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="keywords" content="SVM explained, support vector machine, kernel trick, RBF kernel, polynomial kernel, SVM gamma parameter, sklearn SVM, machine learning classification, non-linearly separable, hyperplane margin">
+
+    <link rel="canonical" href="https://rishabhsingh.me/blog/svms-kernel-trick-in-a-minute.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rishabhsingh.me/blog/svms-kernel-trick-in-a-minute.html">
+    <meta property="og:title" content="SVMs & Kernel Trick Explained | Rishabh Singh">
+    <meta property="og:description" content="Support Vector Machines: optimal hyperplane, support vectors, kernel trick, and 4 kernel types with gamma tuning.">
+    <meta property="og:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/1*KPnfSH9yiX3jF6UNGwtcgw.png">
+    <meta property="og:image:alt" content="SVM hyperplane separating two classes of data">
+    <meta property="og:site_name" content="Rishabh Singh Portfolio">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:author" content="Rishabh Singh">
+    <meta property="article:published_time" content="2025-07-06">
+    <meta property="article:tag" content="Machine Learning">
+    <meta property="article:tag" content="SVM">
+    <meta property="article:tag" content="Kernel Trick">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://rishabhsingh.me/blog/svms-kernel-trick-in-a-minute.html">
+    <meta name="twitter:title" content="SVMs & Kernel Trick Explained | Rishabh Singh">
+    <meta name="twitter:description" content="SVM hyperplane, support vectors, kernel trick, 4 kernel types, and gamma tuning — in one read.">
+    <meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/1*KPnfSH9yiX3jF6UNGwtcgw.png">
+    <meta name="twitter:creator" content="@rishabhsingh">
+
+    <link rel="sitemap" type="application/xml" href="../sitemap.xml">
+    <link rel="icon" type="image/svg+xml" href="../images/Logo.svg">
+    <link rel="apple-touch-icon" href="../images/Logo.svg">
+
+    <link rel="stylesheet" href="../css/style.css?v=1.4">
+    <link rel="stylesheet" href="../css/skins/color-4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
+    <link rel="stylesheet" href="../css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
+    <link rel="stylesheet" href="../css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
+    <link rel="stylesheet" href="../css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
+    <link rel="stylesheet" href="../css/style-switcher.css">
+    <link rel="stylesheet" href="../css/blog.css">
+
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <script type="application/ld+json">
+    [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "SVMs & Kernel Trick in a Minute",
+      "description": "Support Vector Machines: optimal hyperplane, support vectors, the kernel trick, and 4 kernel types (Linear, Polynomial, RBF, Sigmoid) — with gamma tuning.",
+      "image": [
+        "https://miro.medium.com/v2/resize:fit:640/format:webp/0*bjKsTZda4iyyAEnw",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*KPnfSH9yiX3jF6UNGwtcgw.png",
+        "https://miro.medium.com/v2/resize:fit:640/format:webp/0*AcDZSf2XlO5YGtlY",
+        "https://miro.medium.com/v2/resize:fit:640/format:webp/0*7b3CJQrHX_y6lH54",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/0*j7IKhu4u5EXwhTpE.png",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/0*bbJVAAl-nWqEQMWH",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*WdyvJuTbjr1KeglRUmzL3w.gif",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*0JsU6S65lIB13I8Yer8uFQ.jpeg",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*q6n7lQTtg8bj1KShIFCduQ.jpeg",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*ohroUBBQCu78yD_Y8qL_OA.gif",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*LM06-o8pwzsalHiTOydgyQ.jpeg"
+      ],
+      "author": {
+        "@type": "Person",
+        "@id": "https://rishabhsingh.me/#person",
+        "name": "Rishabh Singh",
+        "url": "https://rishabhsingh.me"
+      },
+      "publisher": { "@type": "Person", "name": "Rishabh Singh" },
+      "datePublished": "2025-07-06",
+      "dateModified": "2026-06-17",
+      "url": "https://rishabhsingh.me/blog/svms-kernel-trick-in-a-minute.html",
+      "keywords": ["SVM", "Support Vector Machine", "Kernel Trick", "RBF Kernel", "Machine Learning", "Classification", "Hyperplane"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a Support Vector Machine (SVM)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An SVM finds the optimal hyperplane that separates different classes in the feature space, maximizing the margin between the closest data points (support vectors) of each class."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the kernel trick in SVM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The kernel trick maps non-linearly separable data into a higher-dimensional feature space where it becomes linearly separable — without ever computing the coordinates in that high-dimensional space explicitly. This makes SVMs efficient even with complex, curved decision boundaries."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the different kernel types in SVM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The four main SVM kernels are: (1) Linear — for linearly separable data; (2) Polynomial — captures feature interactions including squares and cross-products; (3) RBF (Radial Basis Function) — the default in sklearn, uses Euclidean distance similarity; (4) Sigmoid — mimics neural network activation behavior."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the gamma parameter do in an RBF SVM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Gamma controls how far the influence of a single training point reaches. High gamma: tight, complex boundaries that capture fine detail — risks overfitting. Low gamma: smooth, simple boundaries — risks underfitting."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should you use SVM over other classifiers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SVMs work well in high-dimensional spaces, when the number of features exceeds the number of samples, and when a clear margin of separation exists. They are effective for text classification, image recognition, and bioinformatics. They scale poorly to very large datasets — consider tree-based or neural methods then."
+          }
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rishabhsingh.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://rishabhsingh.me/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "SVMs & Kernel Trick in a Minute", "item": "https://rishabhsingh.me/blog/svms-kernel-trick-in-a-minute.html" }
+      ]
+    }
+    ]
+    </script>
+</head>
+
+<body class="dark">
+
+    <div class="main-container">
+
+        <div class="aside">
+            <div class="logo">
+                <a href="../index.html" aria-label="Back to portfolio">
+                    <img src="../images/Logo.svg" width="300" alt="Rishabh Singh Portfolio Logo">
+                </a>
+            </div>
+            <div class="nav-toggler"><span></span></div>
+            <ul class="nav">
+                <li><a href="../index.html#home"       class="nav-item"><i class="fa fa-home"></i>Home</a></li>
+                <li><a href="../index.html#about"      class="nav-item"><i class="fa fa-user"></i>About</a></li>
+                <li><a href="../index.html#services"   class="nav-item"><i class="fa fa-list"></i>Services</a></li>
+                <li><a href="../index.html#portfolio"  class="nav-item"><i class="fa fa-briefcase"></i>Projects</a></li>
+                <li><a href="../index.html#opensource" class="nav-item"><i class="fa fa-code-branch"></i>Open Source</a></li>
+                <li><a href="../index.html#blog"       class="nav-item active"><i class="fa fa-newspaper"></i>Blog</a></li>
+                <li><a href="../index.html#contact"    class="nav-item"><i class="fa fa-comments"></i>Contact</a></li>
+                <li><a href="../index.html#visitors"   class="nav-item"><i class="fa fa-globe"></i>Visitors</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <section class="blog-article section" id="blog-article">
+                <div class="container">
+
+                    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+                        <a href="../index.html">Home</a>
+                        <span aria-hidden="true"> / </span>
+                        <a href="index.html">Blog</a>
+                        <span aria-hidden="true"> / </span>
+                        <span aria-current="page">SVMs &amp; Kernel Trick in a Minute</span>
+                    </nav>
+
+                    <a href="index.html" class="blog-back-link">
+                        <i class="fa fa-arrow-left"></i> Back to Blog
+                    </a>
+
+                    <!-- ── Header ── -->
+                    <div class="blog-header">
+                        <h1>SVMs &amp; Kernel Trick in a Minute</h1>
+                        <p class="blog-subtitle">Support Vector Machines find the widest possible gap between classes. The kernel trick lets them do it even when data isn't linearly separable — by mapping it to higher dimensions without the computational cost.</p>
+                        <div class="blog-meta">
+                            <span><i class="fa fa-user"></i> Rishabh Singh</span>
+                            <span><i class="fa fa-calendar"></i> Jul 2025</span>
+                            <span><i class="fa fa-clock"></i> 4 min read</span>
+                            <span>
+                                <i class="fa fa-brands fa-medium"></i>
+                                <a href="https://medium.com/@asusrishabh/svms-kernel-trick-in-a-minute-bd0554b31ec0"
+                                   target="_blank" rel="noopener noreferrer"
+                                   style="color:var(--text-black-700);">Originally on Medium</a>
+                            </span>
+                        </div>
+                        <div class="blog-tags">
+                            <span class="blog-tag">SVM</span>
+                            <span class="blog-tag">Machine Learning</span>
+                            <span class="blog-tag">Kernel Trick</span>
+                            <span class="blog-tag">Classification</span>
+                            <span class="blog-tag">Python</span>
+                        </div>
+                    </div>
+
+                    <!-- ── Hero Image ── -->
+                    <figure class="blog-figure">
+                        <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*bjKsTZda4iyyAEnw"
+                             alt="Support Vector Machine concept overview — SVM separating data classes"
+                             loading="eager">
+                        <figcaption>SVMs: find the hyperplane that maximizes the margin between classes.</figcaption>
+                    </figure>
+
+                    <!-- ── Body ── -->
+                    <div class="blog-body">
+
+                        <h2>What Is a Support Vector Machine?</h2>
+                        <p>
+                            An SVM is a supervised learning algorithm that identifies the <strong>optimal hyperplane separating different classes in the feature space</strong>.
+                            Unlike other classifiers that just find any boundary that works, an SVM finds the one with the <em>maximum margin</em> — the widest gap between the boundary and the closest data points on either side.
+                        </p>
+                        <p>
+                            Those closest points are called <strong>support vectors</strong>. They're the only data points that actually influence the boundary — everything else is irrelevant to the decision surface.
+                        </p>
+
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*KPnfSH9yiX3jF6UNGwtcgw.png"
+                                 alt="SVM decision boundary with maximum margin hyperplane and support vectors"
+                                 loading="lazy">
+                            <figcaption>The SVM hyperplane (solid line) maximizes the margin (dashed lines). Support vectors are the closest points to the boundary.</figcaption>
+                        </figure>
+
+                        <h2>The Problem: Non-Linearly Separable Data</h2>
+                        <p>
+                            A straight hyperplane works fine when classes are cleanly separable. But real data is rarely that cooperative.
+                            When classes form rings, spirals, or overlapping clusters, no straight line can separate them.
+                        </p>
+
+                        <figure class="blog-figure blog-figure--narrow">
+                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*AcDZSf2XlO5YGtlY"
+                                 alt="Non-linearly separable data — two classes that cannot be separated by a straight line"
+                                 loading="lazy">
+                            <figcaption>Non-linearly separable data: no straight hyperplane can cleanly divide these classes.</figcaption>
+                        </figure>
+
+                        <h2>The Solution: The Kernel Trick</h2>
+                        <p>
+                            Instead of drawing a curved boundary in low-dimensional space, the kernel trick <strong>projects the data into a higher-dimensional feature space</strong>
+                            where a straight hyperplane can separate the classes.
+                        </p>
+                        <p>
+                            The key insight: you never actually compute the coordinates in that high-dimensional space.
+                            Kernels compute the <em>dot products</em> in the transformed space directly from the original inputs — giving you the power of high-dimensional separation at low computational cost.
+                        </p>
+
+                        <div class="blog-insight">
+                            "The kernel trick lets SVMs separate non-linear data without ever explicitly computing the transformation."
+                        </div>
+
+                        <figure class="blog-figure blog-figure--narrow">
+                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*7b3CJQrHX_y6lH54"
+                                 alt="Kernel trick: data projected from 2D to 3D space where it becomes linearly separable"
+                                 loading="lazy">
+                            <figcaption>Kernel trick: project into higher dimensions → straight hyperplane becomes possible.</figcaption>
+                        </figure>
+
+                        <!-- ── Kernel Types ── -->
+                        <h2>The 4 Kernel Types</h2>
+
+                        <div class="blog-component">
+                            <h3><span class="component-number">1</span> Linear Kernel</h3>
+                            <p>
+                                No transformation — computes a standard dot product in the original feature space.
+                                Use when data is already linearly separable. Fast, interpretable, no hyperparameters to tune.
+                            </p>
+                            <div class="blog-formula-box">K(x, y) = x · y</div>
+                        </div>
+
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*j7IKhu4u5EXwhTpE.png"
+                                 alt="Linear SVM kernel — straight hyperplane separating two classes"
+                                 loading="lazy">
+                            <figcaption>Linear kernel: works only when classes are linearly separable.</figcaption>
+                        </figure>
+
+                        <div class="blog-component">
+                            <h3><span class="component-number">2</span> Polynomial Kernel</h3>
+                            <p>
+                                Maps data into a polynomial feature space. With degree 2, it considers not just original features but also their squares and cross-products (x², y², xy).
+                                Captures feature interactions that a linear kernel misses.
+                            </p>
+                            <div class="blog-formula-box">K(x, y) = (x · y + c)ᵈ</div>
+                        </div>
+
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*bbJVAAl-nWqEQMWH"
+                                 alt="Polynomial SVM kernel — curved decision boundary capturing feature interactions"
+                                 loading="lazy">
+                            <figcaption>Polynomial kernel: curved boundaries from feature interactions — degree controls complexity.</figcaption>
+                        </figure>
+
+                        <div class="blog-component">
+                            <h3><span class="component-number">3</span> RBF — Radial Basis Function Kernel</h3>
+                            <p>
+                                The <strong>default kernel in sklearn's SVM</strong>. Computes similarity between points using Euclidean distance — points closer together get higher similarity scores.
+                                Maps data into infinite-dimensional space, making it extremely flexible for complex boundaries.
+                            </p>
+                            <div class="blog-formula-box">K(x, y) = exp(−γ ‖x − y‖²)</div>
+                        </div>
+
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*WdyvJuTbjr1KeglRUmzL3w.gif"
+                                 alt="RBF kernel animation — SVM decision boundary adapting to complex data shapes"
+                                 loading="lazy">
+                            <figcaption>RBF kernel animation: the boundary wraps tightly around complex data distributions.</figcaption>
+                        </figure>
+
+                        <h3>Tuning Gamma (γ) in RBF</h3>
+                        <p>Gamma controls the <em>influence radius</em> of each training point — how far a single example reaches.</p>
+
+                        <div class="blog-component">
+                            <h3>High γ</h3>
+                            <p>Each point influences only its immediate neighborhood. The boundary hugs the training data tightly, capturing fine-grained detail. Risk: overfitting.</p>
+                        </div>
+
+                        <figure class="blog-figure blog-figure--narrow">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*0JsU6S65lIB13I8Yer8uFQ.jpeg"
+                                 alt="High gamma SVM — overly complex decision boundary that hugs training points"
+                                 loading="lazy">
+                            <figcaption>High γ: boundary memorizes the training data — good fit, poor generalization.</figcaption>
+                        </figure>
+
+                        <div class="blog-component">
+                            <h3>Low γ</h3>
+                            <p>Each point influences a wide area. The boundary is smooth and generalized. Risk: underfitting when data has complex structure.</p>
+                        </div>
+
+                        <figure class="blog-figure blog-figure--narrow">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*q6n7lQTtg8bj1KShIFCduQ.jpeg"
+                                 alt="Low gamma SVM — overly smooth decision boundary that misses local structure"
+                                 loading="lazy">
+                            <figcaption>Low γ: boundary is too smooth — misses local structure, may underfit.</figcaption>
+                        </figure>
+
+                        <div class="blog-component">
+                            <h3><span class="component-number">4</span> Sigmoid Kernel</h3>
+                            <p>
+                                Uses the hyperbolic tangent function — similar to the activation function in neural networks.
+                                Produces S-shaped decision boundaries. Less commonly used than RBF but useful when the data exhibits neural-network-like behavior.
+                            </p>
+                            <div class="blog-formula-box">K(x, y) = tanh(αx · y + c)</div>
+                        </div>
+
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*ohroUBBQCu78yD_Y8qL_OA.gif"
+                                 alt="Sigmoid kernel SVM animation — S-shaped decision boundary"
+                                 loading="lazy">
+                            <figcaption>Sigmoid kernel: mimics neural network activation, produces non-linear S-shaped boundaries.</figcaption>
+                        </figure>
+
+                        <!-- ── Summary ── -->
+                        <h2>Kernel Comparison at a Glance</h2>
+
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*LM06-o8pwzsalHiTOydgyQ.jpeg"
+                                 alt="Summary comparison of Linear, Polynomial, RBF, and Sigmoid SVM kernels"
+                                 loading="lazy">
+                            <figcaption>Kernel summary: choose based on data linearity, complexity, and the need for interpretability.</figcaption>
+                        </figure>
+
+                        <!-- Key Takeaways -->
+                        <h2>Key Takeaways</h2>
+                        <ul>
+                            <li><strong>SVM goal:</strong> find the hyperplane that maximizes the margin between classes — not just any separating boundary.</li>
+                            <li><strong>Support vectors</strong> are the only training points that matter — the rest can be removed without changing the boundary.</li>
+                            <li><strong>Kernel trick:</strong> maps data to higher dimensions implicitly, enabling linear separation of non-linear data at low compute cost.</li>
+                            <li><strong>RBF is the default</strong> in sklearn — flexible for most problems; tune γ and C via cross-validation.</li>
+                            <li><strong>High γ → overfitting. Low γ → underfitting.</strong> GridSearchCV over γ and C is the standard approach.</li>
+                        </ul>
+
+                        <!-- FAQ Section -->
+                        <h2>Frequently Asked Questions</h2>
+
+                        <details class="faq-item">
+                            <summary>What is a Support Vector Machine?</summary>
+                            <p>An SVM finds the optimal hyperplane that separates different classes in the feature space, maximizing the margin between the closest data points (support vectors) of each class.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>What is the kernel trick in SVM?</summary>
+                            <p>The kernel trick maps non-linearly separable data into a higher-dimensional feature space where it becomes linearly separable — without ever explicitly computing the coordinates in that high-dimensional space. This makes SVMs efficient even with complex, curved decision boundaries.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>What are the different SVM kernels?</summary>
+                            <p>The four main kernels: (1) <strong>Linear</strong> — standard dot product, for linearly separable data; (2) <strong>Polynomial</strong> — captures squares and cross-products of features; (3) <strong>RBF</strong> — default in sklearn, Euclidean distance similarity; (4) <strong>Sigmoid</strong> — mimics neural network activation.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>What does gamma do in RBF SVM?</summary>
+                            <p>Gamma controls influence radius per training point. High γ: tight, complex boundaries that capture fine detail — risks overfitting. Low γ: smooth, simple boundaries — risks underfitting.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>When should you use SVM over other classifiers?</summary>
+                            <p>SVMs excel in high-dimensional spaces, when features outnumber samples, and when a clear margin exists. Strong for text classification, image recognition, bioinformatics. They scale poorly on very large datasets — consider gradient-boosted trees or neural networks then.</p>
+                        </details>
+
+                    </div>
+
+                    <!-- ── Footer ── -->
+                    <div class="blog-footer">
+                        <a href="index.html" class="blog-back-link" style="margin:0;">
+                            <i class="fa fa-arrow-left"></i> Back to Blog
+                        </a>
+                        <a href="https://medium.com/@asusrishabh/svms-kernel-trick-in-a-minute-bd0554b31ec0"
+                           target="_blank" rel="noopener noreferrer" class="btn">
+                            Read on Medium&nbsp;<i class="fa fa-external-link-alt" style="font-size:13px;"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Style Switcher -->
+    <div class="style-switcher">
+        <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
+        <div class="day-night s-icon"><i class="fas"></i></div>
+        <h4>Theme Colors</h4>
+        <div class="colors">
+            <span class="color-1" onclick="setActiveStyle('color-1')"></span>
+            <span class="color-2" onclick="setActiveStyle('color-2')"></span>
+            <span class="color-3" onclick="setActiveStyle('color-3')"></span>
+            <span class="color-4" onclick="setActiveStyle('color-4')"></span>
+        </div>
+    </div>
+
+    <script src="../js/style-switcher.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navToggler = document.querySelector('.nav-toggler');
+            const aside = document.querySelector('.aside');
+            if (navToggler && aside) {
+                navToggler.addEventListener('click', function () {
+                    aside.classList.toggle('open');
+                    navToggler.classList.toggle('open');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
