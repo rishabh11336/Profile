@@ -162,6 +162,206 @@
     </image:image>
   </url>
 
+  <!-- ── In a Minute Series (additional) ── -->
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/scalars-vectors-matrices-tensor-in-a-minute.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/1*DObOx-mf9qBNVn278L8B-g.png</image:loc>
+      <image:title>Scalar, vector, matrix, tensor hierarchy diagram</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/convolutional-neural-networks-cnns-in-a-minute.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/0*_JTlyhLpXhnP5lKZ.png</image:loc>
+      <image:title>CNN architecture: Input image → Filters → Convolution Layers → Pooling → Feed-forward</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/multiclass-vs-multilabel-classification-in-a-minute.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/1*jSK1KjJylv5JER8pr0Qcog.png</image:loc>
+      <image:title>Multiclass vs multilabel classification comparison diagram</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/confusion-matrix-metrics-in-a-minute.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/1*fKaPc3crH8CdwikiCiS1wQ.png</image:loc>
+      <image:title>Confusion matrix with TP, TN, FP, FN quadrants</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/bayesian-learning-in-a-minute.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/0*qkE0Tj7IeAVHty7v.png</image:loc>
+      <image:title>Bayesian learning — updating beliefs with evidence</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/linear-regression-in-a-minute.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:494/format:webp/1*Mjnp0tWPfCn8uomvTBnafw.gif</image:loc>
+      <image:title>Gradient descent animation finding the best-fit line</image:title>
+    </image:image>
+  </url>
+
+  <!-- ── Web Development Series ── -->
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/lazy-loading-for-enhanced-user-experience.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/0*0OyD4-O4hN_QCJUh.jpg</image:loc>
+      <image:title>Lazy loading concept — deferred resource loading</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/cors-in-flask-bridging-frontend-and-backend.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:640/format:webp/1*KVQJzRxFwfNvcZiGQRRFAA.png</image:loc>
+      <image:title>CORS in Flask — frontend and backend communication diagram</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/http-methods-enhancing-web-communication.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/0*0atRPBvfNfs3zkvj.png</image:loc>
+      <image:title>HTTP methods diagram — GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/session-in-the-flask-for-login.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ── Python Series ── -->
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/sets-performance-better-vs-lists-why.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/0*Bt9PM77fTvd-pW-t.png</image:loc>
+      <image:title>Python set vs list performance benchmark chart</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/support-vector-machine-svm.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:640/format:webp/1*_CK-pV3RqDmvKmPD3rR_Lw.png</image:loc>
+      <image:title>Support Vector Machine — hyperplane and margin diagram</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/understanding-the-if-name-main.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/1*7oU61NGNVu3-5ca3mm2HKw.png</image:loc>
+      <image:title>Python __name__ == '__main__' code example</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/conda-virtual-environment-commands.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/1*vpISFPkJvs-K3WD-Yb3HyQ.png</image:loc>
+      <image:title>Conda virtual environment commands cheat sheet</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/requirements-txt-in-python.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:640/format:webp/1*mHsYmducGWeow9i5BvYK9w.png</image:loc>
+      <image:title>requirements.txt file listing Python package versions</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/python-virtual-environment-introduction.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:640/format:webp/1*DN1B1j4dSY33nSYEwHw13w.png</image:loc>
+      <image:title>Python virtual environment — isolated package directories</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/convert-python-program-to-exe.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:720/format:webp/1*1-VzF9yWuBxQcFBqE8ntOA.png</image:loc>
+      <image:title>Converting Python script to .exe using PyInstaller</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://rishabhsingh.me/blog/python-program-for-matrix-multiplication.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://miro.medium.com/v2/resize:fit:598/format:webp/1*FWyBs9l0Zl9mTn-30Abhmw.png</image:loc>
+      <image:title>Matrix multiplication example — dot product of two matrices</image:title>
+    </image:image>
+  </url>
+
   <!-- ── CV / Resume ── -->
   <url>
     <loc>https://rishabhsingh.me/CV/Rishabh7388587293.pdf</loc>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Support Vector Machine (SVM) — Explained | Rishabh Singh</title>
+    <meta name="description" content="Support Vector Machine (SVM) explained: hyperplanes, margins, support vectors, hard vs soft margin, C regularization, gamma, kernels (Linear, RBF, Polynomial, Sigmoid), and Iris dataset implementation with sklearn.">
+    <meta name="author" content="Rishabh Singh">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="keywords" content="Support Vector Machine SVM, SVM Python sklearn, SVC scikit-learn, SVM hyperplane margin, SVM kernel trick, RBF kernel SVM, SVM regularization C, SVM gamma, SVM Iris dataset, linear classification SVM">
+
+    <link rel="canonical" href="https://rishabhsingh.me/blog/support-vector-machine-svm.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rishabhsingh.me/blog/support-vector-machine-svm.html">
+    <meta property="og:title" content="Support Vector Machine (SVM) | Rishabh Singh">
+    <meta property="og:description" content="SVM: hyperplanes, margins, support vectors, C and gamma tuning, 4 kernels, and Iris dataset implementation with scikit-learn.">
+    <meta property="og:image" content="https://miro.medium.com/v2/resize:fit:640/format:webp/1*_CK-pV3RqDmvKmPD3rR_Lw.png">
+    <meta property="og:image:alt" content="Support Vector Machine — hyperplane and margin diagram">
+    <meta property="og:site_name" content="Rishabh Singh Portfolio">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:author" content="Rishabh Singh">
+    <meta property="article:published_time" content="2023-09-15">
+    <meta property="article:tag" content="Machine Learning">
+    <meta property="article:tag" content="Python">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://rishabhsingh.me/blog/support-vector-machine-svm.html">
+    <meta name="twitter:title" content="Support Vector Machine (SVM) | Rishabh Singh">
+    <meta name="twitter:description" content="Hyperplanes, margins, support vectors, C and gamma, 4 kernels — SVM from concept to scikit-learn implementation.">
+    <meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:640/format:webp/1*_CK-pV3RqDmvKmPD3rR_Lw.png">
+    <meta name="twitter:creator" content="@rishabhsingh">
+
+    <link rel="sitemap" type="application/xml" href="../sitemap.xml">
+    <link rel="icon" type="image/svg+xml" href="../images/Logo.svg">
+    <link rel="apple-touch-icon" href="../images/Logo.svg">
+
+    <link rel="stylesheet" href="../css/style.css?v=1.4">
+    <link rel="stylesheet" href="../css/skins/color-4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
+    <link rel="stylesheet" href="../css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
+    <link rel="stylesheet" href="../css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
+    <link rel="stylesheet" href="../css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
+    <link rel="stylesheet" href="../css/style-switcher.css">
+    <link rel="stylesheet" href="../css/blog.css">
+
+    <script type="application/ld+json">
+    [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Support Vector Machine (SVM) — Explained",
+      "description": "SVM: hyperplanes, margins, support vectors, C regularization, gamma, 4 kernels, and Iris dataset implementation with scikit-learn.",
+      "image": "https://miro.medium.com/v2/resize:fit:640/format:webp/1*_CK-pV3RqDmvKmPD3rR_Lw.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://rishabhsingh.me/#person",
+        "name": "Rishabh Singh",
+        "url": "https://rishabhsingh.me"
+      },
+      "publisher": { "@type": "Person", "name": "Rishabh Singh" },
+      "datePublished": "2023-09-15",
+      "dateModified": "2026-06-17",
+      "url": "https://rishabhsingh.me/blog/support-vector-machine-svm.html",
+      "keywords": ["SVM", "Support Vector Machine", "Machine Learning", "Kernel", "scikit-learn", "Python", "Classification"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a Support Vector Machine?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Support Vector Machine (SVM) is a supervised machine learning algorithm used for classification and regression. It finds the optimal hyperplane that maximizes the margin between classes. The data points closest to this hyperplane are called support vectors — they define the margin boundaries."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between hard margin and soft margin SVM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hard margin SVM requires all data points to be correctly classified with no violations — only works for perfectly linearly separable data. Soft margin SVM (controlled by the C parameter) allows some misclassifications, trading margin width for tolerance to outliers. Most real-world data requires soft margin."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the C parameter do in SVM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The C (regularization) parameter controls the trade-off between maximizing the margin and minimizing misclassification. A larger C penalizes misclassifications more heavily, creating a narrower margin with more accurate training classification. A smaller C allows more misclassifications for a wider, more generalized margin."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the kernel trick in SVM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The kernel trick lets SVM handle non-linearly separable data by implicitly mapping input features into a higher-dimensional space where a linear hyperplane can separate the classes. Common kernels: Linear (no transformation), RBF (Gaussian — maps to infinite dimensions), Polynomial, and Sigmoid."
+          }
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rishabhsingh.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://rishabhsingh.me/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Support Vector Machine (SVM)", "item": "https://rishabhsingh.me/blog/support-vector-machine-svm.html" }
+      ]
+    }
+    ]
+    </script>
+</head>
+
+<body class="dark">
+
+    <div class="main-container">
+
+        <div class="aside">
+            <div class="logo">
+                <a href="../index.html" aria-label="Back to portfolio">
+                    <img src="../images/Logo.svg" width="300" alt="Rishabh Singh Portfolio Logo">
+                </a>
+            </div>
+            <div class="nav-toggler"><span></span></div>
+            <ul class="nav">
+                <li><a href="../index.html#home"       class="nav-item"><i class="fa fa-home"></i>Home</a></li>
+                <li><a href="../index.html#about"      class="nav-item"><i class="fa fa-user"></i>About</a></li>
+                <li><a href="../index.html#services"   class="nav-item"><i class="fa fa-list"></i>Services</a></li>
+                <li><a href="../index.html#portfolio"  class="nav-item"><i class="fa fa-briefcase"></i>Projects</a></li>
+                <li><a href="../index.html#opensource" class="nav-item"><i class="fa fa-code-branch"></i>Open Source</a></li>
+                <li><a href="../index.html#blog"       class="nav-item active"><i class="fa fa-newspaper"></i>Blog</a></li>
+                <li><a href="../index.html#contact"    class="nav-item"><i class="fa fa-comments"></i>Contact</a></li>
+                <li><a href="../index.html#visitors"   class="nav-item"><i class="fa fa-globe"></i>Visitors</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <section class="blog-article section" id="blog-article">
+                <div class="container">
+
+                    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+                        <a href="../index.html">Home</a>
+                        <span aria-hidden="true"> / </span>
+                        <a href="index.html">Blog</a>
+                        <span aria-hidden="true"> / </span>
+                        <span aria-current="page">Support Vector Machine (SVM)</span>
+                    </nav>
+
+                    <a href="index.html" class="blog-back-link">
+                        <i class="fa fa-arrow-left"></i> Back to Blog
+                    </a>
+
+                    <div class="blog-header">
+                        <h1>Support Vector Machine (SVM)</h1>
+                        <p class="blog-subtitle">SVM finds the optimal boundary between classes by maximizing the margin around it. The data points defining that margin are the support vectors — and the kernel trick extends this to non-linear boundaries.</p>
+                        <div class="blog-meta">
+                            <span><i class="fa fa-user"></i> Rishabh Singh</span>
+                            <span><i class="fa fa-calendar"></i> Sep 15, 2023</span>
+                            <span><i class="fa fa-clock"></i> 4 min read</span>
+                            <span>
+                                <i class="fa fa-brands fa-medium"></i>
+                                <a href="https://medium.com/@asusrishabh/support-vector-machine-svm-736fb20b239b"
+                                   target="_blank" rel="noopener noreferrer"
+                                   style="color:var(--text-black-700);">Originally on Medium</a>
+                            </span>
+                        </div>
+                        <div class="blog-tags">
+                            <span class="blog-tag">Machine Learning</span>
+                            <span class="blog-tag">Python</span>
+                            <span class="blog-tag">SVM</span>
+                            <span class="blog-tag">Data Science</span>
+                        </div>
+                    </div>
+
+                    <figure class="blog-figure">
+                        <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*_CK-pV3RqDmvKmPD3rR_Lw.png"
+                             alt="Support Vector Machine — decision boundary with maximum margin"
+                             loading="eager">
+                        <figcaption>SVM: a powerful algorithm for linear and non-linear classification, regression, and outlier detection.</figcaption>
+                    </figure>
+
+                    <div class="blog-body">
+
+                        <h2>What is a Support Vector Machine?</h2>
+                        <p>
+                            A Support Vector Machine (SVM) is a supervised machine learning algorithm used for <strong>linear or non-linear classification, regression, and outlier detection</strong>.
+                            The core idea: find the hyperplane that best separates two classes with the maximum possible margin between them.
+                        </p>
+
+                        <h2>Hyperplane and Margins</h2>
+                        <p>
+                            In 2D, a hyperplane is a line. In 3D, it's a plane. In N dimensions, it's an (N−1)-dimensional boundary that separates classes.
+                            SVM doesn't just find any separating line — it finds the one that maximizes the margin to the nearest data points on each side.
+                        </p>
+
+                        <figure class="blog-figure" style="margin-top:1rem;">
+                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*RYhCVthKlTtfyGoVu85uyw.png"
+                                 alt="SVM hyperplane with margins L1, L2, L3"
+                                 loading="lazy">
+                            <figcaption>Three candidate boundaries: L1 and L3 are soft margins; L2 is the hard margin (optimal hyperplane).</figcaption>
+                        </figure>
+
+                        <ul>
+                            <li><strong>L1, L3</strong> — Soft margins: closer to data points, smaller margin</li>
+                            <li><strong>L2</strong> — Hard Margin / Hyperplane: maximum margin, optimal choice when data is linearly separable</li>
+                        </ul>
+
+                        <figure class="blog-figure" style="margin-top:1rem;">
+                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*XoWVdFhccLdrRWjWnUG_xg.png"
+                                 alt="SVM maximum margin hyperplane visualization"
+                                 loading="lazy">
+                            <figcaption>The optimal hyperplane maximizes the distance to the nearest data point on each side.</figcaption>
+                        </figure>
+
+                        <h2>Support Vectors</h2>
+                        <p>
+                            Support vectors are the <strong>data points closest to the margin boundary</strong>.
+                            They are the critical points that define the margin — if you removed them, the hyperplane would shift.
+                            The algorithm name comes from these vectors: the machine is "supported" by these boundary points.
+                        </p>
+
+                        <figure class="blog-figure" style="margin-top:1rem;">
+                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*YclKaN_ivXWC4Bqxvx5p7g.png"
+                                 alt="Support vectors — points closest to the margin"
+                                 loading="lazy">
+                            <figcaption>Support vectors: the critical points defining the margin. Only these points influence the hyperplane.</figcaption>
+                        </figure>
+
+                        <figure class="blog-figure" style="margin-top:1rem;">
+                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*sWxvMO0uVznmscAuv3pKcQ.png"
+                                 alt="Hard margin vs soft margin SVM comparison"
+                                 loading="lazy">
+                            <figcaption>Hard margin (no violations) vs soft margin (some misclassifications allowed for better generalization).</figcaption>
+                        </figure>
+
+                        <h2>Regularization (C) and Gamma</h2>
+                        <p>
+                            Two key hyperparameters tune SVM performance. High values in complex datasets can cause overfitting.
+                        </p>
+
+                        <h3>Regularization (C)</h3>
+                        <p>
+                            The C parameter controls the trade-off between maximizing the margin and minimizing misclassification.
+                            A <strong>larger C</strong> penalizes misclassifications more heavily — narrower margin, more accurate on training data, higher risk of overfitting.
+                            A <strong>smaller C</strong> tolerates more misclassifications — wider margin, better generalization.
+                        </p>
+
+                        <figure class="blog-figure" style="margin-top:1rem;">
+                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*d0u6rPNcdhyuyEbPQ2RM7g.png"
+                                 alt="Effect of C parameter on SVM margin width"
+                                 loading="lazy">
+                            <figcaption>Higher C → narrower margin with fewer misclassifications. Lower C → wider margin, more tolerant.</figcaption>
+                        </figure>
+
+                        <h3>Gamma</h3>
+                        <p>
+                            Gamma controls the <strong>influence radius of individual training points</strong> in non-linear kernels (RBF, Polynomial, Sigmoid).
+                            High gamma: each point influences only a small region — complex, tight boundaries (overfitting risk).
+                            Low gamma: each point influences a large region — smoother, simpler boundaries.
+                        </p>
+
+                        <figure class="blog-figure" style="margin-top:1rem;">
+                            <img src="https://miro.medium.com/v2/resize:fit:498/format:webp/1*M9eDuMXB_QwLBxZ8DgP4Yg.png"
+                                 alt="Gamma parameter effect on SVM decision boundary"
+                                 loading="lazy">
+                            <figcaption>Gamma determines the reach of each training point's influence — high gamma creates tighter, more complex boundaries.</figcaption>
+                        </figure>
+
+                        <figure class="blog-figure" style="margin-top:1rem;">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*iikDeBqz7QfXqVoX5LzHww.png"
+                                 alt="SVM C and gamma interaction visualization"
+                                 loading="lazy">
+                            <figcaption>C and gamma interact: tuning both together determines the complexity and generalization of the SVM boundary.</figcaption>
+                        </figure>
+
+                        <h2>Kernels</h2>
+                        <p>
+                            Most real-world data isn't linearly separable. Kernels are mathematical functions that implicitly transform data into a higher-dimensional space where a linear hyperplane can separate it — without explicitly computing the transformation.
+                        </p>
+
+                        <figure class="blog-figure" style="margin-top:1rem;">
+                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*uzpFA1evl_F8y_E-Q1wMjQ.png"
+                                 alt="Non-linearly separable data transformed by kernel"
+                                 loading="lazy">
+                            <figcaption>Kernels map data to higher dimensions where a linear boundary becomes possible.</figcaption>
+                        </figure>
+
+                        <div class="blog-component">
+                            <h3>Four Kernels</h3>
+                            <ul>
+                                <li><strong>Linear:</strong> <code>K(x, y) = x·y</code> — for linearly separable data, fastest, no transformation</li>
+                                <li><strong>Polynomial:</strong> <code>K(x, y) = (γx·y + r)^d</code> — captures feature interactions up to degree d</li>
+                                <li><strong>RBF (Radial Basis Function):</strong> <code>K(x, y) = exp(−γ||x−y||²)</code> — the default, works well for most problems, infinite-dimensional mapping</li>
+                                <li><strong>Sigmoid:</strong> <code>K(x, y) = tanh(γx·y + r)</code> — similar to neural network activation, less common</li>
+                            </ul>
+                        </div>
+
+                        <figure class="blog-figure" style="margin-top:1rem;">
+                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*5aAQlGJjtLYPXCE0VnyItA.png"
+                                 alt="Linear kernel SVM decision boundary"
+                                 loading="lazy">
+                            <figcaption>Linear kernel: optimal for linearly separable data — fastest computation, highest interpretability.</figcaption>
+                        </figure>
+
+                        <figure class="blog-figure" style="margin-top:1rem;">
+                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*a9DYxiUuhe2FNY2KbhIm9g.png"
+                                 alt="RBF kernel SVM — non-linear decision boundary"
+                                 loading="lazy">
+                            <figcaption>RBF kernel: creates non-linear boundaries by computing Gaussian distance to each support vector.</figcaption>
+                        </figure>
+
+                        <figure class="blog-figure" style="margin-top:1rem;">
+                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*kUwPE4htkwYij-PvKuSmYQ.png"
+                                 alt="Polynomial and Sigmoid kernel SVM boundaries"
+                                 loading="lazy">
+                            <figcaption>Polynomial kernel captures interactions between features; Sigmoid mirrors neural network behavior.</figcaption>
+                        </figure>
+
+                        <h2>Implementation: Iris Dataset</h2>
+                        <p>Load the Iris dataset and train an SVM classifier:</p>
+
+                        <pre><code>import pandas as pd
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+# Features: sepal length, sepal width, petal length, petal width
+# Classes: setosa, versicolor, virginica
+
+df = pd.DataFrame(iris.data, columns=iris.feature_names)
+df['target'] = iris.target
+df['flower_name'] = df.target.apply(lambda x: iris.target_names[x])</code></pre>
+
+                        <figure class="blog-figure" style="margin-top:1rem;">
+                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*_2YLmnWn4Qupb1IrgSC3Gg.png"
+                                 alt="Iris dataset scatter plot — petal length vs petal width"
+                                 loading="lazy">
+                            <figcaption>Iris dataset: petal features show clear separation between setosa and the other two classes.</figcaption>
+                        </figure>
+
+                        <pre><code>from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
+
+X = df.drop(['target', 'flower_name'], axis='columns')
+y = df.target
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+model = SVC()
+model.fit(X_train, y_train)
+model.score(X_test, y_test)
+# 0.9666666666666667
+
+model.predict([[4.8, 3.0, 1.5, 0.3]])
+# array([0])  → setosa</code></pre>
+
+                        <figure class="blog-figure" style="margin-top:1rem;">
+                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*g_jI2Qa75j4vBvgXhjDajg.png"
+                                 alt="SVM model training on Iris dataset output"
+                                 loading="lazy">
+                            <figcaption>Default SVC achieves ~96.7% accuracy on the Iris test set.</figcaption>
+                        </figure>
+
+                        <h2>Tuning Hyperparameters</h2>
+                        <pre><code># Regularization (C)
+model_C = SVC(C=1)
+model_C.fit(X_train, y_train)
+model_C.score(X_test, y_test)   # 0.9666
+
+model_C = SVC(C=10)
+model_C.fit(X_train, y_train)
+model_C.score(X_test, y_test)   # 0.9666
+
+# Gamma
+model_g = SVC(gamma=10)
+model_g.fit(X_train, y_train)
+model_g.score(X_test, y_test)   # 0.9333 — overfitting with high gamma
+
+# Kernels
+model_linear = SVC(kernel='linear')
+model_linear.fit(X_train, y_train)
+model_linear.score(X_test, y_test)   # 1.0 — perfect on Iris
+
+model_rbf = SVC(kernel='rbf')   # default
+model_rbf.fit(X_train, y_train)
+model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
+
+                        <figure class="blog-figure" style="margin-top:1rem;">
+                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*ReDm1WUR8Cq8mWE55BLf9Q.png"
+                                 alt="SVM hyperparameter tuning results — C, gamma, kernel comparison"
+                                 loading="lazy">
+                            <figcaption>Linear kernel achieves 100% on Iris — the dataset is linearly separable in 4D feature space.</figcaption>
+                        </figure>
+
+                        <div class="blog-insight">
+                            "The linear kernel achieves 100% accuracy on Iris because the 4-dimensional feature space is linearly separable — the kernel trick maps apparent non-linearity in 2D to separability in higher dimensions."
+                        </div>
+
+                        <p>See also: <a href="svms-kernel-trick-in-a-minute.html">SVMs & Kernel Trick in a Minute</a> — a deeper dive into the mathematics behind SVM kernels.</p>
+
+                    </div>
+
+                    <div class="blog-faq">
+                        <h2>Frequently Asked Questions</h2>
+
+                        <details class="faq-item">
+                            <summary>What is a Support Vector Machine?</summary>
+                            <p>SVM is a supervised machine learning algorithm that finds the optimal hyperplane maximizing the margin between classes. Data points closest to the margin are support vectors — they define the boundary. SVM works for linear and non-linear classification, regression, and outlier detection.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>What is the difference between hard margin and soft margin SVM?</summary>
+                            <p>Hard margin requires all points correctly classified with no violations — only works for perfectly linearly separable data. Soft margin (C parameter) allows some misclassifications, trading margin width for tolerance to outliers. Most real-world problems require soft margin.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>What does the C parameter do in SVM?</summary>
+                            <p>C controls the trade-off between maximizing margin and minimizing misclassification. Larger C penalizes misclassifications heavily → narrower margin, more accurate training, overfitting risk. Smaller C → wider margin, better generalization.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>What is the kernel trick in SVM?</summary>
+                            <p>The kernel trick implicitly maps data to a higher-dimensional space where a linear boundary separates non-linearly separable classes — without explicitly computing the transformation. Common kernels: Linear, RBF (default), Polynomial, Sigmoid.</p>
+                        </details>
+                    </div>
+
+                    <div class="blog-footer">
+                        <a href="index.html" class="blog-back-link" style="margin:0;">
+                            <i class="fa fa-arrow-left"></i> Back to Blog
+                        </a>
+                        <a href="https://medium.com/@asusrishabh/support-vector-machine-svm-736fb20b239b"
+                           target="_blank" rel="noopener noreferrer" class="btn">
+                            Read on Medium&nbsp;<i class="fa fa-external-link-alt" style="font-size:13px;"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="style-switcher">
+        <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
+        <div class="day-night s-icon"><i class="fas"></i></div>
+        <h4>Theme Colors</h4>
+        <div class="colors">
+            <span class="color-1" onclick="setActiveStyle('color-1')"></span>
+            <span class="color-2" onclick="setActiveStyle('color-2')"></span>
+            <span class="color-3" onclick="setActiveStyle('color-3')"></span>
+            <span class="color-4" onclick="setActiveStyle('color-4')"></span>
+        </div>
+    </div>
+
+    <script src="../js/style-switcher.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navToggler = document.querySelector('.nav-toggler');
+            const aside = document.querySelector('.aside');
+            if (navToggler && aside) {
+                navToggler.addEventListener('click', function () {
+                    aside.classList.toggle('open');
+                    navToggler.classList.toggle('open');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

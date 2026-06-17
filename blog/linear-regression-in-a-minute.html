@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Linear Regression Explained — Cost Function, Gradient Descent | Rishabh Singh</title>
+    <meta name="description" content="Linear regression explained: y=mx+b, cost function (MSE), gradient descent, R² score, and multivariable extension — with Python implementation on Canadian income data.">
+    <meta name="author" content="Rishabh Singh">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="keywords" content="linear regression, gradient descent, cost function, MSE mean squared error, R squared score, multivariable regression, linear regression Python sklearn, best fit line, regression machine learning">
+
+    <link rel="canonical" href="https://rishabhsingh.me/blog/linear-regression-in-a-minute.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rishabhsingh.me/blog/linear-regression-in-a-minute.html">
+    <meta property="og:title" content="Linear Regression Explained | Rishabh Singh">
+    <meta property="og:description" content="y=mx+b, cost function (MSE), gradient descent, R² score, multivariable regression — with Python implementation.">
+    <meta property="og:image" content="https://miro.medium.com/v2/resize:fit:494/format:webp/1*Mjnp0tWPfCn8uomvTBnafw.gif">
+    <meta property="og:image:alt" content="Gradient descent animation finding the best-fit line">
+    <meta property="og:site_name" content="Rishabh Singh Portfolio">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:author" content="Rishabh Singh">
+    <meta property="article:published_time" content="2024-04-11">
+    <meta property="article:tag" content="Machine Learning">
+    <meta property="article:tag" content="Linear Regression">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://rishabhsingh.me/blog/linear-regression-in-a-minute.html">
+    <meta name="twitter:title" content="Linear Regression Explained | Rishabh Singh">
+    <meta name="twitter:description" content="y=mx+b, cost function, gradient descent, R² — linear regression from scratch to sklearn.">
+    <meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/1*xdcpt_uRupa6v19rUg0SPQ.png">
+    <meta name="twitter:creator" content="@rishabhsingh">
+
+    <link rel="sitemap" type="application/xml" href="../sitemap.xml">
+    <link rel="icon" type="image/svg+xml" href="../images/Logo.svg">
+    <link rel="apple-touch-icon" href="../images/Logo.svg">
+
+    <link rel="stylesheet" href="../css/style.css?v=1.4">
+    <link rel="stylesheet" href="../css/skins/color-4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
+    <link rel="stylesheet" href="../css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
+    <link rel="stylesheet" href="../css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
+    <link rel="stylesheet" href="../css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
+    <link rel="stylesheet" href="../css/style-switcher.css">
+    <link rel="stylesheet" href="../css/blog.css">
+
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <script type="application/ld+json">
+    [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Linear Regression in a Minute",
+      "description": "Linear regression: y=mx+b, cost function (MSE), gradient descent, R² score, and multivariable extension — with Python implementation.",
+      "image": [
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*xdcpt_uRupa6v19rUg0SPQ.png",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*3Tt2A04SyZqbrQvnzVEBQg.png",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*Um_To9ilniK9ckICdOLTjw.png",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*Z4P72yHN_EKFkIaVuZUpeg.png"
+      ],
+      "author": {
+        "@type": "Person",
+        "@id": "https://rishabhsingh.me/#person",
+        "name": "Rishabh Singh",
+        "url": "https://rishabhsingh.me"
+      },
+      "publisher": { "@type": "Person", "name": "Rishabh Singh" },
+      "datePublished": "2024-04-11",
+      "dateModified": "2026-06-17",
+      "url": "https://rishabhsingh.me/blog/linear-regression-in-a-minute.html",
+      "keywords": ["Linear Regression", "Gradient Descent", "Cost Function", "MSE", "R² Score", "Machine Learning", "sklearn", "Python"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rishabhsingh.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://rishabhsingh.me/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Linear Regression in a Minute", "item": "https://rishabhsingh.me/blog/linear-regression-in-a-minute.html" }
+      ]
+    }
+    ]
+    </script>
+</head>
+
+<body class="dark">
+
+    <div class="main-container">
+
+        <div class="aside">
+            <div class="logo">
+                <a href="../index.html" aria-label="Back to portfolio">
+                    <img src="../images/Logo.svg" width="300" alt="Rishabh Singh Portfolio Logo">
+                </a>
+            </div>
+            <div class="nav-toggler"><span></span></div>
+            <ul class="nav">
+                <li><a href="../index.html#home"       class="nav-item"><i class="fa fa-home"></i>Home</a></li>
+                <li><a href="../index.html#about"      class="nav-item"><i class="fa fa-user"></i>About</a></li>
+                <li><a href="../index.html#services"   class="nav-item"><i class="fa fa-list"></i>Services</a></li>
+                <li><a href="../index.html#portfolio"  class="nav-item"><i class="fa fa-briefcase"></i>Projects</a></li>
+                <li><a href="../index.html#opensource" class="nav-item"><i class="fa fa-code-branch"></i>Open Source</a></li>
+                <li><a href="../index.html#blog"       class="nav-item active"><i class="fa fa-newspaper"></i>Blog</a></li>
+                <li><a href="../index.html#contact"    class="nav-item"><i class="fa fa-comments"></i>Contact</a></li>
+                <li><a href="../index.html#visitors"   class="nav-item"><i class="fa fa-globe"></i>Visitors</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <section class="blog-article section" id="blog-article">
+                <div class="container">
+
+                    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+                        <a href="../index.html">Home</a>
+                        <span aria-hidden="true"> / </span>
+                        <a href="index.html">Blog</a>
+                        <span aria-hidden="true"> / </span>
+                        <span aria-current="page">Linear Regression in a Minute</span>
+                    </nav>
+
+                    <a href="index.html" class="blog-back-link">
+                        <i class="fa fa-arrow-left"></i> Back to Blog
+                    </a>
+
+                    <div class="blog-header">
+                        <h1>Linear Regression in a Minute</h1>
+                        <p class="blog-subtitle">From y=mx+b to gradient descent — the algorithm that fits a line through data, minimizes error, and extends to any number of dimensions.</p>
+                        <div class="blog-meta">
+                            <span><i class="fa fa-user"></i> Rishabh Singh</span>
+                            <span><i class="fa fa-calendar"></i> Apr 11, 2024</span>
+                            <span><i class="fa fa-clock"></i> 3 min read</span>
+                            <span>
+                                <i class="fa fa-brands fa-medium"></i>
+                                <a href="https://medium.com/ai-in-plain-english/linear-regression-in-a-minute-c298faf54238"
+                                   target="_blank" rel="noopener noreferrer"
+                                   style="color:var(--text-black-700);">Originally on Medium</a>
+                            </span>
+                        </div>
+                        <div class="blog-tags">
+                            <span class="blog-tag">Linear Regression</span>
+                            <span class="blog-tag">Machine Learning</span>
+                            <span class="blog-tag">Gradient Descent</span>
+                            <span class="blog-tag">Python</span>
+                            <span class="blog-tag">sklearn</span>
+                        </div>
+                    </div>
+
+                    <figure class="blog-figure">
+                        <img src="https://miro.medium.com/v2/resize:fit:494/format:webp/1*Mjnp0tWPfCn8uomvTBnafw.gif"
+                             alt="Gradient descent animation: line fitting to data points iteratively"
+                             loading="eager">
+                        <figcaption>Gradient descent: adjusting the line's slope and intercept step by step until the error is minimized.</figcaption>
+                    </figure>
+
+                    <div class="blog-body">
+
+                        <h2>The Foundation: y = mx + b</h2>
+                        <p>
+                            Linear regression starts from the same equation you learned in school.
+                            Given data points (years, income), the goal is to find the line that best fits them — the one that minimizes prediction error across all points.
+                        </p>
+                        <div class="blog-formula-box">ŷ = θ₀ + θ₁x &nbsp;&nbsp; (hypothesis function)</div>
+                        <p>
+                            <strong>θ₀</strong> is the intercept (y-axis offset), <strong>θ₁</strong> is the slope.
+                            The model learns these parameters from data.
+                        </p>
+
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*xdcpt_uRupa6v19rUg0SPQ.png"
+                                 alt="Scatter plot of Canadian per capita income vs years with best-fit regression line"
+                                 loading="lazy">
+                            <figcaption>Canadian per capita income vs years — the regression line captures the trend through all data points.</figcaption>
+                        </figure>
+
+                        <h2>The Cost Function</h2>
+                        <p>
+                            How do you measure how "wrong" the line is? The cost function quantifies total prediction error across all training examples.
+                            Linear regression uses <strong>Mean Squared Error (MSE)</strong> — also called Least Squared Error.
+                        </p>
+                        <div class="blog-formula-box">J(θ) = (1/2m) Σ (ŷᵢ − yᵢ)²</div>
+
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*3Tt2A04SyZqbrQvnzVEBQg.png"
+                                 alt="Cost function J(theta) — mean squared error across all training examples"
+                                 loading="lazy">
+                            <figcaption>Cost function J(θ): average squared distance between predicted and actual values.</figcaption>
+                        </figure>
+
+                        <p>Squaring errors serves two purposes: negative errors don't cancel positive ones, and large errors are penalized more severely than small ones.</p>
+
+                        <h2>Gradient Descent</h2>
+                        <p>
+                            Gradient descent finds the parameters θ that minimize J(θ).
+                            Starting from a random point, it computes the gradient (slope of the cost function surface) and takes a step downhill.
+                            Repeat until convergence.
+                        </p>
+                        <div class="blog-formula-box">θⱼ := θⱼ − α × ∂J(θ)/∂θⱼ</div>
+                        <p>
+                            <strong>α</strong> is the learning rate — too large and it overshoots, too small and it converges slowly.
+                        </p>
+
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Um_To9ilniK9ckICdOLTjw.png"
+                                 alt="Gradient descent on cost function surface — bowl shape with arrow descending to minimum"
+                                 loading="lazy">
+                            <figcaption>Gradient descent: each step moves toward the minimum of the cost function bowl.</figcaption>
+                        </figure>
+
+                        <figure class="blog-figure blog-figure--narrow">
+                            <img src="https://miro.medium.com/v2/resize:fit:554/format:webp/1*ojpugj3lrrztetEV_wjR0Q.gif"
+                                 alt="Gradient descent animation on 2D cost surface converging to global minimum"
+                                 loading="lazy">
+                            <figcaption>Gradient descent converging on the 2D cost surface — each iteration reduces the error.</figcaption>
+                        </figure>
+
+                        <h2>Evaluation Metrics</h2>
+
+                        <div class="blog-component">
+                            <h3>Mean Absolute Error (MAE)</h3>
+                            <div class="blog-formula-box">MAE = (1/m) Σ |ŷᵢ − yᵢ|</div>
+                            <p>Average absolute difference. Interpretable in original units. Less sensitive to outliers than MSE.</p>
+                        </div>
+
+                        <figure class="blog-figure blog-figure--narrow">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*S98h3h8LaUN2F6OH5SEpfA.png"
+                                 alt="MAE formula — mean absolute error for regression evaluation"
+                                 loading="lazy">
+                            <figcaption>MAE: average of absolute prediction errors — interpretable in original data units.</figcaption>
+                        </figure>
+
+                        <div class="blog-component">
+                            <h3>R² Score (Coefficient of Determination)</h3>
+                            <div class="blog-formula-box">R² = 1 − SS_res / SS_tot</div>
+                            <p>
+                                Explains the proportion of variance in the target explained by the model.
+                                R² = 1 means perfect fit; R² = 0 means the model does no better than predicting the mean.
+                            </p>
+                        </div>
+
+                        <figure class="blog-figure blog-figure--narrow">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*3bTiUUu3lCQPN5CDWA4xrQ.png"
+                                 alt="R² score visualization showing explained vs unexplained variance"
+                                 loading="lazy">
+                            <figcaption>R² score: what fraction of target variance does the model explain?</figcaption>
+                        </figure>
+
+                        <h2>Multivariable Linear Regression</h2>
+                        <p>
+                            Real datasets have multiple features. Multivariable linear regression extends the hypothesis to many input dimensions:
+                        </p>
+                        <div class="blog-formula-box">ŷ = θ₀ + θ₁x₁ + θ₂x₂ + … + θₙxₙ</div>
+                        <p>
+                            With 2 features, the model fits a plane instead of a line.
+                            With 3+ features, it fits a hyperplane — no longer visualizable, but the math is identical.
+                        </p>
+
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Z4P72yHN_EKFkIaVuZUpeg.png"
+                                 alt="Multivariable linear regression: best-fit plane through 3D data points"
+                                 loading="lazy">
+                            <figcaption>Multivariable regression with 2 features: the model fits a plane rather than a line.</figcaption>
+                        </figure>
+
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*3UU4_6Qz7nu6vJ0yblb6dg.png"
+                                 alt="Multivariable linear regression Python code with sklearn"
+                                 loading="lazy">
+                            <figcaption>Multivariable linear regression implementation with sklearn.</figcaption>
+                        </figure>
+
+                        <figure class="blog-figure blog-figure--narrow">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*nDXRb6UsCCeyT0LXpgQ0sQ.png"
+                                 alt="Linear regression prediction output and R² score result"
+                                 loading="lazy">
+                            <figcaption>Model output: predictions and R² score on test data.</figcaption>
+                        </figure>
+
+                        <div class="blog-insight">
+                            "The goal is always the same: find the parameters that minimize the cost function. The dimension just changes."
+                        </div>
+
+                        <h2>Implementation Notebooks</h2>
+                        <p>Full implementations available on GitHub Gist:</p>
+                        <div style="display:flex;gap:12px;flex-wrap:wrap;margin:12px 0 30px;">
+                            <a href="https://gist.github.com/rishabh11336/6593b1430a11e615b8dbf3eb255412b4#file-machine_learning_with_python_linear_regression_with_one_variable-ipynb"
+                               target="_blank" rel="noopener noreferrer" class="btn"
+                               style="display:inline-flex;align-items:center;gap:8px;">
+                                <i class="fa fa-code"></i> Single Variable (Gist)
+                            </a>
+                            <a href="https://gist.github.com/rishabh11336/483b762dbbab10c149c74b240f8c1015#file-linear_regression_multiple_variables-ipynb"
+                               target="_blank" rel="noopener noreferrer" class="btn"
+                               style="display:inline-flex;align-items:center;gap:8px;">
+                                <i class="fa fa-code"></i> Multiple Variables (Gist)
+                            </a>
+                        </div>
+
+                        <h2>Key Takeaways</h2>
+                        <ul>
+                            <li><strong>Hypothesis:</strong> ŷ = θ₀ + θ₁x — a line (or hyperplane) parameterized by θ.</li>
+                            <li><strong>Cost function (MSE):</strong> measures total squared error — what gradient descent minimizes.</li>
+                            <li><strong>Gradient descent:</strong> iteratively adjusts θ downhill on the cost surface.</li>
+                            <li><strong>R² score:</strong> how much variance the model explains — closer to 1 is better.</li>
+                            <li><strong>Multivariable:</strong> same algorithm, extra θs — fits a plane or hyperplane instead of a line.</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="blog-footer">
+                        <a href="index.html" class="blog-back-link" style="margin:0;">
+                            <i class="fa fa-arrow-left"></i> Back to Blog
+                        </a>
+                        <a href="https://medium.com/ai-in-plain-english/linear-regression-in-a-minute-c298faf54238"
+                           target="_blank" rel="noopener noreferrer" class="btn">
+                            Read on Medium&nbsp;<i class="fa fa-external-link-alt" style="font-size:13px;"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="style-switcher">
+        <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
+        <div class="day-night s-icon"><i class="fas"></i></div>
+        <h4>Theme Colors</h4>
+        <div class="colors">
+            <span class="color-1" onclick="setActiveStyle('color-1')"></span>
+            <span class="color-2" onclick="setActiveStyle('color-2')"></span>
+            <span class="color-3" onclick="setActiveStyle('color-3')"></span>
+            <span class="color-4" onclick="setActiveStyle('color-4')"></span>
+        </div>
+    </div>
+
+    <script src="../js/style-switcher.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navToggler = document.querySelector('.nav-toggler');
+            const aside = document.querySelector('.aside');
+            if (navToggler && aside) {
+                navToggler.addEventListener('click', function () {
+                    aside.classList.toggle('open');
+                    navToggler.classList.toggle('open');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

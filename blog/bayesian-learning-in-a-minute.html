@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Bayesian Learning Explained — Bayes Theorem, Prior, Posterior | Rishabh Singh</title>
+    <meta name="description" content="Bayesian learning explained: Bayes theorem formula, prior probability, likelihood, posterior — with disease diagnosis and horse race examples showing how beliefs update with evidence.">
+    <meta name="author" content="Rishabh Singh">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="keywords" content="Bayesian learning, Bayes theorem, prior probability, posterior probability, likelihood, Naive Bayes, probabilistic machine learning, Bayesian inference, updating beliefs, P(A|B)">
+
+    <link rel="canonical" href="https://rishabhsingh.me/blog/bayesian-learning-in-a-minute.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rishabhsingh.me/blog/bayesian-learning-in-a-minute.html">
+    <meta property="og:title" content="Bayesian Learning Explained | Rishabh Singh">
+    <meta property="og:description" content="Bayes theorem, prior, likelihood, posterior — how beliefs update with evidence, with disease diagnosis and horse race examples.">
+    <meta property="og:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/0*qkE0Tj7IeAVHty7v.png">
+    <meta property="og:image:alt" content="Bayesian learning — updating beliefs with evidence">
+    <meta property="og:site_name" content="Rishabh Singh Portfolio">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:author" content="Rishabh Singh">
+    <meta property="article:published_time" content="2024-05-18">
+    <meta property="article:tag" content="Machine Learning">
+    <meta property="article:tag" content="Bayesian">
+    <meta property="article:tag" content="Statistics">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://rishabhsingh.me/blog/bayesian-learning-in-a-minute.html">
+    <meta name="twitter:title" content="Bayesian Learning Explained | Rishabh Singh">
+    <meta name="twitter:description" content="Bayes theorem, prior, posterior — how beliefs update with evidence in machine learning.">
+    <meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/0*qkE0Tj7IeAVHty7v.png">
+    <meta name="twitter:creator" content="@rishabhsingh">
+
+    <link rel="sitemap" type="application/xml" href="../sitemap.xml">
+    <link rel="icon" type="image/svg+xml" href="../images/Logo.svg">
+    <link rel="apple-touch-icon" href="../images/Logo.svg">
+
+    <link rel="stylesheet" href="../css/style.css?v=1.4">
+    <link rel="stylesheet" href="../css/skins/color-4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
+    <link rel="stylesheet" href="../css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
+    <link rel="stylesheet" href="../css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
+    <link rel="stylesheet" href="../css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
+    <link rel="stylesheet" href="../css/style-switcher.css">
+    <link rel="stylesheet" href="../css/blog.css">
+
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <script type="application/ld+json">
+    [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Bayesian Learning in a Minute",
+      "description": "Bayes theorem, prior, likelihood, posterior — how beliefs update with evidence, with disease diagnosis and horse race examples.",
+      "image": [
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/0*qkE0Tj7IeAVHty7v.png",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*V0qGhJ4mEbm3QWwU278Kaw.png",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*uA4a24lLqK3kxCCA1aZTvg.png",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*ICBRKvivpwbgmSbZbZYKfA.png",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*QFoWVdfFTKceJ_GE2GVM_g.png",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*GRdjSDwij0q50nHBL94MAA.png"
+      ],
+      "author": {
+        "@type": "Person",
+        "@id": "https://rishabhsingh.me/#person",
+        "name": "Rishabh Singh",
+        "url": "https://rishabhsingh.me"
+      },
+      "publisher": { "@type": "Person", "name": "Rishabh Singh" },
+      "datePublished": "2024-05-18",
+      "dateModified": "2026-06-17",
+      "url": "https://rishabhsingh.me/blog/bayesian-learning-in-a-minute.html",
+      "keywords": ["Bayesian Learning", "Bayes Theorem", "Prior", "Posterior", "Likelihood", "Probabilistic ML", "Statistics"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Bayes theorem?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bayes theorem states P(A|B) = P(B|A) × P(A) / P(B). It gives you the probability of hypothesis A given evidence B, by combining your prior belief P(A) with how likely the evidence is under that hypothesis P(B|A), normalized by the total probability of the evidence P(B)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between prior and posterior probability?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Prior probability P(H) is your initial belief about a hypothesis before observing any data. Posterior probability P(H|D) is your updated belief after incorporating observed evidence D. Bayesian learning is the process of updating priors into posteriors as new data arrives."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is likelihood in Bayesian learning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Likelihood P(D|H) is the probability of observing the data D given that hypothesis H is true. It's the bridge between the prior and the posterior — how well the hypothesis explains the observed evidence."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is Bayesian learning useful in machine learning?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bayesian learning incorporates prior knowledge and expert opinions, provides a probabilistic framework for quantifying uncertainty, and continuously updates predictions as new data arrives. This makes it powerful for medical diagnosis, spam filtering, fraud detection, and any domain where uncertainty should be explicitly modeled."
+          }
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rishabhsingh.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://rishabhsingh.me/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Bayesian Learning in a Minute", "item": "https://rishabhsingh.me/blog/bayesian-learning-in-a-minute.html" }
+      ]
+    }
+    ]
+    </script>
+</head>
+
+<body class="dark">
+
+    <div class="main-container">
+
+        <div class="aside">
+            <div class="logo">
+                <a href="../index.html" aria-label="Back to portfolio">
+                    <img src="../images/Logo.svg" width="300" alt="Rishabh Singh Portfolio Logo">
+                </a>
+            </div>
+            <div class="nav-toggler"><span></span></div>
+            <ul class="nav">
+                <li><a href="../index.html#home"       class="nav-item"><i class="fa fa-home"></i>Home</a></li>
+                <li><a href="../index.html#about"      class="nav-item"><i class="fa fa-user"></i>About</a></li>
+                <li><a href="../index.html#services"   class="nav-item"><i class="fa fa-list"></i>Services</a></li>
+                <li><a href="../index.html#portfolio"  class="nav-item"><i class="fa fa-briefcase"></i>Projects</a></li>
+                <li><a href="../index.html#opensource" class="nav-item"><i class="fa fa-code-branch"></i>Open Source</a></li>
+                <li><a href="../index.html#blog"       class="nav-item active"><i class="fa fa-newspaper"></i>Blog</a></li>
+                <li><a href="../index.html#contact"    class="nav-item"><i class="fa fa-comments"></i>Contact</a></li>
+                <li><a href="../index.html#visitors"   class="nav-item"><i class="fa fa-globe"></i>Visitors</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <section class="blog-article section" id="blog-article">
+                <div class="container">
+
+                    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+                        <a href="../index.html">Home</a>
+                        <span aria-hidden="true"> / </span>
+                        <a href="index.html">Blog</a>
+                        <span aria-hidden="true"> / </span>
+                        <span aria-current="page">Bayesian Learning in a Minute</span>
+                    </nav>
+
+                    <a href="index.html" class="blog-back-link">
+                        <i class="fa fa-arrow-left"></i> Back to Blog
+                    </a>
+
+                    <div class="blog-header">
+                        <h1>Bayesian Learning in a Minute</h1>
+                        <p class="blog-subtitle">As you encounter data, some hypotheses become more likely. Bayesian learning formalizes exactly that — updating beliefs with evidence through prior, likelihood, and posterior.</p>
+                        <div class="blog-meta">
+                            <span><i class="fa fa-user"></i> Rishabh Singh</span>
+                            <span><i class="fa fa-calendar"></i> May 18, 2024</span>
+                            <span><i class="fa fa-clock"></i> 4 min read</span>
+                            <span>
+                                <i class="fa fa-brands fa-medium"></i>
+                                <a href="https://medium.com/ai-in-plain-english/bayesian-learning-in-a-minute-c93189e8993e"
+                                   target="_blank" rel="noopener noreferrer"
+                                   style="color:var(--text-black-700);">Originally on Medium</a>
+                            </span>
+                        </div>
+                        <div class="blog-tags">
+                            <span class="blog-tag">Bayesian</span>
+                            <span class="blog-tag">Probability</span>
+                            <span class="blog-tag">Machine Learning</span>
+                            <span class="blog-tag">Statistics</span>
+                        </div>
+                    </div>
+
+                    <figure class="blog-figure">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*qkE0Tj7IeAVHty7v.png"
+                             alt="Bayesian learning concept — updating prior beliefs with evidence to form posterior"
+                             loading="eager">
+                        <figcaption>Bayesian learning: start with a prior, observe evidence, update to a posterior. Repeat with every new data point.</figcaption>
+                    </figure>
+
+                    <div class="blog-body">
+
+                        <h2>The Core Idea</h2>
+                        <p>
+                            When you encounter data, some hypotheses become more likely than others.
+                            Bayesian learning is a framework that <strong>formalizes this update process</strong> — expressing beliefs as probabilities and revising them mathematically as new evidence arrives.
+                        </p>
+                        <p>
+                            Unlike frequentist approaches that treat probability as long-run frequency, Bayesian learning treats probability as <em>degree of belief</em>.
+                            A hypothesis doesn't just have a fixed true/false status — it has a probability of being correct, and that probability changes with evidence.
+                        </p>
+
+                        <h2>Bayes Theorem</h2>
+
+                        <div class="blog-formula-box">P(A|B) = P(B|A) × P(A) / P(B)</div>
+
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*V0qGhJ4mEbm3QWwU278Kaw.png"
+                                 alt="Bayes theorem formula P(A|B) = P(B|A) times P(A) divided by P(B)"
+                                 loading="lazy">
+                            <figcaption>Bayes theorem: the posterior probability of A given B equals the likelihood times the prior, normalized by the evidence.</figcaption>
+                        </figure>
+
+                        <p><strong>Components:</strong></p>
+                        <ul>
+                            <li><strong>P(A|B)</strong> — probability of event A given that B occurred</li>
+                            <li><strong>P(B|A)</strong> — probability of event B given that A occurred</li>
+                            <li><strong>P(A)</strong> — prior probability of A (before seeing B)</li>
+                            <li><strong>P(B)</strong> — total probability of B (normalizing constant)</li>
+                        </ul>
+
+                        <h2>The Three Components in Machine Learning</h2>
+
+                        <div class="blog-component">
+                            <h3><span class="component-number">1</span> Prior Probability — P(H)</h3>
+                            <p>Your initial belief about a hypothesis <em>before</em> observing any data. This encodes existing knowledge, expert opinion, or a uniform assumption if you have none. The prior is your starting point.</p>
+                        </div>
+
+                        <div class="blog-component">
+                            <h3><span class="component-number">2</span> Likelihood — P(D|H)</h3>
+                            <p>The probability of observing the data D <em>given</em> that hypothesis H is true. This is the bridge — it tells you how well each hypothesis explains what you've observed.</p>
+                        </div>
+
+                        <div class="blog-component">
+                            <h3><span class="component-number">3</span> Posterior Probability — P(H|D)</h3>
+                            <p>Your updated belief about hypothesis H <em>after</em> seeing the data D. This is what you actually want — the probability of the hypothesis being true in light of all available evidence.</p>
+                        </div>
+
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*uA4a24lLqK3kxCCA1aZTvg.png"
+                                 alt="Prior, likelihood, and posterior probability diagram in Bayesian framework"
+                                 loading="lazy">
+                            <figcaption>Prior × Likelihood → Posterior. Each new observation shifts the distribution.</figcaption>
+                        </figure>
+
+                        <div class="blog-insight">
+                            "Today's posterior is tomorrow's prior. Bayesian learning never stops updating."
+                        </div>
+
+                        <h2>Example: Disease Diagnosis</h2>
+                        <p>
+                            A disease affects 1% of the population. A test for it is 99% accurate.
+                            You test positive. What's the probability you actually have the disease?
+                        </p>
+                        <p>
+                            Intuition says ~99%. Bayes theorem says something quite different.
+                        </p>
+                        <ul>
+                            <li>Prior: P(disease) = 0.01</li>
+                            <li>P(positive | disease) = 0.99</li>
+                            <li>P(positive | no disease) = 0.01</li>
+                        </ul>
+                        <p>
+                            Applying Bayes: P(disease | positive) ≈ <strong>50%</strong>.
+                            The low base rate (1%) means even a highly accurate test produces many false positives on a healthy population.
+                            This is why medical tests often require confirmation.
+                        </p>
+
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*ICBRKvivpwbgmSbZbZYKfA.png"
+                                 alt="Disease diagnosis Bayesian example with 1% prevalence and 99% test accuracy"
+                                 loading="lazy">
+                            <figcaption>With 1% disease prevalence, a positive test result is only ~50% likely to indicate true disease.</figcaption>
+                        </figure>
+
+                        <h2>Example: Horse Race — Hypothesis Convergence</h2>
+                        <p>
+                            Two horses have actual winning probabilities: Horse A = 0.3, Horse B = 0.7.
+                            We start with three hypotheses about their true probabilities.
+                            After each race, we update each hypothesis using Bayes theorem.
+                        </p>
+                        <p>
+                            The hypothesis closest to the true probabilities (A: 0.3, B: 0.7) accumulates the highest posterior after multiple races.
+                            False hypotheses gradually lose probability mass.
+                        </p>
+
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*QFoWVdfFTKceJ_GE2GVM_g.png"
+                                 alt="Horse race Bayesian example with three competing hypotheses about win probabilities"
+                                 loading="lazy">
+                            <figcaption>Horse race: three competing hypotheses updated race by race — the truest hypothesis converges to the highest posterior.</figcaption>
+                        </figure>
+
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*GRdjSDwij0q50nHBL94MAA.png"
+                                 alt="Bayesian convergence: posterior probability of correct hypothesis increases with more observations"
+                                 loading="lazy">
+                            <figcaption>Convergence: with enough data, the posterior concentrates on the hypothesis closest to the truth.</figcaption>
+                        </figure>
+
+                        <h2>Why Bayesian Learning Matters</h2>
+                        <ul>
+                            <li><strong>Incorporates prior knowledge</strong> — expert opinions and domain knowledge become priors, not discarded information.</li>
+                            <li><strong>Quantifies uncertainty</strong> — instead of a point prediction, you get a probability distribution.</li>
+                            <li><strong>Updates dynamically</strong> — every new observation refines the posterior without retraining from scratch.</li>
+                            <li><strong>Principled handling of small data</strong> — priors regularize when data is scarce.</li>
+                        </ul>
+
+                        <figure class="blog-figure blog-figure--narrow">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*flEUoBzTVG9N3n88zRPgnw.png"
+                                 alt="Bayesian learning applications: medicine, finance, ML, spam detection"
+                                 loading="lazy">
+                            <figcaption>Bayesian methods span medicine, finance, NLP, and any domain where uncertainty must be explicitly modeled.</figcaption>
+                        </figure>
+
+                        <h2>Frequently Asked Questions</h2>
+
+                        <details class="faq-item">
+                            <summary>What is Bayes theorem?</summary>
+                            <p>P(A|B) = P(B|A) × P(A) / P(B). It gives you the probability of hypothesis A given evidence B, combining your prior belief P(A) with how likely the evidence is under that hypothesis P(B|A), normalized by total probability of evidence P(B).</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>What is the difference between prior and posterior probability?</summary>
+                            <p>Prior P(H): your belief about hypothesis H before seeing any data. Posterior P(H|D): your updated belief after incorporating observed data D. Bayesian learning is the process of converting priors into posteriors with evidence.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>What is likelihood in Bayesian learning?</summary>
+                            <p>Likelihood P(D|H) is the probability of observing the data D given hypothesis H is true. It measures how well a hypothesis explains the observed evidence — the bridge between prior and posterior.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>Why is Bayesian learning useful in ML?</summary>
+                            <p>Bayesian learning incorporates prior knowledge, quantifies uncertainty (outputs distributions, not point predictions), updates dynamically with new data, and handles small datasets via priors as regularization. Used in medicine, spam filtering, fraud detection, NLP, and more.</p>
+                        </details>
+
+                    </div>
+
+                    <div class="blog-footer">
+                        <a href="index.html" class="blog-back-link" style="margin:0;">
+                            <i class="fa fa-arrow-left"></i> Back to Blog
+                        </a>
+                        <a href="https://medium.com/ai-in-plain-english/bayesian-learning-in-a-minute-c93189e8993e"
+                           target="_blank" rel="noopener noreferrer" class="btn">
+                            Read on Medium&nbsp;<i class="fa fa-external-link-alt" style="font-size:13px;"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="style-switcher">
+        <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
+        <div class="day-night s-icon"><i class="fas"></i></div>
+        <h4>Theme Colors</h4>
+        <div class="colors">
+            <span class="color-1" onclick="setActiveStyle('color-1')"></span>
+            <span class="color-2" onclick="setActiveStyle('color-2')"></span>
+            <span class="color-3" onclick="setActiveStyle('color-3')"></span>
+            <span class="color-4" onclick="setActiveStyle('color-4')"></span>
+        </div>
+    </div>
+
+    <script src="../js/style-switcher.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navToggler = document.querySelector('.nav-toggler');
+            const aside = document.querySelector('.aside');
+            if (navToggler && aside) {
+                navToggler.addEventListener('click', function () {
+                    aside.classList.toggle('open');
+                    navToggler.classList.toggle('open');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>

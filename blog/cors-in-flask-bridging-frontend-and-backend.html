@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>CORS in Flask — Bridging Frontend and Backend | Rishabh Singh</title>
+    <meta name="description" content="Fix CORS errors in Flask with flask-cors: how Cross-Origin Resource Sharing works, why browsers block cross-origin requests, and how to configure origins and credentials for your API.">
+    <meta name="author" content="Rishabh Singh">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="keywords" content="CORS Flask, flask-cors, Cross-Origin Resource Sharing, fix CORS error Python, Flask API CORS, Access-Control-Allow-Origin, flask_cors CORS configuration, Flask frontend backend">
+
+    <link rel="canonical" href="https://rishabhsingh.me/blog/cors-in-flask-bridging-frontend-and-backend.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rishabhsingh.me/blog/cors-in-flask-bridging-frontend-and-backend.html">
+    <meta property="og:title" content="CORS in Flask — Bridging Frontend and Backend | Rishabh Singh">
+    <meta property="og:description" content="How Cross-Origin Resource Sharing works and how flask-cors fixes CORS errors between your frontend and Flask API.">
+    <meta property="og:image" content="https://miro.medium.com/v2/resize:fit:640/format:webp/1*KVQJzRxFwfNvcZiGQRRFAA.png">
+    <meta property="og:image:alt" content="CORS in Flask — frontend and backend communication diagram">
+    <meta property="og:site_name" content="Rishabh Singh Portfolio">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:author" content="Rishabh Singh">
+    <meta property="article:published_time" content="2024-01-31">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Flask">
+    <meta property="article:tag" content="Web Development">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://rishabhsingh.me/blog/cors-in-flask-bridging-frontend-and-backend.html">
+    <meta name="twitter:title" content="CORS in Flask | Rishabh Singh">
+    <meta name="twitter:description" content="Fix CORS errors between your React/Vue frontend and Flask API with flask-cors — basic and advanced configuration.">
+    <meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:640/format:webp/1*KVQJzRxFwfNvcZiGQRRFAA.png">
+    <meta name="twitter:creator" content="@rishabhsingh">
+
+    <link rel="sitemap" type="application/xml" href="../sitemap.xml">
+    <link rel="icon" type="image/svg+xml" href="../images/Logo.svg">
+    <link rel="apple-touch-icon" href="../images/Logo.svg">
+
+    <link rel="stylesheet" href="../css/style.css?v=1.4">
+    <link rel="stylesheet" href="../css/skins/color-4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
+    <link rel="stylesheet" href="../css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
+    <link rel="stylesheet" href="../css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
+    <link rel="stylesheet" href="../css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
+    <link rel="stylesheet" href="../css/style-switcher.css">
+    <link rel="stylesheet" href="../css/blog.css">
+
+    <script type="application/ld+json">
+    [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "CORS in Flask — Bridging Frontend and Backend",
+      "description": "How Cross-Origin Resource Sharing works and how flask-cors fixes CORS errors between your frontend and Flask API.",
+      "image": "https://miro.medium.com/v2/resize:fit:640/format:webp/1*KVQJzRxFwfNvcZiGQRRFAA.png",
+      "author": {
+        "@type": "Person",
+        "@id": "https://rishabhsingh.me/#person",
+        "name": "Rishabh Singh",
+        "url": "https://rishabhsingh.me"
+      },
+      "publisher": { "@type": "Person", "name": "Rishabh Singh" },
+      "datePublished": "2024-01-31",
+      "dateModified": "2026-06-17",
+      "url": "https://rishabhsingh.me/blog/cors-in-flask-bridging-frontend-and-backend.html",
+      "keywords": ["CORS", "Flask", "Python", "Web Development", "API", "flask-cors", "Cross-Origin Resource Sharing"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is CORS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CORS (Cross-Origin Resource Sharing) is a browser security mechanism that blocks web pages from making requests to a different origin (domain, protocol, or port) than the one that served the page. Servers must explicitly permit cross-origin requests by sending the correct Access-Control-Allow-Origin headers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does a CORS error happen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A CORS error happens when your browser's same-origin policy blocks a request from your frontend (e.g., localhost:5173) to your backend (e.g., localhost:5000) because they are on different ports — different origins. The Flask server must include the correct CORS headers in its response to allow the browser to proceed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I fix CORS in Flask?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Install flask-cors with `pip install flask-cors`, then call `CORS(app)` after creating your Flask app. For production, specify the allowed origins explicitly: `CORS(app, resources={r'/*': {'origins': 'https://yourdomain.com'}})` instead of allowing all origins."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between simple and preflight CORS requests?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Simple requests (GET, POST with standard headers) are sent directly — the browser checks the response headers. Preflight requests are an OPTIONS request the browser sends first for non-simple requests (custom headers, DELETE, PUT, credentials) to ask the server if the actual request is allowed before sending it."
+          }
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rishabhsingh.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://rishabhsingh.me/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "CORS in Flask", "item": "https://rishabhsingh.me/blog/cors-in-flask-bridging-frontend-and-backend.html" }
+      ]
+    }
+    ]
+    </script>
+</head>
+
+<body class="dark">
+
+    <div class="main-container">
+
+        <div class="aside">
+            <div class="logo">
+                <a href="../index.html" aria-label="Back to portfolio">
+                    <img src="../images/Logo.svg" width="300" alt="Rishabh Singh Portfolio Logo">
+                </a>
+            </div>
+            <div class="nav-toggler"><span></span></div>
+            <ul class="nav">
+                <li><a href="../index.html#home"       class="nav-item"><i class="fa fa-home"></i>Home</a></li>
+                <li><a href="../index.html#about"      class="nav-item"><i class="fa fa-user"></i>About</a></li>
+                <li><a href="../index.html#services"   class="nav-item"><i class="fa fa-list"></i>Services</a></li>
+                <li><a href="../index.html#portfolio"  class="nav-item"><i class="fa fa-briefcase"></i>Projects</a></li>
+                <li><a href="../index.html#opensource" class="nav-item"><i class="fa fa-code-branch"></i>Open Source</a></li>
+                <li><a href="../index.html#blog"       class="nav-item active"><i class="fa fa-newspaper"></i>Blog</a></li>
+                <li><a href="../index.html#contact"    class="nav-item"><i class="fa fa-comments"></i>Contact</a></li>
+                <li><a href="../index.html#visitors"   class="nav-item"><i class="fa fa-globe"></i>Visitors</a></li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+            <section class="blog-article section" id="blog-article">
+                <div class="container">
+
+                    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+                        <a href="../index.html">Home</a>
+                        <span aria-hidden="true"> / </span>
+                        <a href="index.html">Blog</a>
+                        <span aria-hidden="true"> / </span>
+                        <span aria-current="page">CORS in Flask — Bridging Frontend and Backend</span>
+                    </nav>
+
+                    <a href="index.html" class="blog-back-link">
+                        <i class="fa fa-arrow-left"></i> Back to Blog
+                    </a>
+
+                    <div class="blog-header">
+                        <h1>CORS in Flask — Bridging Frontend and Backend</h1>
+                        <p class="blog-subtitle">Your React app talks to your Flask API and gets blocked. CORS errors are a rite of passage in full-stack development. Here's exactly what's happening and how to fix it.</p>
+                        <div class="blog-meta">
+                            <span><i class="fa fa-user"></i> Rishabh Singh</span>
+                            <span><i class="fa fa-calendar"></i> Jan 31, 2024</span>
+                            <span><i class="fa fa-clock"></i> 2 min read</span>
+                            <span>
+                                <i class="fa fa-brands fa-medium"></i>
+                                <a href="https://medium.com/stackademic/cors-in-flask-bridging-frontend-and-backend-c4d5bdf160dc"
+                                   target="_blank" rel="noopener noreferrer"
+                                   style="color:var(--text-black-700);">Originally on Medium</a>
+                            </span>
+                        </div>
+                        <div class="blog-tags">
+                            <span class="blog-tag">Python</span>
+                            <span class="blog-tag">Flask</span>
+                            <span class="blog-tag">Web Development</span>
+                            <span class="blog-tag">API</span>
+                        </div>
+                    </div>
+
+                    <figure class="blog-figure">
+                        <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*KVQJzRxFwfNvcZiGQRRFAA.png"
+                             alt="CORS — Cross-Origin Resource Sharing between frontend and Flask backend"
+                             loading="eager">
+                        <figcaption>CORS bridges the browser's same-origin policy gap between your frontend and Flask API.</figcaption>
+                    </figure>
+
+                    <div class="blog-body">
+
+                        <h2>What Is CORS?</h2>
+                        <p>
+                            CORS stands for <strong>Cross-Origin Resource Sharing</strong>. It's a browser security mechanism that restricts web pages from making requests to a different <em>origin</em> — where origin means the combination of protocol, domain, and port.
+                        </p>
+                        <p>
+                            When your React frontend at <code>localhost:5173</code> makes a request to your Flask API at <code>localhost:5000</code>, the browser sees two different origins (different ports) and blocks the request by default. This is the same-origin policy in action.
+                        </p>
+                        <p>
+                            The server must explicitly opt in to cross-origin requests by including the correct <code>Access-Control-Allow-Origin</code> header in its responses. Without it, the browser rejects the response before your JavaScript ever sees it.
+                        </p>
+
+                        <div class="blog-insight">
+                            "CORS is enforced by the browser, not the server. Your Flask API receives the request — but the browser blocks the response if the headers aren't right."
+                        </div>
+
+                        <h2>The Fix: flask-cors</h2>
+                        <p>
+                            Flask doesn't handle CORS by default. The <code>flask-cors</code> package adds the required headers automatically. Install it:
+                        </p>
+
+                        <pre><code>pip install flask-cors</code></pre>
+
+                        <h2>Basic Usage</h2>
+                        <p>
+                            For development or internal tools where any origin should be allowed, wrap your app with <code>CORS()</code>:
+                        </p>
+
+                        <pre><code>from flask import Flask
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)</code></pre>
+
+                        <p>This adds <code>Access-Control-Allow-Origin: *</code> to all responses — every origin can access your API. Useful during development; avoid in production.</p>
+
+                        <h2>Advanced Configuration</h2>
+                        <p>
+                            For production, restrict access to specific origins and configure credential handling:
+                        </p>
+
+                        <pre><code>from flask import Flask
+from flask_cors import CORS
+
+app = Flask(__name__)
+
+CORS(app, resources={
+    r"/*": {
+        "origins": "http://localhost:5173",
+        "supports_credentials": True,
+        "Access-Control-Allow-Credentials": True
+    }
+})</code></pre>
+
+                        <div class="blog-component">
+                            <h3>Configuration Options</h3>
+                            <ul>
+                                <li><strong><code>origins</code></strong> — allowed origin(s): a string, list, or <code>"*"</code> for all</li>
+                                <li><strong><code>supports_credentials</code></strong> — allow cookies and Authorization headers in cross-origin requests</li>
+                                <li><strong><code>methods</code></strong> — restrict to specific HTTP methods: <code>["GET", "POST"]</code></li>
+                                <li><strong><code>allow_headers</code></strong> — specify which request headers are allowed</li>
+                                <li><strong><code>r"/*"</code></strong> — route pattern: applies config to all routes (use <code>r"/api/*"</code> to scope it)</li>
+                            </ul>
+                        </div>
+
+                        <h2>Preflight Requests</h2>
+                        <p>
+                            For non-simple requests (custom headers, <code>DELETE</code>, <code>PUT</code>, requests with credentials), the browser sends an <strong>OPTIONS preflight request</strong> first — asking the server: "will you allow this?" The server must respond with the right <code>Access-Control-Allow-*</code> headers before the browser sends the actual request.
+                        </p>
+                        <p>
+                            <code>flask-cors</code> handles preflight responses automatically — no extra code needed.
+                        </p>
+
+                        <div class="blog-component">
+                            <h3>Common CORS Pitfalls</h3>
+                            <ul>
+                                <li><strong>Credentials + wildcard origin</strong> — browsers reject <code>Access-Control-Allow-Origin: *</code> when credentials are included. Must specify an explicit origin.</li>
+                                <li><strong>Trailing slash mismatch</strong> — <code>http://localhost:5173</code> and <code>http://localhost:5173/</code> are treated as different origins by some browsers.</li>
+                                <li><strong>HTTP vs HTTPS</strong> — protocol is part of the origin. A production HTTPS frontend cannot access an HTTP backend without CORS headers configured for the HTTPS origin.</li>
+                            </ul>
+                        </div>
+
+                        <div class="blog-reference">
+                            <i class="fa fa-circle-info"></i>
+                            Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS" target="_blank" rel="noopener noreferrer">MDN Web Docs — Cross-Origin Resource Sharing (CORS)</a>
+                        </div>
+
+                    </div>
+
+                    <div class="blog-faq">
+                        <h2>Frequently Asked Questions</h2>
+
+                        <details class="faq-item">
+                            <summary>What is CORS?</summary>
+                            <p>CORS (Cross-Origin Resource Sharing) is a browser security mechanism that blocks requests from one origin (domain + port + protocol) to a different origin. Servers must respond with <code>Access-Control-Allow-Origin</code> headers to explicitly permit cross-origin requests.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>Why does a CORS error happen?</summary>
+                            <p>Your frontend (e.g., <code>localhost:5173</code>) and backend (e.g., <code>localhost:5000</code>) run on different ports — different origins. The browser's same-origin policy blocks the response unless the Flask server sends the correct CORS headers. The request reaches the server; the browser blocks the response.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>How do I fix CORS in Flask?</summary>
+                            <p>Install <code>flask-cors</code> (<code>pip install flask-cors</code>), import <code>CORS</code>, and call <code>CORS(app)</code> after creating your Flask app. For production, specify allowed origins explicitly instead of allowing all with <code>*</code>.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>What is the difference between simple and preflight CORS requests?</summary>
+                            <p>Simple requests (GET, standard POST) go directly — the browser checks response headers. Preflight requests are an automatic OPTIONS request the browser sends before non-simple requests (custom headers, DELETE, PUT, credentials) to confirm the server allows them. <code>flask-cors</code> handles both automatically.</p>
+                        </details>
+                    </div>
+
+                    <div class="blog-footer">
+                        <a href="index.html" class="blog-back-link" style="margin:0;">
+                            <i class="fa fa-arrow-left"></i> Back to Blog
+                        </a>
+                        <a href="https://medium.com/stackademic/cors-in-flask-bridging-frontend-and-backend-c4d5bdf160dc"
+                           target="_blank" rel="noopener noreferrer" class="btn">
+                            Read on Medium&nbsp;<i class="fa fa-external-link-alt" style="font-size:13px;"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <div class="style-switcher">
+        <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
+        <div class="day-night s-icon"><i class="fas"></i></div>
+        <h4>Theme Colors</h4>
+        <div class="colors">
+            <span class="color-1" onclick="setActiveStyle('color-1')"></span>
+            <span class="color-2" onclick="setActiveStyle('color-2')"></span>
+            <span class="color-3" onclick="setActiveStyle('color-3')"></span>
+            <span class="color-4" onclick="setActiveStyle('color-4')"></span>
+        </div>
+    </div>
+
+    <script src="../js/style-switcher.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navToggler = document.querySelector('.nav-toggler');
+            const aside = document.querySelector('.aside');
+            if (navToggler && aside) {
+                navToggler.addEventListener('click', function () {
+                    aside.classList.toggle('open');
+                    navToggler.classList.toggle('open');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
