@@ -355,7 +355,8 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/style.css?v=1.7">
     <link rel="stylesheet" href="css/skins/color-4.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
     <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
     <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
@@ -431,7 +432,8 @@
                         </div>
                         <div class="home-img padd-15">
                             <!-- <div class="half-circle"></div> -->
-                            <img src="images/me.png" alt="Rishabh Singh — Data Scientist and AI Engineer" width="1024" height="1536">
+                            <img src="images/me.png" alt="Rishabh Singh — Data Scientist and AI Engineer" width="1024"
+                                height="1536">
                         </div>
                     </div>
                 </div>
@@ -448,8 +450,19 @@
                             <div class="row">
                                 <div class="about-text padd-15">
                                     <h3>I'm Rishabh Singh <span>Data Scientist &amp; AI Engineer</span></h3>
-                                    <p>Rishabh Singh is a Data Scientist and AI Engineer at Chryselys, building end-to-end analytics solutions — forecasting pipelines, mixed-effects models, Marketing Mix Modeling, and time-series systems with stakeholder-ready delivery. He graduated from IIT Madras with a B.S. in Data Science and Applications (2021–2025) and a Minor in Economics &amp; Finance.</p>
-                                    <p>His open-source contributions include merged pull requests to CPython (Python's core interpreter), conda-build, and librosa — demonstrating systems-level Python expertise alongside applied ML work. Technical stack: Python, PyTorch, Flask, Django, SQL, Streamlit, Azure, AWS, and Figma. He has built and deployed full-stack ML applications including a live parking management system (Flask, Vue.js, Redis, Celery, Azure) and writes about AI and machine learning on Medium, with 22 published technical articles across ML fundamentals, Python, and web development.</p>
+                                    <p>Rishabh Singh is a Data Scientist and AI Engineer at Chryselys, building
+                                        end-to-end analytics solutions — forecasting pipelines, mixed-effects models,
+                                        Marketing Mix Modeling, and time-series systems with stakeholder-ready delivery.
+                                        He graduated from IIT Madras with a B.S. in Data Science and Applications
+                                        (2021–2025) and a Minor in Economics &amp; Finance.</p>
+                                    <p>His open-source contributions include merged pull requests to CPython (Python's
+                                        core interpreter), conda-build, and librosa — demonstrating systems-level Python
+                                        expertise alongside applied ML work. Technical stack: Python, PyTorch, Flask,
+                                        Django, SQL, Streamlit, Azure, AWS, and Figma. He has built and deployed
+                                        full-stack ML applications including a live parking management system (Flask,
+                                        Vue.js, Redis, Celery, Azure) and writes about AI and machine learning on
+                                        Medium, with 22 published technical articles across ML fundamentals, Python, and
+                                        web development.</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -592,7 +605,8 @@
                                                     <div class="circle-dot"></div>
 
                                                     <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i> Sep 2024 – Present (<span id="chryselys-tenure"></span>)
+                                                        <i class="fa fa-calendar"></i> Oct 2024 – Present (<span
+                                                            id="chryselys-tenure"></span>)
                                                     </h3>
                                                     <h4 class="timeline-title">Data Scientist @ Chryselys | Data Science
                                                         & ML
@@ -822,9 +836,9 @@
     <!-- Dynamic tenure calculation -->
     <script>
         (function () {
-            var start = new Date(2024, 8, 1); // Sep 2024
+            var start = new Date(2024, 9, 1); // Oct 2024
             var now = new Date();
-            var months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+            var months = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth()) + 1;
             var years = Math.floor(months / 12);
             var rem = months % 12;
             var label = years > 0 ? years + ' Year' + (years > 1 ? 's' : '') + (rem > 0 ? ' ' + rem + ' Month' + (rem > 1 ? 's' : '') : '') : rem + ' Month' + (rem !== 1 ? 's' : '');
