@@ -723,3 +723,30 @@
         max-width: 100%;
     }
 }
+
+/* ── Blog Filter Bar ── */
+.blog-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+}
+
+.blog-filter-btn {
+    padding: 6px 18px;
+    border-radius: 20px;
+    border: 1px solid var(--skin-color, #0b4975);
+    background: transparent;
+    color: var(--skin-color, #0b4975);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    font-family: inherit;
+}
+
+.blog-filter-btn:hover,
+.blog-filter-btn.active {
+    background: var(--skin-color, #0b4975);
+    color: #fff;
+}

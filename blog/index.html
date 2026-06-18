@@ -86,7 +86,7 @@
     <link rel="icon" type="image/svg+xml" href="../images/Logo.svg">
     <link rel="apple-touch-icon" href="../images/Logo.svg">
 
-    <link rel="stylesheet" href="../css/style.css?v=1.7">
+    <link rel="stylesheet" href="../css/style.css?v=1.8">
     <link rel="stylesheet" href="../css/skins/color-4.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="../css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
@@ -94,7 +94,7 @@
     <link rel="stylesheet" href="../css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
     <link rel="stylesheet" href="../css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
     <link rel="stylesheet" href="../css/style-switcher.css">
-    <link rel="stylesheet" href="../css/blog.css?v=1.1">
+    <link rel="stylesheet" href="../css/blog.css?v=1.2">
 
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -120,7 +120,6 @@
                 <li><a href="../index.html#opensource" class="nav-item"><i class="fa fa-code-branch"></i>Open Source</a></li>
                 <li><a href="../index.html#blog"       class="nav-item active"><i class="fa fa-newspaper"></i>Blog</a></li>
                 <li><a href="../index.html#contact"    class="nav-item"><i class="fa fa-comments"></i>Contact</a></li>
-                <li><a href="../index.html#visitors"   class="nav-item"><i class="fa fa-globe"></i>Visitors</a></li>
             </ul>
         </div>
 
@@ -136,6 +135,15 @@
 
                     <div class="blog-index-intro padd-15">
                         <p>Writing on AI, Machine Learning, Python, and Web Development. 22 posts across 3 series.</p>
+                    </div>
+
+                    <!-- Tag Filter Bar -->
+                    <div class="blog-filter-bar padd-15" role="group" aria-label="Filter posts by topic">
+                        <button class="blog-filter-btn active" data-filter="all">All</button>
+                        <button class="blog-filter-btn" data-filter="ML">ML</button>
+                        <button class="blog-filter-btn" data-filter="Deep Learning">Deep Learning</button>
+                        <button class="blog-filter-btn" data-filter="Python">Python</button>
+                        <button class="blog-filter-btn" data-filter="Flask">Flask</button>
                     </div>
 
                     <!-- ════════════════════════════════
@@ -843,6 +851,38 @@
                 });
             }
         });
+    </script>
+
+    <!-- Blog Tag Filter -->
+    <script>
+        (function () {
+            var btns = document.querySelectorAll('.blog-filter-btn');
+            var cards = document.querySelectorAll('.blog-index-card');
+            var series = document.querySelectorAll('.blog-series');
+
+            btns.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    btns.forEach(function (b) { b.classList.remove('active'); });
+                    btn.classList.add('active');
+
+                    var filter = btn.dataset.filter;
+
+                    cards.forEach(function (card) {
+                        if (filter === 'all') {
+                            card.style.display = '';
+                        } else {
+                            var tags = Array.from(card.querySelectorAll('.blog-tag')).map(function (t) { return t.textContent.trim(); });
+                            card.style.display = tags.some(function (t) { return t.toLowerCase().includes(filter.toLowerCase()); }) ? '' : 'none';
+                        }
+                    });
+
+                    series.forEach(function (s) {
+                        var visible = Array.from(s.querySelectorAll('.blog-index-card')).some(function (c) { return c.style.display !== 'none'; });
+                        s.style.display = visible ? '' : 'none';
+                    });
+                });
+            });
+        })();
     </script>
 
 </body>
