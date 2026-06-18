@@ -45,6 +45,18 @@ ul {
     list-style: none;
 }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 .section {
     background: var(--bg-black-900);
     min-height: 100vh;
@@ -321,6 +333,10 @@ h3.my-profission {
     max-width: 40%;
     text-align: center;
     position: relative;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .home-img::after {
@@ -349,8 +365,12 @@ h3.my-profission {
     position: relative;
     z-index: 2;
     height: 400px;
+    width: auto;
+    max-width: 100%;
+    display: block;
     margin: auto;
     border-radius: 5px;
+    object-fit: contain;
 }
 
 .half-circle {
@@ -567,7 +587,7 @@ h3.my-profission {
     padding-bottom: 40px;
 }
 
-.service .container .row h2 {
+.service .container .row > h3 {
     margin-top: -15px;
     margin-bottom: 15px;
     color: var(--text-black-700);
@@ -627,7 +647,7 @@ h3.my-profission {
     animation: fadeInEase 1s ease-in-out forwards;
 }
 
-.service .service-item .service-item-inner h4 {
+.service .service-item .service-item-inner h3 {
     font-size: 18px;
     margin-bottom: 15px;
     color: var(--text-black-900);
@@ -652,7 +672,7 @@ h3.my-profission {
     margin-top: -15px;
 }
 
-.portfolio .portfolio-heading h2 {
+.portfolio .portfolio-heading h3 {
     color: var(--text-black-900);
     font-weight: 500;
 }
@@ -718,7 +738,7 @@ h3.my-profission {
     min-height: 0;
 }
 
-.portfolio .portfolio-info h4 {
+.portfolio .portfolio-info h3 {
     font-size: 18px;
     font-weight: 700;
     color: var(--text-black-900);
@@ -1007,6 +1027,8 @@ h3.my-profission {
         height: auto;
         width: auto;
         max-width: 100%;
+        object-fit: contain;
+        display: block;
     }
 
     /* About section text alignment */
@@ -1103,7 +1125,7 @@ h3.my-profission {
         padding: 15px;
     }
 
-    .portfolio .portfolio-info h4 {
+    .portfolio .portfolio-info h3 {
         font-size: 18px;
         margin-bottom: 10px;
     }

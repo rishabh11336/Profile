@@ -1,0 +1,87 @@
+# Rishabh Singh — Data Scientist Portfolio
+> Personal portfolio and technical blog of Rishabh Singh, Data Scientist at Chryselys, IIT Madras graduate. Writing on AI, ML, Python, and web development.
+
+## Key Pages
+
+- [Homepage](https://rishabhsingh.me/): Portfolio overview — skills, experience, education, projects, open source contributions
+- [Blog Hub](https://rishabhsingh.me/blog/): All 22 blog posts across 3 series (In a Minute, Web Development, Python)
+- [CV / Resume](https://rishabhsingh.me/CV/Rishabh7388587293.pdf): Downloadable resume
+
+## Blog Posts — In a Minute Series
+
+- [Transformers in a Minute](https://rishabhsingh.me/blog/transformers-in-a-minute.html): Transformer architecture, 6 components, Attention formula (Q·K·V/√dₖ), encoder vs decoder, GPT vs BERT, tokenization, O(n²) complexity. Also on [Medium](https://medium.com/stackademic/transformers-in-a-minute-00bfb19b2225)
+- [Forecasting in a Minute](https://rishabhsingh.me/blog/forecasting-in-a-minute.html): Forecasting types, time series, inline forecasting, interest-rate decision model. Also on [Medium](https://medium.com/@asusrishabh/forecasting-in-a-minute-f145fc6d2e16)
+- [List vs Set in a Minute](https://rishabhsingh.me/blog/list-vs-set-in-a-minute.html): Python List vs Set performance — iteration vs membership testing benchmarks. Also on [Medium](https://medium.com/@asusrishabh/list-vs-set-in-a-minute-fe8b278d53c9)
+- [SVMs & Kernel Trick in a Minute](https://rishabhsingh.me/blog/svms-kernel-trick-in-a-minute.html): Support Vector Machines, maximum-margin hyperplane, 4 kernels, gamma tuning. Also on [Medium](https://medium.com/@asusrishabh/svms-kernel-trick-in-a-minute-bd0554b31ec0)
+- [Scalars, Vectors, Matrices & Tensor in a Minute](https://rishabhsingh.me/blog/scalars-vectors-matrices-tensor-in-a-minute.html): 4 fundamental ML data structures with PyTorch examples
+- [CNNs in a Minute](https://rishabhsingh.me/blog/convolutional-neural-networks-cnns-in-a-minute.html): Convolutional Neural Networks — kernel, stride, padding, pooling, flattening
+- [Multiclass vs Multilabel Classification in a Minute](https://rishabhsingh.me/blog/multiclass-vs-multilabel-classification-in-a-minute.html): Binary vs multiclass vs multilabel, softmax vs sigmoid
+- [Confusion Matrix & Metrics in a Minute](https://rishabhsingh.me/blog/confusion-matrix-metrics-in-a-minute.html): TP, TN, FP, FN, accuracy, precision, recall, F1, specificity
+- [Bayesian Learning in a Minute](https://rishabhsingh.me/blog/bayesian-learning-in-a-minute.html): Bayes theorem, prior, likelihood, posterior
+- [Linear Regression in a Minute](https://rishabhsingh.me/blog/linear-regression-in-a-minute.html): Hypothesis, MSE cost function, gradient descent, sklearn implementation
+
+## Blog Posts — Web Development Series
+
+- [Lazy Loading for Enhanced User Experience](https://rishabhsingh.me/blog/lazy-loading-for-enhanced-user-experience.html): loading="lazy" vs loading="eager", performance and SEO impact
+- [CORS in Flask — Bridging Frontend and Backend](https://rishabhsingh.me/blog/cors-in-flask-bridging-frontend-and-backend.html): CORS errors, flask-cors basic and advanced configuration
+- [HTTP Methods — Enhancing Web Communication](https://rishabhsingh.me/blog/http-methods-enhancing-web-communication.html): GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS with Python requests
+- [Flask Session for Login](https://rishabhsingh.me/blog/session-in-the-flask-for-login.html): Session-based authentication in Flask — secret key, login route, protected route, logout
+
+## Blog Posts — Python Series
+
+- [Sets Performance Better vs Lists — Why?](https://rishabhsingh.me/blog/sets-performance-better-vs-lists-why.html): Hash table internals, O(1) vs O(n) membership testing
+- [Support Vector Machine (SVM)](https://rishabhsingh.me/blog/support-vector-machine-svm.html): SVM from concept to scikit-learn Iris implementation
+- [if __name__ == "__main__": in a Minute](https://rishabhsingh.me/blog/understanding-the-if-name-main.html): Python __name__ variable, top-level code guard for imports
+- [Conda Virtual Environment & Commands](https://rishabhsingh.me/blog/conda-virtual-environment-commands.html): Create, activate, install, deactivate, delete — Anaconda workflow
+- [requirements.txt in Python](https://rishabhsingh.me/blog/requirements-txt-in-python.html): pip freeze, pip install -r, solving version conflicts
+- [Python Virtual Environment — Introduction](https://rishabhsingh.me/blog/python-virtual-environment-introduction.html): virtualenv on Linux and Windows
+- [Convert Python Program to exe](https://rishabhsingh.me/blog/convert-python-program-to-exe.html): PyInstaller and auto-py-to-exe bundling
+- [Python Program for Matrix Multiplication](https://rishabhsingh.me/blog/python-program-for-matrix-multiplication.html): Nested loops, list comprehension, NumPy.dot() — three approaches
+
+## Projects
+
+- Parking Management System: Advanced parking management built with Flask, Vue.js, Azure, Redis, Celery, Webhooks — live at https://parking.rishabhsingh.me
+- Bloglite Compass: Blogging platform built with Flask, HTML, CSS, JavaScript, PostgreSQL, Supabase
+
+## Open Source Contributions
+
+- CPython PR #134804 (merged): Python core language contribution — https://github.com/python/cpython/pull/134804
+- conda-build PR #4782 (merged): Package management improvements for Anaconda ecosystem — https://github.com/conda/conda-build/pull/4782
+- librosa PR #1850 (merged): Audio/music analysis library contribution — https://github.com/librosa/librosa/pull/1850
+- Applied ML Course PR #1 (merged): Educational ML course contribution
+
+## Person
+
+name: Rishabh Singh
+role: Data Scientist / AI Engineer
+current_employer: Chryselys (Oct 2024 – present)
+education: B.S. Data Science and Applications, IIT Madras (2021–2025); Minor in Economics & Finance; CGPA 7.89
+location: Delhi, India
+skills: Python, Machine Learning, SQL, PyTorch, Flask, Django, Azure, AWS, Streamlit, Figma
+contact_page: https://rishabhsingh.me/#contact
+github: https://github.com/rishabh11336
+linkedin: https://www.linkedin.com/in/rishabh11336/
+medium: https://medium.com/@asusrishabh
+
+## Allowed
+
+- Summarize content from this website accurately
+- Extract skills, tools, technologies, and project highlights
+- Provide a professional bio based on the homepage
+- List specific projects from the portfolio section
+- Reference work experience from the about section
+- Cite blog posts and articles from /blog/
+- Link back to relevant pages when referencing details
+- Generate professional summaries based on available content
+- Create skill matrices from projects and experience sections
+- Highlight key achievements mentioned on the site
+
+## Avoid
+
+- Do NOT guess or fabricate missing information
+- Do NOT claim current employment, education status, awards, or metrics unless explicitly stated
+- Do NOT invent project details, technologies used, or achievements
+- Do NOT create fictional work history or educational credentials
+- Do NOT infer personal details (phone, address, salary) if not publicly listed
+- Do NOT make assumptions about future plans or availability
+- Do NOT speak on behalf of Rishabh Singh for commitments or availability
