@@ -1,7 +1,7 @@
 var typed = new Typed('.typing', {
-    strings: ["Data Science and AI" ],
+    strings: ["Data Science and AI"],
     typeSpeed: 60,
-    BackSpeed: 60,
+    backSpeed: 60,
     loop: true
 })
 
@@ -30,6 +30,10 @@ navItems.forEach(item => {
         }
     });
 });
+
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     const sections = document.querySelectorAll('section');
@@ -61,6 +65,26 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+
+document.addEventListener('DOMContentLoaded', function () {
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(el => {
+            if (el.isIntersecting) {
+                el.target.classList.add('visible');
+                revealObserver.unobserve(el.target);
+            }
+        });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('section.section').forEach(s => {
+        const rect = s.getBoundingClientRect();
+        const inView = rect.top < window.innerHeight && rect.bottom > 0;
+        if (!inView) {
+            s.classList.add('reveal');
+        }
+        revealObserver.observe(s);
+    });
+});
 
 // (function() {
 //     emailjs.init('GWbNmnXzdkXtyMcIM'); // Replace 'YOUR_USER_ID' with your EmailJS user ID

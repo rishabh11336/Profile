@@ -1,0 +1,16 @@
+{
+  "name": "Rishabh Singh — Data Scientist Portfolio",
+  "short_name": "RS Portfolio",
+  "description": "Data Scientist & AI Engineer Portfolio — Rishabh Singh, IIT Madras",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0b4975",
+  "background_color": "#151515",
+  "icons": [
+    {
+      "src": "/images/Logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
