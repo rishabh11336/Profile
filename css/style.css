@@ -720,7 +720,8 @@ ul {
 
 .portfolio .portfolio-items {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     gap: 20px;
     padding: 10px 0;
 }
