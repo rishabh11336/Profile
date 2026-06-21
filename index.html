@@ -378,7 +378,7 @@
     </script>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/style.css?v=2.1">
+    <link rel="stylesheet" href="css/style.css?v=2.2">
     <link rel="stylesheet" href="css/skins/color-4.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -743,31 +743,45 @@
                     <p class="contact-sub-title padd-15">I'M AT YOUR SERVICES</p>
                     <div class="row">
                         <div class="contact-form padd-15">
-                            <div class="row">
-                                <div class="col-6 padd-15">
-                                    <div class="form-item">
-                                        <input type="text" class="form-control" placeholder="Full Name" aria-label="Full Name">
-                                    </div>
-                                </div>
-                                <div class="col-6 padd-15">
-                                    <div class="form-item">
-                                        <input type="email" class="form-control" placeholder="Email Address" aria-label="Email Address">
-                                    </div>
-                                </div>
-                                <div class="col-12 padd-15">
-                                    <div class="form-item">
-                                        <input type="text" class="form-control" placeholder="Subject" aria-label="Subject">
-                                    </div>
-                                </div>
-                                <div class="col-12 padd-15">
-                                    <div class="form-item">
-                                        <textarea class="form-control" placeholder="Your Message" aria-label="Your Message"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-12 padd-15">
-                                    <a href="mailto:asusrishabh@outlook.com" class="btn hire-me" id="contact-send-btn">Send Message</a>
-                                </div>
+                            <div id="contact-success" class="contact-feedback contact-feedback--success" style="display:none" aria-live="polite">
+                                <i class="fa fa-circle-check"></i> Message sent! I'll get back to you soon.
                             </div>
+                            <div id="contact-error" class="contact-feedback contact-feedback--error" style="display:none" aria-live="polite">
+                                <i class="fa fa-triangle-exclamation"></i> Something went wrong. Please try again or email me directly.
+                            </div>
+                            <form id="contact-form" action="https://formspree.io/f/mwvdeywa" method="POST" novalidate>
+                                <!-- Honeypot: hidden field to catch bots -->
+                                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                                <div class="row">
+                                    <div class="col-6 padd-15">
+                                        <div class="form-item">
+                                            <input type="text" name="name" class="form-control" placeholder="Full Name" aria-label="Full Name" required data-fs-field>
+                                            <span class="form-error" data-fs-error="name"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 padd-15">
+                                        <div class="form-item">
+                                            <input type="email" name="email" class="form-control" placeholder="Email Address" aria-label="Email Address" required data-fs-field>
+                                            <span class="form-error" data-fs-error="email"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 padd-15">
+                                        <div class="form-item">
+                                            <input type="text" name="subject" class="form-control" placeholder="Subject" aria-label="Subject" required data-fs-field>
+                                            <span class="form-error" data-fs-error="subject"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 padd-15">
+                                        <div class="form-item">
+                                            <textarea name="message" class="form-control" placeholder="Your Message" aria-label="Your Message" required data-fs-field></textarea>
+                                            <span class="form-error" data-fs-error="message"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 padd-15">
+                                        <button type="submit" class="btn hire-me" id="contact-send-btn" data-fs-submit-btn>Send Message</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <ul class="contact-info-list row">
@@ -935,6 +949,57 @@
                 bar.setAttribute('aria-valuenow', Math.round(progress * 100));
             }
             window.addEventListener('scroll', updateProgress, { passive: true });
+        })();
+    </script>
+
+    <!-- Formspree Ajax -->
+    <script>
+        (function () {
+            var form = document.getElementById('contact-form');
+            if (!form) return;
+
+            var successBox = document.getElementById('contact-success');
+            var errorBox   = document.getElementById('contact-error');
+            var submitBtn  = document.getElementById('contact-send-btn');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Basic client-side validation
+                var inputs = form.querySelectorAll('[required]');
+                var valid = true;
+                inputs.forEach(function (el) {
+                    if (!el.value.trim()) { el.setAttribute('aria-invalid', 'true'); valid = false; }
+                    else el.removeAttribute('aria-invalid');
+                });
+                if (!valid) return;
+
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending…';
+                successBox.style.display = 'none';
+                errorBox.style.display   = 'none';
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(function (res) {
+                    if (res.ok) {
+                        successBox.style.display = 'block';
+                        form.reset();
+                    } else {
+                        return res.json().then(function (data) { throw data; });
+                    }
+                })
+                .catch(function () {
+                    errorBox.style.display = 'block';
+                })
+                .finally(function () {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+                });
+            });
         })();
     </script>
 </body>
