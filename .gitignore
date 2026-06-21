@@ -44,3 +44,6 @@ out/
 *.swp
 *.swo
 *~
+
+# Local planning docs
+EMAIL-VALIDATION-PLAN.md
