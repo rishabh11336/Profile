@@ -802,7 +802,6 @@ ul {
 .portfolio .portfolio-item {
     flex: 0 0 calc(33.333% - 14px);
     max-width: calc(33.333% - 14px);
-    height: 100%;
 }
 
 @media (max-width: 991px) {
