@@ -771,6 +771,22 @@ ul {
     transform: scale(1.1);
 }
 
+.portfolio .portfolio-item-inner .portfolio-img.portfolio-img--gradient {
+    background: linear-gradient(135deg, #0d2137 0%, var(--skin-color, #0b4975) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portfolio .portfolio-item-inner .portfolio-img.portfolio-img--gradient-2 {
+    background: linear-gradient(135deg, #1a0a2e 0%, #4a2080 100%);
+}
+
+.portfolio .portfolio-item-inner .portfolio-img--gradient i {
+    font-size: 56px;
+    color: rgba(255, 255, 255, 0.25);
+}
+
 .portfolio .portfolio-info {
     padding: 20px;
     display: flex;
