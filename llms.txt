@@ -40,8 +40,12 @@
 
 ## Projects
 
-- Parking Management System: Advanced parking management built with Flask, Vue.js, Azure, Redis, Celery, Webhooks — live at https://parking.rishabhsingh.me
-- Bloglite Compass: Blogging platform built with Flask, HTML, CSS, JavaScript, PostgreSQL, Supabase
+- LLM YouTube Metadata Connector: End-to-end LLM pipeline using Claude Desktop + YouTube Data API v3 to automate metadata generation, SEO titles, keyword tagging for 500+ videos. OAuth 2.0, prompt engineering, human-in-the-loop validation. GitHub: github.com/rishabh11336/LLM-Youtube-Metadataconnecter
+- Parking Management System: Full-stack Flask + Vue.js app with Redis, Celery, Azure CI/CD — real-time slot booking, role-based access, analytics dashboard — live at https://parking.rishabhsingh.me
+- Indian Housing ETL Pipeline: Scalable ETL pipeline — scraping, cleaning, deduplication, 180,000+ records across PostgreSQL and MongoDB. GitHub: github.com/rishabh11336/Indian-Housing-ETL-Pipeline
+- Mixed-Effects Marketing Modeling: Hierarchical LME regression for campaign elasticity decomposition — global vs. channel-level MMM (Kaggle)
+- Audio Classification (UrbanSound8K): CNN + mel-spectrograms + MFCCs via TensorFlow and Librosa (Kaggle)
+- Bloglite Compass: Multi-user blogging platform — Flask, SQLAlchemy ORM, JWT auth, REST API, cloud deployment — live at https://compass.rishabhsingh.me
 
 ## Open Source Contributions
 
@@ -53,11 +57,15 @@
 ## Person
 
 name: Rishabh Singh
-role: Data Scientist / AI Engineer
+role: Data Scientist — Forecasting, Analytics & Applied ML
 current_employer: Chryselys (Oct 2024 – present)
 education: B.S. Data Science and Applications, IIT Madras (2021–2025); Minor in Economics & Finance; CGPA 7.89
 location: Delhi, India
-skills: Python, Machine Learning, SQL, PyTorch, Flask, Django, Azure, AWS, Streamlit, Figma
+specializations: Time-Series Forecasting, Mixed-Effects Models, Marketing Mix Modeling (MMM), Pharma Commercial Analytics, LLM Pipelines, Feature Engineering, A/B Testing, Bayesian Inference
+languages: Python, SQL, R, Bash, JavaScript
+ml_tools: scikit-learn, pandas, NumPy, XGBoost, PyTorch, TensorFlow, PySpark, Streamlit, Flask, FastAPI
+cloud_infra: Azure (App Service, Functions, Blob Storage), AWS (S3, Lambda, Bedrock, App Runner), PostgreSQL, MongoDB, Redis, Docker, CI/CD, MLOps, ETL
+analytics_platforms: Dataiku, Databricks, Tableau
 contact_page: https://rishabhsingh.me/#contact
 github: https://github.com/rishabh11336
 linkedin: https://www.linkedin.com/in/rishabh11336/
