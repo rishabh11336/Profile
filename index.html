@@ -378,7 +378,7 @@
     </script>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/style.css?v=1.8">
+    <link rel="stylesheet" href="css/style.css?v=1.9">
     <link rel="stylesheet" href="css/skins/color-4.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -387,7 +387,7 @@
     <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
     <link rel="stylesheet" href="css/style-switcher.css">
     <link rel="stylesheet" href="css/lazy-skeleton.css">
-    <link rel="stylesheet" href="css/opensource.css?v=1.1">
+    <link rel="stylesheet" href="css/opensource.css?v=1.2">
     <link rel="stylesheet" href="css/blog.css?v=1.2">
 
     <!-- Favicon -->
@@ -441,16 +441,13 @@
                             <h2 class="hello">Data Scientist | AI Engineer | IIT Madras</h2>
                             <h2 class="my-profission">I'm all about that <span class="typing">Data Science</span> magic!</h2>
                             <!-- <h3 class="my-profession">I'm a <span class="typing">Back-end Developer</span></h3> -->
-                            <br>
-                            <p> Data Scientist with hands-on experience delivering end-to-end analytics
+                            <p>Data Scientist with hands-on experience delivering end-to-end analytics
                                 solutions — from data wrangling and modeling to building dashboards, APIs, and
                                 deployable prototypes. Worked on forecasting, mixed-effects sizing, MMM, and time-series
-                                pipelines with stakeholder-ready insight delivery.
-                                <br>
-                                Strong in Python, SQL, Streamlit, Flask, Figma, and cloud exposure (Azure/AWS), with
+                                pipelines with stakeholder-ready insight delivery.</p>
+                            <p style="margin-top:12px;">Strong in Python, SQL, Streamlit, Flask, Figma, and cloud exposure (Azure/AWS), with
                                 experience mentoring junior analysts and collaborating across Forecasting, PACE, and I&A
-                                teams.
-                            </p>
+                                teams.</p>
                             <a href="#contact" class="btn hire-me">Hire Me</a>
                             <a href="#portfolio" class="btn btn-ghost">View Projects ↓</a>
                         </div>
@@ -492,16 +489,16 @@
                                 <div class="personal-info padd-15">
                                     <ul class="info-list row">
                                         <li class="info-item padd-15">
-                                            <p>Degree : <span>Data Science and Applications</span></p>
+                                            <p><strong>Degree:</strong> <span>Data Science and Applications</span></p>
                                         </li>
                                         <li class="info-item padd-15">
-                                            <p>Location : <span>Delhi, India</span></p>
+                                            <p><strong>Location:</strong> <span>Delhi, India</span></p>
                                         </li>
                                         <li class="info-item padd-15">
-                                            <p>Leadership : <span> oneArena Flask / Machine Learning Trainer </span></p>
+                                            <p><strong>Leadership:</strong> <span>oneArena Flask / Machine Learning Trainer</span></p>
                                         </li>
                                         <li class="info-item padd-15">
-                                            <p>Competition : <span> Rank-3 Codechef Competition </span></p>
+                                            <p><strong>Competition:</strong> <span>Rank-3 Codechef Competition</span></p>
                                         </li>
                                     </ul>
                                     <div class="row">
@@ -744,6 +741,35 @@
                     </div>
                     <h3 class="contact-title padd-15">Have You Any Questions ?</h3>
                     <p class="contact-sub-title padd-15">I'M AT YOUR SERVICES</p>
+                    <div class="row">
+                        <div class="contact-form padd-15">
+                            <div class="row">
+                                <div class="col-6 padd-15">
+                                    <div class="form-item">
+                                        <input type="text" class="form-control" placeholder="Full Name" aria-label="Full Name">
+                                    </div>
+                                </div>
+                                <div class="col-6 padd-15">
+                                    <div class="form-item">
+                                        <input type="email" class="form-control" placeholder="Email Address" aria-label="Email Address">
+                                    </div>
+                                </div>
+                                <div class="col-12 padd-15">
+                                    <div class="form-item">
+                                        <input type="text" class="form-control" placeholder="Subject" aria-label="Subject">
+                                    </div>
+                                </div>
+                                <div class="col-12 padd-15">
+                                    <div class="form-item">
+                                        <textarea class="form-control" placeholder="Your Message" aria-label="Your Message"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-12 padd-15">
+                                    <a href="mailto:asusrishabh@outlook.com" class="btn hire-me" id="contact-send-btn">Send Message</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <ul class="contact-info-list row">
                         <li class="contact-info-item padd-15">
                             <div class="icon">
@@ -892,6 +918,23 @@
             var label = years > 0 ? years + ' Year' + (years > 1 ? 's' : '') + (rem > 0 ? ' ' + rem + ' Month' + (rem > 1 ? 's' : '') : '') : rem + ' Month' + (rem !== 1 ? 's' : '');
             var el = document.getElementById('chryselys-tenure');
             if (el) el.textContent = label;
+        })();
+    </script>
+
+    <!-- FIX 11: Reading Progress Bar -->
+    <div id="reading-progress" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    <script>
+        (function () {
+            var bar = document.getElementById('reading-progress');
+            if (!bar) return;
+            function updateProgress() {
+                var scrollTop = window.scrollY || document.documentElement.scrollTop;
+                var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                var progress = docHeight > 0 ? scrollTop / docHeight : 0;
+                bar.style.transform = 'scaleX(' + progress + ')';
+                bar.setAttribute('aria-valuenow', Math.round(progress * 100));
+            }
+            window.addEventListener('scroll', updateProgress, { passive: true });
         })();
     </script>
 </body>
