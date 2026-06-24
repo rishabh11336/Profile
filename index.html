@@ -22,7 +22,7 @@
     <link rel="alternate" type="application/rss+xml" title="Rishabh Singh — ML &amp; AI Blog" href="/feed.xml">
 
     <!-- Preload hero image for LCP -->
-    <link rel="preload" as="image" href="images/me.png">
+    <link rel="preload" as="image" href="images/me-2x.jpg" fetchpriority="high" imagesrcset="images/me-1x.jpg 263w, images/me-2x.jpg 526w" imagesizes="263px">
 
     <!-- Open Graph / Facebook Meta Tags -->
     <meta property="og:type" content="website">
@@ -378,10 +378,11 @@
     </script>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/style.css?v=2.3">
+    <link rel="stylesheet" href="css/style.css?v=2.4">
     <link rel="stylesheet" href="css/skins/color-4.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        crossorigin="anonymous" referrerpolicy="no-referrer">
+        media="print" onload="this.media='all'" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
     <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
     <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
     <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
@@ -413,7 +414,7 @@
 
         <header class="aside" role="banner">
             <div class="logo">
-                <a href="#" aria-label="Rishabh Singh Portfolio Home"><img src="images/Logo.svg" width="300"
+                <a href="#" aria-label="Rishabh Singh Portfolio Home"><img src="images/Logo.svg" width="300" height="300"
                         alt="Rishabh Singh - Data Scientist Portfolio Logo"></a>
             </div>
 
@@ -453,8 +454,12 @@
                         </div>
                         <div class="home-img padd-15">
                             <div class="home-img-frame">
-                                <img src="images/me.png" alt="Rishabh Singh — Data Scientist and AI Engineer" width="1024"
-                                    height="1536">
+                                <img src="images/me-2x.jpg"
+                                     srcset="images/me-1x.jpg 263w, images/me-2x.jpg 526w"
+                                     sizes="263px"
+                                     alt="Rishabh Singh — Data Scientist and AI Engineer"
+                                     width="526" height="788"
+                                     fetchpriority="high">
                             </div>
                         </div>
                     </div>
