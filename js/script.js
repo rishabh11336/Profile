@@ -76,12 +76,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, { threshold: 0.08 });
 
-    document.querySelectorAll('section.section').forEach(s => {
+    const sections = document.querySelectorAll('section.section');
+    const inViews = Array.from(sections).map(s => {
         const rect = s.getBoundingClientRect();
-        const inView = rect.top < window.innerHeight && rect.bottom > 0;
-        if (!inView) {
-            s.classList.add('reveal');
-        }
+        return rect.top < window.innerHeight && rect.bottom > 0;
+    });
+    sections.forEach((s, i) => {
+        if (!inViews[i]) s.classList.add('reveal');
         revealObserver.observe(s);
     });
 });
