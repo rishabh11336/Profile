@@ -8,7 +8,7 @@ window.addEventListener("scroll", ()=>{
     if(document.querySelector('.style-switcher').classList.contains('open')){
         document.querySelector('.style-switcher').classList.remove('open');
     }
-})
+}, { passive: true })
 
 const alternateStyles = document.querySelectorAll('.alternate-style');
 function setActiveStyle(color){

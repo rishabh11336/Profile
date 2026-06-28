@@ -83,6 +83,7 @@ ul {
 .section {
     background: var(--bg-black-900);
     min-height: 100vh;
+    min-height: 100svh;
     display: block;
     padding: 0 30px;
     position: relative;
@@ -1151,9 +1152,16 @@ ul {
         display: none !important;
     }
 
-    /* Prevent horizontal overflow */
-    body {
+    /* Prevent horizontal overflow — html+body both required for iOS momentum scroll */
+    html, body {
         overflow-x: hidden;
+    }
+
+    /* Disable reveal animation on mobile — translateY snap causes visible content jumps */
+    .section.reveal,
+    .section.reveal.visible {
+        transform: none;
+        transition: none;
     }
 
     /* Fix logo size for mobile */
