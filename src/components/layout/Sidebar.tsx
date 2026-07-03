@@ -88,7 +88,7 @@ function SidebarInner({
           width={240}
           height={62}
           priority
-          className="h-16 w-auto"
+          className="w-full h-auto"
         />
       </div>
 
