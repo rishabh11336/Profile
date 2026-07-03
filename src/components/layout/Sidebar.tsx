@@ -85,10 +85,10 @@ function SidebarInner({
         <Image
           src="/Logo.svg"
           alt="Rishabh Singh"
-          width={148}
-          height={38}
+          width={240}
+          height={62}
           priority
-          className="h-9 w-auto"
+          className="h-16 w-auto"
         />
       </div>
 
