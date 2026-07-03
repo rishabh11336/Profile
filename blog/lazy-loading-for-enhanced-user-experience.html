@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lazy Loading vs Eager Loading — Web Performance | Rishabh Singh</title>
+    <meta name="author" content="Rishabh Singh">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="keywords" content="lazy loading HTML, loading=lazy, eager loading, image loading performance, web performance optimization, reduce page load time, loading attribute, bandwidth optimization, SEO image loading">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rishabhsingh.me/blog/lazy-loading-for-enhanced-user-experience.html">
+    <meta property="og:title" content="Lazy Loading vs Eager Loading | Rishabh Singh">
+    <meta property="og:description" content="How the HTML loading attribute defers images until needed — reducing load time, bandwidth, and improving SEO.">
+    <meta property="og:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/0*0OyD4-O4hN_QCJUh.jpg">
+    <meta property="og:image:alt" content="Lazy loading concept — deferred resource loading">
+    <meta property="og:site_name" content="Rishabh Singh Portfolio">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:author" content="Rishabh Singh">
+    <meta property="article:published_time" content="2024-02-04">
+    <meta property="article:tag" content="Web Development">
+    <meta property="article:tag" content="Performance">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://rishabhsingh.me/blog/lazy-loading-for-enhanced-user-experience.html">
+    <meta name="twitter:title" content="Lazy Loading vs Eager Loading | Rishabh Singh">
+    <meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/0*0OyD4-O4hN_QCJUh.jpg">
+    <meta name="twitter:creator" content="@rishabhsingh">
+
+    <link rel="canonical" href="https://rishabhsingh.me/blog/lazy-loading-for-enhanced-user-experience.html">
+    <link rel="sitemap" type="application/xml" href="../sitemap.xml">
+    <link rel="icon" type="image/svg+xml" href="../images/Logo.svg">
+    <link rel="apple-touch-icon" href="../images/Logo.svg">
+    <script type="application/ld+json">
+    [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Lazy Loading for Enhanced User Experience",
+      "description": "Lazy loading vs eager loading: how the HTML loading attribute defers images until needed, reducing load time, bandwidth, and improving SEO.",
+      "image": "https://miro.medium.com/v2/resize:fit:720/format:webp/0*0OyD4-O4hN_QCJUh.jpg",
+      "author": {
+        "@type": "Person",
+        "@id": "https://rishabhsingh.me/#person",
+        "name": "Rishabh Singh",
+        "url": "https://rishabhsingh.me"
+      },
+      "publisher": { "@type": "Person", "name": "Rishabh Singh" },
+      "datePublished": "2024-02-04",
+      "dateModified": "2026-06-17",
+      "url": "https://rishabhsingh.me/blog/lazy-loading-for-enhanced-user-experience.html",
+      "keywords": ["Lazy Loading", "Eager Loading", "Web Performance", "HTML", "Image Optimization", "SEO"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rishabhsingh.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://rishabhsingh.me/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Lazy Loading for Enhanced User Experience", "item": "https://rishabhsingh.me/blog/lazy-loading-for-enhanced-user-experience.html" }
+      ]
+    }
+    ]
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../css/blog-modern.css">
+</head>
+
+<body>
+    <div id="progress-bar"></div>
+
+    <nav class="top-nav" id="top-nav" aria-label="Site navigation">
+        <a href="../index.html" class="nav-logo"><i class="fa fa-arrow-left"></i> Rishabh Singh</a>
+        <div class="nav-crumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span>/</span>
+            <a href="index.html">Blog</a>
+            <span>/</span>
+            <span>Lazy Loading for Enhanced User Experience</span>
+        </div>
+        <a href="index.html" class="nav-blog-link"><i class="fa fa-newspaper"></i> All Posts</a>
+    </nav>
+
+    <header class="article-hero">
+        <div class="tags" aria-label="Article tags">
+            <span class="tag">Web Development</span>
+            <span class="tag">Performance</span>
+            <span class="tag">HTML</span>
+            <span class="tag">SEO</span>
+        </div>
+        <h1>Lazy Loading for Enhanced User Experience</h1>
+        <p class="article-subtitle">Don't load what the user can't see. Lazy loading defers images and media until they approach the viewport — reducing initial load time, bandwidth, and improving SEO.</p>
+        <div class="article-meta">
+            <span><i class="fa fa-user"></i> Rishabh Singh</span>
+            <span><i class="fa fa-calendar"></i> Feb 4, 2024</span>
+            <span><i class="fa fa-clock"></i> 2 min read</span>
+            <span><i class="fa fa-brands fa-medium"></i> <a href="https://medium.com/stackademic/lazy-loading-for-enhanced-user-experience-c96441e432e0" target="_blank" rel="noopener noreferrer">Medium</a></span>
+        </div>
+    </header>
+
+    <div class="content-outer">
+        <article class="article-body">
+
+<figure class="blog-figure">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*0OyD4-O4hN_QCJUh.jpg"
+                             alt="Lazy loading concept — resources deferred until visible in viewport"
+                             loading="eager">
+                        <figcaption>Lazy loading: only load resources when the user is about to see them.</figcaption>
+                    </figure>
+
+<h2 id="the-problem">The Problem</h2>
+                        <p>
+                            By default, browsers load all images on a page immediately — whether the user will ever scroll to them or not.
+                            On a page with 50 images, this means 50 network requests on load, most of them wasted on content below the fold.
+                        </p>
+                        <p>
+                            The result: slower initial load, wasted bandwidth (especially on mobile), and a worse user experience for the content that actually matters — what's visible right now.
+                        </p>
+
+                        <h2 id="lazy-loading">Lazy Loading</h2>
+                        <p>
+                            Lazy loading defers image and media loading until they approach the user's viewport.
+                            Resources below the fold are not fetched until the user scrolls near them.
+                            One attribute in HTML enables this natively:
+                        </p>
+
+                        <pre><code>&lt;img src="image.jpg" loading="lazy" alt="Description"&gt;</code></pre>
+
+                        <p>The browser tracks each image's position relative to the viewport and triggers a fetch only when it's within a certain distance of becoming visible.</p>
+
+                        <div class="blog-component">
+                            <h3>Advantages</h3>
+                            <ul>
+                                <li><strong>Reduces initial page load time</strong> — fewer requests on first paint</li>
+                                <li><strong>Conserves bandwidth</strong> — images never seen are never downloaded</li>
+                                <li><strong>Improves SEO rankings</strong> — Core Web Vitals (LCP, FID) improve with faster loads</li>
+                                <li><strong>Decreases browser workload</strong> — fewer decode/render operations upfront</li>
+                                <li><strong>Better performance on low-bandwidth connections</strong> — especially important on mobile</li>
+                                <li><strong>Optimizes resource utilization</strong> — server and client both work less on initial load</li>
+                            </ul>
+                        </div>
+
+                        <div class="blog-component">
+                            <h3>Disadvantages</h3>
+                            <ul>
+                                <li><strong>Inappropriate for small-scale applications</strong> — overhead not worth it with few images</li>
+                                <li><strong>Placeholders during rapid scroll</strong> — can cause layout shift or blank areas</li>
+                                <li><strong>Additional server round-trips</strong> — resources fetched on demand instead of batch</li>
+                            </ul>
+                        </div>
+
+                        <h2 id="eager-loading-default-behavior">Eager Loading (Default Behavior)</h2>
+                        <p>
+                            Eager loading — the browser default — fetches all images immediately on page load, regardless of viewport position.
+                            It's the right choice for above-the-fold content: hero images, logos, critical visuals that should be ready instantly.
+                        </p>
+
+                        <pre><code>&lt;img src="hero.jpg" loading="eager" alt="Hero image"&gt;</code></pre>
+
+                        <div class="blog-insight">
+                            "Use loading='eager' for above-the-fold content. Use loading='lazy' for everything below."
+                        </div>
+
+                        <h2 id="when-to-use-which">When to Use Which</h2>
+                        <ul>
+                            <li><strong><code>loading="eager"</code>:</strong> hero images, logos, above-the-fold critical visuals — load immediately</li>
+                            <li><strong><code>loading="lazy"</code>:</strong> everything else — blog post images, gallery thumbnails, footer content</li>
+                            <li><strong>Small pages with few images:</strong> skip lazy loading — the overhead adds complexity without meaningful gain</li>
+                            <li><strong>Image-heavy pages, long scrolls, mobile-first:</strong> lazy loading delivers the most impact</li>
+                        </ul>
+
+                        <div class="blog-reference">
+                            <i class="fa fa-circle-info"></i>
+                            Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading" target="_blank" rel="noopener noreferrer">MDN Web Docs — img loading attribute</a>
+                        </div>
+
+            <div class="article-footer">
+                <a href="index.html" class="back-link"><i class="fa fa-arrow-left"></i> Back to Blog</a>
+                <a href="https://medium.com/stackademic/lazy-loading-for-enhanced-user-experience-c96441e432e0" target="_blank" rel="noopener noreferrer" class="medium-link"><i class="fa fa-brands fa-medium"></i> Read on Medium</a>
+            </div>
+
+        </article>
+
+        <aside class="toc-aside" aria-label="Table of contents">
+            <div class="toc-inner">
+                <div class="toc-heading">Contents</div>
+                <ul class="toc-list">
+                    <li><a href="#the-problem">The Problem</a></li>
+                    <li><a href="#lazy-loading">Lazy Loading</a></li>
+                    <li><a href="#eager-loading-default-behavior">Eager Loading (Default Behavior)</a></li>
+                    <li><a href="#when-to-use-which">When to Use Which</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        const bar = document.getElementById('progress-bar');
+        window.addEventListener('scroll', function () {
+            const st = window.scrollY;
+            const dh = document.documentElement.scrollHeight - window.innerHeight;
+            bar.style.width = (dh > 0 ? (st / dh * 100) : 0) + '%';
+        }, { passive: true });
+        const nav = document.getElementById('top-nav');
+        let lastY = 0;
+        window.addEventListener('scroll', function () {
+            const y = window.scrollY;
+            if (y > lastY && y > 140) nav.classList.add('hidden');
+            else nav.classList.remove('hidden');
+            lastY = y;
+        }, { passive: true });
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const sections = document.querySelectorAll('.article-body h2[id]');
+        if (tocLinks.length && sections.length) {
+            const io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        tocLinks.forEach(function (l) { l.classList.remove('active'); });
+                        const a = document.querySelector('.toc-list a[href="#' + entry.target.id + '"]');
+                        if (a) a.classList.add('active');
+                    }
+                });
+            }, { rootMargin: '-10% 0px -75% 0px' });
+            sections.forEach(function (s) { io.observe(s); });
+        }
+    </script>
+</body>
+</html>

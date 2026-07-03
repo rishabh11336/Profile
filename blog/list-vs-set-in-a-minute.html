@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List vs Set in Python — Performance, Use Cases | Rishabh Singh</title>
+    <meta name="description" content="List vs Set in Python: iteration speed, O(1) membership testing, memory trade-offs, and exactly when to use each — with benchmark results.">
+    <meta name="author" content="Rishabh Singh">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="keywords" content="Python list vs set, list vs set performance, set membership testing O(1), Python data structures, when to use set Python, list iteration Python, hash table Python, Python interview questions">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rishabhsingh.me/blog/list-vs-set-in-a-minute.html">
+    <meta property="og:title" content="List vs Set in Python — Performance, Use Cases | Rishabh Singh">
+    <meta property="og:description" content="List vs Set in Python: iteration speed, O(1) membership testing, memory trade-offs, and exactly when to use each — with benchmark results.">
+    <meta property="og:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/1*VNv0DCA6RjMlSuc2EXQWFA.png">
+    <meta property="og:image:alt" content="Python List vs Set performance comparison">
+    <meta property="og:site_name" content="Rishabh Singh Portfolio">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:author" content="Rishabh Singh">
+    <meta property="article:published_time" content="2025-07-06">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="Data Structures">
+    <meta property="article:tag" content="Performance">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://rishabhsingh.me/blog/list-vs-set-in-a-minute.html">
+    <meta name="twitter:title" content="List vs Set in Python — Performance, Use Cases | Rishabh Singh">
+    <meta name="twitter:description" content="Iteration speed, O(1) membership testing, memory trade-offs — when to use list vs set in Python.">
+    <meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/1*VNv0DCA6RjMlSuc2EXQWFA.png">
+    <meta name="twitter:creator" content="@rishabhsingh">
+
+    <link rel="canonical" href="https://rishabhsingh.me/blog/list-vs-set-in-a-minute.html">
+    <link rel="sitemap" type="application/xml" href="../sitemap.xml">
+    <link rel="icon" type="image/svg+xml" href="../images/Logo.svg">
+    <link rel="apple-touch-icon" href="../images/Logo.svg">
+    <script type="application/ld+json">
+    [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "List vs Set in a Minute",
+      "description": "List vs Set in Python: iteration speed, O(1) membership testing, memory trade-offs, and exactly when to use each — with benchmark results.",
+      "image": [
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*VNv0DCA6RjMlSuc2EXQWFA.png",
+        "https://miro.medium.com/v2/resize:fit:2000/format:webp/1*3QMiiabMz6gf3rHbqogxfQ.png",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*1Nw0V--ctqXU2T7z6dCNXg.png",
+        "https://miro.medium.com/v2/resize:fit:720/format:webp/1*1ANXbKi_PvS19K3xzPx9eg.png"
+      ],
+      "author": {
+        "@type": "Person",
+        "@id": "https://rishabhsingh.me/#person",
+        "name": "Rishabh Singh",
+        "url": "https://rishabhsingh.me"
+      },
+      "publisher": { "@type": "Person", "name": "Rishabh Singh" },
+      "datePublished": "2025-07-06",
+      "dateModified": "2026-06-17",
+      "url": "https://rishabhsingh.me/blog/list-vs-set-in-a-minute.html",
+      "keywords": ["Python", "List", "Set", "Data Structures", "Performance", "Hash Table", "Big O"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is list or set faster for iteration in Python?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lists are faster for iteration. They store elements in contiguous memory, enabling rapid sequential access. Sets use hash tables with scattered memory access and hashing overhead, making iteration slower."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is list or set faster for membership testing (in operator) in Python?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sets are dramatically faster for membership testing. Sets use hash tables for O(1) average-case lookup. Lists perform a linear scan at O(n) — checking every element until a match is found."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should you use a Python set instead of a list?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use a set when you need to check membership with the 'in' operator, ensure uniqueness of elements, or perform rapid membership testing at scale. Sets eliminate duplicates automatically and provide O(1) lookup."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should you use a Python list instead of a set?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use a list when order matters, when you need index-based access (e.g., my_list[2]), when you need to iterate over elements in sequence, or when you need to store duplicate values."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the time complexity of 'in' for list vs set in Python?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For a list, 'x in my_list' is O(n) — it scans every element. For a set, 'x in my_set' is O(1) average case — it computes the hash and jumps directly to the bucket."
+          }
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rishabhsingh.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://rishabhsingh.me/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "List vs Set in a Minute", "item": "https://rishabhsingh.me/blog/list-vs-set-in-a-minute.html" }
+      ]
+    }
+    ]
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../css/blog-modern.css">
+</head>
+
+<body>
+    <div id="progress-bar"></div>
+
+    <nav class="top-nav" id="top-nav" aria-label="Site navigation">
+        <a href="../index.html" class="nav-logo"><i class="fa fa-arrow-left"></i> Rishabh Singh</a>
+        <div class="nav-crumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span>/</span>
+            <a href="index.html">Blog</a>
+            <span>/</span>
+            <span>List vs Set in a Minute</span>
+        </div>
+        <a href="index.html" class="nav-blog-link"><i class="fa fa-newspaper"></i> All Posts</a>
+    </nav>
+
+    <header class="article-hero">
+        <div class="tags" aria-label="Article tags">
+            <span class="tag">Python</span>
+            <span class="tag">Data Structures</span>
+            <span class="tag">Performance</span>
+            <span class="tag">Big O</span>
+            <span class="tag">In a Minute</span>
+        </div>
+        <h1>List vs Set in a Minute</h1>
+        <p class="article-subtitle">Two of Python's most-used containers — dramatically different implementations, performance profiles, and use cases. Choosing wrong costs you orders of magnitude.</p>
+        <div class="article-meta">
+            <span><i class="fa fa-user"></i> Rishabh Singh</span>
+            <span><i class="fa fa-calendar"></i> Jul 6, 2025</span>
+            <span><i class="fa fa-clock"></i> 2 min read</span>
+            <span><i class="fa fa-brands fa-medium"></i> <a href="https://medium.com/@asusrishabh/list-vs-set-in-a-minute-fe8b278d53c9" target="_blank" rel="noopener noreferrer">Medium</a></span>
+        </div>
+    </header>
+
+    <div class="content-outer">
+        <article class="article-body">
+
+<figure class="blog-figure">
+                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*VNv0DCA6RjMlSuc2EXQWFA.png"
+                             alt="Python List vs Set performance comparison overview"
+                             loading="eager">
+                        <figcaption>List vs Set — same surface, completely different engines underneath.</figcaption>
+                    </figure>
+
+<h2 id="the-setup">The Setup</h2>
+                        <p>
+                            When building Python applications, selecting the right data structure affects both code readability and performance.
+                            Lists and sets are two of the most frequently used containers — but they have dramatically different implementations under the hood.
+                        </p>
+                        <p>
+                            A <strong>list</strong> stores elements in contiguous memory in insertion order. A <strong>set</strong> stores elements in a hash table — no guaranteed order, no duplicates, O(1) lookup.
+                            Same Python syntax, completely different trade-offs.
+                        </p>
+
+                        <!-- ── Iteration Performance ── -->
+                        <h2 id="iteration-lists-win">Iteration: Lists Win</h2>
+
+                        <div class="blog-component">
+                            <h3><span class="component-number">1</span> How Lists Iterate</h3>
+                            <p>
+                                Lists maintain elements in contiguous memory. When you loop over a list, Python steps through a flat block of memory — no jumping, no hashing, no indirection.
+                                Cache-friendly sequential access makes this fast.
+                            </p>
+                        </div>
+
+                        <div class="blog-component">
+                            <h3><span class="component-number">2</span> How Sets Iterate</h3>
+                            <p>
+                                Sets use hash tables. Memory is sparse and scattered — Python must walk the internal hash array, skip empty buckets, and compute hashes as it goes.
+                                More work per element, more cache misses.
+                            </p>
+                        </div>
+
+                        <div class="blog-insight">
+                            "Lists are faster than sets when it comes to iterating over elements."
+                        </div>
+
+                        <!-- Iteration benchmark image -->
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*1Nw0V--ctqXU2T7z6dCNXg.png"
+                                 alt="Benchmark showing list iteration speed vs set iteration speed in Python"
+                                 loading="lazy">
+                            <figcaption>Iteration benchmark: list's contiguous memory gives a consistent speed advantage over set's hash-table traversal.</figcaption>
+                        </figure>
+
+                        <!-- ── Membership Testing ── -->
+                        <h2 id="membership-testing-sets-win-by-orders-of-magnitude">Membership Testing: Sets Win — By Orders of Magnitude</h2>
+
+                        <div class="blog-component">
+                            <h3><span class="component-number">1</span> List Membership — O(n)</h3>
+                            <p>
+                                <code>x in my_list</code> performs a linear scan — Python checks every element from index 0 until it finds a match or exhausts the list.
+                                For a list of 1,000,000 elements, worst case means 1,000,000 comparisons.
+                            </p>
+                        </div>
+
+                        <div class="blog-component">
+                            <h3><span class="component-number">2</span> Set Membership — O(1)</h3>
+                            <p>
+                                <code>x in my_set</code> computes <code>hash(x)</code>, jumps directly to the corresponding bucket, and checks one (or a handful of) elements.
+                                For a set of 1,000,000 elements, that's still one hash computation — regardless of size.
+                            </p>
+                        </div>
+
+                        <div class="blog-insight">
+                            "Sets are significantly faster than lists for membership operations."
+                        </div>
+
+                        <!-- Membership benchmark image -->
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*1ANXbKi_PvS19K3xzPx9eg.png"
+                                 alt="Benchmark showing set membership testing is dramatically faster than list membership at scale"
+                                 loading="lazy">
+                            <figcaption>Membership testing: set's O(1) hash lookup vs list's O(n) linear scan — the gap widens with collection size.</figcaption>
+                        </figure>
+
+                        <!-- ── Best Practices ── -->
+                        <h2 id="best-practices">Best Practices</h2>
+
+                        <div class="blog-component">
+                            <h3>Use a List When:</h3>
+                            <ul>
+                                <li>Order matters — you need elements in insertion sequence</li>
+                                <li>Index-based access is needed — <code>my_list[i]</code></li>
+                                <li>Iteration and looping are the primary operations</li>
+                                <li>Duplicates are allowed or required</li>
+                            </ul>
+                        </div>
+
+                        <div class="blog-component">
+                            <h3>Use a Set When:</h3>
+                            <ul>
+                                <li>Checking presence with the <code>in</code> operator</li>
+                                <li>Ensuring uniqueness — sets automatically deduplicate</li>
+                                <li>Rapid membership testing at any scale</li>
+                                <li>Set operations: union (<code>|</code>), intersection (<code>&</code>), difference (<code>-</code>)</li>
+                            </ul>
+                        </div>
+
+                        <!-- Full-width benchmark chart -->
+                        <figure class="blog-figure">
+                            <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*3QMiiabMz6gf3rHbqogxfQ.png"
+                                 alt="Full comparison chart: list vs set across iteration and membership testing benchmarks"
+                                 loading="lazy">
+                            <figcaption>Complete benchmark: list dominates iteration, set dominates membership. The right choice depends entirely on your access pattern.</figcaption>
+                        </figure>
+
+                        <!-- Key Takeaways -->
+                        <h2 id="key-takeaways">Key Takeaways</h2>
+                        <ul>
+                            <li><strong>Iteration →</strong> use a list. Contiguous memory = fast loops.</li>
+                            <li><strong>Membership testing →</strong> use a set. Hash table = O(1) lookup, always.</li>
+                            <li><strong>Need both?</strong> Keep a list for order/iteration, maintain a parallel set for fast lookups.</li>
+                            <li><strong>These small decisions matter</strong> in performance-sensitive applications — switching list to set for <code>in</code> checks can reduce a tight loop from O(n²) to O(n).</li>
+                        </ul>
+
+                        <!-- FAQ Section -->
+                        <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
+
+                        <details class="faq-item">
+                            <summary>Is list or set faster for iteration in Python?</summary>
+                            <p>Lists are faster for iteration. They store elements in contiguous memory, enabling cache-friendly sequential access. Sets use hash tables with scattered memory and hashing overhead, making iteration slower.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>Is list or set faster for membership testing (<code>in</code> operator)?</summary>
+                            <p>Sets are dramatically faster. Sets use hash tables for O(1) average-case lookup. Lists perform a linear O(n) scan — checking every element until a match is found or the list is exhausted.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>When should you use a Python set instead of a list?</summary>
+                            <p>Use a set when you need to check membership with <code>in</code>, ensure uniqueness, or perform rapid lookup at scale. Sets eliminate duplicates automatically and provide O(1) average-case membership testing.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>What is the time complexity of <code>in</code> for list vs set?</summary>
+                            <p>For a list, <code>x in my_list</code> is O(n) — it scans every element. For a set, <code>x in my_set</code> is O(1) average case — it computes the hash and jumps directly to the bucket.</p>
+                        </details>
+
+                        <details class="faq-item">
+                            <summary>Can a Python set contain duplicates?</summary>
+                            <p>No. Sets automatically deduplicate — adding the same element twice has no effect. If you need to store duplicates, use a list or multiset (via <code>collections.Counter</code>).</p>
+                        </details>
+
+            <div class="article-footer">
+                <a href="index.html" class="back-link"><i class="fa fa-arrow-left"></i> Back to Blog</a>
+                <a href="https://medium.com/@asusrishabh/list-vs-set-in-a-minute-fe8b278d53c9" target="_blank" rel="noopener noreferrer" class="medium-link"><i class="fa fa-brands fa-medium"></i> Read on Medium</a>
+            </div>
+
+        </article>
+
+        <aside class="toc-aside" aria-label="Table of contents">
+            <div class="toc-inner">
+                <div class="toc-heading">Contents</div>
+                <ul class="toc-list">
+                    <li><a href="#the-setup">The Setup</a></li>
+                    <li><a href="#iteration-lists-win">Iteration: Lists Win</a></li>
+                    <li><a href="#membership-testing-sets-win-by-orders-of-magnitude">Membership Testing: Sets Win — By Orders of Magnitude</a></li>
+                    <li><a href="#best-practices">Best Practices</a></li>
+                    <li><a href="#key-takeaways">Key Takeaways</a></li>
+                    <li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+        const bar = document.getElementById('progress-bar');
+        window.addEventListener('scroll', function () {
+            const st = window.scrollY;
+            const dh = document.documentElement.scrollHeight - window.innerHeight;
+            bar.style.width = (dh > 0 ? (st / dh * 100) : 0) + '%';
+        }, { passive: true });
+        const nav = document.getElementById('top-nav');
+        let lastY = 0;
+        window.addEventListener('scroll', function () {
+            const y = window.scrollY;
+            if (y > lastY && y > 140) nav.classList.add('hidden');
+            else nav.classList.remove('hidden');
+            lastY = y;
+        }, { passive: true });
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const sections = document.querySelectorAll('.article-body h2[id]');
+        if (tocLinks.length && sections.length) {
+            const io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        tocLinks.forEach(function (l) { l.classList.remove('active'); });
+                        const a = document.querySelector('.toc-list a[href="#' + entry.target.id + '"]');
+                        if (a) a.classList.add('active');
+                    }
+                });
+            }, { rootMargin: '-10% 0px -75% 0px' });
+            sections.forEach(function (s) { io.observe(s); });
+        }
+    </script>
+</body>
+</html>
