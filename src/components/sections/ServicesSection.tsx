@@ -60,7 +60,7 @@ export function ServicesSection() {
           animate={inView ? "visible" : "hidden"}
         >
           <motion.h2
-            className="text-3xl md:text-4xl font-bold text-white mb-2"
+            className="text-3xl md:text-4xl font-bold text-text mb-2"
             variants={fadeInUp}
           >
             Services
@@ -92,7 +92,7 @@ export function ServicesSection() {
             return (
               <motion.div
                 key={service.title}
-                className="relative p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm group cursor-default overflow-hidden"
+                className="relative p-6 rounded-2xl border border-border bg-card backdrop-blur-sm group cursor-default overflow-hidden"
                 variants={cardVariant}
                 whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -119,12 +119,11 @@ export function ServicesSection() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-white font-semibold text-lg mb-3">
+                <h3 className="text-text font-semibold text-lg mb-3">
                   {service.title}
                 </h3>
 
-                {/* Description */}
-                <p className="text-gray-400 text-sm leading-relaxed">
+                <p className="text-muted text-sm leading-relaxed">
                   {service.description}
                 </p>
               </motion.div>

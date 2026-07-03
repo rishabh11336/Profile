@@ -120,23 +120,28 @@ export default function Sidebar() {
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
-    const ids = NAV_ITEMS.map((item) => item.id);
-    const cleanups: (() => void)[] = [];
+    function getActive(): string {
+      // A section becomes active when its top edge scrolls into the top 30% of the viewport.
+      // Iterating in order and always updating `current` means the last qualifying section wins
+      // — i.e., the one whose top is closest to (but not past) that trigger line.
+      const trigger = window.scrollY + window.innerHeight * 0.3;
+      let current: string = NAV_ITEMS[0].id;
+      for (const { id } of NAV_ITEMS) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        if (el.offsetTop <= trigger) current = id;
+      }
+      return current;
+    }
 
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      const obs = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(id);
-        },
-        { rootMargin: "-15% 0px -65% 0px", threshold: 0 }
-      );
-      obs.observe(el);
-      cleanups.push(() => obs.disconnect());
-    });
+    function onScroll() {
+      setActiveSection(getActive());
+    }
 
-    return () => cleanups.forEach((fn) => fn());
+    // Set immediately on mount so any re-render (e.g. theme toggle) never flashes "Home".
+    setActiveSection(getActive());
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {

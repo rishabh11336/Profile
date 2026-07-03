@@ -6,7 +6,6 @@ import { useInView } from "react-intersection-observer";
 import { ExternalLink, BarChart2, TrendingUp, AudioWaveform } from "lucide-react";
 import { projects } from "@/data/content";
 
-// GitHub brand icon (not in lucide-react)
 function GithubIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -39,9 +38,8 @@ export default function ProjectsSection() {
   const { ref, inView } = useInView({ threshold: 0.08, triggerOnce: true });
 
   return (
-    <section id="portfolio" className="py-20 bg-[#0d1117]">
+    <section id="portfolio" className="py-20 bg-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -49,14 +47,13 @@ export default function ProjectsSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <p className="text-[#2dd4bf] uppercase tracking-widest text-sm font-medium mb-2">
+          <p className="text-accent uppercase tracking-widest text-sm font-medium mb-2">
             Featured Projects
           </p>
-          <h2 className="text-4xl font-bold text-white">Projects</h2>
-          <div className="mt-4 h-1 w-16 bg-[#2dd4bf] mx-auto rounded-full" />
+          <h2 className="text-4xl font-bold text-text">Projects</h2>
+          <div className="mt-4 h-1 w-16 bg-accent mx-auto rounded-full" />
         </motion.div>
 
-        {/* Cards grid */}
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -71,9 +68,8 @@ export default function ProjectsSection() {
               <motion.div
                 key={project.title}
                 variants={cardVariants}
-                className="group bg-[#161b22] rounded-xl overflow-hidden border border-[#21262d] hover:border-[#2dd4bf] transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#2dd4bf]/10 flex flex-col"
+                className="group bg-section-alt rounded-xl overflow-hidden border border-border/50 hover:border-accent transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-accent/10 flex flex-col"
               >
-                {/* Thumbnail */}
                 {project.image ? (
                   <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
                     <Image
@@ -89,32 +85,28 @@ export default function ProjectsSection() {
                     className={`w-full flex items-center justify-center bg-gradient-to-br ${iconGradients[idx % iconGradients.length]}`}
                     style={{ aspectRatio: "16/9" }}
                   >
-                    <IconComponent className="w-16 h-16 text-[#2dd4bf]" />
+                    <IconComponent className="w-16 h-16 text-accent" />
                   </div>
                 ) : null}
 
-                {/* Body */}
                 <div className="p-5 flex flex-col flex-1">
-                  <h3 className="text-lg font-semibold text-white mb-3">{project.title}</h3>
+                  <h3 className="text-lg font-semibold text-text mb-3">{project.title}</h3>
 
-                  {/* Tag pills */}
                   <div className="flex flex-wrap gap-2 mb-3">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs px-2 py-1 rounded border border-[#2dd4bf]/60 text-[#2dd4bf]"
+                        className="text-xs px-2 py-1 rounded border border-accent/60 text-accent"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  {/* Description */}
-                  <p className="text-gray-400 text-sm leading-relaxed flex-1">
+                  <p className="text-muted text-sm leading-relaxed flex-1">
                     {project.description}
                   </p>
 
-                  {/* Links */}
                   <div className="mt-4 flex items-center gap-2">
                     {project.github && (
                       <a
@@ -122,7 +114,7 @@ export default function ProjectsSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="GitHub repository"
-                        className="p-2 rounded-lg bg-[#1c2333] hover:bg-[#2dd4bf] text-gray-300 hover:text-white transition-colors duration-200"
+                        className="p-2 rounded-lg bg-surface border border-border hover:bg-accent hover:border-accent text-muted hover:text-white transition-colors duration-200"
                       >
                         <GithubIcon className="w-4 h-4" />
                       </a>
@@ -133,7 +125,7 @@ export default function ProjectsSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Live demo"
-                        className="p-2 rounded-lg bg-[#1c2333] hover:bg-[#2dd4bf] text-gray-300 hover:text-white transition-colors duration-200"
+                        className="p-2 rounded-lg bg-surface border border-border hover:bg-accent hover:border-accent text-muted hover:text-white transition-colors duration-200"
                       >
                         <ExternalLink className="w-4 h-4" />
                       </a>
@@ -144,7 +136,7 @@ export default function ProjectsSection() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Kaggle notebook"
-                        className="p-2 rounded-lg bg-[#1c2333] hover:bg-[#2dd4bf] text-gray-300 hover:text-white transition-colors duration-200"
+                        className="p-2 rounded-lg bg-surface border border-border hover:bg-accent hover:border-accent text-muted hover:text-white transition-colors duration-200"
                       >
                         <BarChart2 className="w-4 h-4" />
                       </a>

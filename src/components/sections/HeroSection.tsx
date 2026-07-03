@@ -5,9 +5,6 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { hero } from "@/data/content";
 
-// ---------------------------------------------------------------------------
-// Custom typing-effect hook (no third-party lib)
-// ---------------------------------------------------------------------------
 function useTypingEffect(words: string[], speed = 100, pause = 1800) {
   const [display, setDisplay] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
@@ -16,7 +13,6 @@ function useTypingEffect(words: string[], speed = 100, pause = 1800) {
 
   useEffect(() => {
     const currentWord = words[wordIndex];
-
     if (!isDeleting) {
       if (charIndex < currentWord.length) {
         const t = setTimeout(() => {
@@ -45,9 +41,6 @@ function useTypingEffect(words: string[], speed = 100, pause = 1800) {
   return display;
 }
 
-// ---------------------------------------------------------------------------
-// Animation variants
-// ---------------------------------------------------------------------------
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -58,34 +51,27 @@ const container = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
-// ---------------------------------------------------------------------------
-// Component
-// ---------------------------------------------------------------------------
 export function HeroSection() {
   const typedWord = useTypingEffect(hero.typingWords);
 
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center py-20 px-4 md:px-8"
+      className="min-h-[100svh] flex items-start md:items-center pt-20 md:pt-0 pb-10 md:py-20 px-4 md:px-8"
     >
       <div className="max-w-7xl mx-auto w-full">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          {/* ----------------------------------------------------------------
-              Left: text content
-          ----------------------------------------------------------------- */}
+          {/* Left: text content */}
           <motion.div
             className="flex-1 text-center lg:text-left"
             variants={container}
             initial="hidden"
             animate="visible"
           >
-            {/* Visually-hidden H1 for SEO */}
             <h1 className="sr-only">
               Rishabh Singh — Data Scientist &amp; AI Engineer, IIT Madras
             </h1>
 
-            {/* Tagline */}
             <motion.h2
               className="text-lg md:text-xl font-medium mb-3 text-accent"
               variants={fadeInUp}
@@ -93,36 +79,35 @@ export function HeroSection() {
               {hero.tagline}
             </motion.h2>
 
-            {/* Typing-effect headline */}
+            {/* Typing-effect headline — text-text responds to both themes */}
             <motion.p
-              className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 text-white"
+              className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 text-text"
               variants={fadeInUp}
             >
               I&apos;m all about that{" "}
-              <span className="text-accent">{typedWord}</span>
-              {/* Blinking cursor */}
+              {/* min-w-[14ch] reserves space for longest word, prevents layout shift / clipping */}
+              <span className="inline-block min-w-[14ch] text-accent">{typedWord}</span>
+              {/* ml-1.5 gives visible gap between word and cursor */}
               <span
-                className="inline-block w-[2px] h-7 ml-0.5 align-middle bg-accent animate-pulse"
+                className="inline-block w-[2px] h-7 ml-1.5 align-middle bg-accent animate-pulse"
                 aria-hidden="true"
               />
               {" "}magic!
             </motion.p>
 
-            {/* Paragraphs */}
             <motion.p
-              className="text-gray-300 text-sm md:text-base leading-relaxed mb-4 max-w-xl mx-auto lg:mx-0"
+              className="text-muted text-sm md:text-base leading-relaxed mb-4 max-w-xl mx-auto lg:mx-0"
               variants={fadeInUp}
             >
               {hero.paragraph1}
             </motion.p>
             <motion.p
-              className="text-gray-300 text-sm md:text-base leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0"
+              className="text-muted text-sm md:text-base leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0"
               variants={fadeInUp}
             >
               {hero.paragraph2}
             </motion.p>
 
-            {/* CTA buttons */}
             <motion.div
               className="flex flex-wrap gap-4 justify-center lg:justify-start mb-8"
               variants={fadeInUp}
@@ -141,7 +126,6 @@ export function HeroSection() {
               </a>
             </motion.div>
 
-            {/* IIT Madras callout */}
             <motion.div
               className="inline-flex items-start gap-3 p-4 rounded-xl border border-accent/30 bg-accent/8 max-w-xl"
               variants={fadeInUp}
@@ -150,7 +134,7 @@ export function HeroSection() {
                 🎓
               </span>
               <div>
-                <p className="text-gray-300 text-sm leading-relaxed">
+                <p className="text-muted text-sm leading-relaxed">
                   {hero.iitmCallout.text}
                 </p>
                 <a
@@ -165,9 +149,7 @@ export function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* ----------------------------------------------------------------
-              Right: profile image
-          ----------------------------------------------------------------- */}
+          {/* Right: profile image */}
           <motion.div
             className="relative flex-shrink-0"
             initial={{ opacity: 0, x: 30 }}
@@ -190,7 +172,6 @@ export function HeroSection() {
               />
             </motion.div>
 
-            {/* Floating badge */}
             <motion.div
               className="absolute -bottom-3 -left-4 flex items-center gap-2 px-3 py-2 rounded-full text-white text-sm font-medium shadow-lg bg-accent"
               initial={{ opacity: 0, y: 10 }}
