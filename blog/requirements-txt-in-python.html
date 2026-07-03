@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>requirements.txt in Python — Package Version Management | Rishabh Singh</title>
     <meta name="description" content="What requirements.txt does in Python: how pip freeze captures your environment's exact package versions and how pip install -r installs them — solving version conflict in collaboration and deployment.">
     <meta name="author" content="Rishabh Singh">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="keywords" content="requirements.txt Python, pip freeze requirements, pip install -r requirements.txt, Python dependency management, Python package versions, deploy Python project, virtual environment requirements">
-
-    <link rel="canonical" href="https://rishabhsingh.me/blog/requirements-txt-in-python.html">
-
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://rishabhsingh.me/blog/requirements-txt-in-python.html">
     <meta property="og:title" content="requirements.txt in Python | Rishabh Singh">
@@ -25,7 +20,6 @@
     <meta property="article:published_time" content="2022-08-24">
     <meta property="article:tag" content="Python">
     <meta property="article:tag" content="pip">
-
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://rishabhsingh.me/blog/requirements-txt-in-python.html">
     <meta name="twitter:title" content="requirements.txt in Python | Rishabh Singh">
@@ -33,20 +27,10 @@
     <meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:640/format:webp/1*mHsYmducGWeow9i5BvYK9w.png">
     <meta name="twitter:creator" content="@rishabhsingh">
 
+    <link rel="canonical" href="https://rishabhsingh.me/blog/requirements-txt-in-python.html">
     <link rel="sitemap" type="application/xml" href="../sitemap.xml">
     <link rel="icon" type="image/svg+xml" href="../images/Logo.svg">
     <link rel="apple-touch-icon" href="../images/Logo.svg">
-
-    <link rel="stylesheet" href="../css/style.css?v=2.3">
-    <link rel="stylesheet" href="../css/skins/color-4.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="../css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
-    <link rel="stylesheet" href="../css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
-    <link rel="stylesheet" href="../css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
-    <link rel="stylesheet" href="../css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
-    <link rel="stylesheet" href="../css/style-switcher.css">
-    <link rel="stylesheet" href="../css/blog.css?v=1.3">
-
     <script type="application/ld+json">
     [
     {
@@ -108,79 +92,57 @@
     }
     ]
     </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../css/blog-modern.css">
 </head>
 
-<body class="dark">
+<body>
+    <div id="progress-bar"></div>
 
-    <div class="main-container">
-
-        <div class="aside">
-            <div class="logo">
-                <a href="../index.html" aria-label="Back to portfolio">
-                    <img src="../images/Logo.svg" width="300" alt="Rishabh Singh Portfolio Logo">
-                </a>
-            </div>
-            <div class="nav-toggler"><span></span></div>
-            <ul class="nav">
-                <li><a href="../index.html#home"       class="nav-item"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href="../index.html#about"      class="nav-item"><i class="fa fa-user"></i>About</a></li>
-                <li><a href="../index.html#services"   class="nav-item"><i class="fa fa-list"></i>Services</a></li>
-                <li><a href="../index.html#portfolio"  class="nav-item"><i class="fa fa-briefcase"></i>Projects</a></li>
-                <li><a href="../index.html#opensource" class="nav-item"><i class="fa fa-code-branch"></i>Open Source</a></li>
-                <li><a href="../index.html#blog"       class="nav-item active"><i class="fa fa-newspaper"></i>Blog</a></li>
-                <li><a href="../index.html#contact"    class="nav-item"><i class="fa fa-comments"></i>Contact</a></li>
-                <li><a href="../index.html#visitors"   class="nav-item"><i class="fa fa-globe"></i>Visitors</a></li>
-            </ul>
+    <nav class="top-nav" id="top-nav" aria-label="Site navigation">
+        <a href="../index.html" class="nav-logo"><i class="fa fa-arrow-left"></i> Rishabh Singh</a>
+        <div class="nav-crumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span>/</span>
+            <a href="index.html">Blog</a>
+            <span>/</span>
+            <span>requirements.txt in Python</span>
         </div>
+        <a href="index.html" class="nav-blog-link"><i class="fa fa-newspaper"></i> All Posts</a>
+    </nav>
 
-        <div class="main-content">
-            <section class="blog-article section" id="blog-article">
-                <div class="container">
+    <header class="article-hero">
+        <div class="tags" aria-label="Article tags">
+            <span class="tag">Python</span>
+            <span class="tag">pip</span>
+            <span class="tag">Virtual Environment</span>
+            <span class="tag">Deployment</span>
+        </div>
+        <h1>requirements.txt in Python</h1>
+        <p class="article-subtitle">Running someone else's Python project fails because their sklearn version dropped the function you're calling. requirements.txt solves this — two commands to capture and recreate any Python environment exactly.</p>
+        <div class="article-meta">
+            <span><i class="fa fa-user"></i> Rishabh Singh</span>
+            <span><i class="fa fa-calendar"></i> Aug 24, 2022</span>
+            <span><i class="fa fa-clock"></i> 2 min read</span>
+            <span><i class="fa fa-brands fa-medium"></i> <a href="https://medium.com/@asusrishabh/requirements-txt-in-python-947b0b43bbe6" target="_blank" rel="noopener noreferrer">Medium</a></span>
+        </div>
+    </header>
 
-                    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
-                        <a href="../index.html">Home</a>
-                        <span aria-hidden="true"> / </span>
-                        <a href="index.html">Blog</a>
-                        <span aria-hidden="true"> / </span>
-                        <span aria-current="page">requirements.txt in Python</span>
-                    </nav>
+    <div class="content-outer">
+        <article class="article-body">
 
-                    <a href="index.html" class="blog-back-link">
-                        <i class="fa fa-arrow-left"></i> Back to Blog
-                    </a>
-
-                    <div class="blog-header">
-                        <h1>requirements.txt in Python</h1>
-                        <p class="blog-subtitle">Running someone else's Python project fails because their sklearn version dropped the function you're calling. requirements.txt solves this — two commands to capture and recreate any Python environment exactly.</p>
-                        <div class="blog-meta">
-                            <span><i class="fa fa-user"></i> Rishabh Singh</span>
-                            <span><i class="fa fa-calendar"></i> Aug 24, 2022</span>
-                            <span><i class="fa fa-clock"></i> 2 min read</span>
-                            <span>
-                                <i class="fa fa-brands fa-medium"></i>
-                                <a href="https://medium.com/@asusrishabh/requirements-txt-in-python-947b0b43bbe6"
-                                   target="_blank" rel="noopener noreferrer"
-                                   style="color:var(--text-black-700);">Originally on Medium</a>
-                            </span>
-                        </div>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Python</span>
-                            <span class="blog-tag">pip</span>
-                            <span class="blog-tag">Virtual Environment</span>
-                            <span class="blog-tag">Deployment</span>
-                        </div>
-                    </div>
-
-                    <figure class="blog-figure">
+<figure class="blog-figure">
                         <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*mHsYmducGWeow9i5BvYK9w.png"
                              alt="requirements.txt file showing Python package versions"
                              loading="eager">
                         <figcaption>A requirements.txt file pins every dependency to an exact version — making environments reproducible.</figcaption>
                     </figure>
 
-                    <div class="blog-body">
-
-                        <h2>The Problem</h2>
+<h2 id="the-problem">The Problem</h2>
                         <p>
                             Three situations where version mismatches kill projects:
                         </p>
@@ -194,7 +156,7 @@
                             "Good developers take time to maintain good projects — and that means pinning dependencies so the project works the same everywhere."
                         </div>
 
-                        <h2>The Solution: requirements.txt</h2>
+                        <h2 id="the-solution-requirements-txt">The Solution: requirements.txt</h2>
                         <p>
                             <code>requirements.txt</code> is a plain text file that lists every package name and its exact version number.
                             Anyone can recreate your exact environment from this one file.
@@ -207,7 +169,7 @@
                             <figcaption><code>pip freeze</code> outputs every installed package and its version — redirect it to a file to capture your environment.</figcaption>
                         </figure>
 
-                        <h2>Command 1: Create requirements.txt</h2>
+                        <h2 id="command-1-create-requirements-txt">Command 1: Create requirements.txt</h2>
                         <p>Activate your virtual environment first, then run:</p>
                         <pre><code>pip freeze > requirements.txt</code></pre>
                         <p>
@@ -215,7 +177,7 @@
                             Always run inside an activated virtual environment — otherwise you'll capture system-level packages too.
                         </p>
 
-                        <h2>Command 2: Install from requirements.txt</h2>
+                        <h2 id="command-2-install-from-requirements-txt">Command 2: Install from requirements.txt</h2>
                         <pre><code>pip install -r requirements.txt</code></pre>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
@@ -230,7 +192,7 @@
                             Every package is installed at the exact pinned version — same result on any machine, any cloud platform.
                         </p>
 
-                        <h2>Video Tutorial</h2>
+                        <h2 id="video-tutorial">Video Tutorial</h2>
                         <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin:1.5rem 0;">
                             <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;"
                                     src="https://www.youtube.com/embed/Rhhh10YhBTo"
@@ -251,67 +213,56 @@
                             </ul>
                         </div>
 
-                    </div>
+            <div class="article-footer">
+                <a href="index.html" class="back-link"><i class="fa fa-arrow-left"></i> Back to Blog</a>
+                <a href="https://medium.com/@asusrishabh/requirements-txt-in-python-947b0b43bbe6" target="_blank" rel="noopener noreferrer" class="medium-link"><i class="fa fa-brands fa-medium"></i> Read on Medium</a>
+            </div>
 
-                    <div class="blog-faq">
-                        <h2>Frequently Asked Questions</h2>
+        </article>
 
-                        <details class="faq-item">
-                            <summary>What is requirements.txt in Python?</summary>
-                            <p>A plain text file listing all Python packages and their exact versions a project needs. Anyone can recreate the same environment by running <code>pip install -r requirements.txt</code>, preventing version mismatch errors across machines and deployments.</p>
-                        </details>
-
-                        <details class="faq-item">
-                            <summary>How do I create requirements.txt?</summary>
-                            <p>Activate your virtual environment, then run <code>pip freeze > requirements.txt</code>. This captures all installed packages and their exact versions. Always run inside a virtual environment to avoid capturing system-level packages.</p>
-                        </details>
-
-                        <details class="faq-item">
-                            <summary>How do I install from requirements.txt?</summary>
-                            <p>Run <code>pip install -r requirements.txt</code> inside an activated virtual environment. This installs every package at its exact pinned version, recreating the original environment on any machine.</p>
-                        </details>
-                    </div>
-
-                    <div class="blog-footer">
-                        <a href="index.html" class="blog-back-link" style="margin:0;">
-                            <i class="fa fa-arrow-left"></i> Back to Blog
-                        </a>
-                        <a href="https://medium.com/@asusrishabh/requirements-txt-in-python-947b0b43bbe6"
-                           target="_blank" rel="noopener noreferrer" class="btn">
-                            Read on Medium&nbsp;<i class="fa fa-external-link-alt" style="font-size:13px;"></i>
-                        </a>
-                    </div>
-
-                </div>
-            </section>
-        </div>
+        <aside class="toc-aside" aria-label="Table of contents">
+            <div class="toc-inner">
+                <div class="toc-heading">Contents</div>
+                <ul class="toc-list">
+                    <li><a href="#the-problem">The Problem</a></li>
+                    <li><a href="#the-solution-requirements-txt">The Solution: requirements.txt</a></li>
+                    <li><a href="#command-1-create-requirements-txt">Command 1: Create requirements.txt</a></li>
+                    <li><a href="#command-2-install-from-requirements-txt">Command 2: Install from requirements.txt</a></li>
+                    <li><a href="#video-tutorial">Video Tutorial</a></li>
+                </ul>
+            </div>
+        </aside>
     </div>
 
-    <div class="style-switcher">
-        <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
-        <div class="day-night s-icon"><i class="fas"></i></div>
-        <h4>Theme Colors</h4>
-        <div class="colors">
-            <span class="color-1" onclick="setActiveStyle('color-1')"></span>
-            <span class="color-2" onclick="setActiveStyle('color-2')"></span>
-            <span class="color-3" onclick="setActiveStyle('color-3')"></span>
-            <span class="color-4" onclick="setActiveStyle('color-4')"></span>
-        </div>
-    </div>
-
-    <script src="../js/style-switcher.js" defer></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const navToggler = document.querySelector('.nav-toggler');
-            const aside = document.querySelector('.aside');
-            if (navToggler && aside) {
-                navToggler.addEventListener('click', function () {
-                    aside.classList.toggle('open');
-                    navToggler.classList.toggle('open');
+        const bar = document.getElementById('progress-bar');
+        window.addEventListener('scroll', function () {
+            const st = window.scrollY;
+            const dh = document.documentElement.scrollHeight - window.innerHeight;
+            bar.style.width = (dh > 0 ? (st / dh * 100) : 0) + '%';
+        }, { passive: true });
+        const nav = document.getElementById('top-nav');
+        let lastY = 0;
+        window.addEventListener('scroll', function () {
+            const y = window.scrollY;
+            if (y > lastY && y > 140) nav.classList.add('hidden');
+            else nav.classList.remove('hidden');
+            lastY = y;
+        }, { passive: true });
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const sections = document.querySelectorAll('.article-body h2[id]');
+        if (tocLinks.length && sections.length) {
+            const io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        tocLinks.forEach(function (l) { l.classList.remove('active'); });
+                        const a = document.querySelector('.toc-list a[href="#' + entry.target.id + '"]');
+                        if (a) a.classList.add('active');
+                    }
                 });
-            }
-        });
+            }, { rootMargin: '-10% 0px -75% 0px' });
+            sections.forEach(function (s) { io.observe(s); });
+        }
     </script>
-
 </body>
 </html>

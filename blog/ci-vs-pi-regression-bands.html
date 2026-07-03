@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Confidence Interval vs Prediction Interval — See the Difference | Rishabh Singh</title>
+    <meta name="description" content="An interactive simulation showing why CI and PI are fundamentally different things. One band covers the mean line. The other catches new individual points. Most people use the wrong one.">
+    <meta name="author" content="Rishabh Singh">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="keywords" content="confidence interval vs prediction interval, CI vs PI regression, prediction interval explained, regression bands, linear regression uncertainty, statistical inference, data science statistics">
+
+    <link rel="canonical" href="https://rishabhsingh.me/blog/ci-vs-pi-regression-bands.html">
+
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://rishabhsingh.me/blog/ci-vs-pi-regression-bands.html">
+    <meta property="og:title" content="Confidence Interval vs Prediction Interval — See the Difference | Rishabh Singh">
+    <meta property="og:description" content="An interactive simulation showing why CI and PI are fundamentally different things. One band covers the mean line. The other catches new individual points.">
+    <meta property="og:image" content="https://miro.medium.com/v2/resize:fit:494/format:webp/1*Mjnp0tWPfCn8uomvTBnafw.gif">
+    <meta property="og:image:alt" content="Linear regression plot showing confidence interval and prediction interval bands">
+    <meta property="og:site_name" content="Rishabh Singh Portfolio">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:author" content="Rishabh Singh">
+    <meta property="article:published_time" content="2026-07-03">
+    <meta property="article:tag" content="Statistics">
+    <meta property="article:tag" content="Linear Regression">
+    <meta property="article:tag" content="Data Science">
+    <meta property="article:tag" content="Visualization">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://rishabhsingh.me/blog/ci-vs-pi-regression-bands.html">
+    <meta name="twitter:title" content="Confidence Interval vs Prediction Interval — See the Difference | Rishabh Singh">
+    <meta name="twitter:description" content="Interactive simulation: one band covers the mean line, the other catches new points. Most people use the wrong one.">
+    <meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:494/format:webp/1*Mjnp0tWPfCn8uomvTBnafw.gif">
+    <meta name="twitter:creator" content="@rishabhsingh">
+
+    <link rel="sitemap" type="application/xml" href="../sitemap.xml">
+    <link rel="icon" type="image/svg+xml" href="../images/Logo.svg">
+    <link rel="apple-touch-icon" href="../images/Logo.svg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <script type="application/ld+json">
+    [
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Confidence Interval vs Prediction Interval — See the Difference",
+      "description": "An interactive simulation showing why CI and PI are fundamentally different things. One band covers the mean line. The other catches new individual points.",
+      "image": "https://miro.medium.com/v2/resize:fit:494/format:webp/1*Mjnp0tWPfCn8uomvTBnafw.gif",
+      "author": {
+        "@type": "Person",
+        "@id": "https://rishabhsingh.me/#person",
+        "name": "Rishabh Singh",
+        "url": "https://rishabhsingh.me"
+      },
+      "publisher": { "@type": "Person", "name": "Rishabh Singh" },
+      "datePublished": "2026-07-03",
+      "dateModified": "2026-07-03",
+      "url": "https://rishabhsingh.me/blog/ci-vs-pi-regression-bands.html",
+      "keywords": ["Statistics", "Linear Regression", "Confidence Interval", "Prediction Interval", "Data Science", "Visualization", "Inference"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://rishabhsingh.me/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://rishabhsingh.me/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Confidence Interval vs Prediction Interval", "item": "https://rishabhsingh.me/blog/ci-vs-pi-regression-bands.html" }
+      ]
+    }
+    ]
+    </script>
+
+    <style>
+        :root {
+            --bg: #0f1117;
+            --surface: #161b22;
+            --surface-2: #1e2736;
+            --border: #2d3748;
+            --border-faint: #1e2736;
+            --text: #e2e8f0;
+            --text-muted: #8b949e;
+            --text-faint: #4a5568;
+            --ci: #2dd4bf;
+            --ci-dim: rgba(45,212,191,0.10);
+            --ci-border: rgba(45,212,191,0.35);
+            --pi: #fb923c;
+            --pi-dim: rgba(251,146,60,0.10);
+            --pi-border: rgba(251,146,60,0.35);
+            --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+            --font-ui: "Inter", system-ui, -apple-system, sans-serif;
+            --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html {
+            font-size: 18px;
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+        }
+
+        /* ── Progress bar ── */
+        #progress-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 2px;
+            width: 0%;
+            background: var(--ci);
+            z-index: 200;
+            transition: width 0.08s linear;
+        }
+
+        /* ── Top nav ── */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.75rem;
+            background: rgba(15,17,23,0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-faint);
+            transition: transform 0.22s ease, opacity 0.22s ease;
+        }
+        .top-nav.hidden {
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-ui);
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+        .nav-logo:hover { color: var(--ci); }
+        .nav-logo i { font-size: 0.75rem; }
+
+        .nav-crumb {
+            font-family: var(--font-ui);
+            font-size: 0.78rem;
+            color: var(--text-faint);
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+        .nav-crumb a { color: var(--text-muted); text-decoration: none; transition: color 0.15s; }
+        .nav-crumb a:hover { color: var(--ci); }
+        @media (max-width: 600px) { .nav-crumb { display: none; } }
+
+        .nav-blog-link {
+            font-family: var(--font-ui);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.15s;
+        }
+        .nav-blog-link:hover { color: var(--ci); }
+
+        /* ── Article hero ── */
+        .article-hero {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 3.5rem 2rem 2.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 1.5rem;
+        }
+        .tag {
+            font-family: var(--font-ui);
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            border-radius: 99px;
+            border: 1px solid var(--border);
+            color: var(--text-faint);
+            background: var(--surface);
+        }
+
+        .article-hero h1 {
+            font-family: var(--font-ui);
+            font-size: clamp(1.9rem, 4vw, 2.65rem);
+            font-weight: 700;
+            line-height: 1.18;
+            letter-spacing: -0.025em;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .article-subtitle {
+            font-size: 1.1rem;
+            line-height: 1.65;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border-faint);
+            font-family: var(--font-ui);
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+        .article-meta span { display: flex; align-items: center; gap: 0.38rem; }
+        .article-meta i { color: var(--ci); font-size: 0.75rem; }
+
+        /* ── Content layout ── */
+        .content-outer {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 2rem 6rem;
+            display: grid;
+            grid-template-columns: minmax(0,680px) 220px;
+            gap: 3.5rem;
+            align-items: start;
+            justify-content: center;
+        }
+
+        @media (max-width: 1024px) {
+            .content-outer {
+                grid-template-columns: 1fr;
+                max-width: 720px;
+                gap: 0;
+            }
+            .toc-aside { display: none; }
+        }
+
+        @media (max-width: 600px) {
+            .article-hero { padding: 2rem 1.25rem 1.75rem; }
+            .content-outer { padding: 0 1.25rem 4rem; }
+        }
+
+        /* ── Article body ── */
+        .article-body h2 {
+            font-family: var(--font-ui);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text);
+            margin: 2.75rem 0 1.1rem;
+            padding-left: 0.9rem;
+            border-left: 3px solid var(--border);
+            line-height: 1.35;
+            scroll-margin-top: 80px;
+        }
+
+        .article-body p {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        .article-body ul {
+            padding-left: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+        .article-body ul li {
+            margin-bottom: 0.65rem;
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        .article-body strong { font-weight: 600; color: var(--text); }
+        .article-body em { font-style: italic; }
+
+        .article-body a {
+            color: var(--ci);
+            text-decoration: underline;
+            text-decoration-color: var(--ci-border);
+            text-underline-offset: 3px;
+            transition: text-decoration-color 0.15s;
+        }
+        .article-body a:hover { text-decoration-color: var(--ci); }
+
+        .article-body code {
+            font-family: var(--font-mono);
+            font-size: 0.83em;
+            background: var(--surface);
+            border: 1px solid var(--border-faint);
+            padding: 1px 6px;
+            border-radius: 4px;
+            color: var(--ci);
+        }
+
+        /* ── CI / PI color spans ── */
+        .ci { color: var(--ci); font-weight: 600; }
+        .pi { color: var(--pi); font-weight: 600; }
+
+        /* ── Blockquote ── */
+        .bq {
+            position: relative;
+            margin: 2.25rem 0;
+            padding: 2rem 1.75rem 1.5rem 1.75rem;
+            background: var(--surface);
+            border-radius: 10px;
+            border-left: 3px solid var(--ci);
+            overflow: hidden;
+        }
+        .bq::before {
+            content: "\201C";
+            position: absolute;
+            top: -0.5rem;
+            left: 1rem;
+            font-size: 5rem;
+            color: var(--border);
+            font-family: Georgia, serif;
+            line-height: 1;
+            pointer-events: none;
+        }
+        .bq p {
+            font-style: italic;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.7;
+        }
+        .bq p + p { margin-top: 0.75rem; }
+
+        /* ── Formula block ── */
+        .formula-block {
+            background: #1a2535;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem 1.75rem;
+            margin: 1.75rem 0;
+            overflow-x: auto;
+        }
+        .formula-caption {
+            font-family: var(--font-ui);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-faint);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-faint);
+        }
+        .formula {
+            font-family: var(--font-mono);
+            font-size: 0.92rem;
+            color: var(--text);
+            line-height: 2;
+            white-space: nowrap;
+        }
+        .formula + .formula {
+            border-top: 1px solid var(--border-faint);
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+        }
+        .f-ci { color: var(--ci); }
+        .f-pi { color: var(--pi); }
+        .f-hi {
+            background: rgba(251,146,60,0.18);
+            color: var(--pi);
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        /* ── Interaction hints list ── */
+        .hint-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+        .hint-list li {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            padding: 0.65rem 0;
+            border-bottom: 1px solid var(--border-faint);
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+        .hint-list li:last-child { border-bottom: none; }
+        .hint-icon {
+            font-family: var(--font-ui);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-faint);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 2px 7px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            margin-top: 3px;
+        }
+
+        /* ── Embedded widget ── */
+        #ci-pi-widget {
+            --w-ink: #e2e8f0; --w-ink2: #a0aec0; --w-muted: #8b949e; --w-faint: #6b7280;
+            --w-paper: #0f1117; --w-card: #161b22; --w-line: #2d3748; --w-line2: #4a5568;
+            --w-fit: #e2e8f0;
+            --w-ci-fill: rgba(45,212,191,0.18);
+            --w-pi-fill: rgba(251,146,60,0.15);
+            --w-dot: #94a3ad;
+            --w-disp: "Space Grotesk", system-ui, sans-serif;
+            --w-mono: "IBM Plex Mono", ui-monospace, monospace;
+            margin: 2rem 0 2.5rem;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-top: 3px solid var(--ci);
+            background: var(--w-paper);
+            color: var(--w-ink);
+            font-family: "Inter", system-ui, sans-serif;
+            font-size: 13.5px;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+        #ci-pi-widget * { box-sizing: border-box; }
+        #ci-pi-widget .w-wrap { max-width: 1160px; margin: 20px auto; padding: 0 18px 44px; }
+        #ci-pi-widget .w-head { border-bottom: 2px solid var(--w-ink); padding-bottom: 14px; margin-bottom: 20px; }
+        #ci-pi-widget .w-kicker { font-family: var(--w-mono); font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--pi); margin-bottom: 8px; }
+        #ci-pi-widget .w-title { font-family: var(--w-disp); font-weight: 600; font-size: 25px; margin: 0 0 6px; letter-spacing: -0.01em; color: var(--w-ink); }
+        #ci-pi-widget .w-title .light { color: var(--w-muted); font-weight: 500; }
+        #ci-pi-widget .w-sub { color: var(--w-ink2); max-width: 680px; font-size: 13px; }
+        #ci-pi-widget .w-grid { display: grid; grid-template-columns: 260px 1fr; gap: 18px; align-items: start; }
+        @media (max-width: 860px) { #ci-pi-widget .w-grid { grid-template-columns: 1fr; } }
+        #ci-pi-widget .w-panel { background: var(--w-card); border: 1px solid var(--w-line); border-radius: 14px; padding: 18px; }
+        #ci-pi-widget .w-ptitle { font-family: var(--w-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--w-faint); margin-bottom: 14px; }
+        #ci-pi-widget .w-ctrl { margin-bottom: 15px; }
+        #ci-pi-widget .w-ctrl label { display: flex; justify-content: space-between; align-items: baseline; font-size: 12.5px; color: var(--w-ink2); margin-bottom: 6px; }
+        #ci-pi-widget .w-ctrl label .v { font-family: var(--w-mono); font-size: 12.5px; color: var(--w-ink); font-weight: 500; }
+        #ci-pi-widget input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; border-radius: 4px; background: var(--w-line2); outline: none; cursor: pointer; }
+        #ci-pi-widget input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 15px; height: 15px; border-radius: 50%; background: var(--pi); border: 2px solid var(--w-card); box-shadow: 0 0 0 1px var(--pi); cursor: pointer; }
+        #ci-pi-widget input[type="range"]::-moz-range-thumb { width: 15px; height: 15px; border-radius: 50%; background: var(--pi); border: 2px solid var(--w-card); cursor: pointer; }
+        #ci-pi-widget .w-seg { display: flex; gap: 6px; }
+        #ci-pi-widget .w-seg button { flex: 1; font-family: var(--w-mono); font-size: 12px; padding: 7px 0; border: 1px solid var(--w-line2); background: var(--w-paper); color: var(--w-muted); border-radius: 8px; cursor: pointer; transition: all 0.12s; }
+        #ci-pi-widget .w-seg button.on { background: var(--w-ink); color: var(--w-paper); border-color: var(--w-ink); }
+        #ci-pi-widget .w-toggles { display: flex; flex-direction: column; gap: 9px; }
+        #ci-pi-widget .w-tg { display: flex; align-items: center; gap: 9px; font-size: 12.5px; cursor: pointer; user-select: none; color: var(--w-ink); }
+        #ci-pi-widget .w-tg .box { width: 15px; height: 15px; border-radius: 4px; border: 1.5px solid var(--w-line2); flex-shrink: 0; position: relative; }
+        #ci-pi-widget .w-tg.on .box::after { content: ""; position: absolute; inset: 2px; border-radius: 2px; background: var(--wsw, var(--w-ink)); }
+        #ci-pi-widget .w-tg .sw2 { width: 22px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+        #ci-pi-widget .w-divider { height: 1px; background: var(--w-line); margin: 16px 0; }
+        #ci-pi-widget .w-regen { width: 100%; font-family: var(--w-disp); font-weight: 600; font-size: 13.5px; color: #fff; background: var(--pi); border: none; border-radius: 9px; padding: 11px; cursor: pointer; transition: filter 0.15s, transform 0.1s; }
+        #ci-pi-widget .w-regen:hover { filter: brightness(1.05); }
+        #ci-pi-widget .w-regen:active { transform: translateY(1px); }
+        #ci-pi-widget .w-plot-wrap { background: var(--w-card); border: 1px solid var(--w-line); border-radius: 14px; padding: 16px 16px 8px; position: relative; }
+        #ci-pi-widget .w-legend { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; margin-bottom: 6px; padding-left: 2px; }
+        #ci-pi-widget .w-legend .it { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--w-ink2); }
+        #ci-pi-widget .w-legend .sw { width: 16px; height: 11px; border-radius: 3px; }
+        #ci-pi-widget .w-legend .ln { width: 16px; height: 0; border-top: 2px solid var(--w-fit); }
+        #ci-pi-widget canvas { width: 100%; display: block; }
+        #ci-pi-widget .w-tt { position: absolute; pointer-events: none; background: var(--w-ink); color: #eef3f5; border-radius: 8px; padding: 7px 10px; font-family: var(--w-mono); font-size: 11px; opacity: 0; transition: opacity 0.1s; white-space: nowrap; box-shadow: 0 6px 18px rgba(0,0,0,0.25); z-index: 5; }
+        #ci-pi-widget .w-tt .r { display: flex; justify-content: space-between; gap: 12px; }
+        #ci-pi-widget .w-tt .r .c { color: #9fb3bd; }
+        #ci-pi-widget .w-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 16px; }
+        @media (max-width: 680px) { #ci-pi-widget .w-stats { grid-template-columns: 1fr 1fr; } }
+        #ci-pi-widget .w-stat { border: 1px solid var(--w-line); border-radius: 11px; padding: 12px 13px; position: relative; overflow: hidden; }
+        #ci-pi-widget .w-stat::after { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--wac, var(--w-muted)); }
+        #ci-pi-widget .w-stat .k { font-family: var(--w-mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--w-faint); margin-bottom: 6px; }
+        #ci-pi-widget .w-stat .val { font-family: var(--w-disp); font-weight: 600; font-size: 21px; line-height: 1; color: var(--w-ink); }
+        #ci-pi-widget .w-stat .nt { font-size: 11px; color: var(--w-muted); margin-top: 5px; }
+        #ci-pi-widget .w-insight { margin-top: 16px; background: var(--w-paper); border: 1px solid var(--w-line); border-left: 3px solid var(--pi); border-radius: 10px; padding: 13px 15px; font-size: 12.5px; color: var(--w-ink2); }
+        #ci-pi-widget .w-insight b { color: var(--w-ink); }
+
+        /* ── Comparison grid ── */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        @media (max-width: 600px) {
+            .comparison-grid { grid-template-columns: 1fr; }
+        }
+        .cmp-card {
+            background: var(--surface);
+            border-radius: 10px;
+            padding: 1.25rem 1.4rem 1.4rem;
+            border-top: 3px solid;
+        }
+        .cmp-card.ci-card { border-color: var(--ci); }
+        .cmp-card.pi-card { border-color: var(--pi); }
+        .cmp-card h3 {
+            font-family: var(--font-ui);
+            font-size: 0.88rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+        .cmp-card.ci-card h3 { color: var(--ci); }
+        .cmp-card.pi-card h3 { color: var(--pi); }
+        .cmp-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .cmp-card ul li {
+            display: flex;
+            gap: 0.5rem;
+            align-items: flex-start;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            padding: 0.45rem 0;
+            border-bottom: 1px solid var(--border-faint);
+            line-height: 1.5;
+        }
+        .cmp-card ul li:last-child { border-bottom: none; }
+        .cmp-card.ci-card ul li::before { content: "✓"; color: var(--ci); font-weight: 700; flex-shrink: 0; }
+        .cmp-card.pi-card ul li::before { content: "✓"; color: var(--pi); font-weight: 700; flex-shrink: 0; }
+
+        /* ── Related reading card ── */
+        .related-card {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 1.25rem 1.5rem;
+            background: var(--surface);
+            border-radius: 10px;
+            border-left: 3px solid var(--border);
+            text-decoration: none;
+            margin: 2.5rem 0 0.5rem;
+            transition: border-color 0.15s;
+        }
+        .related-card:hover { border-color: var(--ci); }
+        .related-card-icon {
+            font-size: 1.6rem;
+            color: var(--ci);
+            flex-shrink: 0;
+            opacity: 0.8;
+        }
+        .rc-label {
+            font-family: var(--font-ui);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            color: var(--text-faint);
+            margin-bottom: 0.3rem;
+        }
+        .rc-title {
+            font-family: var(--font-ui);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+        .rc-desc {
+            font-size: 0.83rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ── Article footer ── */
+        .article-footer {
+            display: flex;
+            align-items: center;
+            padding-top: 2.5rem;
+            margin-top: 1rem;
+            border-top: 1px solid var(--border-faint);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-ui);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+        .back-link:hover { color: var(--ci); }
+        .back-link i { font-size: 0.8rem; }
+
+        /* ── TOC aside ── */
+        .toc-aside {
+            position: sticky;
+            top: 72px;
+        }
+        .toc-inner {
+            background: var(--surface);
+            border: 1px solid var(--border-faint);
+            border-radius: 10px;
+            padding: 1.25rem 1.4rem;
+        }
+        .toc-heading {
+            font-family: var(--font-ui);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-faint);
+            margin-bottom: 0.9rem;
+        }
+        .toc-list {
+            list-style: none;
+            padding: 0;
+        }
+        .toc-list li { margin-bottom: 0.15rem; }
+        .toc-list a {
+            font-family: var(--font-ui);
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            padding: 0.35rem 0.7rem;
+            border-radius: 6px;
+            border-left: 2px solid transparent;
+            line-height: 1.45;
+            transition: all 0.15s;
+        }
+        .toc-list a:hover {
+            color: var(--text);
+            background: rgba(255,255,255,0.04);
+        }
+        .toc-list a.active {
+            color: var(--ci);
+            border-left-color: var(--ci);
+            background: var(--ci-dim);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="progress-bar"></div>
+
+    <nav class="top-nav" id="top-nav" aria-label="Site navigation">
+        <a href="../index.html" class="nav-logo">
+            <i class="fa fa-arrow-left"></i> Rishabh Singh
+        </a>
+        <div class="nav-crumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span>/</span>
+            <a href="index.html">Blog</a>
+            <span>/</span>
+            <span>CI vs PI</span>
+        </div>
+        <a href="index.html" class="nav-blog-link">
+            <i class="fa fa-newspaper"></i> All Posts
+        </a>
+    </nav>
+
+    <header class="article-hero">
+        <div class="tags" aria-label="Article tags">
+            <span class="tag">Statistics</span>
+            <span class="tag">Linear Regression</span>
+            <span class="tag">Data Science</span>
+            <span class="tag">Visualization</span>
+            <span class="tag">In a Minute</span>
+        </div>
+        <h1>Confidence Interval vs Prediction Interval — See the Difference</h1>
+        <p class="article-subtitle">Two bands, two questions. One covers the line. The other catches new points. Most people use the wrong one — and it matters.</p>
+        <div class="article-meta">
+            <span><i class="fa fa-user"></i> Rishabh Singh</span>
+            <span><i class="fa fa-calendar"></i> Jul 3, 2026</span>
+            <span><i class="fa fa-clock"></i> 4 min read</span>
+            <span><i class="fa fa-chart-line"></i> Interactive</span>
+        </div>
+    </header>
+
+    <div class="content-outer">
+        <article class="article-body">
+
+            <h2 id="two-bands">Two bands, two entirely different questions</h2>
+            <p>
+                When a regression model draws a line through data, it answers one question: <em>what is the average response at this X value?</em>
+                But the moment you put that line in front of a stakeholder, two more questions always follow — and they require completely different bands to answer honestly.
+            </p>
+            <p>
+                The first question is about the <strong>line itself</strong>: if you re-ran this study with a fresh sample, where would the regression line land?
+                This is the <span class="ci">Confidence Interval (CI)</span> — uncertainty about the mean response.
+            </p>
+            <p>
+                The second is about <strong>one specific new observation</strong>: given a territory you've never seen before, where will its actual number actually land?
+                This is the <span class="pi">Prediction Interval (PI)</span> — uncertainty about a single draw from the distribution.
+            </p>
+            <p>
+                They look like two concentric ribbons on a plot. The teal inner band is the <span class="ci">CI</span>. The clay outer band is the <span class="pi">PI</span>.
+                They're not the same thing, and substituting one for the other is a quiet, expensive mistake.
+            </p>
+
+            <div class="bq">
+                <p>The <span class="ci">CI</span> answers <em>where is the average?</em> The <span class="pi">PI</span> answers <em>where will the next point be?</em>
+                One shrinks to zero as your sample grows. The other never shrinks past the noise floor.</p>
+            </div>
+
+            <h2 id="explore">Explore it</h2>
+            <p>
+                The simulation below uses a sales-territory example: each dot is a territory,
+                X is monthly detailing calls to doctors, Y is new prescriptions written.
+                A few things worth observing while you interact:
+            </p>
+
+            <ul class="hint-list">
+                <li>
+                    <span class="hint-icon">n ↑</span>
+                    <span>The <span class="ci">teal CI band</span> tightens steadily toward the line. The <span class="pi">clay PI band</span> barely moves. More data nails down where the line is, but doesn't tame individual scatter.</span>
+                </li>
+                <li>
+                    <span class="hint-icon">noise</span>
+                    <span>Both bands widen, but the <span class="pi">PI</span> widens faster because it absorbs the full variance of individual territories.</span>
+                </li>
+                <li>
+                    <span class="hint-icon">90/95/99</span>
+                    <span>Confidence level scales both bands through the t-critical value. The <span class="pi">PI</span> stays outside the <span class="ci">CI</span> at every level.</span>
+                </li>
+                <li>
+                    <span class="hint-icon">hover</span>
+                    <span>See the exact <span class="ci">CI ±</span> and <span class="pi">PI ±</span> at any X. Both grow as you move toward the edges — the leverage effect.</span>
+                </li>
+            </ul>
+
+            <div id="ci-pi-widget">
+                <div class="w-wrap">
+                    <div class="w-head">
+                        <div class="w-kicker">Linear regression · seeing CI vs PI</div>
+                        <div class="w-title">Best-fit line, <span class="light">with both uncertainty bands</span></div>
+                        <p class="w-sub">Each dot is a sales territory. X is monthly detailing calls to doctors, Y is new prescriptions. Watch how the <b>teal CI band</b> hugs the line while the <b>clay PI band</b> stretches to catch the points.</p>
+                    </div>
+                    <div class="w-grid">
+                        <div class="w-panel">
+                            <div class="w-ptitle">Controls</div>
+                            <div class="w-ctrl">
+                                <label>Territories (data points) <span class="v" id="w_nVal"></span></label>
+                                <input type="range" id="w_n" min="8" max="60" step="1" value="40">
+                            </div>
+                            <div class="w-ctrl">
+                                <label>Scatter / noise <span class="v" id="w_noiseVal"></span></label>
+                                <input type="range" id="w_noise" min="8" max="60" step="1" value="30">
+                            </div>
+                            <div class="w-divider"></div>
+                            <div class="w-ctrl">
+                                <label style="margin-bottom:8px">Confidence level</label>
+                                <div class="w-seg" id="w_conf">
+                                    <button data-c="90">90%</button>
+                                    <button data-c="95" class="on">95%</button>
+                                    <button data-c="99">99%</button>
+                                </div>
+                            </div>
+                            <div class="w-divider"></div>
+                            <div class="w-ptitle" style="margin-bottom:11px">Show / hide</div>
+                            <div class="w-toggles">
+                                <div class="w-tg on" data-t="points" style="--wsw:var(--w-dot)"><span class="box"></span> Data points</div>
+                                <div class="w-tg on" data-t="fit"><span class="box"></span> Best-fit line</div>
+                                <div class="w-tg on" data-t="ci" style="--wsw:var(--ci)"><span class="box"></span> CI band (the line)</div>
+                                <div class="w-tg on" data-t="pi" style="--wsw:var(--pi)"><span class="box"></span> PI band (new point)</div>
+                                <div class="w-tg on" data-t="mean"><span class="box"></span> Mean-of-X marker</div>
+                            </div>
+                            <div class="w-divider"></div>
+                            <button class="w-regen" id="w_regen">New random sample</button>
+                        </div>
+                        <div>
+                            <div class="w-plot-wrap">
+                                <div class="w-legend">
+                                    <div class="it"><span class="ln"></span> Best-fit line</div>
+                                    <div class="it"><span class="sw" style="background:var(--w-ci-fill);border:1px solid var(--ci)"></span> CI band</div>
+                                    <div class="it"><span class="sw" style="background:var(--w-pi-fill);border:1px solid var(--pi)"></span> PI band</div>
+                                    <div class="it"><span class="sw" style="background:var(--w-dot);border-radius:50%;width:11px;height:11px"></span> Territory</div>
+                                </div>
+                                <canvas id="w_plot" height="440"></canvas>
+                                <div class="w-tt" id="w_tt"></div>
+                            </div>
+                            <div class="w-stats">
+                                <div class="w-stat" style="--wac:var(--w-ink)">
+                                    <div class="k">Fitted line</div>
+                                    <div class="val" id="w_sEq" style="font-size:15px">–</div>
+                                    <div class="nt">Rx per extra call</div>
+                                </div>
+                                <div class="w-stat" style="--wac:var(--ci)">
+                                    <div class="k">Points inside CI</div>
+                                    <div class="val" id="w_sCI">–</div>
+                                    <div class="nt">low: CI is not about points</div>
+                                </div>
+                                <div class="w-stat" style="--wac:var(--pi)">
+                                    <div class="k">Points inside PI</div>
+                                    <div class="val" id="w_sPI">–</div>
+                                    <div class="nt" id="w_sPInote">should sit near the level</div>
+                                </div>
+                                <div class="w-stat" style="--wac:var(--w-muted)">
+                                    <div class="k">PI vs CI width</div>
+                                    <div class="val" id="w_sRatio">–</div>
+                                    <div class="nt">at the mean of X</div>
+                                </div>
+                            </div>
+                            <div class="w-insight" id="w_insight"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 id="math">What the math is actually saying</h2>
+            <p>
+                Both intervals use the same t-critical value and the same residual standard deviation <code>s</code>.
+                The only difference is one term inside a square root:
+            </p>
+
+            <div class="formula-block" role="figure" aria-label="Standard error formulas for CI and PI">
+                <div class="formula-caption">The only difference between CI and PI</div>
+                <div class="formula"><span class="f-ci">SE<sub>mean</sub>(x)</span> = s · √( 1/n + (x − x̄)² / S<sub>xx</sub> )</div>
+                <div class="formula"><span class="f-pi">SE<sub>pred</sub>(x)</span> = s · √( <span class="f-hi">1 +</span> 1/n + (x − x̄)² / S<sub>xx</sub> )</div>
+            </div>
+
+            <p>
+                That <strong class="pi">"1 +"</strong> is the entire difference. It represents the variance of a single new observation around the true mean —
+                variance that exists independently of how large your sample is.
+                As n → ∞, <span class="ci">SE<sub>mean</sub></span> → 0, but <span class="pi">SE<sub>pred</sub></span> → s.
+                You can have a million data points and the <span class="pi">PI</span> will still be wide if the underlying process is noisy.
+                The noise is real; it doesn't average away.
+            </p>
+            <p>
+                Both formulas also contain (x − x̄)² / S<sub>xx</sub>, which grows as you move away from the center of your data.
+                This is why both bands <strong>pinch at the mean of X</strong> and flare toward the edges — the model is most certain where it has seen the most data, and extrapolation compounds every source of uncertainty.
+            </p>
+
+            <h2 id="use-cases">When to use each</h2>
+
+            <div class="comparison-grid">
+                <div class="cmp-card ci-card">
+                    <h3>Use CI when asking about the population</h3>
+                    <ul>
+                        <li>Testing whether detailing calls have a significant effect on prescriptions at the population level</li>
+                        <li>Estimating the average lift across all territories with a given call volume</li>
+                        <li>Publishing research about the mean response curve</li>
+                        <li>Comparing two groups — "does group A average higher than group B?"</li>
+                    </ul>
+                </div>
+                <div class="cmp-card pi-card">
+                    <h3>Use PI when deciding about one case</h3>
+                    <ul>
+                        <li>Forecasting one specific territory's prescription count next quarter</li>
+                        <li>Deciding whether a single new patient will respond to a treatment</li>
+                        <li>Setting an inventory threshold for one SKU at one store</li>
+                        <li>Any time the question is "what will <em>this</em> observation be?" not "what is the average?"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bq">
+                <p>If your boss asks 'will this territory hit quota next quarter?' — the <span class="ci">CI band</span> is the wrong tool.
+                A <span class="ci">CI</span> that says ±12 prescriptions around the mean tells you nothing about whether one territory will land inside or outside target.
+                You need the <span class="pi">PI</span>. And it will almost always be wider than you hoped.</p>
+            </div>
+
+            <p>
+                For more on the foundations that make this work, see <a href="linear-regression-in-a-minute.html">Linear Regression in a Minute</a>.
+            </p>
+
+            <a href="linear-regression-in-a-minute.html" class="related-card" aria-label="Related reading: Linear Regression in a Minute">
+                <div class="related-card-icon"><i class="fa fa-chart-line"></i></div>
+                <div>
+                    <div class="rc-label">Related Reading</div>
+                    <div class="rc-title">Linear Regression in a Minute</div>
+                    <div class="rc-desc">The line, OLS derivation, assumptions, and diagnostics — the foundations that make CI and PI meaningful.</div>
+                </div>
+            </a>
+
+            <div class="article-footer">
+                <a href="index.html" class="back-link">
+                    <i class="fa fa-arrow-left"></i> Back to Blog
+                </a>
+            </div>
+
+        </article>
+
+        <aside class="toc-aside" aria-label="Table of contents">
+            <div class="toc-inner">
+                <div class="toc-heading">Contents</div>
+                <ul class="toc-list">
+                    <li><a href="#two-bands">Two bands, two questions</a></li>
+                    <li><a href="#explore">Explore it</a></li>
+                    <li><a href="#math">The math</a></li>
+                    <li><a href="#use-cases">When to use each</a></li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <script>
+    (function () {
+      "use strict";
+      const widgetEl = document.getElementById('ci-pi-widget');
+      const $w = (id) => document.getElementById('w_' + id);
+
+      const tTab = {
+        90: {6:1.943,7:1.895,8:1.860,9:1.833,10:1.812,12:1.782,14:1.761,16:1.746,18:1.734,20:1.725,25:1.708,30:1.697,40:1.684,60:1.671,120:1.658,100000:1.645},
+        95: {6:2.447,7:2.365,8:2.306,9:2.262,10:2.228,12:2.179,14:2.145,16:2.120,18:2.101,20:2.086,25:2.060,30:2.042,40:2.021,60:2.000,120:1.980,100000:1.960},
+        99: {6:3.707,7:3.499,8:3.355,9:3.250,10:3.169,12:3.055,14:2.977,16:2.921,18:2.878,20:2.845,25:2.787,30:2.750,40:2.704,60:2.660,120:2.617,100000:2.576}
+      };
+      function tCrit(conf, df) {
+        const tbl = tTab[conf], keys = Object.keys(tbl).map(Number).sort((a,b)=>a-b);
+        if (df <= keys[0]) return tbl[keys[0]];
+        for (let i = 0; i < keys.length - 1; i++) {
+          if (df >= keys[i] && df <= keys[i+1]) {
+            const lo = keys[i], hi = keys[i+1];
+            return tbl[lo] + (tbl[hi] - tbl[lo]) * (df - lo) / (hi - lo);
+          }
+        }
+        return tbl[keys[keys.length-1]];
+      }
+
+      function randn(){let u=0,v=0;while(u===0)u=Math.random();while(v===0)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+
+      const TRUE_A = 15, TRUE_B = 1.8, XMIN = 20, XMAX = 200;
+      let data = [];
+      const show = { points: true, fit: true, ci: true, pi: true, mean: true };
+      let wConf = 95;
+      let model = null;
+
+      function genData() {
+        const n = +$w("n").value, noise = +$w("noise").value;
+        data = [];
+        for (let i = 0; i < n; i++) {
+          const x = XMIN + Math.random() * (XMAX - XMIN);
+          const y = TRUE_A + TRUE_B * x + noise * randn();
+          data.push({ x, y });
+        }
+      }
+
+      function fit() {
+        const n = data.length;
+        const xbar = data.reduce((s,p)=>s+p.x,0)/n;
+        const ybar = data.reduce((s,p)=>s+p.y,0)/n;
+        let Sxx = 0, Sxy = 0;
+        data.forEach(p => { Sxx += (p.x-xbar)**2; Sxy += (p.x-xbar)*(p.y-ybar); });
+        const slope = Sxy/Sxx, intercept = ybar - slope*xbar;
+        let sse = 0;
+        data.forEach(p => { const yh = intercept + slope*p.x; sse += (p.y-yh)**2; });
+        const s = Math.sqrt(sse/(n-2));
+        const t = tCrit(wConf, n-2);
+        const yhat = (x) => intercept + slope*x;
+        const seMean = (x) => s*Math.sqrt(1/n + (x-xbar)**2/Sxx);
+        const sePred = (x) => s*Math.sqrt(1 + 1/n + (x-xbar)**2/Sxx);
+        let inCI = 0, inPI = 0;
+        data.forEach(p => {
+          const d = Math.abs(p.y - yhat(p.x));
+          if (d <= t*seMean(p.x)) inCI++;
+          if (d <= t*sePred(p.x)) inPI++;
+        });
+        model = { n, xbar, ybar, Sxx, slope, intercept, s, t, yhat, seMean, sePred, inCI, inPI };
+      }
+
+      let px = null;
+      function draw() {
+        const cv = $w("plot");
+        const dpr = window.devicePixelRatio || 1;
+        const w = cv.clientWidth, h = 440;
+        cv.width = w*dpr; cv.height = h*dpr; cv.style.height = h+"px";
+        const ctx = cv.getContext("2d"); ctx.setTransform(dpr,0,0,dpr,0,0);
+        ctx.clearRect(0,0,w,h);
+        const padL = 54, padR = 18, padT = 12, padB = 40;
+        const plotW = w-padL-padR, plotH = h-padT-padB;
+        const m = model;
+        let yLo = Infinity, yHi = -Infinity;
+        for (let gx = XMIN; gx <= XMAX; gx += (XMAX-XMIN)/40) {
+          yLo = Math.min(yLo, m.yhat(gx) - m.t*m.sePred(gx));
+          yHi = Math.max(yHi, m.yhat(gx) + m.t*m.sePred(gx));
+        }
+        data.forEach(p => { yLo = Math.min(yLo,p.y); yHi = Math.max(yHi,p.y); });
+        const yPad = (yHi-yLo)*0.06; yLo -= yPad; yHi += yPad;
+        const X = (x) => padL + plotW*(x-XMIN)/(XMAX-XMIN);
+        const Y = (y) => padT + plotH - plotH*(y-yLo)/(yHi-yLo);
+        px = { X, Y, padL, padR, padT, padB, plotW, plotH, XMIN, XMAX };
+        ctx.font = '11px "IBM Plex Mono", monospace';
+        ctx.strokeStyle = "#2d3748"; ctx.fillStyle = "#6b7280"; ctx.lineWidth = 1;
+        for (let g = 0; g <= 5; g++) {
+          const yv = yLo + (yHi-yLo)*g/5, y = Y(yv);
+          ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(w-padR,y); ctx.stroke();
+          ctx.textAlign="right"; ctx.textBaseline="middle";
+          ctx.fillText(Math.round(yv), padL-8, y);
+        }
+        ctx.textAlign="center"; ctx.textBaseline="top";
+        for (let xv = XMIN; xv <= XMAX; xv += 30) ctx.fillText(Math.round(xv), X(xv), h-padB+8);
+        ctx.fillStyle = "#6b7280"; ctx.font = '11px Inter, sans-serif';
+        ctx.fillText("detailing calls per month", padL+plotW/2, h-padB+22);
+        ctx.save(); ctx.translate(14, padT+plotH/2); ctx.rotate(-Math.PI/2);
+        ctx.textAlign="center"; ctx.fillText("new prescriptions", 0, 0); ctx.restore();
+        const G = 60;
+        function bandPath(seFn) {
+          ctx.beginPath();
+          for (let i = 0; i <= G; i++) { const x = XMIN + (XMAX-XMIN)*i/G; const p = i===0?"moveTo":"lineTo"; ctx[p](X(x), Y(m.yhat(x)+m.t*seFn(x))); }
+          for (let i = G; i >= 0; i--) { const x = XMIN + (XMAX-XMIN)*i/G; ctx.lineTo(X(x), Y(m.yhat(x)-m.t*seFn(x))); }
+          ctx.closePath();
+        }
+        if (show.pi) {
+          ctx.fillStyle = getComputedStyle(widgetEl).getPropertyValue('--w-pi-fill').trim();
+          bandPath(m.sePred); ctx.fill();
+          ctx.strokeStyle = "rgba(251,146,60,0.55)"; ctx.lineWidth = 1; ctx.setLineDash([4,3]);
+          ctx.beginPath(); for(let i=0;i<=G;i++){const x=XMIN+(XMAX-XMIN)*i/G;const p=i===0?"moveTo":"lineTo";ctx[p](X(x),Y(m.yhat(x)+m.t*m.sePred(x)));} ctx.stroke();
+          ctx.beginPath(); for(let i=0;i<=G;i++){const x=XMIN+(XMAX-XMIN)*i/G;const p=i===0?"moveTo":"lineTo";ctx[p](X(x),Y(m.yhat(x)-m.t*m.sePred(x)));} ctx.stroke();
+          ctx.setLineDash([]);
+        }
+        if (show.ci) {
+          ctx.fillStyle = getComputedStyle(widgetEl).getPropertyValue('--w-ci-fill').trim();
+          bandPath(m.seMean); ctx.fill();
+        }
+        if (show.fit) {
+          ctx.strokeStyle = "#e2e8f0"; ctx.lineWidth = 2.4;
+          ctx.beginPath(); ctx.moveTo(X(XMIN), Y(m.yhat(XMIN))); ctx.lineTo(X(XMAX), Y(m.yhat(XMAX))); ctx.stroke();
+        }
+        if (show.mean) {
+          ctx.strokeStyle = "#4a5568"; ctx.lineWidth = 1; ctx.setLineDash([3,4]);
+          ctx.beginPath(); ctx.moveTo(X(m.xbar), padT); ctx.lineTo(X(m.xbar), padT+plotH); ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.fillStyle = "#8b949e"; ctx.textAlign="center"; ctx.textBaseline="top";
+          ctx.font = '10px "IBM Plex Mono", monospace';
+          ctx.fillText("mean X (band waist)", X(m.xbar), padT+2);
+        }
+        if (show.points) {
+          data.forEach(p => {
+            const inside = Math.abs(p.y-m.yhat(p.x)) <= m.t*m.sePred(p.x);
+            ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 4, 0, Math.PI*2);
+            ctx.fillStyle = inside ? "#5b6f7c" : "#c0392b";
+            ctx.fill();
+            if (!inside) { ctx.strokeStyle="#c0392b"; ctx.lineWidth=1; ctx.beginPath(); ctx.arc(X(p.x),Y(p.y),6.5,0,Math.PI*2); ctx.stroke(); }
+          });
+        }
+      }
+
+      const wTt = $w("tt");
+      $w("plot").addEventListener("mousemove", (e) => {
+        if (!px || !model) return;
+        const rect = e.currentTarget.getBoundingClientRect();
+        const mx = e.clientX - rect.left;
+        const { X, padL, plotW, XMIN, XMAX } = px;
+        let x = XMIN + (mx-padL)/plotW*(XMAX-XMIN);
+        if (x < XMIN || x > XMAX) { wTt.style.opacity = 0; return; }
+        const m = model, yh = m.yhat(x);
+        const ciw = m.t*m.seMean(x), piw = m.t*m.sePred(x);
+        wTt.innerHTML =
+          '<div class="r"><span class="c">calls</span><span>'+Math.round(x)+'</span></div>'+
+          '<div class="r"><span class="c">predicted</span><span>'+Math.round(yh)+' Rx</span></div>'+
+          '<div class="r"><span class="c" style="color:#7fd4c3">CI ±</span><span>'+Math.round(ciw)+'</span></div>'+
+          '<div class="r"><span class="c" style="color:#e6a56a">PI ±</span><span>'+Math.round(piw)+'</span></div>';
+        wTt.style.opacity = 1;
+        wTt.style.left = Math.min(X(x)+14, rect.width-120) + "px";
+        wTt.style.top = "40px";
+      });
+      $w("plot").addEventListener("mouseleave", () => { wTt.style.opacity = 0; });
+
+      function updateStats() {
+        const m = model;
+        $w("sEq").textContent = "+" + m.slope.toFixed(2);
+        $w("sCI").textContent = Math.round(m.inCI/m.n*100) + "%";
+        $w("sPI").textContent = Math.round(m.inPI/m.n*100) + "%";
+        $w("sPInote").textContent = "target: " + wConf + "%";
+        const ratio = m.sePred(m.xbar)/m.seMean(m.xbar);
+        $w("sRatio").textContent = ratio.toFixed(1) + "x";
+        $w("insight").innerHTML =
+          "<b>Read the plot like this.</b> The dark line is the model's best guess of average Rx for any call level. " +
+          "The <b>teal CI band</b> is narrow because averaging "+m.n+" territories pins that line down well, so it holds only about <b>"+Math.round(m.inCI/m.n*100)+"%</b> of the dots (it was never meant to cover them). " +
+          "The <b>clay PI band</b> is wide because a single new territory scatters, so it catches about <b>"+Math.round(m.inPI/m.n*100)+"%</b> of them, right near your "+wConf+"% target. " +
+          "Both bands pinch at the <b>mean of X</b> and flare at the edges, because the model is most sure near the center of its data. " +
+          "Red-ringed dots are the ones that fell outside the PI.";
+      }
+
+      function refresh() { fit(); draw(); updateStats(); }
+
+      [["n","nVal",v=>v],["noise","noiseVal",v=>v]].forEach(([inp,out])=>{
+        const el=$w(inp), lbl=$w(out);
+        const upd=()=>{lbl.textContent=el.value;}; el.addEventListener("input",()=>{upd();genData();refresh();}); upd();
+      });
+      $w("conf").addEventListener("click",(e)=>{
+        const b=e.target.closest("button"); if(!b)return;
+        [...$w("conf").children].forEach(c=>c.classList.remove("on")); b.classList.add("on");
+        wConf=+b.dataset.c; refresh();
+      });
+      widgetEl.querySelectorAll(".w-tg").forEach(tg=>{
+        tg.addEventListener("click",()=>{ const k=tg.dataset.t; show[k]=!show[k]; tg.classList.toggle("on",show[k]); draw(); });
+      });
+      $w("regen").addEventListener("click",()=>{ genData(); refresh(); });
+      let wRz; window.addEventListener("resize",()=>{ clearTimeout(wRz); wRz=setTimeout(draw,120); });
+
+      genData(); refresh();
+    })();
+    </script>
+
+    <script>
+        // Progress bar
+        const bar = document.getElementById('progress-bar');
+        window.addEventListener('scroll', function () {
+            const st = window.scrollY;
+            const dh = document.documentElement.scrollHeight - window.innerHeight;
+            bar.style.width = (dh > 0 ? (st / dh * 100) : 0) + '%';
+        }, { passive: true });
+
+        // Nav hide on scroll down, show on scroll up
+        const nav = document.getElementById('top-nav');
+        let lastY = 0;
+        window.addEventListener('scroll', function () {
+            const y = window.scrollY;
+            if (y > lastY && y > 140) {
+                nav.classList.add('hidden');
+            } else {
+                nav.classList.remove('hidden');
+            }
+            lastY = y;
+        }, { passive: true });
+
+        // TOC active section via IntersectionObserver
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const sections = document.querySelectorAll('.article-body h2[id]');
+
+        const io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    tocLinks.forEach(function (l) { l.classList.remove('active'); });
+                    const active = document.querySelector('.toc-list a[href="#' + entry.target.id + '"]');
+                    if (active) active.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-10% 0px -75% 0px' });
+
+        sections.forEach(function (s) { io.observe(s); });
+    </script>
+</body>
+</html>

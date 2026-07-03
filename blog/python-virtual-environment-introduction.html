@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Python Virtual Environment — Introduction | Rishabh Singh</title>
     <meta name="description" content="Python virtual environments explained: why you need them for managing multiple projects with conflicting dependencies, how virtualenv works, and commands to create, activate, install, and deactivate on Linux and Windows.">
     <meta name="author" content="Rishabh Singh">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="keywords" content="Python virtual environment, virtualenv, python venv, virtual environment Linux, virtual environment Windows, activate virtualenv, pip install virtualenv, isolated Python environment, Python project isolation">
-
-    <link rel="canonical" href="https://rishabhsingh.me/blog/python-virtual-environment-introduction.html">
-
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://rishabhsingh.me/blog/python-virtual-environment-introduction.html">
     <meta property="og:title" content="Python Virtual Environment — Introduction | Rishabh Singh">
@@ -25,7 +20,6 @@
     <meta property="article:published_time" content="2022-08-13">
     <meta property="article:tag" content="Python">
     <meta property="article:tag" content="Virtual Environment">
-
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://rishabhsingh.me/blog/python-virtual-environment-introduction.html">
     <meta name="twitter:title" content="Python Virtual Environment | Rishabh Singh">
@@ -33,20 +27,10 @@
     <meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:640/format:webp/1*DN1B1j4dSY33nSYEwHw13w.png">
     <meta name="twitter:creator" content="@rishabhsingh">
 
+    <link rel="canonical" href="https://rishabhsingh.me/blog/python-virtual-environment-introduction.html">
     <link rel="sitemap" type="application/xml" href="../sitemap.xml">
     <link rel="icon" type="image/svg+xml" href="../images/Logo.svg">
     <link rel="apple-touch-icon" href="../images/Logo.svg">
-
-    <link rel="stylesheet" href="../css/style.css?v=2.3">
-    <link rel="stylesheet" href="../css/skins/color-4.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="../css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
-    <link rel="stylesheet" href="../css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
-    <link rel="stylesheet" href="../css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
-    <link rel="stylesheet" href="../css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
-    <link rel="stylesheet" href="../css/style-switcher.css">
-    <link rel="stylesheet" href="../css/blog.css?v=1.3">
-
     <script type="application/ld+json">
     [
     {
@@ -108,79 +92,57 @@
     }
     ]
     </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../css/blog-modern.css">
 </head>
 
-<body class="dark">
+<body>
+    <div id="progress-bar"></div>
 
-    <div class="main-container">
-
-        <div class="aside">
-            <div class="logo">
-                <a href="../index.html" aria-label="Back to portfolio">
-                    <img src="../images/Logo.svg" width="300" alt="Rishabh Singh Portfolio Logo">
-                </a>
-            </div>
-            <div class="nav-toggler"><span></span></div>
-            <ul class="nav">
-                <li><a href="../index.html#home"       class="nav-item"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href="../index.html#about"      class="nav-item"><i class="fa fa-user"></i>About</a></li>
-                <li><a href="../index.html#services"   class="nav-item"><i class="fa fa-list"></i>Services</a></li>
-                <li><a href="../index.html#portfolio"  class="nav-item"><i class="fa fa-briefcase"></i>Projects</a></li>
-                <li><a href="../index.html#opensource" class="nav-item"><i class="fa fa-code-branch"></i>Open Source</a></li>
-                <li><a href="../index.html#blog"       class="nav-item active"><i class="fa fa-newspaper"></i>Blog</a></li>
-                <li><a href="../index.html#contact"    class="nav-item"><i class="fa fa-comments"></i>Contact</a></li>
-                <li><a href="../index.html#visitors"   class="nav-item"><i class="fa fa-globe"></i>Visitors</a></li>
-            </ul>
+    <nav class="top-nav" id="top-nav" aria-label="Site navigation">
+        <a href="../index.html" class="nav-logo"><i class="fa fa-arrow-left"></i> Rishabh Singh</a>
+        <div class="nav-crumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span>/</span>
+            <a href="index.html">Blog</a>
+            <span>/</span>
+            <span>Python Virtual Environment — Introduction</span>
         </div>
+        <a href="index.html" class="nav-blog-link"><i class="fa fa-newspaper"></i> All Posts</a>
+    </nav>
 
-        <div class="main-content">
-            <section class="blog-article section" id="blog-article">
-                <div class="container">
+    <header class="article-hero">
+        <div class="tags" aria-label="Article tags">
+            <span class="tag">Python</span>
+            <span class="tag">Virtual Environment</span>
+            <span class="tag">Linux</span>
+            <span class="tag">Windows</span>
+        </div>
+        <h1>Python Virtual Environment — Introduction</h1>
+        <p class="article-subtitle">Python puts all packages in one place by default. When two projects need conflicting versions of the same library, everything breaks. Virtual environments give each project its own isolated space.</p>
+        <div class="article-meta">
+            <span><i class="fa fa-user"></i> Rishabh Singh</span>
+            <span><i class="fa fa-calendar"></i> Aug 13, 2022</span>
+            <span><i class="fa fa-clock"></i> 2 min read</span>
+            <span><i class="fa fa-brands fa-medium"></i> <a href="https://medium.com/@asusrishabh/python-virtual-environment-introduction-6faf172bf53c" target="_blank" rel="noopener noreferrer">Medium</a></span>
+        </div>
+    </header>
 
-                    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
-                        <a href="../index.html">Home</a>
-                        <span aria-hidden="true"> / </span>
-                        <a href="index.html">Blog</a>
-                        <span aria-hidden="true"> / </span>
-                        <span aria-current="page">Python Virtual Environment — Introduction</span>
-                    </nav>
+    <div class="content-outer">
+        <article class="article-body">
 
-                    <a href="index.html" class="blog-back-link">
-                        <i class="fa fa-arrow-left"></i> Back to Blog
-                    </a>
-
-                    <div class="blog-header">
-                        <h1>Python Virtual Environment — Introduction</h1>
-                        <p class="blog-subtitle">Python puts all packages in one place by default. When two projects need conflicting versions of the same library, everything breaks. Virtual environments give each project its own isolated space.</p>
-                        <div class="blog-meta">
-                            <span><i class="fa fa-user"></i> Rishabh Singh</span>
-                            <span><i class="fa fa-calendar"></i> Aug 13, 2022</span>
-                            <span><i class="fa fa-clock"></i> 2 min read</span>
-                            <span>
-                                <i class="fa fa-brands fa-medium"></i>
-                                <a href="https://medium.com/@asusrishabh/python-virtual-environment-introduction-6faf172bf53c"
-                                   target="_blank" rel="noopener noreferrer"
-                                   style="color:var(--text-black-700);">Originally on Medium</a>
-                            </span>
-                        </div>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Python</span>
-                            <span class="blog-tag">Virtual Environment</span>
-                            <span class="blog-tag">Linux</span>
-                            <span class="blog-tag">Windows</span>
-                        </div>
-                    </div>
-
-                    <figure class="blog-figure">
+<figure class="blog-figure">
                         <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*DN1B1j4dSY33nSYEwHw13w.png"
                              alt="Python virtual environment — isolated package directories per project"
                              loading="eager">
                         <figcaption>Virtual environments create isolated package directories — each project gets its own Python and its own dependencies.</figcaption>
                     </figure>
 
-                    <div class="blog-body">
-
-                        <h2>Why Do We Need Virtual Environments?</h2>
+<h2 id="why-do-we-need-virtual-environments">Why Do We Need Virtual Environments?</h2>
                         <p>
                             Python installs packages into a single global <code>site-packages</code> directory.
                             When you're working on two Django projects — one using Django 2.6, another needing Django 3.2 — they fight over the same installation slot.
@@ -195,25 +157,25 @@
                             "Use a virtual environment whenever you work on any Python-based project — every project, no exceptions."
                         </div>
 
-                        <h2>When and Where to Use Virtual Environments</h2>
+                        <h2 id="when-and-where-to-use-virtual-environments">When and Where to Use Virtual Environments</h2>
                         <p>
                             Always. Every Python project should have its own virtual environment.
                             Create it inside or alongside the project directory and activate it before installing any packages.
                             Never install project dependencies into the global Python installation.
                         </p>
 
-                        <h2>How Does a Virtual Environment Work?</h2>
+                        <h2 id="how-does-a-virtual-environment-work">How Does a Virtual Environment Work?</h2>
                         <p>
                             <code>virtualenv</code> builds a folder containing a copy of the Python interpreter, pip, and an isolated <code>site-packages</code> directory.
                             When activated, your shell's <code>PATH</code> is prepended with the virtual environment's <code>bin/</code> directory — so <code>python</code> and <code>pip</code> point to the environment's copies, not the system's.
                         </p>
 
-                        <h2>Installing virtualenv</h2>
+                        <h2 id="installing-virtualenv">Installing virtualenv</h2>
                         <pre><code>pip install virtualenv</code></pre>
 
                         <pre><code>virtualenv --version</code></pre>
 
-                        <h2>Creating a Virtual Environment</h2>
+                        <h2 id="creating-a-virtual-environment">Creating a Virtual Environment</h2>
                         <pre><code>virtualenv my_name</code></pre>
 
                         <p>To specify a Python version explicitly:</p>
@@ -223,7 +185,7 @@ virtualenv -p /usr/bin/python3 virtualenv_name
 # Python 2.7
 virtualenv -p /usr/bin/python2.7 virtualenv_name</code></pre>
 
-                        <h2>Activating the Environment</h2>
+                        <h2 id="activating-the-environment">Activating the Environment</h2>
 
                         <p><strong>Linux / macOS:</strong></p>
                         <pre><code>source virtualenv_name/bin/activate</code></pre>
@@ -234,15 +196,15 @@ virtualenv -p /usr/bin/python2.7 virtualenv_name</code></pre>
                         <p>Once activated, the prompt changes to show the environment name:</p>
                         <pre><code>(virtualenv_name)$</code></pre>
 
-                        <h2>Installing Packages Inside the Environment</h2>
+                        <h2 id="installing-packages-inside-the-environment">Installing Packages Inside the Environment</h2>
                         <pre><code>(virtualenv_name)$ pip install Django==2.9</code></pre>
                         <p>This installs into the virtual environment only — not the system Python.</p>
 
-                        <h2>Deactivating</h2>
+                        <h2 id="deactivating">Deactivating</h2>
                         <pre><code>(virtualenv_name)$ deactivate</code></pre>
                         <p>Returns your shell to the system Python. The virtual environment persists on disk — just run <code>activate</code> again to re-enter it.</p>
 
-                        <h2>Video Tutorial</h2>
+                        <h2 id="video-tutorial">Video Tutorial</h2>
                         <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin:1.5rem 0;">
                             <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;"
                                     src="https://www.youtube.com/embed/5B_XTXXuvP8"
@@ -268,67 +230,60 @@ virtualenv -p /usr/bin/python2.7 virtualenv_name</code></pre>
 
                         <p>See also: <a href="requirements-txt-in-python.html">requirements.txt in Python</a> — how to capture and share your environment's exact dependencies.</p>
 
-                    </div>
+            <div class="article-footer">
+                <a href="index.html" class="back-link"><i class="fa fa-arrow-left"></i> Back to Blog</a>
+                <a href="https://medium.com/@asusrishabh/python-virtual-environment-introduction-6faf172bf53c" target="_blank" rel="noopener noreferrer" class="medium-link"><i class="fa fa-brands fa-medium"></i> Read on Medium</a>
+            </div>
 
-                    <div class="blog-faq">
-                        <h2>Frequently Asked Questions</h2>
+        </article>
 
-                        <details class="faq-item">
-                            <summary>Why do we need Python virtual environments?</summary>
-                            <p>Python installs packages globally by default. Two projects needing different versions of the same library conflict. Virtual environments create isolated directories per project — each with its own packages and Python version, so projects never interfere.</p>
-                        </details>
-
-                        <details class="faq-item">
-                            <summary>What is virtualenv in Python?</summary>
-                            <p>A tool that creates isolated Python environments — self-contained folders with their own interpreter and site-packages. Packages installed in a virtualenv don't affect the system Python or other virtualenvs. Install with <code>pip install virtualenv</code>.</p>
-                        </details>
-
-                        <details class="faq-item">
-                            <summary>How do I activate a virtual environment on Windows vs Linux?</summary>
-                            <p>Linux/Mac: <code>source virtualenv_name/bin/activate</code>. Windows: <code>virtualenv_name\Scripts\activate</code>. Your prompt shows the environment name in parentheses when active — pip then installs into the environment, not the system.</p>
-                        </details>
-                    </div>
-
-                    <div class="blog-footer">
-                        <a href="index.html" class="blog-back-link" style="margin:0;">
-                            <i class="fa fa-arrow-left"></i> Back to Blog
-                        </a>
-                        <a href="https://medium.com/@asusrishabh/python-virtual-environment-introduction-6faf172bf53c"
-                           target="_blank" rel="noopener noreferrer" class="btn">
-                            Read on Medium&nbsp;<i class="fa fa-external-link-alt" style="font-size:13px;"></i>
-                        </a>
-                    </div>
-
-                </div>
-            </section>
-        </div>
+        <aside class="toc-aside" aria-label="Table of contents">
+            <div class="toc-inner">
+                <div class="toc-heading">Contents</div>
+                <ul class="toc-list">
+                    <li><a href="#why-do-we-need-virtual-environments">Why Do We Need Virtual Environments?</a></li>
+                    <li><a href="#when-and-where-to-use-virtual-environments">When and Where to Use Virtual Environments</a></li>
+                    <li><a href="#how-does-a-virtual-environment-work">How Does a Virtual Environment Work?</a></li>
+                    <li><a href="#installing-virtualenv">Installing virtualenv</a></li>
+                    <li><a href="#creating-a-virtual-environment">Creating a Virtual Environment</a></li>
+                    <li><a href="#activating-the-environment">Activating the Environment</a></li>
+                    <li><a href="#installing-packages-inside-the-environment">Installing Packages Inside the Environment</a></li>
+                    <li><a href="#deactivating">Deactivating</a></li>
+                    <li><a href="#video-tutorial">Video Tutorial</a></li>
+                </ul>
+            </div>
+        </aside>
     </div>
 
-    <div class="style-switcher">
-        <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
-        <div class="day-night s-icon"><i class="fas"></i></div>
-        <h4>Theme Colors</h4>
-        <div class="colors">
-            <span class="color-1" onclick="setActiveStyle('color-1')"></span>
-            <span class="color-2" onclick="setActiveStyle('color-2')"></span>
-            <span class="color-3" onclick="setActiveStyle('color-3')"></span>
-            <span class="color-4" onclick="setActiveStyle('color-4')"></span>
-        </div>
-    </div>
-
-    <script src="../js/style-switcher.js" defer></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const navToggler = document.querySelector('.nav-toggler');
-            const aside = document.querySelector('.aside');
-            if (navToggler && aside) {
-                navToggler.addEventListener('click', function () {
-                    aside.classList.toggle('open');
-                    navToggler.classList.toggle('open');
+        const bar = document.getElementById('progress-bar');
+        window.addEventListener('scroll', function () {
+            const st = window.scrollY;
+            const dh = document.documentElement.scrollHeight - window.innerHeight;
+            bar.style.width = (dh > 0 ? (st / dh * 100) : 0) + '%';
+        }, { passive: true });
+        const nav = document.getElementById('top-nav');
+        let lastY = 0;
+        window.addEventListener('scroll', function () {
+            const y = window.scrollY;
+            if (y > lastY && y > 140) nav.classList.add('hidden');
+            else nav.classList.remove('hidden');
+            lastY = y;
+        }, { passive: true });
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const sections = document.querySelectorAll('.article-body h2[id]');
+        if (tocLinks.length && sections.length) {
+            const io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        tocLinks.forEach(function (l) { l.classList.remove('active'); });
+                        const a = document.querySelector('.toc-list a[href="#' + entry.target.id + '"]');
+                        if (a) a.classList.add('active');
+                    }
                 });
-            }
-        });
+            }, { rootMargin: '-10% 0px -75% 0px' });
+            sections.forEach(function (s) { io.observe(s); });
+        }
     </script>
-
 </body>
 </html>

@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>HTTP Methods — Enhancing Web Communication | Rishabh Singh</title>
     <meta name="description" content="HTTP methods explained: GET retrieves data, POST submits it, PUT replaces, PATCH updates partially, DELETE removes, HEAD fetches headers only, OPTIONS checks supported methods — with Python requests examples.">
     <meta name="author" content="Rishabh Singh">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="keywords" content="HTTP methods, GET POST PUT DELETE PATCH, HTTP request Python, requests library Python, REST API methods, HTTP verbs, web communication, API development">
-
-    <link rel="canonical" href="https://rishabhsingh.me/blog/http-methods-enhancing-web-communication.html">
-
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://rishabhsingh.me/blog/http-methods-enhancing-web-communication.html">
     <meta property="og:title" content="HTTP Methods — Enhancing Web Communication | Rishabh Singh">
@@ -25,7 +20,6 @@
     <meta property="article:published_time" content="2024-01-30">
     <meta property="article:tag" content="Web Development">
     <meta property="article:tag" content="HTTP">
-
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://rishabhsingh.me/blog/http-methods-enhancing-web-communication.html">
     <meta name="twitter:title" content="HTTP Methods | Rishabh Singh">
@@ -33,20 +27,10 @@
     <meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/0*0atRPBvfNfs3zkvj.png">
     <meta name="twitter:creator" content="@rishabhsingh">
 
+    <link rel="canonical" href="https://rishabhsingh.me/blog/http-methods-enhancing-web-communication.html">
     <link rel="sitemap" type="application/xml" href="../sitemap.xml">
     <link rel="icon" type="image/svg+xml" href="../images/Logo.svg">
     <link rel="apple-touch-icon" href="../images/Logo.svg">
-
-    <link rel="stylesheet" href="../css/style.css?v=2.3">
-    <link rel="stylesheet" href="../css/skins/color-4.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="../css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
-    <link rel="stylesheet" href="../css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
-    <link rel="stylesheet" href="../css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
-    <link rel="stylesheet" href="../css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
-    <link rel="stylesheet" href="../css/style-switcher.css">
-    <link rel="stylesheet" href="../css/blog.css?v=1.3">
-
     <script type="application/ld+json">
     [
     {
@@ -108,79 +92,57 @@
     }
     ]
     </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../css/blog-modern.css">
 </head>
 
-<body class="dark">
+<body>
+    <div id="progress-bar"></div>
 
-    <div class="main-container">
-
-        <div class="aside">
-            <div class="logo">
-                <a href="../index.html" aria-label="Back to portfolio">
-                    <img src="../images/Logo.svg" width="300" alt="Rishabh Singh Portfolio Logo">
-                </a>
-            </div>
-            <div class="nav-toggler"><span></span></div>
-            <ul class="nav">
-                <li><a href="../index.html#home"       class="nav-item"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href="../index.html#about"      class="nav-item"><i class="fa fa-user"></i>About</a></li>
-                <li><a href="../index.html#services"   class="nav-item"><i class="fa fa-list"></i>Services</a></li>
-                <li><a href="../index.html#portfolio"  class="nav-item"><i class="fa fa-briefcase"></i>Projects</a></li>
-                <li><a href="../index.html#opensource" class="nav-item"><i class="fa fa-code-branch"></i>Open Source</a></li>
-                <li><a href="../index.html#blog"       class="nav-item active"><i class="fa fa-newspaper"></i>Blog</a></li>
-                <li><a href="../index.html#contact"    class="nav-item"><i class="fa fa-comments"></i>Contact</a></li>
-                <li><a href="../index.html#visitors"   class="nav-item"><i class="fa fa-globe"></i>Visitors</a></li>
-            </ul>
+    <nav class="top-nav" id="top-nav" aria-label="Site navigation">
+        <a href="../index.html" class="nav-logo"><i class="fa fa-arrow-left"></i> Rishabh Singh</a>
+        <div class="nav-crumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span>/</span>
+            <a href="index.html">Blog</a>
+            <span>/</span>
+            <span>HTTP Methods — Enhancing Web Communication</span>
         </div>
+        <a href="index.html" class="nav-blog-link"><i class="fa fa-newspaper"></i> All Posts</a>
+    </nav>
 
-        <div class="main-content">
-            <section class="blog-article section" id="blog-article">
-                <div class="container">
+    <header class="article-hero">
+        <div class="tags" aria-label="Article tags">
+            <span class="tag">Web Development</span>
+            <span class="tag">HTTP</span>
+            <span class="tag">Python</span>
+            <span class="tag">API</span>
+        </div>
+        <h1>HTTP Methods — Enhancing Web Communication</h1>
+        <p class="article-subtitle">GET retrieves, POST submits, PUT replaces, PATCH updates partially, DELETE removes, HEAD fetches headers, OPTIONS queries capabilities — the seven verbs that define every client-server interaction.</p>
+        <div class="article-meta">
+            <span><i class="fa fa-user"></i> Rishabh Singh</span>
+            <span><i class="fa fa-calendar"></i> Jan 30, 2024</span>
+            <span><i class="fa fa-clock"></i> 2 min read</span>
+            <span><i class="fa fa-brands fa-medium"></i> <a href="https://medium.com/@asusrishabh/http-methods-enhancing-web-communication-eebb2afdcddd" target="_blank" rel="noopener noreferrer">Medium</a></span>
+        </div>
+    </header>
 
-                    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
-                        <a href="../index.html">Home</a>
-                        <span aria-hidden="true"> / </span>
-                        <a href="index.html">Blog</a>
-                        <span aria-hidden="true"> / </span>
-                        <span aria-current="page">HTTP Methods — Enhancing Web Communication</span>
-                    </nav>
+    <div class="content-outer">
+        <article class="article-body">
 
-                    <a href="index.html" class="blog-back-link">
-                        <i class="fa fa-arrow-left"></i> Back to Blog
-                    </a>
-
-                    <div class="blog-header">
-                        <h1>HTTP Methods — Enhancing Web Communication</h1>
-                        <p class="blog-subtitle">GET retrieves, POST submits, PUT replaces, PATCH updates partially, DELETE removes, HEAD fetches headers, OPTIONS queries capabilities — the seven verbs that define every client-server interaction.</p>
-                        <div class="blog-meta">
-                            <span><i class="fa fa-user"></i> Rishabh Singh</span>
-                            <span><i class="fa fa-calendar"></i> Jan 30, 2024</span>
-                            <span><i class="fa fa-clock"></i> 2 min read</span>
-                            <span>
-                                <i class="fa fa-brands fa-medium"></i>
-                                <a href="https://medium.com/@asusrishabh/http-methods-enhancing-web-communication-eebb2afdcddd"
-                                   target="_blank" rel="noopener noreferrer"
-                                   style="color:var(--text-black-700);">Originally on Medium</a>
-                            </span>
-                        </div>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Web Development</span>
-                            <span class="blog-tag">HTTP</span>
-                            <span class="blog-tag">Python</span>
-                            <span class="blog-tag">API</span>
-                        </div>
-                    </div>
-
-                    <figure class="blog-figure">
+<figure class="blog-figure">
                         <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*0atRPBvfNfs3zkvj.png"
                              alt="HTTP methods — GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS diagram"
                              loading="eager">
                         <figcaption>HTTP methods define how clients and servers communicate — each verb signals a specific intended action on a resource.</figcaption>
                     </figure>
 
-                    <div class="blog-body">
-
-                        <h2>The HTTP Methods</h2>
+<h2 id="the-http-methods">The HTTP Methods</h2>
                         <p>
                             Every HTTP request includes a method (verb) that tells the server what operation the client wants to perform.
                             Choosing the right method makes APIs predictable, cacheable, and RESTful.
@@ -225,7 +187,7 @@
                             "The right HTTP method makes your API self-documenting — anyone reading a request immediately knows the intended action and its safety guarantees."
                         </div>
 
-                        <h2>Python Examples with <code>requests</code></h2>
+                        <h2 id="python-examples-with-requests">Python Examples with <code>requests</code></h2>
 
                         <pre><code>import requests
 
@@ -252,7 +214,7 @@ response = requests.head('https://api.example.com/users/123')
 # OPTIONS — query supported methods
 response = requests.options('https://api.example.com/users/123')</code></pre>
 
-                        <h2>Quick Reference</h2>
+                        <h2 id="quick-reference">Quick Reference</h2>
                         <ul>
                             <li><strong>GET:</strong> safe, idempotent — use for all read operations</li>
                             <li><strong>POST:</strong> not safe, not idempotent — creates new resources, triggers actions</li>
@@ -268,67 +230,54 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                             Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods" target="_blank" rel="noopener noreferrer">MDN Web Docs — HTTP request methods</a>
                         </div>
 
-                    </div>
+            <div class="article-footer">
+                <a href="index.html" class="back-link"><i class="fa fa-arrow-left"></i> Back to Blog</a>
+                <a href="https://medium.com/@asusrishabh/http-methods-enhancing-web-communication-eebb2afdcddd" target="_blank" rel="noopener noreferrer" class="medium-link"><i class="fa fa-brands fa-medium"></i> Read on Medium</a>
+            </div>
 
-                    <div class="blog-faq">
-                        <h2>Frequently Asked Questions</h2>
+        </article>
 
-                        <details class="faq-item">
-                            <summary>What are HTTP methods?</summary>
-                            <p>HTTP methods (verbs) define the action a client wants to perform on a resource. GET retrieves, POST submits, PUT replaces, PATCH partially updates, DELETE removes, HEAD fetches headers only, OPTIONS queries supported methods.</p>
-                        </details>
-
-                        <details class="faq-item">
-                            <summary>What is the difference between PUT and PATCH?</summary>
-                            <p>PUT replaces the entire resource — send the full updated object. PATCH makes a partial update — send only the changed fields. Use PATCH to update one attribute without touching the rest of the resource.</p>
-                        </details>
-
-                        <details class="faq-item">
-                            <summary>When should I use POST vs GET?</summary>
-                            <p>Use GET to retrieve data — it's safe, idempotent, and cacheable, but avoid putting sensitive data in URLs. Use POST to submit data or trigger actions that change server state — data goes in the request body, not the URL.</p>
-                        </details>
-                    </div>
-
-                    <div class="blog-footer">
-                        <a href="index.html" class="blog-back-link" style="margin:0;">
-                            <i class="fa fa-arrow-left"></i> Back to Blog
-                        </a>
-                        <a href="https://medium.com/@asusrishabh/http-methods-enhancing-web-communication-eebb2afdcddd"
-                           target="_blank" rel="noopener noreferrer" class="btn">
-                            Read on Medium&nbsp;<i class="fa fa-external-link-alt" style="font-size:13px;"></i>
-                        </a>
-                    </div>
-
-                </div>
-            </section>
-        </div>
+        <aside class="toc-aside" aria-label="Table of contents">
+            <div class="toc-inner">
+                <div class="toc-heading">Contents</div>
+                <ul class="toc-list">
+                    <li><a href="#the-http-methods">The HTTP Methods</a></li>
+                    <li><a href="#python-examples-with-requests">Python Examples with requests</a></li>
+                    <li><a href="#quick-reference">Quick Reference</a></li>
+                </ul>
+            </div>
+        </aside>
     </div>
 
-    <div class="style-switcher">
-        <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
-        <div class="day-night s-icon"><i class="fas"></i></div>
-        <h4>Theme Colors</h4>
-        <div class="colors">
-            <span class="color-1" onclick="setActiveStyle('color-1')"></span>
-            <span class="color-2" onclick="setActiveStyle('color-2')"></span>
-            <span class="color-3" onclick="setActiveStyle('color-3')"></span>
-            <span class="color-4" onclick="setActiveStyle('color-4')"></span>
-        </div>
-    </div>
-
-    <script src="../js/style-switcher.js" defer></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const navToggler = document.querySelector('.nav-toggler');
-            const aside = document.querySelector('.aside');
-            if (navToggler && aside) {
-                navToggler.addEventListener('click', function () {
-                    aside.classList.toggle('open');
-                    navToggler.classList.toggle('open');
+        const bar = document.getElementById('progress-bar');
+        window.addEventListener('scroll', function () {
+            const st = window.scrollY;
+            const dh = document.documentElement.scrollHeight - window.innerHeight;
+            bar.style.width = (dh > 0 ? (st / dh * 100) : 0) + '%';
+        }, { passive: true });
+        const nav = document.getElementById('top-nav');
+        let lastY = 0;
+        window.addEventListener('scroll', function () {
+            const y = window.scrollY;
+            if (y > lastY && y > 140) nav.classList.add('hidden');
+            else nav.classList.remove('hidden');
+            lastY = y;
+        }, { passive: true });
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const sections = document.querySelectorAll('.article-body h2[id]');
+        if (tocLinks.length && sections.length) {
+            const io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        tocLinks.forEach(function (l) { l.classList.remove('active'); });
+                        const a = document.querySelector('.toc-list a[href="#' + entry.target.id + '"]');
+                        if (a) a.classList.add('active');
+                    }
                 });
-            }
-        });
+            }, { rootMargin: '-10% 0px -75% 0px' });
+            sections.forEach(function (s) { io.observe(s); });
+        }
     </script>
-
 </body>
 </html>

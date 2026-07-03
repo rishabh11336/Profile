@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Python Program for Matrix Multiplication — 3 Methods | Rishabh Singh</title>
     <meta name="description" content="Three ways to multiply matrices in Python: nested loops for full control, list comprehension for concise code, and NumPy's dot() function for production use — with complete working examples.">
     <meta name="author" content="Rishabh Singh">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="keywords" content="Python matrix multiplication, numpy dot product, matrix multiply Python, nested loop matrix, list comprehension matrix, numpy dot(), matrix program Python, dot product Python">
-
-    <link rel="canonical" href="https://rishabhsingh.me/blog/python-program-for-matrix-multiplication.html">
-
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://rishabhsingh.me/blog/python-program-for-matrix-multiplication.html">
     <meta property="og:title" content="Python Matrix Multiplication — 3 Methods | Rishabh Singh">
@@ -25,7 +20,6 @@
     <meta property="article:published_time" content="2022-07-17">
     <meta property="article:tag" content="Python">
     <meta property="article:tag" content="NumPy">
-
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://rishabhsingh.me/blog/python-program-for-matrix-multiplication.html">
     <meta name="twitter:title" content="Python Matrix Multiplication | Rishabh Singh">
@@ -33,20 +27,10 @@
     <meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:598/format:webp/1*FWyBs9l0Zl9mTn-30Abhmw.png">
     <meta name="twitter:creator" content="@rishabhsingh">
 
+    <link rel="canonical" href="https://rishabhsingh.me/blog/python-program-for-matrix-multiplication.html">
     <link rel="sitemap" type="application/xml" href="../sitemap.xml">
     <link rel="icon" type="image/svg+xml" href="../images/Logo.svg">
     <link rel="apple-touch-icon" href="../images/Logo.svg">
-
-    <link rel="stylesheet" href="../css/style.css?v=2.3">
-    <link rel="stylesheet" href="../css/skins/color-4.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="../css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
-    <link rel="stylesheet" href="../css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
-    <link rel="stylesheet" href="../css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
-    <link rel="stylesheet" href="../css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
-    <link rel="stylesheet" href="../css/style-switcher.css">
-    <link rel="stylesheet" href="../css/blog.css?v=1.3">
-
     <script type="application/ld+json">
     [
     {
@@ -108,79 +92,57 @@
     }
     ]
     </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../css/blog-modern.css">
 </head>
 
-<body class="dark">
+<body>
+    <div id="progress-bar"></div>
 
-    <div class="main-container">
-
-        <div class="aside">
-            <div class="logo">
-                <a href="../index.html" aria-label="Back to portfolio">
-                    <img src="../images/Logo.svg" width="300" alt="Rishabh Singh Portfolio Logo">
-                </a>
-            </div>
-            <div class="nav-toggler"><span></span></div>
-            <ul class="nav">
-                <li><a href="../index.html#home"       class="nav-item"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href="../index.html#about"      class="nav-item"><i class="fa fa-user"></i>About</a></li>
-                <li><a href="../index.html#services"   class="nav-item"><i class="fa fa-list"></i>Services</a></li>
-                <li><a href="../index.html#portfolio"  class="nav-item"><i class="fa fa-briefcase"></i>Projects</a></li>
-                <li><a href="../index.html#opensource" class="nav-item"><i class="fa fa-code-branch"></i>Open Source</a></li>
-                <li><a href="../index.html#blog"       class="nav-item active"><i class="fa fa-newspaper"></i>Blog</a></li>
-                <li><a href="../index.html#contact"    class="nav-item"><i class="fa fa-comments"></i>Contact</a></li>
-                <li><a href="../index.html#visitors"   class="nav-item"><i class="fa fa-globe"></i>Visitors</a></li>
-            </ul>
+    <nav class="top-nav" id="top-nav" aria-label="Site navigation">
+        <a href="../index.html" class="nav-logo"><i class="fa fa-arrow-left"></i> Rishabh Singh</a>
+        <div class="nav-crumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span>/</span>
+            <a href="index.html">Blog</a>
+            <span>/</span>
+            <span>Python Program for Matrix Multiplication</span>
         </div>
+        <a href="index.html" class="nav-blog-link"><i class="fa fa-newspaper"></i> All Posts</a>
+    </nav>
 
-        <div class="main-content">
-            <section class="blog-article section" id="blog-article">
-                <div class="container">
+    <header class="article-hero">
+        <div class="tags" aria-label="Article tags">
+            <span class="tag">Python</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Mathematics</span>
+            <span class="tag">Linear Algebra</span>
+        </div>
+        <h1>Python Program for Matrix Multiplication</h1>
+        <p class="article-subtitle">Python has no built-in matrix type — but it has nested lists, list comprehensions, and NumPy. Three approaches to the dot product, from explicit loops to one-line NumPy magic.</p>
+        <div class="article-meta">
+            <span><i class="fa fa-user"></i> Rishabh Singh</span>
+            <span><i class="fa fa-calendar"></i> Jul 17, 2022</span>
+            <span><i class="fa fa-clock"></i> 4 min read</span>
+            <span><i class="fa fa-brands fa-medium"></i> <a href="https://medium.com/@asusrishabh/python-program-for-matrix-multiplication-5c1de08bb105" target="_blank" rel="noopener noreferrer">Medium</a></span>
+        </div>
+    </header>
 
-                    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
-                        <a href="../index.html">Home</a>
-                        <span aria-hidden="true"> / </span>
-                        <a href="index.html">Blog</a>
-                        <span aria-hidden="true"> / </span>
-                        <span aria-current="page">Python Program for Matrix Multiplication</span>
-                    </nav>
+    <div class="content-outer">
+        <article class="article-body">
 
-                    <a href="index.html" class="blog-back-link">
-                        <i class="fa fa-arrow-left"></i> Back to Blog
-                    </a>
-
-                    <div class="blog-header">
-                        <h1>Python Program for Matrix Multiplication</h1>
-                        <p class="blog-subtitle">Python has no built-in matrix type — but it has nested lists, list comprehensions, and NumPy. Three approaches to the dot product, from explicit loops to one-line NumPy magic.</p>
-                        <div class="blog-meta">
-                            <span><i class="fa fa-user"></i> Rishabh Singh</span>
-                            <span><i class="fa fa-calendar"></i> Jul 17, 2022</span>
-                            <span><i class="fa fa-clock"></i> 4 min read</span>
-                            <span>
-                                <i class="fa fa-brands fa-medium"></i>
-                                <a href="https://medium.com/@asusrishabh/python-program-for-matrix-multiplication-5c1de08bb105"
-                                   target="_blank" rel="noopener noreferrer"
-                                   style="color:var(--text-black-700);">Originally on Medium</a>
-                            </span>
-                        </div>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Python</span>
-                            <span class="blog-tag">NumPy</span>
-                            <span class="blog-tag">Mathematics</span>
-                            <span class="blog-tag">Linear Algebra</span>
-                        </div>
-                    </div>
-
-                    <figure class="blog-figure">
+<figure class="blog-figure">
                         <img src="https://miro.medium.com/v2/resize:fit:598/format:webp/1*FWyBs9l0Zl9mTn-30Abhmw.png"
                              alt="Matrix multiplication — dot product of two matrices"
                              loading="eager">
                         <figcaption>Matrix multiplication: the dot product sums element-wise products across rows and columns.</figcaption>
                     </figure>
 
-                    <div class="blog-body">
-
-                        <h2>What Is Matrix Multiplication?</h2>
+<h2 id="what-is-matrix-multiplication">What Is Matrix Multiplication?</h2>
                         <p>
                             A matrix is a 2D data structure where numbers are arranged into rows and columns.
                             Python has no built-in matrix type — nested lists represent matrices.
@@ -195,7 +157,7 @@
                         </p>
                         <p>Requirement: <strong>columns of A must equal rows of B</strong>. An (m×n) matrix times an (n×p) matrix gives an (m×p) result.</p>
 
-                        <h2>Approach 1: Nested Loops</h2>
+                        <h2 id="approach-1-nested-loops">Approach 1: Nested Loops</h2>
                         <p>The most explicit approach — three nested loops iterate over every element combination:</p>
 
                         <pre><code>def Multiply(A, B):
@@ -225,7 +187,7 @@ Multiply(A, B)</code></pre>
                             "The outer two loops select the output cell (i, j). The inner loop computes the dot product for that cell — summing A's row i against B's column j."
                         </div>
 
-                        <h2>Approach 2: List Comprehension</h2>
+                        <h2 id="approach-2-list-comprehension">Approach 2: List Comprehension</h2>
                         <p>More concise — compresses the three loops into a single expression using <code>zip</code> and <code>sum</code>:</p>
 
                         <pre><code>def Multiply(X, Y):
@@ -253,7 +215,7 @@ Multiply(A, B)</code></pre>
                             <code>sum(a*b ...)</code> computes the dot product for each output cell.
                         </p>
 
-                        <h2>Approach 3: NumPy</h2>
+                        <h2 id="approach-3-numpy">Approach 3: NumPy</h2>
                         <p>For any production or numerical computing use, NumPy's <code>dot()</code> is the right tool — implemented in optimized C/Fortran (BLAS), orders of magnitude faster than pure Python loops:</p>
 
                         <pre><code>import numpy as np
@@ -285,67 +247,55 @@ for p in result:
                             Reference: <a href="https://numpy.org/doc/stable/reference/generated/numpy.dot.html" target="_blank" rel="noopener noreferrer">NumPy Docs — numpy.dot</a>
                         </div>
 
-                    </div>
+            <div class="article-footer">
+                <a href="index.html" class="back-link"><i class="fa fa-arrow-left"></i> Back to Blog</a>
+                <a href="https://medium.com/@asusrishabh/python-program-for-matrix-multiplication-5c1de08bb105" target="_blank" rel="noopener noreferrer" class="medium-link"><i class="fa fa-brands fa-medium"></i> Read on Medium</a>
+            </div>
 
-                    <div class="blog-faq">
-                        <h2>Frequently Asked Questions</h2>
+        </article>
 
-                        <details class="faq-item">
-                            <summary>How do you multiply matrices in Python?</summary>
-                            <p>Three approaches: (1) Nested loops — iterate over row i and column j, summing <code>A[i][k]*B[k][j]</code>. (2) List comprehension — <code>[[sum(a*b for a,b in zip(row,col)) for col in zip(*B)] for row in A]</code>. (3) NumPy — <code>numpy.dot(A, B)</code> or <code>A @ B</code>.</p>
-                        </details>
-
-                        <details class="faq-item">
-                            <summary>What is the dot product of two matrices?</summary>
-                            <p>The matrix dot product multiplies row elements of A with column elements of B and sums them: <code>result[i][j] = sum(A[i][k] * B[k][j])</code>. Columns of A must equal rows of B. An (m×n) times (n×p) matrix gives an (m×p) result.</p>
-                        </details>
-
-                        <details class="faq-item">
-                            <summary>Which Python method is fastest for matrix multiplication?</summary>
-                            <p>NumPy's <code>dot()</code> — uses optimized BLAS/LAPACK routines in C/Fortran, orders of magnitude faster than pure Python. Use NumPy for any production code or large matrices. Nested loops are slowest; list comprehension is more Pythonic but still much slower than NumPy.</p>
-                        </details>
-                    </div>
-
-                    <div class="blog-footer">
-                        <a href="index.html" class="blog-back-link" style="margin:0;">
-                            <i class="fa fa-arrow-left"></i> Back to Blog
-                        </a>
-                        <a href="https://medium.com/@asusrishabh/python-program-for-matrix-multiplication-5c1de08bb105"
-                           target="_blank" rel="noopener noreferrer" class="btn">
-                            Read on Medium&nbsp;<i class="fa fa-external-link-alt" style="font-size:13px;"></i>
-                        </a>
-                    </div>
-
-                </div>
-            </section>
-        </div>
+        <aside class="toc-aside" aria-label="Table of contents">
+            <div class="toc-inner">
+                <div class="toc-heading">Contents</div>
+                <ul class="toc-list">
+                    <li><a href="#what-is-matrix-multiplication">What Is Matrix Multiplication?</a></li>
+                    <li><a href="#approach-1-nested-loops">Approach 1: Nested Loops</a></li>
+                    <li><a href="#approach-2-list-comprehension">Approach 2: List Comprehension</a></li>
+                    <li><a href="#approach-3-numpy">Approach 3: NumPy</a></li>
+                </ul>
+            </div>
+        </aside>
     </div>
 
-    <div class="style-switcher">
-        <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
-        <div class="day-night s-icon"><i class="fas"></i></div>
-        <h4>Theme Colors</h4>
-        <div class="colors">
-            <span class="color-1" onclick="setActiveStyle('color-1')"></span>
-            <span class="color-2" onclick="setActiveStyle('color-2')"></span>
-            <span class="color-3" onclick="setActiveStyle('color-3')"></span>
-            <span class="color-4" onclick="setActiveStyle('color-4')"></span>
-        </div>
-    </div>
-
-    <script src="../js/style-switcher.js" defer></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const navToggler = document.querySelector('.nav-toggler');
-            const aside = document.querySelector('.aside');
-            if (navToggler && aside) {
-                navToggler.addEventListener('click', function () {
-                    aside.classList.toggle('open');
-                    navToggler.classList.toggle('open');
+        const bar = document.getElementById('progress-bar');
+        window.addEventListener('scroll', function () {
+            const st = window.scrollY;
+            const dh = document.documentElement.scrollHeight - window.innerHeight;
+            bar.style.width = (dh > 0 ? (st / dh * 100) : 0) + '%';
+        }, { passive: true });
+        const nav = document.getElementById('top-nav');
+        let lastY = 0;
+        window.addEventListener('scroll', function () {
+            const y = window.scrollY;
+            if (y > lastY && y > 140) nav.classList.add('hidden');
+            else nav.classList.remove('hidden');
+            lastY = y;
+        }, { passive: true });
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const sections = document.querySelectorAll('.article-body h2[id]');
+        if (tocLinks.length && sections.length) {
+            const io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        tocLinks.forEach(function (l) { l.classList.remove('active'); });
+                        const a = document.querySelector('.toc-list a[href="#' + entry.target.id + '"]');
+                        if (a) a.classList.add('active');
+                    }
                 });
-            }
-        });
+            }, { rootMargin: '-10% 0px -75% 0px' });
+            sections.forEach(function (s) { io.observe(s); });
+        }
     </script>
-
 </body>
 </html>

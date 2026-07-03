@@ -1,18 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Multiclass vs Multilabel Classification Explained | Rishabh Singh</title>
     <meta name="description" content="Multiclass vs multilabel classification: binary classification, single-label vs multi-label prediction, real-world examples from MNIST to music genre tagging.">
     <meta name="author" content="Rishabh Singh">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="keywords" content="multiclass vs multilabel, binary classification, multilabel classification, multiclass classification, image classification types, sklearn classification, one-vs-rest, MNIST classification, music genre tagging, machine learning classification">
-
-    <link rel="canonical" href="https://rishabhsingh.me/blog/multiclass-vs-multilabel-classification-in-a-minute.html">
-
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://rishabhsingh.me/blog/multiclass-vs-multilabel-classification-in-a-minute.html">
     <meta property="og:title" content="Multiclass vs Multilabel Classification Explained | Rishabh Singh">
@@ -25,7 +20,6 @@
     <meta property="article:published_time" content="2024-06-19">
     <meta property="article:tag" content="Machine Learning">
     <meta property="article:tag" content="Classification">
-
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://rishabhsingh.me/blog/multiclass-vs-multilabel-classification-in-a-minute.html">
     <meta name="twitter:title" content="Multiclass vs Multilabel Classification | Rishabh Singh">
@@ -33,23 +27,10 @@
     <meta name="twitter:image" content="https://miro.medium.com/v2/resize:fit:720/format:webp/1*jSK1KjJylv5JER8pr0Qcog.png">
     <meta name="twitter:creator" content="@rishabhsingh">
 
+    <link rel="canonical" href="https://rishabhsingh.me/blog/multiclass-vs-multilabel-classification-in-a-minute.html">
     <link rel="sitemap" type="application/xml" href="../sitemap.xml">
     <link rel="icon" type="image/svg+xml" href="../images/Logo.svg">
     <link rel="apple-touch-icon" href="../images/Logo.svg">
-
-    <link rel="stylesheet" href="../css/style.css?v=2.3">
-    <link rel="stylesheet" href="../css/skins/color-4.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="../css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
-    <link rel="stylesheet" href="../css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
-    <link rel="stylesheet" href="../css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
-    <link rel="stylesheet" href="../css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
-    <link rel="stylesheet" href="../css/style-switcher.css">
-    <link rel="stylesheet" href="../css/blog.css?v=1.3">
-
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <script type="application/ld+json">
     [
     {
@@ -124,83 +105,59 @@
     }
     ]
     </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../css/blog-modern.css">
 </head>
 
-<body class="dark">
+<body>
+    <div id="progress-bar"></div>
 
-    <div class="main-container">
-
-        <div class="aside">
-            <div class="logo">
-                <a href="../index.html" aria-label="Back to portfolio">
-                    <img src="../images/Logo.svg" width="300" alt="Rishabh Singh Portfolio Logo">
-                </a>
-            </div>
-            <div class="nav-toggler"><span></span></div>
-            <ul class="nav">
-                <li><a href="../index.html#home"       class="nav-item"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href="../index.html#about"      class="nav-item"><i class="fa fa-user"></i>About</a></li>
-                <li><a href="../index.html#services"   class="nav-item"><i class="fa fa-list"></i>Services</a></li>
-                <li><a href="../index.html#portfolio"  class="nav-item"><i class="fa fa-briefcase"></i>Projects</a></li>
-                <li><a href="../index.html#opensource" class="nav-item"><i class="fa fa-code-branch"></i>Open Source</a></li>
-                <li><a href="../index.html#blog"       class="nav-item active"><i class="fa fa-newspaper"></i>Blog</a></li>
-                <li><a href="../index.html#contact"    class="nav-item"><i class="fa fa-comments"></i>Contact</a></li>
-                <li><a href="../index.html#visitors"   class="nav-item"><i class="fa fa-globe"></i>Visitors</a></li>
-            </ul>
+    <nav class="top-nav" id="top-nav" aria-label="Site navigation">
+        <a href="../index.html" class="nav-logo"><i class="fa fa-arrow-left"></i> Rishabh Singh</a>
+        <div class="nav-crumb" aria-label="Breadcrumb">
+            <a href="../index.html">Home</a>
+            <span>/</span>
+            <a href="index.html">Blog</a>
+            <span>/</span>
+            <span>Multiclass vs Multilabel Classification</span>
         </div>
+        <a href="index.html" class="nav-blog-link"><i class="fa fa-newspaper"></i> All Posts</a>
+    </nav>
 
-        <div class="main-content">
-            <section class="blog-article section" id="blog-article">
-                <div class="container">
+    <header class="article-hero">
+        <div class="tags" aria-label="Article tags">
+            <span class="tag">Classification</span>
+            <span class="tag">Machine Learning</span>
+            <span class="tag">Multiclass</span>
+            <span class="tag">Multilabel</span>
+            <span class="tag">sklearn</span>
+            <span class="tag">In a Minute</span>
+        </div>
+        <h1>Multiclass vs Multilabel Classification in a Minute</h1>
+        <p class="article-subtitle">In multiclass, each instance gets exactly one label. In multilabel, it can get many simultaneously. The distinction shapes your loss function, output layer, and evaluation metrics.</p>
+        <div class="article-meta">
+            <span><i class="fa fa-user"></i> Rishabh Singh</span>
+            <span><i class="fa fa-calendar"></i> Jun 19, 2024</span>
+            <span><i class="fa fa-clock"></i> 3 min read</span>
+            <span><i class="fa fa-brands fa-medium"></i> <a href="https://medium.com/ai-in-plain-english/multiclass-vs-multilabel-classification-in-a-minute-261b6e320061" target="_blank" rel="noopener noreferrer">Medium</a></span>
+        </div>
+    </header>
 
-                    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
-                        <a href="../index.html">Home</a>
-                        <span aria-hidden="true"> / </span>
-                        <a href="index.html">Blog</a>
-                        <span aria-hidden="true"> / </span>
-                        <span aria-current="page">Multiclass vs Multilabel Classification</span>
-                    </nav>
+    <div class="content-outer">
+        <article class="article-body">
 
-                    <a href="index.html" class="blog-back-link">
-                        <i class="fa fa-arrow-left"></i> Back to Blog
-                    </a>
-
-                    <!-- ── Header ── -->
-                    <div class="blog-header">
-                        <h1>Multiclass vs Multilabel Classification in a Minute</h1>
-                        <p class="blog-subtitle">In multiclass, each instance gets exactly one label. In multilabel, it can get many simultaneously. The distinction shapes your loss function, output layer, and evaluation metrics.</p>
-                        <div class="blog-meta">
-                            <span><i class="fa fa-user"></i> Rishabh Singh</span>
-                            <span><i class="fa fa-calendar"></i> Jun 19, 2024</span>
-                            <span><i class="fa fa-clock"></i> 3 min read</span>
-                            <span>
-                                <i class="fa fa-brands fa-medium"></i>
-                                <a href="https://medium.com/ai-in-plain-english/multiclass-vs-multilabel-classification-in-a-minute-261b6e320061"
-                                   target="_blank" rel="noopener noreferrer"
-                                   style="color:var(--text-black-700);">Originally on Medium</a>
-                            </span>
-                        </div>
-                        <div class="blog-tags">
-                            <span class="blog-tag">Classification</span>
-                            <span class="blog-tag">Machine Learning</span>
-                            <span class="blog-tag">Multiclass</span>
-                            <span class="blog-tag">Multilabel</span>
-                            <span class="blog-tag">sklearn</span>
-                        </div>
-                    </div>
-
-                    <!-- ── Hero ── -->
-                    <figure class="blog-figure">
+<figure class="blog-figure">
                         <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*jSK1KjJylv5JER8pr0Qcog.png"
                              alt="Comparison diagram: multiclass classification (one label) vs multilabel classification (multiple labels)"
                              loading="eager">
                         <figcaption>Multiclass: pick one. Multilabel: pick any number. Same input — fundamentally different problem.</figcaption>
                     </figure>
 
-                    <!-- ── Body ── -->
-                    <div class="blog-body">
-
-                        <h2>The Core Distinction</h2>
+<h2 id="the-core-distinction">The Core Distinction</h2>
                         <p>
                             Both approaches classify inputs into predefined categories. The difference is how many labels are allowed per prediction:
                         </p>
@@ -211,7 +168,7 @@
                         <p>This distinction affects your output layer (softmax vs sigmoid), loss function (cross-entropy vs binary cross-entropy per label), and evaluation metrics.</p>
 
                         <!-- ── Multiclass ── -->
-                        <h2>Multiclass Classification</h2>
+                        <h2 id="multiclass-classification">Multiclass Classification</h2>
 
                         <div class="blog-component">
                             <h3><span class="component-number">1</span> Binary Classification</h3>
@@ -259,7 +216,7 @@
                         </figure>
 
                         <!-- ── Multilabel ── -->
-                        <h2>Multilabel Classification</h2>
+                        <h2 id="multilabel-classification">Multilabel Classification</h2>
                         <p>
                             Multilabel allows instances to <strong>carry multiple labels simultaneously</strong>.
                             The model outputs an independent sigmoid probability per class — each class is a separate binary decision.
@@ -288,7 +245,7 @@
                         </figure>
 
                         <!-- Key Takeaways -->
-                        <h2>Key Takeaways</h2>
+                        <h2 id="key-takeaways">Key Takeaways</h2>
                         <ul>
                             <li><strong>Multiclass = one label per instance.</strong> Use softmax output + categorical cross-entropy loss.</li>
                             <li><strong>Multilabel = any number of labels per instance.</strong> Use sigmoid output per class + binary cross-entropy per label.</li>
@@ -298,7 +255,7 @@
                         </ul>
 
                         <!-- FAQ -->
-                        <h2>Frequently Asked Questions</h2>
+                        <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
                         <details class="faq-item">
                             <summary>What is the difference between multiclass and multilabel classification?</summary>
@@ -320,50 +277,56 @@
                             <p>Use multilabel when your data can have multiple correct labels simultaneously. If a song belongs to exactly one genre, that's multiclass. If it can blend multiple genres, that's multilabel. The key question: can one input legitimately have two or more correct labels?</p>
                         </details>
 
-                    </div>
+            <div class="article-footer">
+                <a href="index.html" class="back-link"><i class="fa fa-arrow-left"></i> Back to Blog</a>
+                <a href="https://medium.com/ai-in-plain-english/multiclass-vs-multilabel-classification-in-a-minute-261b6e320061" target="_blank" rel="noopener noreferrer" class="medium-link"><i class="fa fa-brands fa-medium"></i> Read on Medium</a>
+            </div>
 
-                    <!-- ── Footer ── -->
-                    <div class="blog-footer">
-                        <a href="index.html" class="blog-back-link" style="margin:0;">
-                            <i class="fa fa-arrow-left"></i> Back to Blog
-                        </a>
-                        <a href="https://medium.com/ai-in-plain-english/multiclass-vs-multilabel-classification-in-a-minute-261b6e320061"
-                           target="_blank" rel="noopener noreferrer" class="btn">
-                            Read on Medium&nbsp;<i class="fa fa-external-link-alt" style="font-size:13px;"></i>
-                        </a>
-                    </div>
+        </article>
 
-                </div>
-            </section>
-        </div>
+        <aside class="toc-aside" aria-label="Table of contents">
+            <div class="toc-inner">
+                <div class="toc-heading">Contents</div>
+                <ul class="toc-list">
+                    <li><a href="#the-core-distinction">The Core Distinction</a></li>
+                    <li><a href="#multiclass-classification">Multiclass Classification</a></li>
+                    <li><a href="#multilabel-classification">Multilabel Classification</a></li>
+                    <li><a href="#key-takeaways">Key Takeaways</a></li>
+                    <li><a href="#frequently-asked-questions">Frequently Asked Questions</a></li>
+                </ul>
+            </div>
+        </aside>
     </div>
 
-    <!-- Style Switcher -->
-    <div class="style-switcher">
-        <div class="style-switcher-toggler s-icon"><i class="fas fa-cog fa-spin"></i></div>
-        <div class="day-night s-icon"><i class="fas"></i></div>
-        <h4>Theme Colors</h4>
-        <div class="colors">
-            <span class="color-1" onclick="setActiveStyle('color-1')"></span>
-            <span class="color-2" onclick="setActiveStyle('color-2')"></span>
-            <span class="color-3" onclick="setActiveStyle('color-3')"></span>
-            <span class="color-4" onclick="setActiveStyle('color-4')"></span>
-        </div>
-    </div>
-
-    <script src="../js/style-switcher.js" defer></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const navToggler = document.querySelector('.nav-toggler');
-            const aside = document.querySelector('.aside');
-            if (navToggler && aside) {
-                navToggler.addEventListener('click', function () {
-                    aside.classList.toggle('open');
-                    navToggler.classList.toggle('open');
+        const bar = document.getElementById('progress-bar');
+        window.addEventListener('scroll', function () {
+            const st = window.scrollY;
+            const dh = document.documentElement.scrollHeight - window.innerHeight;
+            bar.style.width = (dh > 0 ? (st / dh * 100) : 0) + '%';
+        }, { passive: true });
+        const nav = document.getElementById('top-nav');
+        let lastY = 0;
+        window.addEventListener('scroll', function () {
+            const y = window.scrollY;
+            if (y > lastY && y > 140) nav.classList.add('hidden');
+            else nav.classList.remove('hidden');
+            lastY = y;
+        }, { passive: true });
+        const tocLinks = document.querySelectorAll('.toc-list a');
+        const sections = document.querySelectorAll('.article-body h2[id]');
+        if (tocLinks.length && sections.length) {
+            const io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        tocLinks.forEach(function (l) { l.classList.remove('active'); });
+                        const a = document.querySelector('.toc-list a[href="#' + entry.target.id + '"]');
+                        if (a) a.classList.add('active');
+                    }
                 });
-            }
-        });
+            }, { rootMargin: '-10% 0px -75% 0px' });
+            sections.forEach(function (s) { io.observe(s); });
+        }
     </script>
-
 </body>
 </html>
