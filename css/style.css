@@ -213,6 +213,40 @@ ul {
     box-shadow: 0 6px 28px rgba(0,188,212,0.5);
 }
 
+.iitmbs-callout {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 8px;
+    padding: 14px 18px;
+    background: rgba(0, 188, 212, 0.07);
+    border: 1px solid rgba(0, 188, 212, 0.3);
+    border-radius: 8px;
+    max-width: 460px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-black-700);
+}
+
+.iitmbs-callout-icon {
+    font-size: 17px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.iitmbs-callout-link {
+    color: var(--skin-color);
+    font-weight: 600;
+    white-space: nowrap;
+    margin-left: 3px;
+    transition: opacity 0.2s;
+}
+
+.iitmbs-callout-link:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
 .shadow-dark {
     box-shadow: 0 0 20px rgba(48, 46, 77, 0.15);
 }
