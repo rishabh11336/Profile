@@ -20,8 +20,8 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 };
 
 const iconGradients = [
-  "from-teal-900/80 via-slate-900 to-gray-900",
-  "from-blue-900/70 via-teal-900/50 to-gray-900",
+  "from-purple-900/80 via-slate-900 to-gray-900",
+  "from-fuchsia-900/70 via-purple-900/50 to-gray-900",
 ];
 
 const containerVariants = {

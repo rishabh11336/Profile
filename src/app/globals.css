@@ -5,35 +5,35 @@
   --breakpoint-nav: 75rem;
 }
 
-/* ── Dark theme (default) ── */
+/* ── Light theme (default — matches pinch.ai warm cream palette) ── */
 :root,
-[data-theme="dark"] {
-  --bg:           #0d1117;
-  --sidebar-bg:   #161b22;
-  --surface:      #1c2333;
-  --section-alt:  #161b22;
-  --accent:       #2dd4bf;
-  --accent-h:     #14b8a6;
-  --text-primary: #e6edf3;
-  --text-muted:   #8b949e;
-  --border:       #30363d;
-  --card-bg:      rgba(255, 255, 255, 0.04);
-  --shadow-clr:   rgba(0, 0, 0, 0.5);
-}
-
-/* ── Light theme ── */
 [data-theme="light"] {
-  --bg:           #f6f8fa;
-  --sidebar-bg:   #1c2333;
+  --bg:           #f3f3eb;
+  --sidebar-bg:   #e8e8d9;
   --surface:      #ffffff;
   --section-alt:  #ffffff;
-  --accent:       #0d9488;
-  --accent-h:     #0f766e;
-  --text-primary: #1f2328;
-  --text-muted:   #57606a;
-  --border:       #d0d7de;
+  --accent:       #a04590;
+  --accent-h:     #863878;
+  --text-primary: #1a1a1a;
+  --text-muted:   #6b6b6b;
+  --border:       #dedede;
   --card-bg:      rgba(255, 255, 255, 0.95);
   --shadow-clr:   rgba(0, 0, 0, 0.08);
+}
+
+/* ── Dark theme ── */
+[data-theme="dark"] {
+  --bg:           #002e50;
+  --sidebar-bg:   #001d38;
+  --surface:      #062f2d;
+  --section-alt:  #001a30;
+  --accent:       #eca0c9;
+  --accent-h:     #d982b3;
+  --text-primary: #f3f3eb;
+  --text-muted:   #8c9db5;
+  --border:       #1a3d5c;
+  --card-bg:      rgba(6, 47, 45, 0.4);
+  --shadow-clr:   rgba(0, 0, 0, 0.5);
 }
 
 /* ── Tailwind design tokens ── */
@@ -48,7 +48,7 @@
   --color-muted:       var(--text-muted);
   --color-border:      var(--border);
   --color-card:        var(--card-bg);
-  --font-sans:         var(--font-poppins), system-ui, sans-serif;
+  --font-sans:         var(--font-jakarta), system-ui, sans-serif;
 }
 
 /* ── Base ── */
@@ -61,13 +61,13 @@
   body {
     background-color: var(--bg);
     color: var(--text-primary);
-    font-family: var(--font-poppins), system-ui, sans-serif;
+    font-family: var(--font-jakarta), system-ui, sans-serif;
     min-height: 100vh;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   ::selection {
-    background-color: rgba(45, 212, 191, 0.25);
+    background-color: rgba(160, 69, 144, 0.2);
     color: var(--text-primary);
   }
 
@@ -130,7 +130,7 @@
   .btn:hover {
     background-color: var(--accent-h);
     transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(45, 212, 191, 0.35);
+    box-shadow: 0 4px 16px rgba(160, 69, 144, 0.35);
   }
   .btn:active {
     transform: translateY(0);
@@ -158,7 +158,7 @@
     background-color: var(--accent);
     color: #fff;
     transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(45, 212, 191, 0.25);
+    box-shadow: 0 4px 16px rgba(160, 69, 144, 0.25);
   }
   .btn-outline:active {
     transform: translateY(0);
@@ -167,9 +167,9 @@
   .skill-tag {
     display: inline-block;
     padding: 0.25rem 0.75rem;
-    background-color: rgba(45, 212, 191, 0.08);
+    background-color: rgba(160, 69, 144, 0.08);
     color: var(--accent);
-    border: 1px solid rgba(45, 212, 191, 0.2);
+    border: 1px solid rgba(160, 69, 144, 0.25);
     border-radius: 9999px;
     font-size: 0.75rem;
     font-weight: 500;
@@ -177,8 +177,8 @@
     transition: background-color 0.15s ease, border-color 0.15s ease;
   }
   .skill-tag:hover {
-    background-color: rgba(45, 212, 191, 0.16);
-    border-color: rgba(45, 212, 191, 0.4);
+    background-color: rgba(160, 69, 144, 0.16);
+    border-color: rgba(160, 69, 144, 0.45);
   }
 
   .card-glass {
@@ -237,10 +237,10 @@
 @keyframes pulse-accent {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.4);
+    box-shadow: 0 0 0 0 rgba(160, 69, 144, 0.4);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(45, 212, 191, 0);
+    box-shadow: 0 0 0 8px rgba(160, 69, 144, 0);
   }
 }
 

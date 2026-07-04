@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Poppins } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Providers from "@/components/layout/Providers";
@@ -7,10 +7,10 @@ import Sidebar from "@/components/layout/Sidebar";
 import Footer from "@/components/layout/Footer";
 import ThemeSwitcher from "@/components/layout/ThemeSwitcher";
 
-const poppins = Poppins({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-poppins",
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  variable: "--font-jakarta",
   display: "swap",
 });
 
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0b4975",
+  themeColor: "#f3f3eb",
   width: "device-width",
   initialScale: 1,
 };
@@ -83,7 +83,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={poppins.variable}>
+    <html lang="en" suppressHydrationWarning className={plusJakartaSans.variable}>
       <body className="min-h-screen antialiased">
         <Providers>
           {/* Sidebar */}

@@ -158,7 +158,7 @@ export function HeroSection() {
           >
             <motion.div
               className="relative rounded-2xl overflow-hidden border-2 border-accent"
-              style={{ boxShadow: "0 0 40px rgba(45,212,191,0.25)" }}
+              style={{ boxShadow: "0 0 40px rgba(160,69,144,0.25)" }}
               whileHover={{ rotate: -1, scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >

@@ -22,7 +22,7 @@ export function ReadingProgressBar() {
   return (
     <div
       ref={barRef}
-      className="fixed top-0 left-0 right-0 h-[3px] bg-[#2dd4bf] origin-left z-[9999]"
+      className="fixed top-0 left-0 right-0 h-[3px] bg-accent origin-left z-[9999]"
       style={{ transform: "scaleX(0)" }}
       role="progressbar"
       aria-label="Reading progress"
