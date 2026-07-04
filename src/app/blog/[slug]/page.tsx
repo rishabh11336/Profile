@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Script from "next/script";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, Clock, ExternalLink } from "lucide-react";
 import { blogPosts } from "@/data/content";
@@ -192,6 +193,11 @@ export default async function BlogPostPage({
             className="blog-prose"
             dangerouslySetInnerHTML={{ __html: body }}
           />
+
+          {/* Slug-specific scripts for interactive widgets */}
+          {slug === "ci-vs-pi-regression-bands" && (
+            <Script src="/blog-scripts/ci-pi-widget.js" strategy="afterInteractive" />
+          )}
 
           {/* Footer */}
           <div className="mt-16 pt-8 border-t border-border/50 flex flex-wrap gap-4 items-center justify-between">
