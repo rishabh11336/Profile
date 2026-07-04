@@ -9,11 +9,11 @@ const MAP_ID = "RoZbRwr1002BRTY6exFofc0AvldqsSEiznlvac9R0qY";
 
 function mapUrl(light: boolean) {
   if (light) {
-    // warm cream bg, pink visited countries, warm gray borders
-    return `https://mapmyvisitors.com/map.png?cl=f0f0e8&w=900&t=n&d=${MAP_ID}&co=a04590&ct=c8c8c0`;
+    // ocean: soft blue | land: warm cream | dots: deep rose #cc0066 → 4.9:1 vs land
+    return `https://mapmyvisitors.com/map.png?cl=c5dce8&w=900&t=n&d=${MAP_ID}&co=f0f0e8&ct=cc0066`;
   }
-  // dark navy bg, soft pink visited countries, navy borders
-  return `https://mapmyvisitors.com/map.png?cl=001830&w=900&t=n&d=${MAP_ID}&co=eca0c9&ct=1a3d5c`;
+  // ocean: very dark navy | land: medium navy | dots: amber #ff9500 → 4.75:1 vs land
+  return `https://mapmyvisitors.com/map.png?cl=001830&w=900&t=n&d=${MAP_ID}&co=0d3b6e&ct=ff9500`;
 }
 
 export default function VisitorsSection() {
