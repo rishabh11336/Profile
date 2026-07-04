@@ -105,15 +105,12 @@ export default function BlogSection() {
                     >
                       Browse Series
                     </Link>
-                    <a
+                    <Link
                       href={series.latestPost.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
                       className="flex items-center gap-1.5 px-4 py-2 rounded-lg bg-surface border border-border text-muted text-sm font-medium hover:border-accent hover:text-accent transition-colors duration-200"
                     >
                       Latest Post
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </motion.div>

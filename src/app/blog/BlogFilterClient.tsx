@@ -141,9 +141,7 @@ export default function BlogFilterClient({
                 </div>
 
                 <a
-                  href={`https://rishabhsingh.me/blog/${post.slug}.html`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href={`/blog/${post.slug}/`}
                   className="mt-1 inline-flex items-center gap-1.5 text-xs font-medium text-accent hover:underline"
                 >
                   Read article

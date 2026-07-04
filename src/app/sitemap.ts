@@ -18,7 +18,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     ...blogPosts.map((post) => ({
-      url: `https://rishabhsingh.me/blog/${post.slug}.html`,
+      url: `https://rishabhsingh.me/blog/${post.slug}/`,
       lastModified: new Date(post.date),
       changeFrequency: "yearly" as const,
       priority: 0.6,

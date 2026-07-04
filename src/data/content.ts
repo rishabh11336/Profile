@@ -321,7 +321,7 @@ export const blogSeries = [
       "Dense, visual breakdowns of complex ML concepts — Transformers, SVMs, CNNs, Forecasting, Bayesian Learning & more. Built to understand the big picture in a single read.",
     seriesSlug: "in-a-minute",
     latestPost: {
-      href: "https://rishabhsingh.me/blog/ci-vs-pi-regression-bands.html",
+      href: "/blog/ci-vs-pi-regression-bands/",
       text: "Latest Post",
     },
   },
@@ -337,7 +337,7 @@ export const blogSeries = [
       "Practical web development — HTTP methods, CORS, lazy loading for UX, and Flask session-based authentication. All with working code examples.",
     seriesSlug: "web-dev",
     latestPost: {
-      href: "https://rishabhsingh.me/blog/lazy-loading-for-enhanced-user-experience.html",
+      href: "/blog/lazy-loading-for-enhanced-user-experience/",
       text: "Latest Post",
     },
   },
@@ -353,7 +353,7 @@ export const blogSeries = [
       "Python fundamentals, tools, and data science implementations — virtual environments, packaging, matrix operations, and performance deep dives.",
     seriesSlug: "python",
     latestPost: {
-      href: "https://rishabhsingh.me/blog/sets-performance-better-vs-lists-why.html",
+      href: "/blog/sets-performance-better-vs-lists-why/",
       text: "Latest Post",
     },
   },
