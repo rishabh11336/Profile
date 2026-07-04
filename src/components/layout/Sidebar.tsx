@@ -10,6 +10,7 @@ import {
   Briefcase,
   GitBranch,
   Newspaper,
+  Globe,
   MessageCircle,
   Menu,
   X,
@@ -28,6 +29,7 @@ const NAV_ITEMS = [
     id: "opensource",
   },
   { label: "Blog", icon: Newspaper, href: "#blog", id: "blog" },
+  { label: "Visitors", icon: Globe, href: "#visitors", id: "visitors" },
   {
     label: "Contact",
     icon: MessageCircle,

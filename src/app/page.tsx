@@ -7,6 +7,7 @@ import ProjectsSection from "@/components/sections/ProjectsSection";
 import OpenSourceSection from "@/components/sections/OpenSourceSection";
 import BlogSection from "@/components/sections/BlogSection";
 import ContactSection from "@/components/sections/ContactSection";
+import VisitorsSection from "@/components/sections/VisitorsSection";
 import { structuredData, siteConfig } from "@/data/content";
 
 export const metadata: Metadata = {
@@ -57,6 +58,7 @@ export default function Home() {
         <ProjectsSection />
         <OpenSourceSection />
         <BlogSection />
+        <VisitorsSection />
         <ContactSection />
       </main>
     </>
