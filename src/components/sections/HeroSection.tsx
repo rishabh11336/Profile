@@ -86,7 +86,7 @@ export function HeroSection() {
             >
               I&apos;m all about that{" "}
               {/* min-w-[14ch] reserves space for longest word, prevents layout shift / clipping */}
-              <span className="inline-block min-w-[14ch] text-accent">{typedWord}</span>
+              <span className="inline-block min-w-[24ch] text-accent">{typedWord}</span>
               {/* ml-1.5 gives visible gap between word and cursor */}
               <span
                 className="inline-block w-[2px] h-7 ml-1.5 align-middle bg-accent animate-pulse"
