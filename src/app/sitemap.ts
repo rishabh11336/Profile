@@ -3,25 +3,33 @@ import { blogPosts } from "@/data/content";
 
 export const dynamic = "force-static";
 
+const SIX_MONTHS_MS = 1000 * 60 * 60 * 24 * 180;
+
 export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date();
+
   return [
     {
       url: "https://rishabhsingh.me/",
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "monthly",
       priority: 1,
     },
     {
       url: "https://rishabhsingh.me/blog/",
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    ...blogPosts.map((post) => ({
-      url: `https://rishabhsingh.me/blog/${post.slug}/`,
-      lastModified: new Date(post.date),
-      changeFrequency: "yearly" as const,
-      priority: 0.6,
-    })),
+    ...blogPosts.map((post) => {
+      const postDate = new Date(post.date);
+      const isRecent = now.getTime() - postDate.getTime() < SIX_MONTHS_MS;
+      return {
+        url: `https://rishabhsingh.me/blog/${post.slug}/`,
+        lastModified: postDate,
+        changeFrequency: (isRecent ? "monthly" : "yearly") as "monthly" | "yearly",
+        priority: isRecent ? 0.75 : 0.6,
+      };
+    }),
   ];
 }
