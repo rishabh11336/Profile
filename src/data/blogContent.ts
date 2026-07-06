@@ -81,7 +81,7 @@ export const blogContent: Record<string, string> = {
                         </ul>
                         <p>
                             Applying Bayes: P(disease | positive) ≈ <strong>50%</strong>.
-                            The low base rate (1%) means even a highly accurate test produces many false positives on a healthy population.
+                            The low base rate (1%) means even a highly accurate test produces many <a href="/blog/confusion-matrix-metrics-in-a-minute/">false positives</a> on a healthy population.
                             This is why medical tests often require confirmation.
                         </p>
 
@@ -120,7 +120,7 @@ export const blogContent: Record<string, string> = {
                         <h2 id="why-bayesian-learning-matters">Why Bayesian Learning Matters</h2>
                         <ul>
                             <li><strong>Incorporates prior knowledge</strong> — expert opinions and domain knowledge become priors, not discarded information.</li>
-                            <li><strong>Quantifies uncertainty</strong> — instead of a point prediction, you get a probability distribution.</li>
+                            <li><strong>Quantifies uncertainty</strong> — instead of a point prediction, you get a probability distribution, the same instinct behind <a href="/blog/ci-vs-pi-regression-bands/">confidence and prediction intervals in regression</a>.</li>
                             <li><strong>Updates dynamically</strong> — every new observation refines the posterior without retraining from scratch.</li>
                             <li><strong>Principled handling of small data</strong> — priors regularize when data is scarce.</li>
                         </ul>
@@ -315,6 +315,58 @@ export const blogContent: Record<string, string> = {
                 This is why both bands <strong>pinch at the mean of X</strong> and flare toward the edges — the model is most certain where it has seen the most data, and extrapolation compounds every source of uncertainty.
             </p>
 
+            <h2 id="term-by-term">What does each term in the formula actually do?</h2>
+            <p>
+                The full interval is <em>estimate ± t-critical × SE</em>. Walking through every ingredient once removes the mystery permanently:
+            </p>
+            <ul>
+                <li>
+                    <strong>s — the residual standard deviation.</strong> The typical vertical miss of the fitted line, computed from the residuals as √(Σe² / (n−2)).
+                    It divides by n−2, not n, because two degrees of freedom were spent estimating the slope and intercept. Every other term in both formulas is a multiplier on s — it sets the scale of all uncertainty.
+                </li>
+                <li>
+                    <strong>1/n — the "where is the line's height?" term.</strong> Uncertainty about the average level of the line at the center of the data.
+                    Exactly like the standard error of a mean, it melts away as sample size grows: quadruple n, halve this contribution.
+                </li>
+                <li>
+                    <strong>(x − x̄)² / S<sub>xx</sub> — the "where is the slope pointing?" term.</strong> Uncertainty about the slope, felt more strongly the further you predict from the center.
+                    At x = x̄ it is exactly zero — slope error pivots the line around its center, so the center is immune. S<sub>xx</sub> = Σ(x − x̄)² in the denominator says: the more spread out your X values, the better the slope is pinned down.
+                </li>
+                <li>
+                    <strong>1 (PI only) — the "individuals scatter" term.</strong> The variance of one new observation around the true mean, in units of s².
+                    Note that it enters as a constant while the other two terms shrink with n — which is why, for even moderate samples, this single term dominates and the PI ends up several times wider than the CI.
+                </li>
+                <li>
+                    <strong>t<sub>α/2, n−2</sub> — the confidence dial.</strong> The t-critical value converts a standard error into an interval at your chosen level.
+                    At 95% with a large sample it approaches 1.96; with small samples it inflates (2.306 at n = 10) to pay for estimating s from limited data. Moving from 95% to 99% widens <em>both</em> bands by the same multiplicative factor — it never changes their ratio.
+                </li>
+            </ul>
+
+            <h2 id="worked-example">What do the numbers look like? A worked example</h2>
+            <p>
+                Take a deliberately small dataset: <strong>n = 10 territories</strong>, with call volumes x = 1, 2, …, 10.
+                Suppose the fitted line is <strong>ŷ = 20 + 5x</strong>, the residual standard deviation is <strong>s = 4 prescriptions</strong>, and we want 95% intervals.
+                The fixed pieces: x̄ = 5.5, S<sub>xx</sub> = Σ(x − x̄)² = 82.5, and t<sub>0.025, 8</sub> = 2.306.
+            </p>
+            <p>
+                <strong>At the center, x = 5.5</strong> (predicted ŷ = 47.5):
+                the leverage term is zero, so SE<sub>mean</sub> = 4 × √(1/10) = 1.26, giving a CI half-width of 2.306 × 1.26 ≈ <span class="ci">±2.9</span> → CI ≈ [44.6, 50.4].
+                The PI uses √(1 + 1/10) = 1.049, so SE<sub>pred</sub> = 4.20 and the half-width is 2.306 × 4.20 ≈ <span class="pi">±9.7</span> → PI ≈ [37.8, 57.2].
+                Same line, same data — the PI is <strong>3.3× wider</strong>.
+            </p>
+            <p>
+                <strong>Away from the center, x = 8</strong> (predicted ŷ = 60):
+                now (x − x̄)² / S<sub>xx</sub> = 6.25 / 82.5 = 0.076.
+                SE<sub>mean</sub> = 4 × √(0.100 + 0.076) = 1.68 → CI half-width ≈ <span class="ci">±3.9</span> → [56.1, 63.9].
+                SE<sub>pred</sub> = 4 × √(1.176) = 4.34 → PI half-width ≈ <span class="pi">±10.0</span> → [50.0, 70.0].
+                Both bands widened, but the CI grew proportionally more — leverage hurts the mean estimate hardest, while the PI was already dominated by the irreducible "1".
+            </p>
+            <p>
+                Now imagine collecting a thousand territories instead of ten. The 1/n and leverage terms vanish, t drops to 1.96, and the CI half-width collapses toward zero —
+                but the PI half-width converges to 1.96 × 4 ≈ <span class="pi">±7.8</span> and stops.
+                No amount of data buys you a tighter promise about a single territory than the noise itself allows. That is the entire CI-vs-PI story in one number.
+            </p>
+
             <h2 id="use-cases">When to use each</h2>
 
             <table>
@@ -358,11 +410,55 @@ export const blogContent: Record<string, string> = {
                 You need the <span class="pi">PI</span>. And it will almost always be wider than you hoped.</p>
             </div>
 
+            <h2 id="bootstrap">What if the residuals aren't normal? The bootstrap alternative</h2>
             <p>
-                For more on the foundations that make this work, see <a href="linear-regression-in-a-minute.html">Linear Regression in a Minute</a>.
+                Everything above leans on the classical assumptions: residuals that are roughly normal, with constant variance across X.
+                Real data misbehaves — revenue residuals are right-skewed, count data has variance that grows with the mean, and outliers fatten the tails.
+                When that happens, the t-based formulas produce intervals with the wrong coverage: a "95%" PI that actually captures 88% of new points is worse than no interval, because it carries false confidence.
+            </p>
+            <p>
+                The standard escape hatch is the <strong>bootstrap</strong> — let the data supply its own distribution instead of assuming one.
+                For a CI on the mean response: resample your n observations with replacement, refit the regression, record the fitted value at your target x, and repeat a few thousand times.
+                The 2.5th and 97.5th percentiles of those fitted values form the confidence band — no normality assumption anywhere.
+            </p>
+            <p>
+                For a PI, one resampled line isn't enough — you must also add back individual scatter.
+                The common recipe (residual bootstrap) draws a random residual from the observed residual pool and adds it to each resampled prediction, so the percentile interval reflects both line uncertainty and point noise.
+                A close cousin, <strong>quantile regression</strong>, gets there even more directly: fit the 2.5th and 97.5th percentile lines themselves and read the prediction band straight off them.
+                The trade-off is honest: bootstrap intervals cost compute instead of assumptions, and they inherit whatever quirks your sample has — with n = 10 they are no magic fix.
+                But from a few dozen observations up, they are the pragmatic default whenever a residual plot looks skewed, heavy-tailed, or fan-shaped.
             </p>
 
-            <a href="linear-regression-in-a-minute.html" class="related-card" aria-label="Related reading: Linear Regression in a Minute">
+            <h2 id="industry-misuse">How do these intervals get misused in industry?</h2>
+            <p>
+                The CI/PI confusion isn't an academic quibble — it shows up in the same few costly patterns everywhere:
+            </p>
+            <ul>
+                <li>
+                    <strong>Quota and target setting with CI bands.</strong> A revenue model's CI says the <em>average</em> territory at this call volume lands in [56, 64].
+                    Planning then sets each individual quota inside that band — and half the field force "misses" targets that were never statistically achievable for individuals.
+                    Anything that judges single units — territories, stores, SKUs, reps — needs the PI. This is the single most common interval mistake in <a href="/blog/forecasting-in-a-minute/">business forecasting</a>.
+                </li>
+                <li>
+                    <strong>A/B test readouts that promise individual outcomes.</strong> An experiment reports "the new flow lifts conversion by 2.1% (95% CI: 1.4% to 2.8%)."
+                    That is a statement about the <em>average</em> effect — correct and useful. The misuse is the follow-on slide: "so each region should expect 1.4–2.8% lift."
+                    Individual regions vary far more than the mean does; several will see zero or negative lift even when the average effect is real. Classification metrics have an exact analogue of this trap — a single headline number hiding per-case behavior — which is why you read the full <a href="/blog/confusion-matrix-metrics-in-a-minute/">confusion matrix</a>, not just accuracy.
+                </li>
+                <li>
+                    <strong>Forecast charts with unlabeled bands.</strong> Dashboards routinely shade "the uncertainty" without saying which uncertainty.
+                    A demand forecast wearing a CI band looks reassuringly tight and drives understocking; the honest PI band is wider and uglier, which is precisely its value. If a chart doesn't label its band, assume it's the flattering one.
+                </li>
+                <li>
+                    <strong>Shrinking the band by collecting more data.</strong> Teams sometimes respond to a wide PI with "let's gather more history."
+                    More data tightens the CI, refines the estimates — and leaves the PI floor untouched, because the floor is the process noise itself. The fix for a wide PI is reducing real-world variance (or accepting it), not more rows.
+                </li>
+            </ul>
+
+            <p>
+                For more on the foundations that make this work, see <a href="/blog/linear-regression-in-a-minute/">Linear Regression in a Minute</a>.
+            </p>
+
+            <a href="/blog/linear-regression-in-a-minute/" class="related-card" aria-label="Related reading: Linear Regression in a Minute">
                 <div class="related-card-icon"></div>
                 <div>
                     <div class="rc-label">Related Reading</div>
@@ -404,7 +500,7 @@ export const blogContent: Record<string, string> = {
                         <h2 id="conda-vs-pip-venv">How Is Conda Different from pip and venv?</h2>
                         <p>
                             The two toolchains overlap but answer different questions.
-                            <code>pip</code> + <code>venv</code> assume Python is already installed and manage Python packages inside it.
+                            <code>pip</code> + <code>venv</code> assume Python is already installed and manage Python packages inside it (new to that side? start with <a href="/blog/python-virtual-environment-introduction/">Python virtual environments</a>).
                             Conda manages <em>everything</em> — interpreter, Python packages, and compiled system libraries — from its own package repositories (channels).
                         </p>
                         <table>
@@ -477,7 +573,7 @@ export const blogContent: Record<string, string> = {
 
                         <h2 id="export-and-recreate">How Do You Export and Recreate an Environment?</h2>
                         <p>
-                            Conda's equivalent of <code>requirements.txt</code> is <code>environment.yml</code>. Export the active environment, commit the file, and anyone can rebuild it:
+                            Conda's equivalent of <a href="/blog/requirements-txt-in-python/"><code>requirements.txt</code></a> is <code>environment.yml</code>. Export the active environment, commit the file, and anyone can rebuild it:
                         </p>
                         <pre><code># capture the active environment
 conda env export > environment.yml
@@ -684,7 +780,7 @@ conda env create -f environment.yml</code></pre>
 
                         <h2 id="applied-breast-cancer-classification-model">Applied: Breast Cancer Classification Model</h2>
                         <p>
-                            A Support Vector Classifier (SVC) trained on the breast cancer dataset demonstrates these metrics in a real scenario.
+                            A <a href="/blog/support-vector-machine-svm/">Support Vector Classifier (SVC)</a> trained on the breast cancer dataset demonstrates these metrics in a real scenario.
                             With features from tumor biopsies, the model predicts malignant vs benign.
                         </p>
 
@@ -742,6 +838,72 @@ conda env create -f environment.yml</code></pre>
                             <li><strong>Medical diagnostics for healthy patients:</strong> include specificity</li>
                         </ul>
 
+                        <h2 id="roc-auc-vs-pr-auc">ROC-AUC vs PR-AUC: When Does Each Mislead?</h2>
+                        <p>
+                            Every metric so far assumes a fixed threshold. Two curve-based metrics evaluate the model across <em>all</em> thresholds at once — and they can tell very different stories on the same model.
+                        </p>
+                        <p>
+                            The <strong>ROC curve</strong> plots recall (TPR) against the false positive rate, FPR = FP / (FP + TN), as the threshold sweeps from 1 to 0.
+                            ROC-AUC is the area under it — equivalently, the probability that a randomly chosen positive scores higher than a randomly chosen negative. 0.5 is coin-flipping; 1.0 is perfect ranking.
+                            The <strong>PR curve</strong> plots precision against recall over the same sweep, and PR-AUC summarizes that.
+                        </p>
+                        <p>
+                            <strong>Where ROC-AUC misleads: heavy class imbalance.</strong>
+                            FPR's denominator is all the negatives. With 1% fraud and 99% legitimate transactions, a model can raise thousands of false alarms while FPR barely moves — the mountain of true negatives absorbs them.
+                            A fraud model with ROC-AUC 0.95 can still have 10% precision in production: dazzling on the ROC plot, useless to the investigation team.
+                            PR-AUC has no TN term anywhere, so it feels every false alarm — on rare-positive problems (fraud, disease screening, defect detection), it is the honest curve.
+                        </p>
+                        <p>
+                            <strong>Where PR-AUC misleads: comparisons across datasets.</strong>
+                            The PR baseline is the positive prevalence — a random classifier scores PR-AUC ≈ 0.01 at 1% prevalence but ≈ 0.30 at 30%.
+                            So a PR-AUC of 0.40 is spectacular in the first setting and mediocre in the second, and comparing PR-AUCs between datasets with different base rates is meaningless.
+                            ROC-AUC, being prevalence-invariant, is the fairer cross-dataset yardstick. Rule of thumb: roughly balanced classes → ROC-AUC; rare positives you actively hunt → PR-AUC; ideally report both with the prevalence.
+                        </p>
+
+                        <h2 id="threshold-selection">How Do You Choose the Classification Threshold?</h2>
+                        <p>
+                            Most libraries silently cut at 0.5, but nothing about your problem makes 0.5 special — the threshold is a business decision wearing a statistical costume. Two principled ways to set it:
+                        </p>
+                        <p>
+                            <strong>Youden's J statistic</strong> picks the threshold that maximizes J = recall + specificity − 1 — equivalently, the point on the ROC curve farthest above the diagonal.
+                            It treats both error types as equally expensive, which makes it a sensible default for screening tests and a common choice in medical diagnostics when no cost information exists.
+                        </p>
+                        <p>
+                            <strong>Cost-based selection</strong> admits that errors are rarely symmetric. Assign each error a cost — say a missed fraud case (FN) costs $500 and investigating a false alarm (FP) costs $25 —
+                            then, for each candidate threshold, compute the expected cost FP × C<sub>FP</sub> + FN × C<sub>FN</sub> from the confusion matrix, and pick the threshold that minimizes it.
+                            With a 20:1 cost ratio the optimal threshold drops far below 0.5: you accept many cheap false alarms to avoid expensive misses. The math is trivial; the hard part is getting stakeholders to state the costs out loud — which is itself a useful exercise.
+                        </p>
+
+                        <h2 id="calibration">Are Your Predicted Probabilities Calibrated?</h2>
+                        <p>
+                            Threshold tuning quietly assumes the model's scores mean something: that among cases scored 0.7, about 70% are actually positive.
+                            That property is <strong>calibration</strong>, and many models lack it — modern neural networks are often overconfident, and SVM decision scores aren't probabilities at all.
+                            Check it with a reliability diagram (bin predictions by score, plot predicted vs observed positive rate); fix it by post-processing scores with <strong>Platt scaling</strong> (a logistic fit) or <strong>isotonic regression</strong>.
+                            Calibration matters whenever the probability itself feeds a decision — expected-cost thresholds, risk scores shown to clinicians, bid pricing.
+                            It plays the same role for classifiers that <a href="/blog/ci-vs-pi-regression-bands/">confidence and prediction intervals</a> play in regression: honesty about uncertainty, not just a point verdict.
+                        </p>
+
+                        <h2 id="multiclass-averaging">How Do You Average Metrics Across Multiple Classes?</h2>
+                        <p>
+                            With more than two classes, the confusion matrix becomes N×N, and precision, recall, and F1 are computed <em>per class</em> (one-vs-rest).
+                            Reporting a single number then requires choosing how to average — and the choice changes the story:
+                        </p>
+                        <table>
+                            <thead>
+                                <tr><th>Averaging</th><th>How it works</th><th>What it emphasizes</th><th>Use when</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Macro</td><td>Compute the metric per class, take the unweighted mean</td><td>Every class counts equally — rare classes can tank the score</td><td>Minority-class performance matters (fraud types, rare diagnoses)</td></tr>
+                                <tr><td>Micro</td><td>Pool all TP/FP/FN counts globally, then compute once</td><td>Every <em>sample</em> counts equally — dominated by frequent classes</td><td>Overall throughput matters; equals accuracy in single-label multiclass</td></tr>
+                                <tr><td>Weighted</td><td>Per-class metric, averaged weighted by class support</td><td>A compromise — reflects imbalance but can mask small-class failure</td><td>Headline number for imbalanced data, with per-class table alongside</td></tr>
+                            </tbody>
+                        </table>
+                        <p>
+                            The gap between macro and micro F1 is itself diagnostic: a model with micro-F1 0.90 but macro-F1 0.55 is excellent on the majority classes and failing the rare ones.
+                            sklearn's <code>classification_report</code> prints all three plus the per-class breakdown — read the per-class rows first, the averages second.
+                            And before averaging anything, confirm the problem really is single-label multiclass rather than multilabel; the setups demand different metrics entirely, as explained in <a href="/blog/multiclass-vs-multilabel-classification-in-a-minute/">multiclass vs multilabel classification</a>.
+                        </p>
+
                         <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
                         <details class="faq-item">
@@ -788,6 +950,7 @@ conda env create -f environment.yml</code></pre>
                             PyInstaller bundles a Python program and all its dependencies into a single package.
                             The recipient doesn't need Python or any modules installed.
                             Output: <code>.exe</code> on Windows, standard executable on Linux, <code>.app</code> on macOS.
+                            Best practice: run it from inside a <a href="/blog/python-virtual-environment-introduction/">virtual environment</a> containing only your app's dependencies — otherwise PyInstaller may sweep in every package from your global Python and inflate the executable.
                         </p>
 
                         <h3>Step 1: Install PyInstaller</h3>
@@ -906,6 +1069,7 @@ conda env create -f environment.yml</code></pre>
                         <p>
                             Unlike fully connected networks that treat every input feature independently, CNNs exploit spatial structure.
                             Nearby pixels are related — a CNN learns that and encodes it into learned filters.
+                            For sequence data without grid structure — language above all — the modern counterpart is the <a href="/blog/transformers-in-a-minute/">transformer</a>, which swaps convolution for self-attention.
                         </p>
 
                         <div class="blog-insight">
@@ -976,7 +1140,7 @@ conda env create -f environment.yml</code></pre>
                         <div class="blog-component">
                             <h3><span class="component-number">5</span> Flattening</h3>
                             <p>
-                                After multiple conv+pool layers, the feature maps are 3D tensors (height × width × channels).
+                                After multiple conv+pool layers, the feature maps are <a href="/blog/scalars-vectors-matrices-tensor-in-a-minute/">3D tensors</a> (height × width × channels).
                                 Flattening converts this into a 1D vector so it can be passed to fully connected (dense) layers for the final classification or regression.
                             </p>
                         </div>
@@ -1089,7 +1253,7 @@ CORS(app)</code></pre>
 
                         <h2 id="advanced-configuration">Advanced Configuration</h2>
                         <p>
-                            For production, restrict access to specific origins and configure credential handling:
+                            For production, restrict access to specific origins and configure credential handling — required whenever your frontend authenticates with <a href="/blog/session-in-the-flask-for-login/">Flask session cookies</a>:
                         </p>
 
                         <pre><code>from flask import Flask
@@ -1118,7 +1282,7 @@ CORS(app, resources={
 
                         <h2 id="preflight-requests">Preflight Requests</h2>
                         <p>
-                            For non-simple requests (custom headers, <code>DELETE</code>, <code>PUT</code>, requests with credentials), the browser sends an <strong>OPTIONS preflight request</strong> first — asking the server: "will you allow this?" The server must respond with the right <code>Access-Control-Allow-*</code> headers before the browser sends the actual request.
+                            For non-simple requests (custom headers, <code>DELETE</code>, <code>PUT</code>, requests with credentials), the browser sends an <strong><a href="/blog/http-methods-enhancing-web-communication/">OPTIONS</a> preflight request</strong> first — asking the server: "will you allow this?" The server must respond with the right <code>Access-Control-Allow-*</code> headers before the browser sends the actual request.
                         </p>
                         <p>
                             <code>flask-cors</code> handles preflight responses automatically — no extra code needed.
@@ -1205,7 +1369,7 @@ CORS(app, resources={
 
                         <div class="blog-component">
                             <h3><span class="component-number">3</span> Causal / Regression Forecasting</h3>
-                            <p>Models the relationship between an outcome and its drivers. "Sales increase by X for every Y drop in price." Uses regression and statistical models.</p>
+                            <p>Models the relationship between an outcome and its drivers. "Sales increase by X for every Y drop in price." Uses <a href="/blog/linear-regression-in-a-minute/">regression</a> and statistical models.</p>
                         </div>
 
                         <div class="blog-component">
@@ -1256,6 +1420,7 @@ CORS(app, resources={
                         <p>
                             <strong>Result:</strong> The 35% rate generates approximately <strong>$67M more profit</strong> than the 30% rate — making it the financially superior choice at the modeled default rate.
                             The key insight isn't just the answer; it's that the model lets you instantly re-run the comparison if the default rate assumption changes.
+                            One caveat: $67M is a point forecast. Before betting a roadmap on it, put a <a href="/blog/ci-vs-pi-regression-bands/">prediction interval</a> around it — single-number forecasts hide exactly the uncertainty that matters most.
                         </p>
 
                         <a href="https://docs.google.com/spreadsheets/d/1MySpj9e3pidjslyZtCg9BGJ5fko7bRPHEX3Ij1bs_AY/edit?usp=sharing"
@@ -1292,12 +1457,12 @@ CORS(app, resources={
 
                         <div class="blog-component">
                             <h3>GET — Retrieve Data</h3>
-                            <p>Fetches a resource from the server. Parameters are appended to the URL. Never use GET for sensitive data — the URL is visible in browser history, server logs, and referrer headers.</p>
+                            <p>Fetches a resource from the server. Parameters are appended to the URL. Never use GET for sensitive data — the URL is visible in browser history, server logs, and referrer headers. Every image a page loads arrives via GET too — <a href="/blog/lazy-loading-for-enhanced-user-experience/">lazy loading</a> is the art of deferring those requests until they're needed.</p>
                         </div>
 
                         <div class="blog-component">
                             <h3>POST — Submit Data</h3>
-                            <p>Sends data to the server to create a new resource or trigger a state change. Data goes in the request body — not the URL. The right choice for form submissions, file uploads, and anything that changes server state.</p>
+                            <p>Sends data to the server to create a new resource or trigger a state change. Data goes in the request body — not the URL. The right choice for form submissions, file uploads, and anything that changes server state — it's the verb behind every <a href="/blog/session-in-the-flask-for-login/">login form</a>.</p>
                         </div>
 
                         <div class="blog-component">
@@ -1322,7 +1487,7 @@ CORS(app, resources={
 
                         <div class="blog-component">
                             <h3>OPTIONS — Query Capabilities</h3>
-                            <p>Asks the server which HTTP methods are supported for a given endpoint. Browsers use OPTIONS automatically for CORS preflight requests — checking if cross-origin requests are allowed before sending the actual request.</p>
+                            <p>Asks the server which HTTP methods are supported for a given endpoint. Browsers use OPTIONS automatically for <a href="/blog/cors-in-flask-bridging-frontend-and-backend/">CORS preflight requests</a> — checking if cross-origin requests are allowed before sending the actual request.</p>
                         </div>
 
                         <div class="blog-insight">
@@ -1391,7 +1556,7 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
 <h2 id="the-problem">The Problem</h2>
                         <p>
                             By default, browsers load all images on a page immediately — whether the user will ever scroll to them or not.
-                            On a page with 50 images, this means 50 network requests on load, most of them wasted on content below the fold.
+                            On a page with 50 images, this means 50 network requests on load (each one an HTTP <a href="/blog/http-methods-enhancing-web-communication/">GET request</a>), most of them wasted on content below the fold.
                         </p>
                         <p>
                             The result: slower initial load, wasted bandwidth (especially on mobile), and a worse user experience for the content that actually matters — what's visible right now.
@@ -1515,7 +1680,7 @@ document.querySelectorAll('.lazy-section')
 
                         <p>
                             The <code>rootMargin</code> option mimics the browser's distance threshold: content starts loading 200&nbsp;px before it scrolls into view, so the user rarely sees a placeholder.
-                            This exact pattern powers the lazy-loaded sections on this site — the HTML for heavy sections is fetched only when you scroll toward them.
+                            This exact pattern powers the lazy-loaded sections on <a href="/blog/how-i-built-my-data-science-portfolio/">this site</a> — the HTML for heavy sections is fetched only when you scroll toward them.
                         </p>
 
                         <div class="blog-reference">
@@ -1533,6 +1698,7 @@ document.querySelectorAll('.lazy-section')
                         <p>
                             Linear regression starts from the same equation you learned in school.
                             Given data points (years, income), the goal is to find the line that best fits them — the one that minimizes prediction error across all points.
+                            This is the workhorse behind <a href="/blog/forecasting-in-a-minute/">causal forecasting</a> — predicting an outcome from its drivers.
                         </p>
                         <div class="blog-formula-box">ŷ = θ₀ + θ₁x &nbsp;&nbsp; (hypothesis function)</div>
                         <p>
@@ -1626,7 +1792,8 @@ document.querySelectorAll('.lazy-section')
                         <div class="blog-formula-box">ŷ = θ₀ + θ₁x₁ + θ₂x₂ + … + θₙxₙ</div>
                         <p>
                             With 2 features, the model fits a plane instead of a line.
-                            With 3+ features, it fits a hyperplane — no longer visualizable, but the math is identical.
+                            With 3+ features, it fits a hyperplane — no longer visualizable, but the math is identical (the same hyperplane concept that <a href="/blog/support-vector-machine-svm/">SVMs</a> use as a decision boundary).
+                            Whatever the dimension, the model outputs point estimates — to quantify how uncertain they are, wrap them in <a href="/blog/ci-vs-pi-regression-bands/">confidence and prediction intervals</a>.
                         </p>
 
                         <figure class="blog-figure">
@@ -1742,6 +1909,7 @@ document.querySelectorAll('.lazy-section')
                             <p>
                                 <code>x in my_set</code> computes <code>hash(x)</code>, jumps directly to the corresponding bucket, and checks one (or a handful of) elements.
                                 For a set of 1,000,000 elements, that's still one hash computation — regardless of size.
+                                For the full story of how the hash table pulls this off — open addressing, collisions, resizing — see <a href="/blog/sets-performance-better-vs-lists-why/">why sets outperform lists</a>.
                             </p>
                         </div>
 
@@ -1840,7 +2008,7 @@ document.querySelectorAll('.lazy-section')
                             <li><strong>Multiclass:</strong> each input gets exactly one label from N options</li>
                             <li><strong>Multilabel:</strong> each input can get any number of labels from N options simultaneously</li>
                         </ul>
-                        <p>This distinction affects your output layer (softmax vs sigmoid), loss function (cross-entropy vs binary cross-entropy per label), and evaluation metrics.</p>
+                        <p>This distinction affects your output layer (softmax vs sigmoid), loss function (cross-entropy vs binary cross-entropy per label), and <a href="/blog/confusion-matrix-metrics-in-a-minute/">evaluation metrics</a>.</p>
 
                         <!-- ── Multiclass ── -->
                         <h2 id="multiclass-classification">Multiclass Classification</h2>
@@ -1872,6 +2040,7 @@ document.querySelectorAll('.lazy-section')
                             <p>
                                 More than two classes, but still exactly one label per prediction.
                                 The model outputs a probability distribution across all classes (via softmax) and selects the highest.
+                                Image tasks like MNIST are classic <a href="/blog/convolutional-neural-networks-cnns-in-a-minute/">CNN</a> territory.
                             </p>
                             <p><strong>Examples:</strong></p>
                             <ul>
@@ -1961,7 +2130,7 @@ document.querySelectorAll('.lazy-section')
 
 <h2 id="what-is-matrix-multiplication">What Is Matrix Multiplication?</h2>
                         <p>
-                            A matrix is a 2D data structure where numbers are arranged into rows and columns.
+                            A matrix is a <a href="/blog/scalars-vectors-matrices-tensor-in-a-minute/">2D data structure</a> where numbers are arranged into rows and columns.
                             Python has no built-in matrix type — nested lists represent matrices.
                         </p>
                         <p>
@@ -2033,7 +2202,7 @@ Multiply(A, B)</code></pre>
                         </p>
 
                         <h2 id="approach-3-numpy">Approach 3: NumPy</h2>
-                        <p>For any production or numerical computing use, NumPy's <code>dot()</code> is the right tool — implemented in optimized C/Fortran (BLAS), orders of magnitude faster than pure Python loops:</p>
+                        <p>For any production or numerical computing use, NumPy's <code>dot()</code> is the right tool — implemented in optimized C/Fortran (BLAS), orders of magnitude faster than pure Python loops. It's worth internalizing: every neural network forward pass — from <a href="/blog/convolutional-neural-networks-cnns-in-a-minute/">CNN</a> convolutions to <a href="/blog/transformers-in-a-minute/">transformer attention</a> — reduces to exactly this operation, executed billions of times:</p>
 
                         <pre><code>import numpy as np
 
@@ -2155,7 +2324,7 @@ source .venv/bin/activate    # Linux / macOS
                             </tbody>
                         </table>
                         <p>
-                            These tools are complements, not competitors: Poetry and uv create a venv-style environment under the hood, and conda environments serve the same isolation purpose with a wider dependency scope.
+                            These tools are complements, not competitors: Poetry and uv create a venv-style environment under the hood, and <a href="/blog/conda-virtual-environment-commands/">conda environments</a> serve the same isolation purpose with a wider dependency scope.
                             Whichever you pick, the principle is identical — one project, one isolated environment.
                         </p>
 
@@ -2217,7 +2386,7 @@ virtualenv -p /usr/bin/python2.7 virtualenv_name</code></pre>
                             </ul>
                         </div>
 
-                        <p>See also: <a href="requirements-txt-in-python.html">requirements.txt in Python</a> — how to capture and share your environment's exact dependencies.</p>`,
+                        <p>See also: <a href="/blog/requirements-txt-in-python/">requirements.txt in Python</a> — how to capture and share your environment's exact dependencies.</p>`,
 
   "requirements-txt-in-python": `<figure class="blog-figure">
                         <img src="/images/blog/requirements-txt-in-python-01-f87954.webp"
@@ -2263,7 +2432,7 @@ virtualenv -p /usr/bin/python2.7 virtualenv_name</code></pre>
                         </figure>
 
                         <h2 id="command-1-create-requirements-txt">Command 1: Create requirements.txt</h2>
-                        <p>Activate your virtual environment first, then run:</p>
+                        <p>Activate your <a href="/blog/python-virtual-environment-introduction/">virtual environment</a> first, then run:</p>
                         <pre><code>pip freeze > requirements.txt</code></pre>
                         <p>
                             This captures every installed package and its exact version into the file.
@@ -2334,6 +2503,7 @@ uvicorn[standard]==0.29.0
                         <p>
                             For small projects and notebooks, <code>pip freeze</code> is perfectly fine.
                             For anything long-lived or deployed, compiled pins pay for themselves — the same philosophy behind Poetry and uv lockfiles, and behind <code>pyproject.toml</code> dependencies in modern packaging.
+                            Conda users get the equivalent reproducibility from <a href="/blog/conda-virtual-environment-commands/">conda env export and environment.yml</a>.
                         </p>
 
                         <h2 id="keeping-it-up-to-date">How Do You Keep requirements.txt Up to Date?</h2>
@@ -2432,7 +2602,7 @@ pip freeze > requirements.txt</code></pre>
                                 <li>Determinant and inverse defined for square matrices</li>
                                 <li>Transpose: swap rows and columns → Aᵀ</li>
                             </ul>
-                            <p><strong>Applications:</strong> computer graphics transformations, solving linear systems (Ax = b), weight matrices in neural networks.</p>
+                            <p><strong>Applications:</strong> computer graphics transformations, solving linear systems (Ax = b), weight matrices in neural networks. To see the row-by-column mechanics in code, see <a href="/blog/python-program-for-matrix-multiplication/">matrix multiplication in Python</a>.</p>
                         </div>
 
                         <figure class="blog-figure">
@@ -2480,6 +2650,7 @@ pip freeze > requirements.txt</code></pre>
                         </ul>
                         <p>
                             Every layer's forward pass is a sequence of tensor operations — matrix multiplications, element-wise activations, convolutions — all operating on these four structures.
+                            The dot product introduced above is the exact operation inside a <a href="/blog/transformers-in-a-minute/">transformer's attention mechanism</a>, and the filters in a <a href="/blog/convolutional-neural-networks-cnns-in-a-minute/">CNN</a> are 4D tensors sliding across 3D image tensors.
                         </p>
 
                         <!-- Summary image -->
@@ -2546,6 +2717,7 @@ pip freeze > requirements.txt</code></pre>
                         </p>
                         <p>
                             For login, you store a flag like <code>session['logged_in'] = True</code> after credentials check out. Every protected route then checks this flag before serving content.
+                            If your frontend runs on a different origin (a React dev server, for instance), the session cookie only survives cross-origin requests when <a href="/blog/cors-in-flask-bridging-frontend-and-backend/">CORS is configured with supports_credentials</a>.
                         </p>
 
                         <h2 id="how-does-flask-sign-session-cookies">How Does Flask Sign Session Cookies?</h2>
@@ -2589,7 +2761,7 @@ app.secret_key = 'your_secret_key_here'   # use a long random string in producti
                         </div>
 
                         <h2 id="step-2-define-a-login-route">Step 2: Define a Login Route</h2>
-                        <p>Handle both GET (show the form) and POST (validate credentials). On success, set the session flag and redirect to the protected page.</p>
+                        <p>Handle both GET (show the form) and POST (validate credentials) — see <a href="/blog/http-methods-enhancing-web-communication/">HTTP methods</a> for when each verb applies. On success, set the session flag and redirect to the protected page.</p>
 
                         <pre><code>@app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -2848,7 +3020,7 @@ print(timeit.timeit('999_999 in s', setup=setup, number=100))
                         </ul>
 
                         <p>
-                            See also: <a href="list-vs-set-in-a-minute.html">List vs Set in a Minute</a> — a deeper benchmark comparison with iteration and membership timing.
+                            See also: <a href="/blog/list-vs-set-in-a-minute/">List vs Set in a Minute</a> — a deeper benchmark comparison with iteration and membership timing.
                         </p>`,
 
   "support-vector-machine-svm": `<figure class="blog-figure">
@@ -2994,7 +3166,7 @@ print(timeit.timeit('999_999 in s', setup=setup, number=100))
                         </figure>
 
                         <h2 id="implementation-iris-dataset">Implementation: Iris Dataset</h2>
-                        <p>Load the Iris dataset and train an SVM classifier:</p>
+                        <p>Load the Iris dataset and train an SVM classifier. Three species make this a <a href="/blog/multiclass-vs-multilabel-classification-in-a-minute/">multiclass problem</a> — sklearn's SVC handles it with a one-vs-one strategy under the hood:</p>
 
                         <pre><code>import pandas as pd
 from sklearn.datasets import load_iris
@@ -3071,7 +3243,12 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                             "The linear kernel achieves 100% accuracy on Iris because the 4-dimensional feature space is linearly separable — the kernel trick maps apparent non-linearity in 2D to separability in higher dimensions."
                         </div>
 
-                        <p>See also: <a href="svms-kernel-trick-in-a-minute.html">SVMs & Kernel Trick in a Minute</a> — a deeper dive into the mathematics behind SVM kernels.</p>`,
+                        <p>
+                            One caution before shipping a score like 96.7%: accuracy alone can hide class-level failures.
+                            Inspect the full <a href="/blog/confusion-matrix-metrics-in-a-minute/">confusion matrix and per-class precision and recall</a> before trusting any single number.
+                        </p>
+
+                        <p>See also: <a href="/blog/svms-kernel-trick-in-a-minute/">SVMs & Kernel Trick in a Minute</a> — a deeper dive into the mathematics behind SVM kernels.</p>`,
 
   "svms-kernel-trick-in-a-minute": `<figure class="blog-figure">
                         <img src="/images/blog/svms-kernel-trick-in-a-minute-01-aa19a0.webp"
@@ -3116,7 +3293,7 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                         </p>
                         <p>
                             The key insight: you never actually compute the coordinates in that high-dimensional space.
-                            Kernels compute the <em>dot products</em> in the transformed space directly from the original inputs — giving you the power of high-dimensional separation at low computational cost.
+                            Kernels compute the <a href="/blog/scalars-vectors-matrices-tensor-in-a-minute/"><em>dot products</em></a> in the transformed space directly from the original inputs — giving you the power of high-dimensional separation at low computational cost.
                         </p>
 
                         <div class="blog-insight">
@@ -3244,6 +3421,10 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                             <li><strong>High γ → overfitting. Low γ → underfitting.</strong> GridSearchCV over γ and C is the standard approach.</li>
                         </ul>
 
+                        <p>
+                            For the applied side — training an SVC on the Iris dataset and tuning C, gamma, and kernels with real scores — see <a href="/blog/support-vector-machine-svm/">Support Vector Machine (SVM)</a>.
+                        </p>
+
                         <!-- FAQ Section -->
                         <h2 id="frequently-asked-questions">Frequently Asked Questions</h2>
 
@@ -3320,7 +3501,7 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
 
                         <div class="blog-component">
                             <h3><span class="component-number">1</span> Input Embedding</h3>
-                            <p>Raw text → numerical vectors. Similar meanings cluster nearby in high-dimensional space. Each token (word or subword unit) gets its own dense vector.</p>
+                            <p>Raw text → numerical vectors. Similar meanings cluster nearby in high-dimensional space. Each token (word or subword unit) gets its own dense vector. A batched transformer input is a 3D tensor of shape (batch, sequence length, embedding dimension) — if that vocabulary is unfamiliar, start with <a href="/blog/scalars-vectors-matrices-tensor-in-a-minute/">scalars, vectors, matrices and tensors</a>.</p>
                         </div>
 
                         <div class="blog-component">
@@ -3392,6 +3573,28 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                             Think of it as a soft database lookup: Q is your search query, K indexes the rows, and V is the content retrieved. The softmax turns raw similarity scores into a weighted sum over all tokens.
                         </div>
 
+                        <!-- QKV intuition -->
+                        <h2 id="what-do-q-k-and-v-actually-mean">What Do Q, K, and V Actually Mean?</h2>
+                        <p>
+                            The formula is compact, so it's worth slowing down on what each piece is doing. Start with an ordinary Python dictionary:
+                            you hand it a key, it returns exactly one value, and the match must be exact. Attention is the <strong>soft, differentiable version of that lookup</strong>.
+                            Instead of retrieving one value, every query retrieves a little bit of <em>every</em> value, weighted by how well its key matches.
+                        </p>
+                        <p>
+                            Concretely: each token's embedding is multiplied by three learned weight matrices — W<sub>Q</sub>, W<sub>K</sub>, W<sub>V</sub> — producing three different views of the same token.
+                            The <strong>query</strong> is the token asking a question ("I'm the word <em>it</em> — what do I refer to?").
+                            The <strong>key</strong> is how each token advertises what it can answer ("I'm <em>the animal</em>, a concrete noun").
+                            The <strong>value</strong> is the actual information a token contributes once selected.
+                            Separating key from value matters: a token can be easy to <em>find</em> for one reason and useful for a completely different reason once found.
+                        </p>
+                        <p>
+                            The dot product QK<sup>T</sup> measures alignment between every query and every key — one similarity score per token pair, forming an n×n matrix.
+                            Dividing by √d<sub>k</sub> keeps those scores in a sane range: as the vector dimension grows, raw dot products grow with it, and large scores push softmax into a near one-hot regime where gradients vanish.
+                            The softmax then converts each row of scores into weights that sum to 1, and the final multiplication by V blends the value vectors using those weights.
+                            The output for the word <em>it</em> is no longer a generic "it" vector — it's a context-mixed vector leaning heavily toward whatever <em>it</em> refers to.
+                            Because every step is matrix multiplication and softmax, the whole lookup is differentiable — the model <em>learns</em> what to ask and what to advertise, end to end.
+                        </p>
+
                         <!-- Tokenization -->
                         <h2 id="tokenization">Tokenization</h2>
                         <p>
@@ -3407,6 +3610,32 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                             This lets the decoder "read" the full encoded input at every generation step, enabling translation and summarization.
                         </p>
 
+                        <!-- Model families -->
+                        <h2 id="which-architecture-family-does-what">BERT vs GPT vs T5: Which Architecture Family Does What?</h2>
+                        <p>
+                            The comparison image above summarizes the three families; here's the reasoning behind each split, because "which half of the transformer you keep" is really a question about <strong>which direction attention is allowed to look</strong>.
+                        </p>
+                        <p>
+                            <strong>Encoder-only (BERT, RoBERTa, and most embedding models).</strong>
+                            Every token attends to every other token — left <em>and</em> right context — because the model's job is understanding, not generation.
+                            BERT is trained with masked language modeling: hide 15% of the tokens, ask the model to reconstruct them from both sides.
+                            The result is a model that produces rich contextual representations but has no natural way to generate text — there's no mechanism for producing the <em>next</em> token.
+                            Use this family for classification, named-entity recognition, semantic search, and sentence embeddings.
+                        </p>
+                        <p>
+                            <strong>Decoder-only (GPT, Claude, LLaMA, Mistral).</strong>
+                            A causal mask forces each token to attend only to tokens before it. Training is next-token prediction on raw text — no labels needed, just scale.
+                            That restriction sounds like a weakness, but it makes the model a native text generator, and it turns out that predicting the next token at sufficient scale teaches translation, summarization, reasoning, and everything else as side effects.
+                            This is why virtually every modern LLM is decoder-only: one simple objective, unlimited training data, and generation built in.
+                        </p>
+                        <p>
+                            <strong>Encoder-decoder (T5, BART, and most translation models).</strong>
+                            The encoder reads the full input bidirectionally; the decoder generates output while cross-attending to the encoded input.
+                            This is the natural fit for sequence-to-sequence tasks where input and output are distinct texts — translation, summarization, question answering over a document.
+                            T5 reframed every NLP task as text-to-text under this architecture.
+                            In practice, large decoder-only models have absorbed much of this territory by simply placing the input in the prompt — but for constrained, input-grounded transformations, encoder-decoder models remain strong and often cheaper.
+                        </p>
+
                         <!-- Complexity -->
                         <h2 id="computational-complexity">Computational Complexity</h2>
                         <p>
@@ -3417,6 +3646,65 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                             <li><strong>Flash Attention</strong> — IO-aware exact attention, no approximation</li>
                             <li><strong>Sparse Attention</strong> — attends to a subset of tokens per head</li>
                             <li><strong>Grouped-Query Attention (GQA)</strong> — shares K/V heads across Q heads, used in LLaMA 2+</li>
+                        </ul>
+
+                        <!-- Post-2017 evolution -->
+                        <h2 id="what-has-changed-since-2017">What Has Changed Since 2017?</h2>
+                        <p>
+                            The 2017 blueprint is still recognizable in every modern LLM, but four refinements matter enough to know by name:
+                        </p>
+                        <ul>
+                            <li>
+                                <strong>Rotary Position Embeddings (RoPE)</strong> — the original paper <em>added</em> a sinusoidal position signal to each embedding.
+                                RoPE instead <em>rotates</em> the query and key vectors by an angle proportional to position, so attention scores depend on the <em>relative</em> distance between tokens rather than absolute slots.
+                                This generalizes better to sequence lengths never seen in training and is now standard in LLaMA, Mistral, Qwen, and most open models.
+                            </li>
+                            <li>
+                                <strong>Multi-Query and Grouped-Query Attention (MQA / GQA)</strong> — at inference time, the K and V vectors of every previous token must be cached, and that KV cache dominates GPU memory for long contexts.
+                                MQA shares one K/V head across all query heads; GQA is the middle ground, sharing K/V across small groups.
+                                Quality stays close to full multi-head attention while the cache shrinks several-fold — this is a big part of how long-context models are servable at all.
+                            </li>
+                            <li>
+                                <strong>FlashAttention</strong> — not a new formula, but a new implementation.
+                                It computes exact attention in tiles that fit GPU on-chip SRAM, never materializing the full n×n score matrix in slow memory.
+                                Same math, several times faster and with memory that scales linearly in sequence length — the reason "O(n²)" stopped being a practical wall for moderate contexts.
+                            </li>
+                            <li>
+                                <strong>Mixture of Experts (MoE)</strong> — replaces each dense feed-forward layer with many parallel "expert" FFNs and a router that sends each token to just one or two of them.
+                                A model can hold hundreds of billions of parameters while activating only a fraction per token — more capacity without proportional compute.
+                                Mixtral, DeepSeek, and (reportedly) several frontier models use this design.
+                            </li>
+                        </ul>
+                        <p>
+                            Notice what <em>hasn't</em> changed: embeddings, residual connections, layer norm, and scaled dot-product attention are all still there.
+                            A 2017 reader could skim a 2026 architecture diagram and recognize almost everything.
+                        </p>
+
+                        <!-- Misconceptions -->
+                        <h2 id="what-are-common-misconceptions-about-transformers">What Are Common Misconceptions About Transformers?</h2>
+                        <p>A few beliefs that survive far too many blog posts:</p>
+                        <ul>
+                            <li>
+                                <strong>"Attention tells you what the model is thinking."</strong>
+                                Attention weights show where information flows, not <em>why</em> a prediction was made.
+                                Research on attention-as-explanation is decidedly mixed — different weight patterns can produce identical predictions. Treat attention maps as a debugging aid, not an explanation.
+                            </li>
+                            <li>
+                                <strong>"Transformers made CNNs obsolete."</strong>
+                                Vision Transformers are excellent at scale, but <a href="/blog/convolutional-neural-networks-cnns-in-a-minute/">convolutional networks</a> remain highly competitive on smaller datasets, edge devices, and tasks where their built-in translation bias is an advantage rather than a limitation. The two are converging, not replacing each other.
+                            </li>
+                            <li>
+                                <strong>"The model processes words."</strong>
+                                It processes subword tokens. "Unbelievable" may be three tokens; a rare name may be five. This is why LLMs historically struggled to count letters in a word — the letters were never individually visible.
+                            </li>
+                            <li>
+                                <strong>"Transformers understand order because of word position in the input."</strong>
+                                Self-attention is permutation-invariant — shuffle the tokens and, without positional encoding, the outputs shuffle identically. Order awareness is entirely injected by the positional signal; it is not free.
+                            </li>
+                            <li>
+                                <strong>"Bigger context windows mean the model reads everything equally well."</strong>
+                                Long-context models routinely show "lost in the middle" behavior — information at the start and end of the context is retrieved more reliably than information buried in the center. A million-token window is not a million-token memory.
+                            </li>
                         </ul>
 
                         <!-- FAQ — must be visible on page for Google FAQ rich results -->
@@ -3501,7 +3789,7 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                         <ul>
                             <li><strong>Run directly</strong> (<code>python app.py</code>): Python creates a module named <code>__main__</code> and executes the file inside it — so <code>__name__</code> is <code>"__main__"</code></li>
                             <li><strong>Imported</strong> (<code>import app</code>): the import system creates a module object named after the file — <code>__name__</code> is <code>"app"</code>. On a second import, Python finds the cached module in <code>sys.modules</code> and doesn't re-execute the file at all</li>
-                            <li><strong>Run with <code>-m</code></strong> (<code>python -m app</code>): the module is located on the import path but still executes as the entry point, so <code>__name__</code> is again <code>"__main__"</code> — this is how <code>python -m venv</code> and <code>python -m http.server</code> work</li>
+                            <li><strong>Run with <code>-m</code></strong> (<code>python -m app</code>): the module is located on the import path but still executes as the entry point, so <code>__name__</code> is again <code>"__main__"</code> — this is how <a href="/blog/python-virtual-environment-introduction/"><code>python -m venv</code></a> and <code>python -m http.server</code> work</li>
                             <li><strong>Packages:</strong> a file literally named <code>__main__.py</code> inside a package runs when you execute <code>python -m package_name</code> — the same idea promoted to package level</li>
                         </ul>
 
@@ -3601,7 +3889,7 @@ if __name__ == "__main__":
                             <li><strong>Always</strong> — wrap any code that should only run when the file is the entry point</li>
                             <li><strong>Tests and demos</strong> — put quick test calls or demo output inside the guard</li>
                             <li><strong>CLI scripts</strong> — put your <code>main()</code> call inside the guard so the file is importable as a module</li>
-                            <li><strong>Multiprocessing</strong> — on Windows and macOS, <code>multiprocessing</code> starts workers by re-importing your script; without the guard, each worker re-runs the spawning code and the program crashes or forks endlessly. Here the guard isn't style — it's required</li>
+                            <li><strong>Multiprocessing</strong> — on Windows and macOS, <code>multiprocessing</code> starts workers by re-importing your script; without the guard, each worker re-runs the spawning code and the program crashes or forks endlessly. Here the guard isn't style — it's required. The same applies when a script is <a href="/blog/convert-python-program-to-exe/">bundled into an .exe with PyInstaller</a> — frozen apps re-import the entry module too</li>
                             <li><strong>Never inside functions/classes</strong> — the guard belongs at the top level</li>
                         </ul>
                         <p>
@@ -3645,7 +3933,7 @@ if __name__ == "__main__":
     </li>
     <li>
         <strong>Interactive projects, not screenshots.</strong> Where possible, let the visitor touch the work. I
-        built a confidence-interval-vs-prediction-interval regression simulator as a canvas widget embedded directly
+        built a <a href="/blog/ci-vs-pi-regression-bands/">confidence-interval-vs-prediction-interval regression simulator</a> as a canvas widget embedded directly
         in a blog post. Readers drag the sample size and noise sliders and watch the bands respond. A static PNG of
         the same chart would communicate a tenth of it.
     </li>
@@ -3778,7 +4066,7 @@ npm run dev</code></pre>
     Build your pages as ordinary React components under <code>src/app/</code>. Blog posts, project pages, and the
     home page are all just routes. Two portfolio-relevant details from my build: images go in as WebP (smaller
     files, universally supported now), and anything below the fold — heavy sections, embedded widgets — gets
-    lazy-loaded so the first paint stays fast.
+    <a href="/blog/lazy-loading-for-enhanced-user-experience/">lazy-loaded</a> so the first paint stays fast.
 </p>
 
 <h3 id="step-2-static-export">2. Configure static export</h3>
