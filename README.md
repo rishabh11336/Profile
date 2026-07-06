@@ -1,5 +1,9 @@
 # Rishabh Singh — Data Scientist
 
+**Live site:** [rishabhsingh.me](https://rishabhsingh.me) — data science portfolio, 24 blog posts, and an [interactive CI-vs-PI regression simulator](https://rishabhsingh.me/blog/ci-vs-pi-regression-bands/).
+
+Built with Next.js (static export) and deployed free on GitHub Pages. Full write-up: [How I Built My Data Science Portfolio with Next.js and GitHub Pages](https://rishabhsingh.me/blog/how-i-built-my-data-science-portfolio/).
+
 **Forecasting · Analytics · Applied ML**
 
 📍 Hyderabad, India &nbsp;|&nbsp; 📧 [asusrishabh@outlook.com](mailto:asusrishabh@outlook.com) &nbsp;|&nbsp; 🌐 [rishabhsingh.me](https://rishabhsingh.me) &nbsp;|&nbsp; [LinkedIn](https://linkedin.com/in/rishabh-data-scientist) &nbsp;|&nbsp; [GitHub](https://github.com/rishabh11336)
