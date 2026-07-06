@@ -6,7 +6,7 @@ export const siteConfig = {
   description:
     "IIT Madras Data Scientist specializing in time-series forecasting, mixed-effects models, and Marketing Mix Modeling (MMM). Python · scikit-learn · Streamlit · Azure · AWS. Open-source contributor to CPython.",
   url: "https://rishabhsingh.me",
-  ogImage: "https://rishabhsingh.me/images/me.png",
+  ogImage: "https://rishabhsingh.me/images/og-card.png",
   email: "asusrishabh@outlook.com",
   themeColor: "#0b4975",
   skinColor: "#4A90A0",
@@ -199,7 +199,7 @@ export const projects = [
   },
   {
     title: "Parking Management System",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5QSaKrmae-MCimSBr67asYrZWzNvN4VFBJw&s",
+    image: "/images/projects/parking-management.webp",
     imageAlt: "Parking Management System — Flask, Vue.js, Azure, Redis, Celery architecture",
     tags: ["Flask", "Vue.js", "Azure", "Redis", "Celery", "CI/CD"],
     description:
@@ -576,7 +576,7 @@ export const structuredData = {
     "@id": "https://rishabhsingh.me/#person",
     name: "Rishabh Singh",
     url: "https://rishabhsingh.me",
-    image: "https://rishabhsingh.me/images/me.png",
+    image: "https://rishabhsingh.me/images/me.webp",
     jobTitle: "Data Scientist",
     worksFor: { "@type": "Organization", name: "Chryselys" },
     alumniOf: {

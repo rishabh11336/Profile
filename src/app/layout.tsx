@@ -45,7 +45,7 @@ export const metadata: Metadata = {
       "IIT Madras Data Scientist specializing in time-series forecasting, mixed-effects models, and Marketing Mix Modeling (MMM). Python · scikit-learn · Streamlit · Azure · AWS. Open-source contributor to CPython.",
     images: [
       {
-        url: "https://rishabhsingh.me/images/me.png",
+        url: "https://rishabhsingh.me/images/og-card.png",
         width: 1200,
         height: 630,
         alt: "Rishabh Singh — Data Scientist",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
       "Rishabh Singh — Data Scientist | Forecasting & Applied ML | IIT Madras",
     description:
       "IIT Madras Data Scientist specializing in time-series forecasting, mixed-effects models, and Marketing Mix Modeling (MMM).",
-    images: ["https://rishabhsingh.me/images/me.png"],
+    images: ["https://rishabhsingh.me/images/og-card.png"],
   },
   robots: {
     index: true,

@@ -158,16 +158,17 @@ export function HeroSection() {
           >
             <motion.div
               className="relative rounded-2xl overflow-hidden border-2 border-accent"
-              style={{ boxShadow: "0 0 40px rgba(160,69,144,0.25)" }}
+              style={{ boxShadow: "0 0 40px color-mix(in srgb, var(--accent) 25%, transparent)" }}
               whileHover={{ rotate: -1, scale: 1.03 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <Image
-                src="/me-2x.png"
+                src="/me-2x.webp"
                 alt="Rishabh Singh — Data Scientist & AI Engineer"
                 width={263}
                 height={394}
                 priority
+                fetchPriority="high"
                 className="block"
               />
             </motion.div>

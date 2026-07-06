@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import { ReadingProgressBar } from "@/components/ui/ReadingProgressBar";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
@@ -9,12 +8,6 @@ import BlogSection from "@/components/sections/BlogSection";
 import ContactSection from "@/components/sections/ContactSection";
 import VisitorsSection from "@/components/sections/VisitorsSection";
 import { structuredData, siteConfig } from "@/data/content";
-
-export const metadata: Metadata = {
-  openGraph: {
-    type: "website",
-  },
-};
 
 const websiteSchema = {
   "@type": "WebSite",

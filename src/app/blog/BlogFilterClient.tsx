@@ -88,7 +88,7 @@ export default function BlogFilterClient({
               className="group flex flex-col rounded-xl overflow-hidden border border-border hover:border-accent transition-all duration-300 hover:-translate-y-1"
               style={{ background: "var(--sidebar-bg)" }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 24px rgba(160,69,144,0.15)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 24px color-mix(in srgb, var(--accent) 15%, transparent)";
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLElement).style.boxShadow = "none";
