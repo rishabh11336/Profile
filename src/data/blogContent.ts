@@ -1378,6 +1378,16 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                         <figcaption>Lazy loading: only load resources when the user is about to see them.</figcaption>
                     </figure>
 
+<div class="blog-insight">
+                            <p>
+                                <strong>Lazy loading is a browser optimization that defers fetching images, iframes, and other below-the-fold resources until the user scrolls near them, instead of downloading everything the moment the page loads.</strong>
+                                In modern browsers it is native: adding <code>loading="lazy"</code> to an <code>&lt;img&gt;</code> or <code>&lt;iframe&gt;</code> tag is all it takes — no JavaScript library required.
+                                The browser tracks each deferred element's distance from the viewport and issues the network request only when the element is about to become visible, so images the user never scrolls to are never downloaded.
+                                The payoff is a faster initial load, lower bandwidth use, and better Core Web Vitals scores.
+                                The one hard rule: never lazy-load above-the-fold content — the hero image and anything visible on first paint should use <code>loading="eager"</code> (the default) so the Largest Contentful Paint element is not delayed, while everything further down the page loads progressively as the user explores it.
+                            </p>
+                        </div>
+
 <h2 id="the-problem">The Problem</h2>
                         <p>
                             By default, browsers load all images on a page immediately — whether the user will ever scroll to them or not.
@@ -1397,6 +1407,26 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                         <pre><code>&lt;img src="image.jpg" loading="lazy" alt="Description"&gt;</code></pre>
 
                         <p>The browser tracks each image's position relative to the viewport and triggers a fetch only when it's within a certain distance of becoming visible.</p>
+
+                        <h2 id="how-does-the-browser-decide-when-to-fetch">How Does the Browser Decide When to Fetch a Lazy Image?</h2>
+                        <p>
+                            Each browser applies a <strong>distance-from-viewport threshold</strong>: once a lazy image is within that distance of the visible area, the fetch starts.
+                            Chrome tunes the threshold to the connection — on fast connections it prefetches images roughly 1,250&nbsp;px ahead of the viewport, and on slow connections it starts even earlier (up to ~2,500&nbsp;px) so the image is usually ready by the time the user reaches it.
+                            You don't configure any of this; the browser handles it.
+                        </p>
+                        <p>
+                            What you <em>do</em> control is layout stability. Always declare <code>width</code> and <code>height</code> (or a CSS <code>aspect-ratio</code>) on lazy images so the browser can reserve the space before the file arrives — otherwise content jumps when the image pops in, hurting your Cumulative Layout Shift (CLS) score:
+                        </p>
+
+                        <pre><code>&lt;img src="photo.jpg"
+     loading="lazy"
+     decoding="async"
+     width="800" height="600"
+     alt="Description"&gt;</code></pre>
+
+                        <p>
+                            Adding <code>decoding="async"</code> lets the browser decode the image off the main thread, keeping scrolling smooth while late-arriving images are processed.
+                        </p>
 
                         <div class="blog-component">
                             <h3>Advantages</h3>
@@ -1431,6 +1461,31 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                             "Use loading='eager' for above-the-fold content. Use loading='lazy' for everything below."
                         </div>
 
+                        <h2 id="when-does-lazy-loading-hurt-performance">When Does Lazy Loading Hurt Performance?</h2>
+                        <p>
+                            The most common mistake is lazy-loading the <strong>Largest Contentful Paint (LCP) element</strong> — usually the hero image.
+                            A lazy-loaded image is invisible to the browser's preload scanner, so the request starts late, the largest visible element paints late, and your LCP score gets measurably worse.
+                            Google's own guidance is blunt: images in the initial viewport should never carry <code>loading="lazy"</code>.
+                        </p>
+                        <p>
+                            Other cases where lazy loading works against you: the first slide of a carousel (visible immediately, yet often lazy-loaded by default in libraries), images just barely below the fold on short pages, and pages with only a handful of images where deferral saves nothing but still risks a visible pop-in during fast scrolling.
+                        </p>
+
+                        <h2 id="lazy-vs-eager-tradeoffs">Lazy vs Eager: The Trade-offs at a Glance</h2>
+                        <table>
+                            <thead>
+                                <tr><th>Aspect</th><th>Lazy loading</th><th>Eager loading (default)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Initial page load</td><td>Faster — only visible resources fetched</td><td>Slower — every image requested up front</td></tr>
+                                <tr><td>Bandwidth</td><td>Only what the user actually sees</td><td>Full page weight, seen or not</td></tr>
+                                <tr><td>LCP impact</td><td>Harmful if applied above the fold</td><td>Correct choice for the hero / LCP element</td></tr>
+                                <tr><td>Layout shift risk</td><td>Present unless width/height reserved</td><td>Minimal — images load with the page</td></tr>
+                                <tr><td>Fast scrolling</td><td>Possible blank placeholders</td><td>Content always ready</td></tr>
+                                <tr><td>Best for</td><td>Long, image-heavy pages; mobile-first sites</td><td>Above-the-fold content; short pages</td></tr>
+                            </tbody>
+                        </table>
+
                         <h2 id="when-to-use-which">When to Use Which</h2>
                         <ul>
                             <li><strong><code>loading="eager"</code>:</strong> hero images, logos, above-the-fold critical visuals — load immediately</li>
@@ -1438,6 +1493,30 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                             <li><strong>Small pages with few images:</strong> skip lazy loading — the overhead adds complexity without meaningful gain</li>
                             <li><strong>Image-heavy pages, long scrolls, mobile-first:</strong> lazy loading delivers the most impact</li>
                         </ul>
+
+                        <h2 id="do-you-still-need-javascript-for-lazy-loading">Do You Still Need JavaScript for Lazy Loading?</h2>
+                        <p>
+                            For images and iframes: no. Native <code>loading="lazy"</code> has shipped in every major browser since 2022 and needs zero code.
+                            JavaScript earns its place when you lazy-load things the attribute can't cover — entire page sections, CSS background images, or components fetched over the network.
+                            The tool for that is <strong>IntersectionObserver</strong>, which fires a callback when an element approaches the viewport:
+                        </p>
+
+                        <pre><code>const observer = new IntersectionObserver((entries) =&gt; {
+  entries.forEach((entry) =&gt; {
+    if (entry.isIntersecting) {
+      loadSection(entry.target);        // fetch and inject content
+      observer.unobserve(entry.target); // load once, then stop watching
+    }
+  });
+}, { rootMargin: '200px' });            // start 200px before visibility
+
+document.querySelectorAll('.lazy-section')
+        .forEach((el) =&gt; observer.observe(el));</code></pre>
+
+                        <p>
+                            The <code>rootMargin</code> option mimics the browser's distance threshold: content starts loading 200&nbsp;px before it scrolls into view, so the user rarely sees a placeholder.
+                            This exact pattern powers the lazy-loaded sections on this site — the HTML for heavy sections is fetched only when you scroll toward them.
+                        </p>
 
                         <div class="blog-reference">
                             Reference: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading" target="_blank" rel="noopener noreferrer">MDN Web Docs — img loading attribute</a>
@@ -2449,7 +2528,17 @@ pip freeze > requirements.txt</code></pre>
                             <p>Neural network weights, activations, gradients, and inputs are all tensors. A fully connected layer's weights are 2D tensors (matrices). Conv filters are 4D. Batched transformer inputs are 3D. Frameworks like PyTorch and TensorFlow optimize tensor operations for GPU parallelism.</p>
                         </details>`,
 
-  "session-in-the-flask-for-login": `<h2 id="how-flask-sessions-work">How Flask Sessions Work</h2>
+  "session-in-the-flask-for-login": `<div class="blog-insight">
+                            <p>
+                                <strong>A Flask session is a per-user dictionary that survives across requests by storing its contents in a cryptographically signed cookie in the user's browser.</strong>
+                                Flask serializes the <code>session</code> dict to JSON, signs it with your application's <code>secret_key</code> using HMAC (via the <code>itsdangerous</code> library), and sends the result as the session cookie.
+                                On every subsequent request, Flask verifies the signature before trusting the data — the user can read the cookie's contents, but cannot modify them without breaking the signature.
+                                That property makes sessions the simplest correct way to build a login system: after validating credentials once, set <code>session['logged_in'] = True</code>, and every protected route can check that flag instead of re-authenticating.
+                                A complete login flow needs exactly four pieces — a secret key, a login route, a protected route, and a logout route — all shown below in under thirty lines of code.
+                            </p>
+                        </div>
+
+<h2 id="how-flask-sessions-work">How Flask Sessions Work</h2>
                         <p>
                             Flask sessions store data in a <strong>signed cookie</strong> on the user's browser.
                             The server signs the cookie with a secret key using HMAC — users can read the cookie but cannot modify it without the signature breaking.
@@ -2457,6 +2546,34 @@ pip freeze > requirements.txt</code></pre>
                         </p>
                         <p>
                             For login, you store a flag like <code>session['logged_in'] = True</code> after credentials check out. Every protected route then checks this flag before serving content.
+                        </p>
+
+                        <h2 id="how-does-flask-sign-session-cookies">How Does Flask Sign Session Cookies?</h2>
+                        <p>
+                            Under the hood, Flask (including Flask&nbsp;3.x) delegates signing to <strong>itsdangerous</strong>, the same library that powers password-reset tokens.
+                            The session dict is JSON-serialized, compressed if it helps, base64-encoded, and then signed with an HMAC derived from your <code>secret_key</code>.
+                            The resulting cookie has three dot-separated parts:
+                        </p>
+
+                        <pre><code># session cookie anatomy:
+# eyJsb2dnZWRfaW4iOnRydWV9.aGVsbG8xMjM.q2V4mJx8...
+# |______ payload ______| |timestamp| |signature|
+#   base64-encoded JSON     issued at   HMAC of the rest</code></pre>
+
+                        <p>
+                            One detail trips people up: the payload is <strong>encoded, not encrypted</strong>. Anyone holding the cookie can decode and read it:
+                        </p>
+
+                        <pre><code>import base64, json
+
+payload = 'eyJsb2dnZWRfaW4iOnRydWV9'
+print(json.loads(base64.urlsafe_b64decode(payload + '==')))
+# {'logged_in': True}</code></pre>
+
+                        <p>
+                            So never put secrets — passwords, API keys, personal data — in the session.
+                            The signature guarantees <em>integrity</em> (a tampered cookie is rejected and the session comes back empty), not <em>confidentiality</em>.
+                            It also means anyone who obtains your <code>secret_key</code> can forge a valid <code>logged_in: true</code> cookie, which is why the key must be long, random, and out of version control.
                         </p>
 
                         <h2 id="step-1-set-a-secret-key">Step 1: Set a Secret Key</h2>
@@ -2503,6 +2620,59 @@ def logout():
 
 if __name__ == '__main__':
     app.run(debug=True)</code></pre>
+
+                        <h2 id="how-do-you-protect-many-routes-at-once">How Do You Protect Many Routes at Once?</h2>
+                        <p>
+                            Repeating the <code>session.get('logged_in')</code> check in every view gets tedious fast.
+                            The idiomatic fix is a <code>login_required</code> decorator — write the check once, then stack it on any route that needs authentication:
+                        </p>
+
+                        <pre><code>from functools import wraps
+from flask import session, redirect
+
+def login_required(view):
+    @wraps(view)
+    def wrapped(*args, **kwargs):
+        if not session.get('logged_in'):
+            return redirect('/login')
+        return view(*args, **kwargs)
+    return wrapped
+
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    return render_template('dashboard.html')</code></pre>
+
+                        <p>
+                            The <code>@wraps</code> call preserves the view function's name so Flask's routing and debugging tools keep working.
+                            This is exactly the pattern the <strong>Flask-Login</strong> extension formalizes — once your app outgrows a single flag, it adds user objects, remember-me cookies, and per-user sessions on top of the same idea.
+                        </p>
+
+                        <h2 id="server-side-vs-client-side-sessions">Should You Use Server-Side Sessions Instead?</h2>
+                        <p>
+                            Flask's default client-side cookie is perfect for small apps, but it has structural limits: browsers cap cookies at roughly 4&nbsp;KB, the data rides along on every request, and you cannot revoke a session from the server — a signed cookie stays valid until it expires.
+                            Server-side sessions (via the <strong>Flask-Session</strong> extension backed by Redis, Memcached, or a database) store the data on the server and give the browser only an opaque session ID.
+                        </p>
+
+                        <table>
+                            <thead>
+                                <tr><th>Aspect</th><th>Client-side signed cookie (Flask default)</th><th>Server-side session (Flask-Session)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Where data lives</td><td>In the browser cookie, signed</td><td>On the server; browser holds only an ID</td></tr>
+                                <tr><td>Size limit</td><td>~4 KB (browser cookie cap)</td><td>Effectively unlimited</td></tr>
+                                <tr><td>Can the user read it?</td><td>Yes — base64, not encrypted</td><td>No — data never leaves the server</td></tr>
+                                <tr><td>Instant revocation</td><td>No — valid until expiry</td><td>Yes — delete the server record</td></tr>
+                                <tr><td>Extra infrastructure</td><td>None</td><td>Redis / Memcached / database</td></tr>
+                                <tr><td>Horizontal scaling</td><td>Trivial — any server can verify</td><td>Needs a shared session store</td></tr>
+                                <tr><td>Best for</td><td>Small apps, simple login flags</td><td>Sensitive data, force-logout, large sessions</td></tr>
+                            </tbody>
+                        </table>
+
+                        <p>
+                            Rule of thumb: if the session holds nothing but a login flag and a username, the default signed cookie is simpler and scales better.
+                            Reach for server-side sessions when you need to store more than 4&nbsp;KB, keep data hidden from the user, or terminate sessions on demand (for example, "log out all devices").
+                        </p>
 
                         <h2 id="video-walkthroughs">Video Walkthroughs</h2>
                         <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin:1.5rem 0;">
@@ -2556,6 +2726,16 @@ if __name__ == '__main__':
                         <figcaption>Benchmark: set operations scale at O(1) while list operations scale at O(n) — the gap widens with collection size.</figcaption>
                     </figure>
 
+<div class="blog-insight">
+                            <p>
+                                <strong>Python sets outperform lists for membership testing, insertion, and deletion because a set is backed by a hash table, while a list is a simple array that must be scanned element by element.</strong>
+                                Checking <code>x in my_set</code> computes one hash and jumps straight to the answer — O(1) on average — whereas <code>x in my_list</code> compares against every element until it finds a match, O(n).
+                                With a million elements, that is the difference between one operation and up to a million comparisons; in practice a set lookup can be tens of thousands of times faster.
+                                The trade-offs: sets hold only unique, hashable elements, don't support indexing, and use more memory per element, and dense lists still iterate faster.
+                                The rule is simple — lots of <code>in</code> checks means use a set; ordered data and heavy iteration means use a list.
+                            </p>
+                        </div>
+
 <h2 id="why-sets-excel-the-hash-table">Why Sets Excel: The Hash Table</h2>
                         <p>
                             A Python <code>set</code> is backed by a <strong>hash table</strong>.
@@ -2580,6 +2760,51 @@ if __name__ == '__main__':
                             "Sets excel at providing constant-time average complexity for common operations — the advantage becomes dramatic with larger datasets."
                         </div>
 
+                        <h2 id="why-are-set-lookups-o1">Why Are Set Lookups O(1) Even With a Million Elements?</h2>
+                        <p>
+                            CPython implements sets with <strong>open addressing</strong>: a sparse array of slots where each element's position is derived from its hash value.
+                            A lookup masks the hash down to a slot index and checks that slot directly — no scanning.
+                            If two elements hash to the same slot (a collision), CPython probes a deterministic sequence of alternative slots, mixing in more bits of the hash each step, until it finds the element or an empty slot.
+                        </p>
+                        <p>
+                            To keep those probe chains short, the table stays deliberately sparse: when it fills past roughly three-fifths of capacity, CPython allocates a larger table and rehashes everything into it.
+                            That resize is O(n), but it happens so rarely that insertion still averages out to O(1) — the same amortized trick lists use for <code>append</code>.
+                            The fine print: O(1) is the <em>average</em> case. If every element collided (pathological or adversarial hashes), lookups would degrade toward O(n) — which is why Python randomizes string hashing per process.
+                        </p>
+
+                        <h2 id="list-vs-set-complexity-table">How Do List and Set Operations Compare in Big-O?</h2>
+                        <table>
+                            <thead>
+                                <tr><th>Operation</th><th>list</th><th>set</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Membership — <code>x in c</code></td><td>O(n)</td><td>O(1) average</td></tr>
+                                <tr><td>Insert — <code>append</code> / <code>add</code></td><td>O(1) amortized</td><td>O(1) average</td></tr>
+                                <tr><td>Remove by value — <code>remove</code> / <code>discard</code></td><td>O(n)</td><td>O(1) average</td></tr>
+                                <tr><td>Access by index — <code>c[i]</code></td><td>O(1)</td><td>Not supported</td></tr>
+                                <tr><td>Iterate all elements</td><td>O(n), cache-friendly</td><td>O(n), slower per element</td></tr>
+                                <tr><td>Deduplicate</td><td>O(n²) naive</td><td>O(n) — <code>set(my_list)</code></td></tr>
+                                <tr><td>Union / intersection</td><td>O(n × m)</td><td>O(n + m) / O(min(n, m))</td></tr>
+                            </tbody>
+                        </table>
+
+                        <h2 id="how-big-is-the-difference-in-practice">How Big Is the Difference in Practice?</h2>
+                        <p>Measure it yourself with <code>timeit</code> — a worst-case membership test (the element sits at the very end of the list):</p>
+
+                        <pre><code>import timeit
+
+setup = 'data = list(range(1_000_000)); s = set(data)'
+
+print(timeit.timeit('999_999 in data', setup=setup, number=100))
+# ~1.1 s      — the list scans a million elements, 100 times
+
+print(timeit.timeit('999_999 in s', setup=setup, number=100))
+# ~0.000004 s — the set hashes once per check</code></pre>
+
+                        <p>
+                            Same data, same question, five orders of magnitude apart — and the gap keeps widening as the collection grows, because the list's cost scales with n while the set's stays flat.
+                        </p>
+
                         <h2 id="iteration-where-lists-have-the-edge">Iteration: Where Lists Have the Edge</h2>
                         <p>
                             Sets use sparse, scattered memory — the hash table has empty buckets between entries.
@@ -2589,6 +2814,21 @@ if __name__ == '__main__':
                         <p>
                             For tight iteration loops over large collections, lists are faster than sets.
                             This is the one case where the hash table structure works against sets.
+                        </p>
+
+                        <h2 id="what-do-sets-cost-you">What Do Sets Cost You?</h2>
+                        <p>
+                            The O(1) lookups aren't free. Know the trade-offs before converting every list in your codebase:
+                        </p>
+                        <ul>
+                            <li><strong>More memory</strong> — the hash table must stay sparse, so a set typically uses several times the memory of a list holding the same elements (each entry also stores its cached hash)</li>
+                            <li><strong>Elements must be hashable</strong> — numbers, strings, and tuples work; mutable types like lists and dicts raise <code>TypeError: unhashable type</code>. Convert inner lists to tuples first</li>
+                            <li><strong>No order, no indexing</strong> — sets don't remember insertion order and don't support <code>s[0]</code> or slicing; if order matters, a set is the wrong tool</li>
+                            <li><strong>Duplicates are silently dropped</strong> — usually the point, but a bug if your data legitimately contains repeats you need to keep</li>
+                        </ul>
+                        <p>
+                            For small collections — a handful of elements — none of this matters and neither does the speed difference; a list membership check over five items is effectively instant.
+                            The set advantage is a <em>scaling</em> advantage.
                         </p>
 
                         <h2 id="when-to-use-sets">When to Use Sets</h2>
