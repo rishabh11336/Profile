@@ -3,9 +3,27 @@ import { ArrowLeft } from "lucide-react";
 import { blogPosts } from "@/data/content";
 import BlogFilterClient from "./BlogFilterClient";
 
+const blogJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  name: "Blog — AI, ML & Python | Rishabh Singh",
+  url: "https://rishabhsingh.me/blog/",
+  author: { "@id": "https://rishabhsingh.me/#person" },
+  blogPost: blogPosts.map((p) => ({
+    "@type": "BlogPosting",
+    headline: p.title,
+    url: `https://rishabhsingh.me/blog/${p.slug}/`,
+    datePublished: p.date,
+  })),
+};
+
 export default function BlogPage() {
   return (
     <div className="min-h-screen" style={{ background: "var(--bg)" }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+      />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Back link */}
         <Link

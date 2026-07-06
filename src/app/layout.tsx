@@ -84,6 +84,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className={plusJakartaSans.variable}>
+      <head>
+        <link rel="preconnect" href="https://miro.medium.com" />
+        <link rel="preconnect" href="https://opengraph.githubassets.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+      </head>
       <body className="min-h-screen antialiased">
         <script
           dangerouslySetInnerHTML={{

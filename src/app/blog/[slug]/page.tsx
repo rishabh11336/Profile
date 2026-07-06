@@ -105,11 +105,30 @@ export default async function BlogPostPage({
     mainEntityOfPage: { "@type": "WebPage", "@id": `https://rishabhsingh.me/blog/${slug}/` },
   };
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://rishabhsingh.me/" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://rishabhsingh.me/blog/" },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: `https://rishabhsingh.me/blog/${slug}/`,
+      },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
 
       <div className="min-h-screen bg-bg">

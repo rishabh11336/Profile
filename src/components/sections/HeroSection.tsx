@@ -109,22 +109,34 @@ export function HeroSection() {
             </motion.p>
 
             <motion.div
-              className="flex flex-wrap gap-4 justify-center lg:justify-start mb-8"
+              className="flex flex-wrap gap-4 justify-center lg:justify-start mb-4"
               variants={fadeInUp}
             >
               <a
-                href="#contact"
-                className="px-6 py-3 rounded-full font-semibold text-white bg-accent hover:opacity-90 transition-all duration-200 hover:scale-105 inline-block"
+                href="/CV/Rishabh-Singh-Data-Scientist-CV.pdf"
+                download
+                className="btn"
               >
-                Hire Me
+                Download CV
               </a>
-              <a
-                href="#portfolio"
-                className="px-6 py-3 rounded-full font-semibold border border-accent text-accent hover:bg-accent/10 transition-all duration-200 inline-block"
-              >
-                View Projects ↓
+              <a href="#contact" className="btn-outline">
+                Contact Me
               </a>
             </motion.div>
+
+            <motion.p
+              className="text-muted text-xs md:text-sm leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0"
+              variants={fadeInUp}
+            >
+              Featuring an{" "}
+              <a
+                href="/blog/ci-vs-pi-regression-bands/"
+                className="text-accent hover:underline"
+              >
+                interactive CI-vs-PI regression simulator
+              </a>{" "}
+              and merged contributions to CPython, conda-build &amp; librosa.
+            </motion.p>
 
             <motion.div
               className="inline-flex items-start gap-3 p-4 rounded-xl border border-accent/30 bg-accent/8 max-w-xl"
