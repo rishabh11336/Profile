@@ -15,7 +15,7 @@ export const metadata: Metadata = {
       "Dense, visual breakdowns of ML concepts — Transformers, SVMs, CNNs, Linear Regression, and more. Plus Python and web dev deep-dives.",
     images: [
       {
-        url: "https://miro.medium.com/v2/resize:fit:720/format:webp/1*adMgf9eqWEMHr7L-dPNaWQ.png",
+        url: "https://rishabhsingh.me/images/og-card.png",
         width: 720,
         height: 405,
         alt: "Rishabh Singh Blog — AI & ML",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "Blog — AI, ML & Python | Rishabh Singh",
     description:
       "Dense, visual breakdowns of ML concepts — Transformers, SVMs, CNNs, Linear Regression, and more. Plus Python and web dev deep-dives.",
-    images: ["https://miro.medium.com/v2/resize:fit:720/format:webp/1*adMgf9eqWEMHr7L-dPNaWQ.png"],
+    images: ["https://rishabhsingh.me/images/og-card.png"],
   },
 };
 

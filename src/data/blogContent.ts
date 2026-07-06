@@ -3,7 +3,7 @@
 
 export const blogContent: Record<string, string> = {
   "bayesian-learning-in-a-minute": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*qkE0Tj7IeAVHty7v.png"
+                        <img src="/images/blog/bayesian-learning-in-a-minute-01-334640.webp"
                              alt="Bayesian learning concept — updating prior beliefs with evidence to form posterior"
                              loading="eager">
                         <figcaption>Bayesian learning: start with a prior, observe evidence, update to a posterior. Repeat with every new data point.</figcaption>
@@ -24,7 +24,7 @@ export const blogContent: Record<string, string> = {
                         <div class="blog-formula-box">P(A|B) = P(B|A) × P(A) / P(B)</div>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*V0qGhJ4mEbm3QWwU278Kaw.png"
+                            <img src="/images/blog/bayesian-learning-in-a-minute-02-542cb5.webp"
                                  alt="Bayes theorem formula P(A|B) = P(B|A) times P(A) divided by P(B)"
                                  loading="lazy">
                             <figcaption>Bayes theorem: the posterior probability of A given B equals the likelihood times the prior, normalized by the evidence.</figcaption>
@@ -56,7 +56,7 @@ export const blogContent: Record<string, string> = {
                         </div>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*uA4a24lLqK3kxCCA1aZTvg.png"
+                            <img src="/images/blog/bayesian-learning-in-a-minute-03-2b035d.webp"
                                  alt="Prior, likelihood, and posterior probability diagram in Bayesian framework"
                                  loading="lazy">
                             <figcaption>Prior × Likelihood → Posterior. Each new observation shifts the distribution.</figcaption>
@@ -86,7 +86,7 @@ export const blogContent: Record<string, string> = {
                         </p>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*ICBRKvivpwbgmSbZbZYKfA.png"
+                            <img src="/images/blog/bayesian-learning-in-a-minute-04-ac6b1d.webp"
                                  alt="Disease diagnosis Bayesian example with 1% prevalence and 99% test accuracy"
                                  loading="lazy">
                             <figcaption>With 1% disease prevalence, a positive test result is only ~50% likely to indicate true disease.</figcaption>
@@ -104,14 +104,14 @@ export const blogContent: Record<string, string> = {
                         </p>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*QFoWVdfFTKceJ_GE2GVM_g.png"
+                            <img src="/images/blog/bayesian-learning-in-a-minute-05-5410ea.webp"
                                  alt="Horse race Bayesian example with three competing hypotheses about win probabilities"
                                  loading="lazy">
                             <figcaption>Horse race: three competing hypotheses updated race by race — the truest hypothesis converges to the highest posterior.</figcaption>
                         </figure>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*GRdjSDwij0q50nHBL94MAA.png"
+                            <img src="/images/blog/bayesian-learning-in-a-minute-06-7209f1.webp"
                                  alt="Bayesian convergence: posterior probability of correct hypothesis increases with more observations"
                                  loading="lazy">
                             <figcaption>Convergence: with enough data, the posterior concentrates on the hypothesis closest to the truth.</figcaption>
@@ -126,7 +126,7 @@ export const blogContent: Record<string, string> = {
                         </ul>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*flEUoBzTVG9N3n88zRPgnw.png"
+                            <img src="/images/blog/bayesian-learning-in-a-minute-07-550f36.webp"
                                  alt="Bayesian learning applications: medicine, finance, ML, spam detection"
                                  loading="lazy">
                             <figcaption>Bayesian methods span medicine, finance, NLP, and any domain where uncertainty must be explicitly modeled.</figcaption>
@@ -372,11 +372,21 @@ export const blogContent: Record<string, string> = {
             </a>`,
 
   "conda-virtual-environment-commands": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*vpISFPkJvs-K3WD-Yb3HyQ.png"
+                        <img src="/images/blog/conda-virtual-environment-commands-01-9b6988.webp"
                              alt="Anaconda distribution — Python toolkit for data science with 300+ packages"
                              loading="eager">
                         <figcaption>Anaconda: the Python distribution for data science, bundling conda, 300+ packages, and environment management.</figcaption>
                     </figure>
+
+<div class="blog-insight">
+                            <p>
+                                <strong>Conda is a package and environment manager that installs software — including Python itself — into isolated, named environments.</strong>
+                                Unlike <code>pip</code>, which only installs Python packages into an existing interpreter, conda treats the interpreter as just another package: <code>conda create -n myenv python=3.12</code> builds a fresh environment with its own Python version, its own libraries, and its own compiled binaries.
+                                That last part is why data scientists reach for it — conda ships pre-built non-Python dependencies (MKL, CUDA, HDF5, GDAL) that pip would otherwise expect your system compiler to provide.
+                                The five commands that cover daily use are <code>create</code>, <code>activate</code>, <code>install</code>, <code>deactivate</code>, and <code>remove --all</code>, with <code>conda env export</code> handling reproducibility.
+                                Conda ships with the full Anaconda distribution or the minimal Miniconda installer; both give you the same command set.
+                            </p>
+                        </div>
 
 <h2 id="why-anaconda">Why Anaconda?</h2>
                         <p>
@@ -385,6 +395,33 @@ export const blogContent: Record<string, string> = {
                         </p>
                         <p>
                             Different projects often need different versions of the same library. Conda lets you create isolated environments — each with its own Python version and packages — so projects never interfere with each other.
+                        </p>
+                        <p>
+                            If you don't need the 300-package bundle, <strong>Miniconda</strong> installs just conda and Python — a few hundred megabytes instead of several gigabytes — and you add only what each project needs.
+                            The commands below are identical either way.
+                        </p>
+
+                        <h2 id="conda-vs-pip-venv">How Is Conda Different from pip and venv?</h2>
+                        <p>
+                            The two toolchains overlap but answer different questions.
+                            <code>pip</code> + <code>venv</code> assume Python is already installed and manage Python packages inside it.
+                            Conda manages <em>everything</em> — interpreter, Python packages, and compiled system libraries — from its own package repositories (channels).
+                        </p>
+                        <table>
+                            <thead>
+                                <tr><th>Aspect</th><th>pip + venv</th><th>conda</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>What it installs</td><td>Python packages from PyPI</td><td>Packages in any language from conda channels</td></tr>
+                                <tr><td>Python interpreter</td><td>Must already exist on the system</td><td>Installed per environment (<code>python=3.12</code>)</td></tr>
+                                <tr><td>Non-Python dependencies</td><td>Needs system compilers/libraries for source builds</td><td>Ships pre-built binaries (MKL, CUDA, GDAL, HDF5)</td></tr>
+                                <tr><td>Environment tool</td><td>Separate module (<code>venv</code>)</td><td>Built into the same command</td></tr>
+                                <tr><td>Default package source</td><td>PyPI</td><td>defaults / conda-forge channels</td></tr>
+                                <tr><td>Typical user</td><td>Web and general Python development</td><td>Data science, ML, scientific computing</td></tr>
+                            </tbody>
+                        </table>
+                        <p>
+                            Neither is "better" — pick conda when your stack leans on heavy compiled dependencies, and pip + venv when everything you need lives on PyPI.
                         </p>
 
                         <h2 id="video-tutorial">Video Tutorial</h2>
@@ -406,7 +443,7 @@ export const blogContent: Record<string, string> = {
                         <p>Example: <code>conda create -n myenv python=3.10</code></p>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*STS7htAtLE4EDJReNx6oFA.png"
+                            <img src="/images/blog/conda-virtual-environment-commands-02-541ab7.webp"
                                  alt="conda create command creating a new virtual environment"
                                  loading="lazy">
                             <figcaption>Creating a conda environment with a specific Python version.</figcaption>
@@ -424,7 +461,7 @@ export const blogContent: Record<string, string> = {
                         <pre><code>pip install &lt;package name&gt;</code></pre>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*BEBwaAu58_nqhbozG6nDnA.png"
+                            <img src="/images/blog/conda-virtual-environment-commands-03-a28649.webp"
                                  alt="Installing packages in a conda virtual environment"
                                  loading="lazy">
                             <figcaption>Packages installed inside a conda environment are isolated from other environments.</figcaption>
@@ -438,6 +475,35 @@ export const blogContent: Record<string, string> = {
                         <pre><code>conda remove -n &lt;name of virtual environment&gt; --all</code></pre>
                         <p>The <code>--all</code> flag removes all packages along with the environment.</p>
 
+                        <h2 id="export-and-recreate">How Do You Export and Recreate an Environment?</h2>
+                        <p>
+                            Conda's equivalent of <code>requirements.txt</code> is <code>environment.yml</code>. Export the active environment, commit the file, and anyone can rebuild it:
+                        </p>
+                        <pre><code># capture the active environment
+conda env export > environment.yml
+
+# rebuild it on another machine
+conda env create -f environment.yml</code></pre>
+                        <p>
+                            A full export pins every package and build string — maximally reproducible, but often tied to one operating system.
+                            For a portable file that lists only what you explicitly asked for, use:
+                        </p>
+                        <pre><code>conda env export --from-history > environment.yml</code></pre>
+                        <p>
+                            Two inspection commands round this out: <code>conda env list</code> shows every environment on the machine (the active one is starred), and <code>conda list</code> shows every package inside the active environment.
+                        </p>
+
+                        <h2 id="mixing-conda-and-pip">Can You Mix conda and pip in One Environment?</h2>
+                        <p>
+                            Yes — it's routine, since plenty of packages live only on PyPI. But order matters:
+                            <strong>install everything you can with conda first, then use pip for the rest.</strong>
+                            Conda doesn't track pip-installed packages when solving dependencies, so a later <code>conda install</code> can silently overwrite files pip put there.
+                            If the environment does get tangled, the fix is cheap: delete it and rebuild from your <code>environment.yml</code>.
+                        </p>
+                        <p>
+                            Performance note: since conda 23.10 the fast <strong>libmamba solver</strong> is the default, so the long "Solving environment..." waits older tutorials complain about are largely gone. If you're on an older conda, <code>conda update -n base conda</code> gets you there.
+                        </p>
+
                         <div class="blog-component">
                             <h3>Command Reference</h3>
                             <ul>
@@ -448,11 +514,14 @@ export const blogContent: Record<string, string> = {
                                 <li><code>conda deactivate</code> — deactivate environment</li>
                                 <li><code>conda remove -n myenv --all</code> — delete environment entirely</li>
                                 <li><code>conda env list</code> — list all environments</li>
+                                <li><code>conda list</code> — list packages in the active environment</li>
+                                <li><code>conda env export > environment.yml</code> — export environment for sharing</li>
+                                <li><code>conda env create -f environment.yml</code> — recreate environment from file</li>
                             </ul>
                         </div>`,
 
   "confusion-matrix-metrics-in-a-minute": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*fKaPc3crH8CdwikiCiS1wQ.png"
+                        <img src="/images/blog/confusion-matrix-metrics-in-a-minute-01-b5307a.webp"
                              alt="Confusion matrix table with TP, TN, FP, FN quadrants labeled"
                              loading="eager">
                         <figcaption>The confusion matrix: actual vs predicted, broken into four outcomes that drive every classification metric.</figcaption>
@@ -493,7 +562,7 @@ export const blogContent: Record<string, string> = {
                         </div>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*46W6ANb7enl0SoAAoIb0mA.png"
+                            <img src="/images/blog/confusion-matrix-metrics-in-a-minute-02-c4f247.webp"
                                  alt="TP TN FP FN quadrant visualization with actual vs predicted axes"
                                  loading="lazy">
                             <figcaption>TP and TN are correct predictions. FP is a false alarm. FN is a missed detection.</figcaption>
@@ -511,7 +580,7 @@ export const blogContent: Record<string, string> = {
                         </div>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*kUW3E7w6thfD11VCGPSz8Q.png"
+                            <img src="/images/blog/confusion-matrix-metrics-in-a-minute-03-2e15c1.webp"
                                  alt="Accuracy formula: (TP + TN) divided by total predictions"
                                  loading="lazy">
                             <figcaption>Accuracy: correct predictions over total — only reliable on balanced classes.</figcaption>
@@ -528,7 +597,7 @@ export const blogContent: Record<string, string> = {
                         </div>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*nnvKaBsz1Wn6ZR48oExjMg.png"
+                            <img src="/images/blog/confusion-matrix-metrics-in-a-minute-04-09bced.webp"
                                  alt="Precision formula: TP divided by (TP + FP)"
                                  loading="lazy">
                             <figcaption>Precision: of predicted positives, how many were real? Minimize false alarms.</figcaption>
@@ -545,7 +614,7 @@ export const blogContent: Record<string, string> = {
                         </div>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*9BovmTKy__XzDod50jMfow.png"
+                            <img src="/images/blog/confusion-matrix-metrics-in-a-minute-05-83592e.webp"
                                  alt="Recall formula: TP divided by (TP + FN)"
                                  loading="lazy">
                             <figcaption>Recall: of all actual positives, how many were caught? Minimize missed detections.</figcaption>
@@ -561,7 +630,7 @@ export const blogContent: Record<string, string> = {
                         </div>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*deoCYxH0AEYcNIRA5UorMw.png"
+                            <img src="/images/blog/confusion-matrix-metrics-in-a-minute-06-5b963d.webp"
                                  alt="F1 score formula: 2 times precision times recall divided by precision plus recall"
                                  loading="lazy">
                             <figcaption>F1: harmonic mean of precision and recall — the go-to metric for imbalanced classification.</figcaption>
@@ -577,7 +646,7 @@ export const blogContent: Record<string, string> = {
                         </div>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:608/format:webp/1*rk6obJyPShw-ibFVEJLbnA.jpeg"
+                            <img src="/images/blog/confusion-matrix-metrics-in-a-minute-07-4e3486.webp"
                                  alt="Specificity formula: TN divided by (TN + FP)"
                                  loading="lazy">
                             <figcaption>Specificity: of all actual negatives, how many were correctly identified? Complement to recall.</figcaption>
@@ -593,21 +662,21 @@ export const blogContent: Record<string, string> = {
                         </p>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:380/format:webp/1*8KXOIcAOkafhhqTlKibAhg.jpeg"
+                            <img src="/images/blog/confusion-matrix-metrics-in-a-minute-08-3af4b8.webp"
                                  alt="Example patient table: actual pregnancy status vs model prediction"
                                  loading="lazy">
                             <figcaption>Sample patient predictions: a mix of TP, TN, FP, and FN outcomes.</figcaption>
                         </figure>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:334/format:webp/1*0i-w7nQ1L1L4KQqbKqps4g.jpeg"
+                            <img src="/images/blog/confusion-matrix-metrics-in-a-minute-09-18d563.webp"
                                  alt="True Positive count for pregnancy example"
                                  loading="lazy">
                             <figcaption>TP: model predicted pregnant, patient is pregnant.</figcaption>
                         </figure>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:582/format:webp/1*x7-u5irpLI-ukKQv6eFGQg.jpeg"
+                            <img src="/images/blog/confusion-matrix-metrics-in-a-minute-10-e2eabe.webp"
                                  alt="Confusion matrix filled in for pregnancy diagnosis example"
                                  loading="lazy">
                             <figcaption>Confusion matrix for the pregnancy example: values filled for all four quadrants.</figcaption>
@@ -620,21 +689,21 @@ export const blogContent: Record<string, string> = {
                         </p>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:404/format:webp/1*HDZhFMSGUlA9CCHGOKCHsw.jpeg"
+                            <img src="/images/blog/confusion-matrix-metrics-in-a-minute-11-55e6e9.webp"
                                  alt="Breast cancer SVC model training code in Python"
                                  loading="lazy">
                             <figcaption>SVC model training on the breast cancer dataset using sklearn.</figcaption>
                         </figure>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:450/format:webp/1*2r-Jjl11HdR2a1d48Hb0_g.jpeg"
+                            <img src="/images/blog/confusion-matrix-metrics-in-a-minute-12-4d1eda.webp"
                                  alt="Confusion matrix output for breast cancer SVC model"
                                  loading="lazy">
                             <figcaption>Confusion matrix for the breast cancer SVC: TP, TN, FP, FN counts.</figcaption>
                         </figure>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:460/format:webp/1*140kj-QbbXSe01lUtLR4Nw.jpeg"
+                            <img src="/images/blog/confusion-matrix-metrics-in-a-minute-13-d00141.webp"
                                  alt="sklearn classification report showing precision, recall, F1 for breast cancer model"
                                  loading="lazy">
                             <figcaption>Classification report: precision, recall, F1 per class — the full picture beyond accuracy.</figcaption>
@@ -701,7 +770,7 @@ export const blogContent: Record<string, string> = {
                         </details>`,
 
   "convert-python-program-to-exe": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*1-VzF9yWuBxQcFBqE8ntOA.png"
+                        <img src="/images/blog/convert-python-program-to-exe-01-2e57fd.webp"
                              alt="Python program converted to Windows .exe executable"
                              loading="eager">
                         <figcaption>Convert Python scripts to standalone executables — no Python installation required on the target machine.</figcaption>
@@ -728,7 +797,7 @@ export const blogContent: Record<string, string> = {
                         <p>Right-click the folder containing your Python file → "Open in Terminal" (or <code>cd</code> to the folder).</p>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*oy_bbQ_EsA31D3znSoJwfA.png"
+                            <img src="/images/blog/convert-python-program-to-exe-02-3db7a8.webp"
                                  alt="Opening terminal in Python project folder"
                                  loading="lazy">
                             <figcaption>Open terminal in the folder containing your .py file before running pyinstaller.</figcaption>
@@ -743,7 +812,7 @@ export const blogContent: Record<string, string> = {
                         </ul>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*gOqMGVHNLSfJR-p1--DKiQ.png"
+                            <img src="/images/blog/convert-python-program-to-exe-03-f7ebfd.webp"
                                  alt="PyInstaller running — build and dist folder creation"
                                  loading="lazy">
                             <figcaption>PyInstaller creates build/ and dist/ folders plus a .spec configuration file.</figcaption>
@@ -776,7 +845,7 @@ export const blogContent: Record<string, string> = {
                         <p>This opens a browser-based interface.</p>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*mFVPFfcW8BU7t-dSHtGDXQ.png"
+                            <img src="/images/blog/convert-python-program-to-exe-04-0eedfd.webp"
                                  alt="auto-py-to-exe graphical interface"
                                  loading="lazy">
                             <figcaption>auto-py-to-exe launches a browser-based GUI — no command-line knowledge needed.</figcaption>
@@ -788,7 +857,7 @@ export const blogContent: Record<string, string> = {
                         <h3>Step 4: Choose packaging mode</h3>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*IAfTCJRp766S7CHhPasUHw.png"
+                            <img src="/images/blog/convert-python-program-to-exe-05-7751eb.webp"
                                  alt="One File vs One Directory option in auto-py-to-exe"
                                  loading="lazy">
                             <figcaption>Choose One File for a single portable .exe, or One Directory for apps with media assets.</figcaption>
@@ -806,7 +875,7 @@ export const blogContent: Record<string, string> = {
                         <p>Click <strong>"CONVERT .PY TO .EXE"</strong>. When complete, the output path is shown — click "OPEN OUTPUT FOLDER" to access your executable.</p>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*d5tl4F2SB0IJ3govWa4T8A.png"
+                            <img src="/images/blog/convert-python-program-to-exe-06-e600d9.webp"
                                  alt="auto-py-to-exe conversion complete with output folder"
                                  loading="lazy">
                             <figcaption>Conversion complete — click "OPEN OUTPUT FOLDER" to find your .exe file.</figcaption>
@@ -823,7 +892,7 @@ export const blogContent: Record<string, string> = {
                         </div>`,
 
   "convolutional-neural-networks-cnns-in-a-minute": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*_JTlyhLpXhnP5lKZ.png"
+                        <img src="/images/blog/convolutional-neural-networks-cnns-in-a-01-2faecc.webp"
                              alt="CNN pipeline: Input image → Filters → Convolution Layers → Pooling → Feed-forward layer"
                              loading="eager">
                         <figcaption>CNN pipeline: raw pixels → filter convolutions → pooled feature maps → fully connected prediction.</figcaption>
@@ -860,7 +929,7 @@ export const blogContent: Record<string, string> = {
                         </div>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*1UzJ9kvd5IKK5lma7EphIg.png"
+                            <img src="/images/blog/convolutional-neural-networks-cnns-in-a-02-c8cbde.webp"
                                  alt="Kernel sliding across input image, computing element-wise products to produce a feature map"
                                  loading="lazy">
                             <figcaption>The kernel slides across the input, computing a dot product at each position to build the feature map.</figcaption>
@@ -898,7 +967,7 @@ export const blogContent: Record<string, string> = {
                         </div>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*6u3QK9M9ZJws58P4SAr2AQ.png"
+                            <img src="/images/blog/convolutional-neural-networks-cnns-in-a-03-415fbc.webp"
                                  alt="Max pooling: 2×2 window selects maximum value from each region, halving spatial dimensions"
                                  loading="lazy">
                             <figcaption>Max pooling: take the largest value from each 2×2 region — half the spatial size, strongest features preserved.</figcaption>
@@ -928,7 +997,7 @@ export const blogContent: Record<string, string> = {
                         </ol>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*0nn8970yydXMiG1o9S1AUA.png"
+                            <img src="/images/blog/convolutional-neural-networks-cnns-in-a-04-b9becb.webp"
                                  alt="Full CNN architecture from input image through conv, pool, flatten to fully connected output"
                                  loading="lazy">
                             <figcaption>Full CNN architecture: each conv+pool block extracts increasingly abstract features before the classifier head.</figcaption>
@@ -977,7 +1046,7 @@ export const blogContent: Record<string, string> = {
                         </details>`,
 
   "cors-in-flask-bridging-frontend-and-backend": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*KVQJzRxFwfNvcZiGQRRFAA.png"
+                        <img src="/images/blog/cors-in-flask-bridging-frontend-and-back-01-3e50c1.webp"
                              alt="CORS — Cross-Origin Resource Sharing between frontend and Flask backend"
                              loading="eager">
                         <figcaption>CORS bridges the browser's same-origin policy gap between your frontend and Flask API.</figcaption>
@@ -1069,7 +1138,7 @@ CORS(app, resources={
                         </div>`,
 
   "forecasting-in-a-minute": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*DwsxFugEzwMEt0cX.jpg"
+                        <img src="/images/blog/forecasting-in-a-minute-01-bc5b67.webp"
                              alt="FORECAST wooden blocks with a person holding a green upward arrow"
                              loading="eager">
                         <figcaption>Forecasting: using what you know to make an educated guess about what comes next.</figcaption>
@@ -1089,7 +1158,7 @@ CORS(app, resources={
 
                         <!-- Student analogy image -->
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*kvei-dq4GL21BWDw.jpeg"
+                            <img src="/images/blog/forecasting-in-a-minute-02-0eec83.webp"
                                  alt="Student stressed with books in a library, representing the challenge of predicting what to study"
                                  loading="lazy">
                             <figcaption>Everyone forecasts — even students deciding what's worth studying before an exam.</figcaption>
@@ -1115,7 +1184,7 @@ CORS(app, resources={
 
                         <!-- Industry table image -->
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*TQhx5U17IcCggvt8-5DpuA.png"
+                            <img src="/images/blog/forecasting-in-a-minute-03-91d508.webp"
                                  alt="Table showing forecasting use cases across Banking & Lending, Retail, Healthcare, Government, and Startups"
                                  loading="lazy">
                             <figcaption>Forecasting across industries — the metric changes, but the discipline is identical.</figcaption>
@@ -1178,7 +1247,7 @@ CORS(app, resources={
 
                         <!-- Inline forecast table image -->
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*kDwxeGq9ffOWS6Xj8xzwNw.png"
+                            <img src="/images/blog/forecasting-in-a-minute-04-c7d027.webp"
                                  alt="Inline forecast table: Customers Acquired and Profit (35% rate) projected for 2026, 2027, 2028, 2029"
                                  loading="lazy">
                             <figcaption>The inline model: 2026 baseline, +5% growth assumption, profit projected automatically through 2029.</figcaption>
@@ -1209,7 +1278,7 @@ CORS(app, resources={
                         </div>`,
 
   "http-methods-enhancing-web-communication": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*0atRPBvfNfs3zkvj.png"
+                        <img src="/images/blog/http-methods-enhancing-web-communication-01-496709.webp"
                              alt="HTTP methods — GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS diagram"
                              loading="eager">
                         <figcaption>HTTP methods define how clients and servers communicate — each verb signals a specific intended action on a resource.</figcaption>
@@ -1303,7 +1372,7 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                         </div>`,
 
   "lazy-loading-for-enhanced-user-experience": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*0OyD4-O4hN_QCJUh.jpg"
+                        <img src="/images/blog/lazy-loading-for-enhanced-user-experienc-01-e6524b.webp"
                              alt="Lazy loading concept — resources deferred until visible in viewport"
                              loading="eager">
                         <figcaption>Lazy loading: only load resources when the user is about to see them.</figcaption>
@@ -1375,7 +1444,7 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                         </div>`,
 
   "linear-regression-in-a-minute": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:494/format:webp/1*Mjnp0tWPfCn8uomvTBnafw.gif"
+                        <img src="/images/blog/linear-regression-in-a-minute-01-d420eb.gif"
                              alt="Gradient descent animation: line fitting to data points iteratively"
                              loading="eager">
                         <figcaption>Gradient descent: adjusting the line's slope and intercept step by step until the error is minimized.</figcaption>
@@ -1393,7 +1462,7 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                         </p>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*xdcpt_uRupa6v19rUg0SPQ.png"
+                            <img src="/images/blog/linear-regression-in-a-minute-02-b41eed.webp"
                                  alt="Scatter plot of Canadian per capita income vs years with best-fit regression line"
                                  loading="lazy">
                             <figcaption>Canadian per capita income vs years — the regression line captures the trend through all data points.</figcaption>
@@ -1407,7 +1476,7 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                         <div class="blog-formula-box">J(θ) = (1/2m) Σ (ŷᵢ − yᵢ)²</div>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*3Tt2A04SyZqbrQvnzVEBQg.png"
+                            <img src="/images/blog/linear-regression-in-a-minute-03-a4523d.webp"
                                  alt="Cost function J(theta) — mean squared error across all training examples"
                                  loading="lazy">
                             <figcaption>Cost function J(θ): average squared distance between predicted and actual values.</figcaption>
@@ -1427,14 +1496,14 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                         </p>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Um_To9ilniK9ckICdOLTjw.png"
+                            <img src="/images/blog/linear-regression-in-a-minute-04-98b8f3.webp"
                                  alt="Gradient descent on cost function surface — bowl shape with arrow descending to minimum"
                                  loading="lazy">
                             <figcaption>Gradient descent: each step moves toward the minimum of the cost function bowl.</figcaption>
                         </figure>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:554/format:webp/1*ojpugj3lrrztetEV_wjR0Q.gif"
+                            <img src="/images/blog/linear-regression-in-a-minute-05-509625.gif"
                                  alt="Gradient descent animation on 2D cost surface converging to global minimum"
                                  loading="lazy">
                             <figcaption>Gradient descent converging on the 2D cost surface — each iteration reduces the error.</figcaption>
@@ -1449,7 +1518,7 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                         </div>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*S98h3h8LaUN2F6OH5SEpfA.png"
+                            <img src="/images/blog/linear-regression-in-a-minute-06-1ef2de.webp"
                                  alt="MAE formula — mean absolute error for regression evaluation"
                                  loading="lazy">
                             <figcaption>MAE: average of absolute prediction errors — interpretable in original data units.</figcaption>
@@ -1465,7 +1534,7 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                         </div>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*3bTiUUu3lCQPN5CDWA4xrQ.png"
+                            <img src="/images/blog/linear-regression-in-a-minute-07-51f63d.webp"
                                  alt="R² score visualization showing explained vs unexplained variance"
                                  loading="lazy">
                             <figcaption>R² score: what fraction of target variance does the model explain?</figcaption>
@@ -1482,21 +1551,21 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                         </p>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Z4P72yHN_EKFkIaVuZUpeg.png"
+                            <img src="/images/blog/linear-regression-in-a-minute-08-bdde11.webp"
                                  alt="Multivariable linear regression: best-fit plane through 3D data points"
                                  loading="lazy">
                             <figcaption>Multivariable regression with 2 features: the model fits a plane rather than a line.</figcaption>
                         </figure>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*3UU4_6Qz7nu6vJ0yblb6dg.png"
+                            <img src="/images/blog/linear-regression-in-a-minute-09-01d493.webp"
                                  alt="Multivariable linear regression Python code with sklearn"
                                  loading="lazy">
                             <figcaption>Multivariable linear regression implementation with sklearn.</figcaption>
                         </figure>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*nDXRb6UsCCeyT0LXpgQ0sQ.png"
+                            <img src="/images/blog/linear-regression-in-a-minute-10-c981f0.webp"
                                  alt="Linear regression prediction output and R² score result"
                                  loading="lazy">
                             <figcaption>Model output: predictions and R² score on test data.</figcaption>
@@ -1531,7 +1600,7 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                         </ul>`,
 
   "list-vs-set-in-a-minute": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*VNv0DCA6RjMlSuc2EXQWFA.png"
+                        <img src="/images/blog/list-vs-set-in-a-minute-01-80b5bb.webp"
                              alt="Python List vs Set performance comparison overview"
                              loading="eager">
                         <figcaption>List vs Set — same surface, completely different engines underneath.</figcaption>
@@ -1572,7 +1641,7 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
 
                         <!-- Iteration benchmark image -->
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*1Nw0V--ctqXU2T7z6dCNXg.png"
+                            <img src="/images/blog/list-vs-set-in-a-minute-02-271b9a.webp"
                                  alt="Benchmark showing list iteration speed vs set iteration speed in Python"
                                  loading="lazy">
                             <figcaption>Iteration benchmark: list's contiguous memory gives a consistent speed advantage over set's hash-table traversal.</figcaption>
@@ -1603,7 +1672,7 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
 
                         <!-- Membership benchmark image -->
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*1ANXbKi_PvS19K3xzPx9eg.png"
+                            <img src="/images/blog/list-vs-set-in-a-minute-03-e3a82a.webp"
                                  alt="Benchmark showing set membership testing is dramatically faster than list membership at scale"
                                  loading="lazy">
                             <figcaption>Membership testing: set's O(1) hash lookup vs list's O(n) linear scan — the gap widens with collection size.</figcaption>
@@ -1634,7 +1703,7 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
 
                         <!-- Full-width benchmark chart -->
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:2000/format:webp/1*3QMiiabMz6gf3rHbqogxfQ.png"
+                            <img src="/images/blog/list-vs-set-in-a-minute-04-e72f12.webp"
                                  alt="Full comparison chart: list vs set across iteration and membership testing benchmarks"
                                  loading="lazy">
                             <figcaption>Complete benchmark: list dominates iteration, set dominates membership. The right choice depends entirely on your access pattern.</figcaption>
@@ -1678,7 +1747,7 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                         </details>`,
 
   "multiclass-vs-multilabel-classification-in-a-minute": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*jSK1KjJylv5JER8pr0Qcog.png"
+                        <img src="/images/blog/multiclass-vs-multilabel-classification-01-db0093.webp"
                              alt="Comparison diagram: multiclass classification (one label) vs multilabel classification (multiple labels)"
                              loading="eager">
                         <figcaption>Multiclass: pick one. Multilabel: pick any number. Same input — fundamentally different problem.</figcaption>
@@ -1713,7 +1782,7 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                         </div>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*pUCExVD0UsSoo6cr.png"
+                            <img src="/images/blog/multiclass-vs-multilabel-classification-02-702f2f.webp"
                                  alt="Binary classification: input classified into one of exactly two classes"
                                  loading="lazy">
                             <figcaption>Binary classification: every input lands in one of exactly two buckets.</figcaption>
@@ -1736,7 +1805,7 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                         </div>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*iTA1nD_wq_f-w7z6"
+                            <img src="/images/blog/multiclass-vs-multilabel-classification-03-3db79c.webp"
                                  alt="Multiclass classification: input classified into one of many classes via softmax"
                                  loading="lazy">
                             <figcaption>Multiclass: softmax assigns probabilities across all classes — the winner takes all.</figcaption>
@@ -1765,7 +1834,7 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                         </div>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*NBkaNm5QJJziNqRk"
+                            <img src="/images/blog/multiclass-vs-multilabel-classification-04-cd08c4.webp"
                                  alt="Multilabel classification: image with multiple simultaneous labels — dogs, humans, water, boats"
                                  loading="lazy">
                             <figcaption>Multilabel: one image, many simultaneous correct labels — each is an independent binary prediction.</figcaption>
@@ -1805,7 +1874,7 @@ response = requests.options('https://api.example.com/users/123')</code></pre>
                         </details>`,
 
   "python-program-for-matrix-multiplication": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:598/format:webp/1*FWyBs9l0Zl9mTn-30Abhmw.png"
+                        <img src="/images/blog/python-program-for-matrix-multiplication-01-c6218c.webp"
                              alt="Matrix multiplication — dot product of two matrices"
                              loading="eager">
                         <figcaption>Matrix multiplication: the dot product sums element-wise products across rows and columns.</figcaption>
@@ -1916,11 +1985,21 @@ for p in result:
                         </div>`,
 
   "python-virtual-environment-introduction": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*DN1B1j4dSY33nSYEwHw13w.png"
+                        <img src="/images/blog/python-virtual-environment-introduction-01-bbc28b.webp"
                              alt="Python virtual environment — isolated package directories per project"
                              loading="eager">
                         <figcaption>Virtual environments create isolated package directories — each project gets its own Python and its own dependencies.</figcaption>
                     </figure>
+
+<div class="blog-insight">
+                            <p>
+                                <strong>A Python virtual environment is a self-contained directory that holds its own Python interpreter and its own <code>site-packages</code> folder, isolated from every other project on the machine.</strong>
+                                When the environment is active, <code>python</code> and <code>pip</code> resolve to the environment's copies, so every package you install lands inside the project instead of the global installation.
+                                This solves Python's core dependency problem: the global <code>site-packages</code> directory can only hold one version of any package, so two projects that need different Django or NumPy versions cannot coexist without isolation.
+                                Virtual environments are created with the third-party <code>virtualenv</code> package or the built-in <code>venv</code> module (<code>python3 -m venv .venv</code>), take seconds to build, and are cheap to delete and recreate — removing the folder removes the environment completely, with nothing left behind in the system Python.
+                                They are considered mandatory practice for every Python project, no exceptions.
+                            </p>
+                        </div>
 
 <h2 id="why-do-we-need-virtual-environments">Why Do We Need Virtual Environments?</h2>
                         <p>
@@ -1937,17 +2016,68 @@ for p in result:
                             "Use a virtual environment whenever you work on any Python-based project — every project, no exceptions."
                         </div>
 
-                        <h2 id="when-and-where-to-use-virtual-environments">When and Where to Use Virtual Environments</h2>
+                        <h2 id="when-and-where-to-use-virtual-environments">When Should You Use a Virtual Environment?</h2>
                         <p>
                             Always. Every Python project should have its own virtual environment.
                             Create it inside or alongside the project directory and activate it before installing any packages.
                             Never install project dependencies into the global Python installation.
+                        </p>
+                        <p>
+                            A few situations make the rule especially non-negotiable:
+                        </p>
+                        <ul>
+                            <li><strong>Multiple projects on one machine</strong> — the original problem: two projects, two conflicting dependency sets, one global slot</li>
+                            <li><strong>Reproducing a colleague's setup</strong> — a clean environment plus a <code>requirements.txt</code> recreates their exact package versions without guessing</li>
+                            <li><strong>Trying a new library safely</strong> — install it in a throwaway environment; if it drags in fifty dependencies you don't want, delete the folder and nothing else changes</li>
+                            <li><strong>System Python protection</strong> — on Linux and macOS, the OS itself depends on the system Python. Modern distributions (Ubuntu 23.04+, Debian 12+) now mark it <em>externally managed</em> and refuse <code>pip install</code> outside a virtual environment entirely — the famous <code>externally-managed-environment</code> error exists precisely to force this practice</li>
+                        </ul>
+
+                        <h2 id="what-happens-if-you-skip-it">What Happens If You Skip It?</h2>
+                        <p>
+                            Nothing — at first. Your first project installs fine globally. The problem surfaces on project two, when upgrading a shared dependency for the new project silently breaks the old one.
+                            By project five, the global <code>site-packages</code> is an archaeological dig: hundreds of packages, no record of which project needs which, and no safe way to upgrade anything.
+                            Cleaning that up costs far more time than the ten seconds it takes to create an environment per project.
                         </p>
 
                         <h2 id="how-does-a-virtual-environment-work">How Does a Virtual Environment Work?</h2>
                         <p>
                             <code>virtualenv</code> builds a folder containing a copy of the Python interpreter, pip, and an isolated <code>site-packages</code> directory.
                             When activated, your shell's <code>PATH</code> is prepended with the virtual environment's <code>bin/</code> directory — so <code>python</code> and <code>pip</code> point to the environment's copies, not the system's.
+                        </p>
+                        <p>
+                            That's the whole trick. Deactivation just restores the original <code>PATH</code>.
+                            The environment itself is an ordinary folder — you can inspect it, and deleting it is a complete, clean uninstall of everything inside.
+                        </p>
+
+                        <h2 id="venv-or-virtualenv">Should You Use venv or virtualenv?</h2>
+                        <p>
+                            Since Python 3.3, the standard library ships <code>venv</code> — a built-in module that does the same job with zero installation:
+                        </p>
+                        <pre><code>python3 -m venv .venv
+source .venv/bin/activate    # Linux / macOS
+.venv\\Scripts\\activate       # Windows</code></pre>
+                        <p>
+                            Naming the folder <code>.venv</code> is the modern convention — VS Code and PyCharm auto-detect it, and it stays hidden in directory listings.
+                            The third-party <code>virtualenv</code> package still exists and remains faster at creating environments (it caches wheels), can target Python versions other than the one running it, and works on older interpreters.
+                            For everyday work on a single modern Python, <code>venv</code> is all you need.
+                            One Python 3.12+ note: new environments now ship with <code>pip</code> only — <code>setuptools</code> and <code>wheel</code> are no longer pre-installed, so install them explicitly if a legacy build process expects them.
+                        </p>
+
+                        <h2 id="venv-vs-conda-vs-poetry">How Do venv, virtualenv, conda, and Poetry Compare?</h2>
+                        <table>
+                            <thead>
+                                <tr><th>Tool</th><th>Ships with Python</th><th>Manages Python versions</th><th>Non-Python dependencies</th><th>Best for</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>venv</td><td>Yes (3.3+)</td><td>No — uses the Python that created it</td><td>No</td><td>Default choice for most projects</td></tr>
+                                <tr><td>virtualenv</td><td>No (pip install)</td><td>Yes — can target other installed interpreters</td><td>No</td><td>Faster creation, older Pythons, tooling that builds many envs</td></tr>
+                                <tr><td>conda</td><td>No (Anaconda/Miniconda)</td><td>Yes — installs Python itself per environment</td><td>Yes — compiled libraries (MKL, CUDA, GDAL)</td><td>Data science stacks with native dependencies</td></tr>
+                                <tr><td>Poetry / uv</td><td>No</td><td>uv: yes; Poetry: via existing interpreters</td><td>No</td><td>Application packaging with lockfiles and dependency resolution</td></tr>
+                            </tbody>
+                        </table>
+                        <p>
+                            These tools are complements, not competitors: Poetry and uv create a venv-style environment under the hood, and conda environments serve the same isolation purpose with a wider dependency scope.
+                            Whichever you pick, the principle is identical — one project, one isolated environment.
                         </p>
 
                         <h2 id="installing-virtualenv">Installing virtualenv</h2>
@@ -2011,11 +2141,20 @@ virtualenv -p /usr/bin/python2.7 virtualenv_name</code></pre>
                         <p>See also: <a href="requirements-txt-in-python.html">requirements.txt in Python</a> — how to capture and share your environment's exact dependencies.</p>`,
 
   "requirements-txt-in-python": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*mHsYmducGWeow9i5BvYK9w.png"
+                        <img src="/images/blog/requirements-txt-in-python-01-f87954.webp"
                              alt="requirements.txt file showing Python package versions"
                              loading="eager">
                         <figcaption>A requirements.txt file pins every dependency to an exact version — making environments reproducible.</figcaption>
                     </figure>
+
+<div class="blog-insight">
+                            <p>
+                                <strong>requirements.txt is a plain text file that lists a Python project's dependencies — one package per line, usually pinned to an exact version — so the environment can be recreated identically on any machine.</strong>
+                                The workflow is two commands: <code>pip freeze > requirements.txt</code> captures every package installed in the active virtual environment with its exact version, and <code>pip install -r requirements.txt</code> reinstalls that exact set anywhere else.
+                                This is what makes a project portable: without pinned versions, a collaborator or a cloud platform installs whatever is latest today, which may rename APIs, change defaults, or break behavior your code depends on.
+                                The file supports exact pins (<code>==</code>), minimum versions (<code>&gt;=</code>), compatible releases (<code>~=</code>), comments, and extras, and it belongs in version control next to your code.
+                            </p>
+                        </div>
 
 <h2 id="the-problem">The Problem</h2>
                         <p>
@@ -2038,7 +2177,7 @@ virtualenv -p /usr/bin/python2.7 virtualenv_name</code></pre>
                         </p>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*4XI2C-_4tPvrKDApbY4BwA.png"
+                            <img src="/images/blog/requirements-txt-in-python-02-06b69e.webp"
                                  alt="pip freeze command output showing package versions"
                                  loading="lazy">
                             <figcaption><code>pip freeze</code> outputs every installed package and its version — redirect it to a file to capture your environment.</figcaption>
@@ -2056,7 +2195,7 @@ virtualenv -p /usr/bin/python2.7 virtualenv_name</code></pre>
                         <pre><code>pip install -r requirements.txt</code></pre>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*ofS68eg78Yoch4UmoJ0CkA.png"
+                            <img src="/images/blog/requirements-txt-in-python-03-7a5c1d.webp"
                                  alt="pip install -r requirements.txt installing packages"
                                  loading="lazy">
                             <figcaption><code>pip install -r requirements.txt</code> recreates the exact environment on any machine.</figcaption>
@@ -2065,6 +2204,74 @@ virtualenv -p /usr/bin/python2.7 virtualenv_name</code></pre>
                         <p>
                             The <code>-r</code> flag tells pip to read requirements from a file.
                             Every package is installed at the exact pinned version — same result on any machine, any cloud platform.
+                        </p>
+
+                        <h2 id="what-goes-in-the-file">What Can You Write in a requirements.txt File?</h2>
+                        <p>
+                            The file isn't limited to <code>package==version</code> lines. Pip's requirement syntax supports comments, version ranges, extras, and even including other requirement files:
+                        </p>
+                        <pre><code># exact pin — fully reproducible
+numpy==1.26.4
+
+# compatible release — allows 2.2.x patch updates, blocks 2.3
+pandas~=2.2.0
+
+# minimum version — anything newer is accepted
+requests&gt;=2.31
+
+# extras — install optional dependency groups
+uvicorn[standard]==0.29.0
+
+# include another requirements file
+-r requirements-base.txt</code></pre>
+                        <p>
+                            The specifiers do different jobs. <code>==</code> is for reproducibility — deployments and CI should get exactly what you tested.
+                            <code>~=</code> (compatible release) accepts bug-fix updates while blocking breaking ones.
+                            <code>&gt;=</code> is the loosest and belongs in <em>library</em> metadata more than application requirements — an unbounded range that resolves differently every month is how "works on my machine" bugs are born.
+                        </p>
+                        <p>
+                            A common project convention is two files: <code>requirements.txt</code> for runtime dependencies and <code>requirements-dev.txt</code> that starts with <code>-r requirements.txt</code> and adds test and lint tools (pytest, ruff) on top.
+                        </p>
+
+                        <h2 id="when-pip-freeze-is-not-enough">When Is pip freeze Not Enough?</h2>
+                        <p>
+                            <code>pip freeze</code> has one blind spot: it flattens everything.
+                            Your project may directly use five packages, but freeze outputs fifty — the five plus all their transitive dependencies — with no record of which is which.
+                            Six months later, nobody remembers whether <code>idna</code> is something you chose or something <code>requests</code> dragged in.
+                            Tools like <strong>pip-tools</strong> fix this by separating <em>intent</em> from <em>result</em>: you hand-write a short <code>requirements.in</code> with just your direct dependencies, and <code>pip-compile</code> generates the fully pinned <code>requirements.txt</code>, annotating every transitive package with the reason it's there.
+                        </p>
+                        <table>
+                            <thead>
+                                <tr><th>Aspect</th><th>pip freeze</th><th>pip-tools (pip-compile)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Input</td><td>Whatever is installed in the environment</td><td>Hand-written <code>requirements.in</code> of direct deps</td></tr>
+                                <tr><td>Direct vs transitive</td><td>Indistinguishable — one flat list</td><td>Transitive deps annotated with their source</td></tr>
+                                <tr><td>Stray packages</td><td>Captured (including one-off experiments)</td><td>Excluded — only what resolves from your inputs</td></tr>
+                                <tr><td>Upgrading one package</td><td>Manual edit, hope nothing conflicts</td><td><code>pip-compile --upgrade-package name</code> re-resolves safely</td></tr>
+                                <tr><td>Setup cost</td><td>Zero — built into pip</td><td>One extra tool to install and learn</td></tr>
+                            </tbody>
+                        </table>
+                        <p>
+                            For small projects and notebooks, <code>pip freeze</code> is perfectly fine.
+                            For anything long-lived or deployed, compiled pins pay for themselves — the same philosophy behind Poetry and uv lockfiles, and behind <code>pyproject.toml</code> dependencies in modern packaging.
+                        </p>
+
+                        <h2 id="keeping-it-up-to-date">How Do You Keep requirements.txt Up to Date?</h2>
+                        <p>
+                            A pinned file drifts out of date by design — that's the point — so updating is a deliberate act, not an accident:
+                        </p>
+                        <pre><code># see what has newer releases
+pip list --outdated
+
+# upgrade one package deliberately
+pip install --upgrade pandas
+
+# re-capture the environment
+pip freeze > requirements.txt</code></pre>
+                        <p>
+                            Upgrade, run your tests, then regenerate and commit the file in the same change.
+                            The commit history of <code>requirements.txt</code> becomes an audit log of every dependency change the project has ever made — which is exactly what you want when a deploy suddenly misbehaves.
                         </p>
 
                         <h2 id="video-tutorial">Video Tutorial</h2>
@@ -2089,7 +2296,7 @@ virtualenv -p /usr/bin/python2.7 virtualenv_name</code></pre>
                         </div>`,
 
   "scalars-vectors-matrices-tensor-in-a-minute": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*DObOx-mf9qBNVn278L8B-g.png"
+                        <img src="/images/blog/scalars-vectors-matrices-tensor-in-a-min-01-d64a8e.webp"
                              alt="Hierarchy diagram: scalar → vector → matrix → tensor"
                              loading="eager">
                         <figcaption>Scalar → Vector → Matrix → Tensor: each level adds a dimension.</figcaption>
@@ -2125,7 +2332,7 @@ virtualenv -p /usr/bin/python2.7 virtualenv_name</code></pre>
                         </div>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*m3s9Zs0HGKhEmTri.png"
+                            <img src="/images/blog/scalars-vectors-matrices-tensor-in-a-min-02-429c05.webp"
                                  alt="Scalar as a point and vector as an arrow with direction in 2D space"
                                  loading="lazy">
                             <figcaption>Scalar: a point on the number line. Vector: an arrow in n-dimensional space with magnitude and direction.</figcaption>
@@ -2150,7 +2357,7 @@ virtualenv -p /usr/bin/python2.7 virtualenv_name</code></pre>
                         </div>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Jfkk3F3oopfnZf6AUZbfaw.png"
+                            <img src="/images/blog/scalars-vectors-matrices-tensor-in-a-min-03-4fe8c9.webp"
                                  alt="Matrix diagram showing rows and columns with element notation A_ij"
                                  loading="lazy">
                             <figcaption>Matrix: 2D grid of numbers indexed by row i and column j.</figcaption>
@@ -2176,7 +2383,7 @@ virtualenv -p /usr/bin/python2.7 virtualenv_name</code></pre>
                         </div>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*wZGWE7ckq20l92lN.png"
+                            <img src="/images/blog/scalars-vectors-matrices-tensor-in-a-min-04-43d1d3.webp"
                                  alt="3D tensor visualization — layers of matrices stacked along a third axis"
                                  loading="lazy">
                             <figcaption>3D tensor: a stack of matrices — the building block for image data and sequence batches.</figcaption>
@@ -2198,7 +2405,7 @@ virtualenv -p /usr/bin/python2.7 virtualenv_name</code></pre>
 
                         <!-- Summary image -->
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*foL833kOeS5VR8ERGi8f-w.png"
+                            <img src="/images/blog/scalars-vectors-matrices-tensor-in-a-min-05-92f82a.webp"
                                  alt="Summary comparison of scalar, vector, matrix, and tensor with dimensions and ML use cases"
                                  loading="lazy">
                             <figcaption>All four structures — dimensions, notation, and typical ML applications at a glance.</figcaption>
@@ -2343,7 +2550,7 @@ if __name__ == '__main__':
                         </div>`,
 
   "sets-performance-better-vs-lists-why": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*Bt9PM77fTvd-pW-t.png"
+                        <img src="/images/blog/sets-performance-better-vs-lists-why-01-2cbd4d.webp"
                              alt="Performance benchmark: Python set vs list for common operations"
                              loading="eager">
                         <figcaption>Benchmark: set operations scale at O(1) while list operations scale at O(n) — the gap widens with collection size.</figcaption>
@@ -2405,7 +2612,7 @@ if __name__ == '__main__':
                         </p>`,
 
   "support-vector-machine-svm": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*_CK-pV3RqDmvKmPD3rR_Lw.png"
+                        <img src="/images/blog/support-vector-machine-svm-01-d0f2e9.webp"
                              alt="Support Vector Machine — decision boundary with maximum margin"
                              loading="eager">
                         <figcaption>SVM: a powerful algorithm for linear and non-linear classification, regression, and outlier detection.</figcaption>
@@ -2424,7 +2631,7 @@ if __name__ == '__main__':
                         </p>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*RYhCVthKlTtfyGoVu85uyw.png"
+                            <img src="/images/blog/support-vector-machine-svm-02-e33526.webp"
                                  alt="SVM hyperplane with margins L1, L2, L3"
                                  loading="lazy">
                             <figcaption>Three candidate boundaries: L1 and L3 are soft margins; L2 is the hard margin (optimal hyperplane).</figcaption>
@@ -2436,7 +2643,7 @@ if __name__ == '__main__':
                         </ul>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*XoWVdFhccLdrRWjWnUG_xg.png"
+                            <img src="/images/blog/support-vector-machine-svm-03-fe1c00.webp"
                                  alt="SVM maximum margin hyperplane visualization"
                                  loading="lazy">
                             <figcaption>The optimal hyperplane maximizes the distance to the nearest data point on each side.</figcaption>
@@ -2450,14 +2657,14 @@ if __name__ == '__main__':
                         </p>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*YclKaN_ivXWC4Bqxvx5p7g.png"
+                            <img src="/images/blog/support-vector-machine-svm-04-cd457e.webp"
                                  alt="Support vectors — points closest to the margin"
                                  loading="lazy">
                             <figcaption>Support vectors: the critical points defining the margin. Only these points influence the hyperplane.</figcaption>
                         </figure>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*sWxvMO0uVznmscAuv3pKcQ.png"
+                            <img src="/images/blog/support-vector-machine-svm-05-160687.webp"
                                  alt="Hard margin vs soft margin SVM comparison"
                                  loading="lazy">
                             <figcaption>Hard margin (no violations) vs soft margin (some misclassifications allowed for better generalization).</figcaption>
@@ -2476,7 +2683,7 @@ if __name__ == '__main__':
                         </p>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*d0u6rPNcdhyuyEbPQ2RM7g.png"
+                            <img src="/images/blog/support-vector-machine-svm-06-050593.webp"
                                  alt="Effect of C parameter on SVM margin width"
                                  loading="lazy">
                             <figcaption>Higher C → narrower margin with fewer misclassifications. Lower C → wider margin, more tolerant.</figcaption>
@@ -2490,14 +2697,14 @@ if __name__ == '__main__':
                         </p>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:498/format:webp/1*M9eDuMXB_QwLBxZ8DgP4Yg.png"
+                            <img src="/images/blog/support-vector-machine-svm-07-99a979.webp"
                                  alt="Gamma parameter effect on SVM decision boundary"
                                  loading="lazy">
                             <figcaption>Gamma determines the reach of each training point's influence — high gamma creates tighter, more complex boundaries.</figcaption>
                         </figure>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*iikDeBqz7QfXqVoX5LzHww.png"
+                            <img src="/images/blog/support-vector-machine-svm-08-af265f.webp"
                                  alt="SVM C and gamma interaction visualization"
                                  loading="lazy">
                             <figcaption>C and gamma interact: tuning both together determines the complexity and generalization of the SVM boundary.</figcaption>
@@ -2509,7 +2716,7 @@ if __name__ == '__main__':
                         </p>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*uzpFA1evl_F8y_E-Q1wMjQ.png"
+                            <img src="/images/blog/support-vector-machine-svm-09-f19327.webp"
                                  alt="Non-linearly separable data transformed by kernel"
                                  loading="lazy">
                             <figcaption>Kernels map data to higher dimensions where a linear boundary becomes possible.</figcaption>
@@ -2526,21 +2733,21 @@ if __name__ == '__main__':
                         </div>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*5aAQlGJjtLYPXCE0VnyItA.png"
+                            <img src="/images/blog/support-vector-machine-svm-10-bf1cf0.webp"
                                  alt="Linear kernel SVM decision boundary"
                                  loading="lazy">
                             <figcaption>Linear kernel: optimal for linearly separable data — fastest computation, highest interpretability.</figcaption>
                         </figure>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*a9DYxiUuhe2FNY2KbhIm9g.png"
+                            <img src="/images/blog/support-vector-machine-svm-11-39e2a6.webp"
                                  alt="RBF kernel SVM — non-linear decision boundary"
                                  loading="lazy">
                             <figcaption>RBF kernel: creates non-linear boundaries by computing Gaussian distance to each support vector.</figcaption>
                         </figure>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*kUwPE4htkwYij-PvKuSmYQ.png"
+                            <img src="/images/blog/support-vector-machine-svm-12-a8572e.webp"
                                  alt="Polynomial and Sigmoid kernel SVM boundaries"
                                  loading="lazy">
                             <figcaption>Polynomial kernel captures interactions between features; Sigmoid mirrors neural network behavior.</figcaption>
@@ -2561,7 +2768,7 @@ df['target'] = iris.target
 df['flower_name'] = df.target.apply(lambda x: iris.target_names[x])</code></pre>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*_2YLmnWn4Qupb1IrgSC3Gg.png"
+                            <img src="/images/blog/support-vector-machine-svm-13-bb31bc.webp"
                                  alt="Iris dataset scatter plot — petal length vs petal width"
                                  loading="lazy">
                             <figcaption>Iris dataset: petal features show clear separation between setosa and the other two classes.</figcaption>
@@ -2583,7 +2790,7 @@ model.predict([[4.8, 3.0, 1.5, 0.3]])
 # array([0])  → setosa</code></pre>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*g_jI2Qa75j4vBvgXhjDajg.png"
+                            <img src="/images/blog/support-vector-machine-svm-14-074dd8.webp"
                                  alt="SVM model training on Iris dataset output"
                                  loading="lazy">
                             <figcaption>Default SVC achieves ~96.7% accuracy on the Iris test set.</figcaption>
@@ -2614,7 +2821,7 @@ model_rbf.fit(X_train, y_train)
 model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*ReDm1WUR8Cq8mWE55BLf9Q.png"
+                            <img src="/images/blog/support-vector-machine-svm-15-5c3feb.webp"
                                  alt="SVM hyperparameter tuning results — C, gamma, kernel comparison"
                                  loading="lazy">
                             <figcaption>Linear kernel achieves 100% on Iris — the dataset is linearly separable in 4D feature space.</figcaption>
@@ -2627,7 +2834,7 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                         <p>See also: <a href="svms-kernel-trick-in-a-minute.html">SVMs & Kernel Trick in a Minute</a> — a deeper dive into the mathematics behind SVM kernels.</p>`,
 
   "svms-kernel-trick-in-a-minute": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*bjKsTZda4iyyAEnw"
+                        <img src="/images/blog/svms-kernel-trick-in-a-minute-01-aa19a0.webp"
                              alt="Support Vector Machine concept overview — SVM separating data classes"
                              loading="eager">
                         <figcaption>SVMs: find the hyperplane that maximizes the margin between classes.</figcaption>
@@ -2643,7 +2850,7 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                         </p>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*KPnfSH9yiX3jF6UNGwtcgw.png"
+                            <img src="/images/blog/svms-kernel-trick-in-a-minute-02-2e57a8.webp"
                                  alt="SVM decision boundary with maximum margin hyperplane and support vectors"
                                  loading="lazy">
                             <figcaption>The SVM hyperplane (solid line) maximizes the margin (dashed lines). Support vectors are the closest points to the boundary.</figcaption>
@@ -2656,7 +2863,7 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                         </p>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*AcDZSf2XlO5YGtlY"
+                            <img src="/images/blog/svms-kernel-trick-in-a-minute-03-74a15f.webp"
                                  alt="Non-linearly separable data — two classes that cannot be separated by a straight line"
                                  loading="lazy">
                             <figcaption>Non-linearly separable data: no straight hyperplane can cleanly divide these classes.</figcaption>
@@ -2677,7 +2884,7 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                         </div>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/0*7b3CJQrHX_y6lH54"
+                            <img src="/images/blog/svms-kernel-trick-in-a-minute-04-bd52ec.webp"
                                  alt="Kernel trick: data projected from 2D to 3D space where it becomes linearly separable"
                                  loading="lazy">
                             <figcaption>Kernel trick: project into higher dimensions → straight hyperplane becomes possible.</figcaption>
@@ -2696,7 +2903,7 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                         </div>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*j7IKhu4u5EXwhTpE.png"
+                            <img src="/images/blog/svms-kernel-trick-in-a-minute-05-41a009.webp"
                                  alt="Linear SVM kernel — straight hyperplane separating two classes"
                                  loading="lazy">
                             <figcaption>Linear kernel: works only when classes are linearly separable.</figcaption>
@@ -2712,7 +2919,7 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                         </div>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/0*bbJVAAl-nWqEQMWH"
+                            <img src="/images/blog/svms-kernel-trick-in-a-minute-06-f5406c.webp"
                                  alt="Polynomial SVM kernel — curved decision boundary capturing feature interactions"
                                  loading="lazy">
                             <figcaption>Polynomial kernel: curved boundaries from feature interactions — degree controls complexity.</figcaption>
@@ -2728,7 +2935,7 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                         </div>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*WdyvJuTbjr1KeglRUmzL3w.gif"
+                            <img src="/images/blog/svms-kernel-trick-in-a-minute-07-06092d.gif"
                                  alt="RBF kernel animation — SVM decision boundary adapting to complex data shapes"
                                  loading="lazy">
                             <figcaption>RBF kernel animation: the boundary wraps tightly around complex data distributions.</figcaption>
@@ -2743,7 +2950,7 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                         </div>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*0JsU6S65lIB13I8Yer8uFQ.jpeg"
+                            <img src="/images/blog/svms-kernel-trick-in-a-minute-08-6ce78b.webp"
                                  alt="High gamma SVM — overly complex decision boundary that hugs training points"
                                  loading="lazy">
                             <figcaption>High γ: boundary memorizes the training data — good fit, poor generalization.</figcaption>
@@ -2755,7 +2962,7 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                         </div>
 
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*q6n7lQTtg8bj1KShIFCduQ.jpeg"
+                            <img src="/images/blog/svms-kernel-trick-in-a-minute-09-cb412a.webp"
                                  alt="Low gamma SVM — overly smooth decision boundary that misses local structure"
                                  loading="lazy">
                             <figcaption>Low γ: boundary is too smooth — misses local structure, may underfit.</figcaption>
@@ -2771,7 +2978,7 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                         </div>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*ohroUBBQCu78yD_Y8qL_OA.gif"
+                            <img src="/images/blog/svms-kernel-trick-in-a-minute-10-3a5c97.gif"
                                  alt="Sigmoid kernel SVM animation — S-shaped decision boundary"
                                  loading="lazy">
                             <figcaption>Sigmoid kernel: mimics neural network activation, produces non-linear S-shaped boundaries.</figcaption>
@@ -2781,7 +2988,7 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                         <h2 id="kernel-comparison-at-a-glance">Kernel Comparison at a Glance</h2>
 
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*LM06-o8pwzsalHiTOydgyQ.jpeg"
+                            <img src="/images/blog/svms-kernel-trick-in-a-minute-11-d57211.webp"
                                  alt="Summary comparison of Linear, Polynomial, RBF, and Sigmoid SVM kernels"
                                  loading="lazy">
                             <figcaption>Kernel summary: choose based on data linearity, complexity, and the need for interpretability.</figcaption>
@@ -2826,7 +3033,7 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                         </details>`,
 
   "transformers-in-a-minute": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*adMgf9eqWEMHr7L-dPNaWQ.png"
+                        <img src="/images/blog/transformers-in-a-minute-01-5ee76c.webp"
                              alt="Transformer Architecture diagram showing encoder and decoder layers"
                              loading="eager">
                         <figcaption>The Transformer architecture — encoder (left) processes input, decoder (right) generates output.</figcaption>
@@ -2892,7 +3099,7 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
 
                         <!-- Multi-Head Attention Diagram -->
                         <figure class="blog-figure blog-figure--narrow">
-                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*phR1pi8piCoLXhk8H1v4YA.png"
+                            <img src="/images/blog/transformers-in-a-minute-02-8ff7c2.webp"
                                  alt="Multi-Head Attention diagram: V, K, Q inputs through Linear projections, Scaled Dot-Product Attention, Concat, Linear output"
                                  loading="lazy">
                             <figcaption>Multi-Head Attention: h parallel Scaled Dot-Product Attention heads, concatenated and projected.</figcaption>
@@ -2920,7 +3127,7 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
 
                         <!-- Architecture comparison image -->
                         <figure class="blog-figure">
-                            <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*ggWYxdcvOPpCwPXI6sVUBg.png"
+                            <img src="/images/blog/transformers-in-a-minute-03-44b2e4.webp"
                                  alt="NLP Model Architectures best use cases: Decoder Only (GPT, Claude, Llama), Encoder Only (BERT, RoBERTa), Encoder-Decoder (T5, BART)"
                                  loading="lazy">
                             <figcaption>Choosing the right architecture: decoder-only for generation, encoder-only for understanding, encoder-decoder for translation/summarization.</figcaption>
@@ -3009,11 +3216,21 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                         </div>`,
 
   "understanding-the-if-name-main": `<figure class="blog-figure">
-                        <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*7oU61NGNVu3-5ca3mm2HKw.png"
+                        <img src="/images/blog/understanding-the-if-name-main-01-f4594b.webp"
                              alt="Python __name__ == '__main__' concept illustration"
                              loading="eager">
                         <figcaption>The <code>__name__</code> variable is <code>"__main__"</code> when a script runs directly — and the module name when imported.</figcaption>
                     </figure>
+
+<div class="blog-insight">
+                            <p>
+                                <strong><code>if __name__ == "__main__"</code> is a Python idiom that runs a block of code only when the file is executed directly — and skips it when the file is imported as a module.</strong>
+                                It works because the interpreter assigns every module a <code>__name__</code> variable before executing it: the file you launch with <code>python app.py</code> gets the string <code>"__main__"</code>, while any file loaded via <code>import</code> gets its own module name (<code>"check1"</code> for <code>check1.py</code>).
+                                Since Python executes all top-level code on import, an unguarded function call or script action runs the moment someone imports your file — usually an unwanted side effect.
+                                The guard separates the two roles a file can play: reusable library (functions and classes, importable anywhere) and executable script (the entry-point logic inside the guard).
+                                One file, both jobs, no accidental execution.
+                            </p>
+                        </div>
 
 <h2 id="what-is-if-name-main">What Is <code>if __name__ == "__main__"</code>?</h2>
                         <p>
@@ -3031,6 +3248,36 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                             Python executes all top-level code from top to bottom when a file is run.
                             The file Python runs first is the <strong>top-level module</strong>, and its <code>__name__</code> is <code>"__main__"</code>.
                         </p>
+                        <p>
+                            Note the subtlety: <em>importing</em> also executes top-level code.
+                            <code>def</code> and <code>class</code> statements are themselves top-level code — executing them is how the functions and classes come into existence.
+                            What the guard controls is everything else: the calls, prints, and side effects you only want when the file is the program, not the library.
+                        </p>
+
+                        <h2 id="how-does-name-get-set">How Does <code>__name__</code> Get Set?</h2>
+                        <p>
+                            <code>__name__</code> isn't magic you declare — the interpreter assigns it to every module object before running the module's code:
+                        </p>
+                        <ul>
+                            <li><strong>Run directly</strong> (<code>python app.py</code>): Python creates a module named <code>__main__</code> and executes the file inside it — so <code>__name__</code> is <code>"__main__"</code></li>
+                            <li><strong>Imported</strong> (<code>import app</code>): the import system creates a module object named after the file — <code>__name__</code> is <code>"app"</code>. On a second import, Python finds the cached module in <code>sys.modules</code> and doesn't re-execute the file at all</li>
+                            <li><strong>Run with <code>-m</code></strong> (<code>python -m app</code>): the module is located on the import path but still executes as the entry point, so <code>__name__</code> is again <code>"__main__"</code> — this is how <code>python -m venv</code> and <code>python -m http.server</code> work</li>
+                            <li><strong>Packages:</strong> a file literally named <code>__main__.py</code> inside a package runs when you execute <code>python -m package_name</code> — the same idea promoted to package level</li>
+                        </ul>
+
+                        <h2 id="script-vs-import">Run as Script vs Imported — Side by Side</h2>
+                        <table>
+                            <thead>
+                                <tr><th>Behavior</th><th><code>python check1.py</code></th><th><code>import check1</code></th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Value of <code>__name__</code></td><td><code>"__main__"</code></td><td><code>"check1"</code></td></tr>
+                                <tr><td>Top-level code (defs, prints)</td><td>Executes</td><td>Executes (first import only)</td></tr>
+                                <tr><td>Code inside the guard</td><td>Executes</td><td>Skipped</td></tr>
+                                <tr><td>Functions and classes defined</td><td>Yes</td><td>Yes — that's the point of importing</td></tr>
+                                <tr><td>Typical role of the file</td><td>Program / entry point</td><td>Reusable library module</td></tr>
+                            </tbody>
+                        </table>
 
                         <h2 id="three-files-three-scenarios">Three Files — Three Scenarios</h2>
 
@@ -3042,7 +3289,7 @@ print("This is main script")</code></pre>
                         <p>Output: <code>__main__</code> — Python confirms this file is the entry point.</p>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*X0RmnSk_bMDXau8jSI3y-g.png"
+                            <img src="/images/blog/understanding-the-if-name-main-02-fd78c0.webp"
                                  alt="app.py running directly — __name__ is __main__"
                                  loading="lazy">
                             <figcaption>Running app.py directly sets <code>__name__</code> to <code>"__main__"</code>.</figcaption>
@@ -3068,7 +3315,7 @@ my_function()   # runs on import — no guard!</code></pre>
                         <p>Importing <code>check2</code> will call <code>my_function()</code> immediately — an unintended side effect.</p>
 
                         <figure class="blog-figure" style="margin-top:1rem;">
-                            <img src="https://miro.medium.com/v2/resize:fit:430/format:webp/1*0OGcyaROt2cDkuMM7hwi5A.png"
+                            <img src="/images/blog/understanding-the-if-name-main-03-f01558.webp"
                                  alt="Comparison: with vs without the __name__ guard when importing"
                                  loading="lazy">
                             <figcaption>The guard prevents top-level code from running unexpectedly when a module is imported.</figcaption>
@@ -3077,6 +3324,26 @@ my_function()   # runs on import — no guard!</code></pre>
                         <div class="blog-insight">
                             "Use <code>if __name__ == '__main__'</code> to keep your scripts reusable as modules — the guard separates entry-point logic from importable functions."
                         </div>
+
+                        <h2 id="standard-main-pattern">What Is the Standard main() Pattern?</h2>
+                        <p>
+                            Real scripts rarely put logic directly inside the guard. The convention is to wrap the entry-point logic in a <code>main()</code> function and keep the guard to a single line:
+                        </p>
+                        <pre><code>import sys
+
+def main() -&gt; int:
+    name = sys.argv[1] if len(sys.argv) &gt; 1 else "world"
+    print("Hello, " + name + "!")
+    return 0
+
+if __name__ == "__main__":
+    raise SystemExit(main())</code></pre>
+                        <p>
+                            This buys you three things.
+                            First, <strong>testability</strong> — a test file can <code>import</code> the module and call <code>main()</code> with controlled inputs, which is impossible if the logic sits loose inside the guard.
+                            Second, <strong>clean scoping</strong> — variables inside <code>main()</code> are local, whereas variables created at top level are module globals that every function can accidentally read.
+                            Third, <strong>a proper exit code</strong> — returning an <code>int</code> and passing it to <code>SystemExit</code> means shells and CI pipelines can tell success (<code>0</code>) from failure (non-zero).
+                        </p>
 
                         <h2 id="video-walkthrough">Video Walkthrough</h2>
                         <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin:1.5rem 0;">
@@ -3094,7 +3361,301 @@ my_function()   # runs on import — no guard!</code></pre>
                             <li><strong>Always</strong> — wrap any code that should only run when the file is the entry point</li>
                             <li><strong>Tests and demos</strong> — put quick test calls or demo output inside the guard</li>
                             <li><strong>CLI scripts</strong> — put your <code>main()</code> call inside the guard so the file is importable as a module</li>
+                            <li><strong>Multiprocessing</strong> — on Windows and macOS, <code>multiprocessing</code> starts workers by re-importing your script; without the guard, each worker re-runs the spawning code and the program crashes or forks endlessly. Here the guard isn't style — it's required</li>
                             <li><strong>Never inside functions/classes</strong> — the guard belongs at the top level</li>
-                        </ul>`,
+                        </ul>
+                        <p>
+                            One place you can skip it: pure library modules that are only ever imported and contain nothing but definitions.
+                            With no top-level side effects to protect, the guard adds nothing — though many developers still include one to hold a quick demo or smoke test.
+                        </p>`,
 
+
+  "how-i-built-my-data-science-portfolio": `<div class="blog-insight">
+    <p>
+        An effective data science portfolio does two things: it proves you can build, and it proves you can explain.
+        Mine lives at rishabhsingh.me and costs $0 to host. The stack is Next.js 16 with static export
+        (<code>output: "export"</code>), Tailwind CSS v4, and TypeScript, deployed to GitHub Pages through a GitHub
+        Actions workflow, with a custom domain wired up via a single CNAME file. The site includes lazy-loaded
+        sections, a dark/light theme with a five-accent color picker, an interactive regression simulator built on
+        canvas, and 23 blog posts migrated from Medium. What makes it effective isn't the framework — it's the
+        content strategy: no Titanic or MNIST toy projects, verifiable receipts like merged pull requests to CPython,
+        conda-build, and librosa, interactive demos instead of static screenshots, and explainer posts that
+        demonstrate communication skill. This post walks through exactly how I built it, step by step.
+    </p>
+</div>
+
+<h2 id="what-should-a-data-science-portfolio-include">What should a data science portfolio include?</h2>
+<p>
+    Before touching a framework, decide what the portfolio has to prove. I'm a Data Scientist at Chryselys with a
+    BS in Data Science &amp; Applications from IIT Madras, and I've reviewed enough portfolios to know the pattern
+    that fails: a grid of notebook screenshots — Titanic survival, MNIST digits, maybe an Iris scatter plot.
+    Everyone applying for the same role has the same grid. A recruiter who has seen four hundred Titanic
+    classifiers cannot tell yours apart, and worse, these projects prove nothing except that you can follow a
+    tutorial.
+</p>
+<p>
+    Here's what I put in mine instead, in rough order of how much weight I think each carries:
+</p>
+<ul>
+    <li>
+        <strong>Verifiable receipts.</strong> Work that a stranger can independently confirm. For me that's merged
+        pull requests to real open-source projects: CPython (#134804), conda-build (#4782), and librosa (#1850).
+        Nobody can fake a merged PR to CPython. A maintainer of the world's most-used programming language reviewed
+        my code and accepted it — that's a signal no course certificate can match, and it cost me nothing but time.
+    </li>
+    <li>
+        <strong>Interactive projects, not screenshots.</strong> Where possible, let the visitor touch the work. I
+        built a confidence-interval-vs-prediction-interval regression simulator as a canvas widget embedded directly
+        in a blog post. Readers drag the sample size and noise sliders and watch the bands respond. A static PNG of
+        the same chart would communicate a tenth of it.
+    </li>
+    <li>
+        <strong>Explainer writing.</strong> Data science is half communication. Every explainer post on the site —
+        23 of them, migrated from Medium — is evidence I can take something technical and make it land for a
+        non-specialist. When an interviewer asks "explain a p-value to a stakeholder," I can point at a URL.
+    </li>
+    <li>
+        <strong>One clear identity.</strong> Name, role, employer, education, and a way to contact you — above the
+        fold, no hunting.
+    </li>
+</ul>
+<p>
+    If you only take one thing from this section: delete the toy projects. An empty portfolio with two merged PRs
+    beats a full portfolio of tutorials.
+</p>
+
+<h2 id="why-nextjs-static-export-github-pages">Why Next.js static export + GitHub Pages?</h2>
+<p>
+    GitHub Pages only serves static files. It cannot run a Node server, so a default Next.js app won't deploy
+    there. The bridge is Next.js's static export mode: set <code>output: "export"</code> in the config and
+    <code>next build</code> emits a folder of plain HTML, CSS, and JS — no server required. You keep the entire
+    Next.js developer experience (file-based routing, React components, TypeScript, image handling, metadata API)
+    and ship an artifact any static host can serve.
+</p>
+<p>
+    Why does that combination make sense for a data science portfolio specifically?
+</p>
+<ul>
+    <li>
+        <strong>A portfolio is inherently static.</strong> There's no user auth, no database, no server-side
+        personalization. Paying for compute you don't use is pointless.
+    </li>
+    <li>
+        <strong>Static export forces good habits.</strong> Every page is prerendered HTML, which means fast first
+        paint, trivially cacheable pages, and content that crawlers — including AI crawlers — can read without
+        executing JavaScript.
+    </li>
+    <li>
+        <strong>The code lives where your work lives.</strong> My portfolio repo sits next to the open-source
+        contributions it talks about. One GitHub profile, one story.
+    </li>
+    <li>
+        <strong>Interactive widgets still work.</strong> "Static" describes the hosting, not the page. My canvas
+        regression simulator, the theme toggle, and the accent color picker are all client-side React and
+        vanilla JS running on statically served pages.
+    </li>
+</ul>
+<p>
+    I paired it with Tailwind CSS v4 for styling and TypeScript throughout. Tailwind keeps the CSS colocated with
+    components, which matters when you're the only maintainer and come back to the code three months later.
+</p>
+
+<h2 id="github-pages-vs-vercel-vs-netlify">GitHub Pages vs Vercel vs Netlify: which should you use?</h2>
+<p>
+    All three host a static portfolio for free. The honest answer is that any of them works; here's how they
+    compare for this specific use case:
+</p>
+<table>
+    <thead>
+        <tr>
+            <th>Feature</th>
+            <th>GitHub Pages</th>
+            <th>Vercel (Hobby)</th>
+            <th>Netlify (Free)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Build minutes</td>
+            <td>2,000/mo via GitHub Actions (free tier)</td>
+            <td>Included, per-deployment limits</td>
+            <td>300 build minutes/mo</td>
+        </tr>
+        <tr>
+            <td>Custom domain</td>
+            <td>Free, via CNAME file + DNS</td>
+            <td>Free</td>
+            <td>Free</td>
+        </tr>
+        <tr>
+            <td>Bandwidth</td>
+            <td>100 GB/mo soft limit</td>
+            <td>100 GB/mo</td>
+            <td>100 GB/mo</td>
+        </tr>
+        <tr>
+            <td>HTTPS</td>
+            <td>Free, automatic</td>
+            <td>Free, automatic</td>
+            <td>Free, automatic</td>
+        </tr>
+        <tr>
+            <td>Server-side rendering</td>
+            <td>No (static only)</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>Cost for a portfolio</td>
+            <td>$0</td>
+            <td>$0 (non-commercial use)</td>
+            <td>$0</td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    I chose GitHub Pages for three reasons: my code and open-source work already live on GitHub, so it's one less
+    account and one less dashboard; the Hobby tiers of Vercel and Netlify carry usage terms and upgrade nudges I
+    didn't want to think about; and the static-only constraint is a feature, not a limitation — it guarantees I
+    never accidentally build something that needs a server. If you want server-side rendering, image optimization
+    at request time, or preview deployments per pull request, Vercel is the natural pick. For a static portfolio,
+    GitHub Pages does everything required.
+</p>
+
+<h2 id="how-do-you-build-it">How do you build it, step by step?</h2>
+<p>
+    Here's the full path from empty folder to live site on a custom domain. Four steps.
+</p>
+
+<h3 id="step-1-scaffold">1. Scaffold the project</h3>
+<p>
+    Create a Next.js app with TypeScript and Tailwind. The interactive prompts handle both:
+</p>
+<pre><code>npx create-next-app@latest portfolio --typescript --tailwind --app
+cd portfolio
+npm run dev</code></pre>
+<p>
+    Build your pages as ordinary React components under <code>src/app/</code>. Blog posts, project pages, and the
+    home page are all just routes. Two portfolio-relevant details from my build: images go in as WebP (smaller
+    files, universally supported now), and anything below the fold — heavy sections, embedded widgets — gets
+    lazy-loaded so the first paint stays fast.
+</p>
+
+<h3 id="step-2-static-export">2. Configure static export</h3>
+<p>
+    One line in <code>next.config.ts</code> turns the app into a static site generator:
+</p>
+<pre><code>import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  output: "export",
+  images: { unoptimized: true },
+  trailingSlash: true,
+};
+
+export default nextConfig;</code></pre>
+<p>
+    Three notes. <code>output: "export"</code> makes <code>next build</code> write plain files to
+    <code>out/</code>. <code>images.unoptimized</code> is required because GitHub Pages has no server to run
+    Next.js's on-demand image optimizer — which is why I pre-convert everything to WebP myself.
+    <code>trailingSlash</code> makes every route a real <code>index.html</code> inside a folder, so URLs like
+    <code>/blog/my-post/</code> resolve correctly on a dumb file server with no rewrite rules.
+</p>
+
+<h3 id="step-3-github-actions">3. Set up the GitHub Actions workflow</h3>
+<p>
+    In the repo settings, set Pages → Source to "GitHub Actions." Then add
+    <code>.github/workflows/deploy.yml</code>:
+</p>
+<pre><code>name: Deploy to GitHub Pages
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20, cache: npm }
+      - run: npm ci
+      - run: npm run build
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: ./out }
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: \${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4</code></pre>
+<p>
+    From now on, every push to <code>main</code> builds the site and deploys it. No CLI, no manual upload, no
+    "did I forget to publish" moments. The deploy takes about two minutes end to end.
+</p>
+
+<h3 id="step-4-custom-domain">4. Point a custom domain at it</h3>
+<p>
+    Buy a domain (~$10/year — the only money in this entire stack). Then:
+</p>
+<ul>
+    <li>Put a file named <code>CNAME</code> in your <code>public/</code> folder containing exactly one line: your
+        domain (mine says <code>rishabhsingh.me</code>). Next.js copies <code>public/</code> into the export, so
+        the file survives every deploy.</li>
+    <li>At your DNS provider, add A records for the apex domain pointing at GitHub Pages' IPs, plus a CNAME record
+        for <code>www</code> pointing to <code>&lt;username&gt;.github.io</code>.</li>
+    <li>In repo settings, enter the domain under Pages → Custom domain and tick "Enforce HTTPS." GitHub provisions
+        the certificate automatically.</li>
+</ul>
+<p>
+    DNS propagation takes minutes to a few hours. After that, the site is live on your own name, with HTTPS,
+    for free.
+</p>
+
+<h2 id="how-much-does-it-cost">How much does it cost?</h2>
+<p>
+    <strong>$0 for hosting, plus roughly $10/year for the domain.</strong> That's the complete bill. GitHub Pages
+    hosting is free, GitHub Actions' free tier (2,000 minutes/month) covers hundreds of deploys of a site this
+    size, the SSL certificate is free, and Next.js, Tailwind, and TypeScript are open source. The domain is
+    technically optional — <code>username.github.io</code> works — but $10/year for a name you control, that
+    outlives any employer or platform, is the best money-per-signal ratio in this whole project.
+</p>
+
+<h2 id="what-about-seo-and-ai-search">What about SEO and AI search?</h2>
+<p>
+    A portfolio nobody finds is a diary. Since the site is already static HTML, most of the SEO work is just
+    filling in metadata that Next.js makes first-class:
+</p>
+<ul>
+    <li><strong>JSON-LD structured data</strong> — Person schema on the homepage, Blog/BlogPosting on posts, and
+        BreadcrumbList for navigation, so search engines understand who I am and how pages relate.</li>
+    <li><strong><code>sitemap.ts</code> and <code>robots.ts</code></strong> — Next.js generates
+        <code>sitemap.xml</code> and <code>robots.txt</code> from typed route handlers at build time; new blog
+        posts join the sitemap automatically.</li>
+    <li><strong><code>llms.txt</code></strong> — a plain-text map of the site for AI crawlers. As more discovery
+        happens through ChatGPT and Perplexity rather than Google, making your site legible to language models is
+        cheap insurance.</li>
+    <li><strong>An Open Graph social card</strong> — so links shared on LinkedIn or X render a proper preview
+        instead of a bare URL. For a portfolio, links get shared in exactly the contexts that matter: recruiters,
+        hiring managers, group chats.</li>
+    <li><strong>WebP images and lazy loading</strong> — page speed is a ranking factor, and a static export with
+        small images is about as fast as the web gets.</li>
+</ul>
+
+<h2 id="was-it-worth-building-from-scratch">Was it worth building instead of using a template?</h2>
+<p>
+    Yes — because the site itself became a project. The theme system (dark/light plus five accent colors,
+    persisted in <code>localStorage</code>), the lazy-loading strategy, and the canvas regression simulator are
+    all things I can point to in an interview as engineering work, not just design choices. A Notion page or a
+    template can hold the same links, but it can't demonstrate that you shipped something. If you're
+    time-constrained, start with the four steps above and a single page — you can be live this afternoon. Then
+    replace one toy project with one real contribution, write one explainer post, and repeat. That loop, not the
+    framework, is what makes a data science portfolio work.
+</p>`,
 };
