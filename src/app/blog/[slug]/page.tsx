@@ -99,7 +99,7 @@ export default async function BlogPostPage({
     },
     publisher: { "@type": "Person", name: "Rishabh Singh" },
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: ("updated" in post && post.updated) || post.date,
     url: `https://rishabhsingh.me/blog/${slug}/`,
     keywords: post.tags,
     mainEntityOfPage: { "@type": "WebPage", "@id": `https://rishabhsingh.me/blog/${slug}/` },

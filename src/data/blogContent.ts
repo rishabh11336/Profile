@@ -154,7 +154,17 @@ export const blogContent: Record<string, string> = {
                             <p>Bayesian learning incorporates prior knowledge, quantifies uncertainty (outputs distributions, not point predictions), updates dynamically with new data, and handles small datasets via priors as regularization. Used in medicine, spam filtering, fraud detection, NLP, and more.</p>
                         </details>`,
 
-  "ci-vs-pi-regression-bands": `<h2 id="two-bands">Two bands, two entirely different questions</h2>
+  "ci-vs-pi-regression-bands": `<div class="blog-insight">
+                <p>
+                    <strong>A confidence interval (CI) estimates the range where the <em>average</em> response lies; a prediction interval (PI) estimates the range where a <em>single new observation</em> will fall.</strong>
+                    Because individual observations scatter around the mean, the PI is always wider than the CI at the same confidence level — often several times wider in typical regression settings.
+                    Both intervals narrow as sample size grows, but only the CI can shrink toward zero width: the PI's floor is set by the irreducible noise in the data itself.
+                    Use a CI when the question is about the model's estimate ("what is the average effect of X?") and a PI when it is about a future case ("what value should I expect next time?").
+                    Confusing the two is the most common interval mistake in applied regression — and the interactive simulation below lets you see the difference directly.
+                </p>
+            </div>
+
+            <h2 id="two-bands">Two bands, two entirely different questions</h2>
             <p>
                 When a regression model draws a line through data, it answers one question: <em>what is the average response at this X value?</em>
                 But the moment you put that line in front of a stakeholder, two more questions always follow — and they require completely different bands to answer honestly.
@@ -307,6 +317,20 @@ export const blogContent: Record<string, string> = {
 
             <h2 id="use-cases">When to use each</h2>
 
+            <table>
+                <thead>
+                    <tr><th></th><th>Confidence Interval (CI)</th><th>Prediction Interval (PI)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Question answered</td><td>Where is the <em>average</em> response at this X?</td><td>Where will <em>one new observation</em> land at this X?</td></tr>
+                    <tr><td>Uncertainty about</td><td>The regression line (mean estimate)</td><td>The line <em>plus</em> individual scatter</td></tr>
+                    <tr><td>Width vs sample size</td><td>Shrinks toward zero as n grows</td><td>Never shrinks below the noise floor (σ)</td></tr>
+                    <tr><td>Relative width</td><td>Narrower — inner band</td><td>Always wider — outer band</td></tr>
+                    <tr><td>Typical use</td><td>Significance tests, average-effect estimates, research claims</td><td>Forecasting one case, thresholds, quota / inventory decisions</td></tr>
+                    <tr><td>Wrong-tool failure</td><td>—</td><td>Using a CI here understates risk for individual outcomes</td></tr>
+                </tbody>
+            </table>
+
             <div class="comparison-grid">
                 <div class="cmp-card ci-card">
                     <h3>Use CI when asking about the population</h3>
@@ -435,10 +459,16 @@ export const blogContent: Record<string, string> = {
                     </figure>
 
 <h2 id="what-is-a-confusion-matrix">What Is a Confusion Matrix?</h2>
-                        <p>
-                            A confusion matrix is <strong>a table that describes the performance of a classification model by comparing actual labels with predicted labels</strong>.
-                            It doesn't give you one number — it breaks predictions into four categories so you can see exactly where the model is right and where it fails.
-                        </p>
+                        <div class="blog-insight">
+                            <p>
+                                <strong>A confusion matrix is a table that describes the performance of a classification model by comparing actual labels with predicted labels.</strong>
+                                It doesn't reduce performance to one number — it splits every prediction into four categories: true positives (correct positive calls), true negatives (correct negative calls),
+                                false positives (false alarms, Type&nbsp;I error), and false negatives (missed detections, Type&nbsp;II error).
+                                Every standard classification metric — accuracy, precision, recall, specificity, F1 — is computed directly from these four counts.
+                                The matrix matters most on imbalanced data: a model that always predicts "negative" on a 99% negative dataset scores 99% accuracy while catching zero positives,
+                                and only the confusion matrix exposes that failure. Read it before trusting any single metric.
+                            </p>
+                        </div>
 
                         <h2 id="the-four-core-elements">The Four Core Elements</h2>
 
@@ -620,6 +650,20 @@ export const blogContent: Record<string, string> = {
                         </a>
 
                         <h2 id="when-to-use-which-metric">When to Use Which Metric</h2>
+
+                        <table>
+                            <thead>
+                                <tr><th>Metric</th><th>Formula</th><th>Answers</th><th>Use when</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Accuracy</td><td>(TP + TN) / total</td><td>What fraction of all predictions were correct?</td><td>Classes are balanced</td></tr>
+                                <tr><td>Precision</td><td>TP / (TP + FP)</td><td>Of predicted positives, how many were real?</td><td>False positives are costly (spam filters, drug prescriptions)</td></tr>
+                                <tr><td>Recall (sensitivity)</td><td>TP / (TP + FN)</td><td>Of actual positives, how many were caught?</td><td>False negatives are costly (cancer screening, fraud)</td></tr>
+                                <tr><td>Specificity</td><td>TN / (TN + FP)</td><td>Of actual negatives, how many were correctly cleared?</td><td>Avoiding false alarms on healthy/negative cases matters</td></tr>
+                                <tr><td>F1 score</td><td>2·(P·R) / (P + R)</td><td>Are precision and recall both high?</td><td>Imbalanced classes, or both error types matter</td></tr>
+                            </tbody>
+                        </table>
+
                         <ul>
                             <li><strong>Balanced classes:</strong> accuracy is reliable</li>
                             <li><strong>Imbalanced classes:</strong> use F1, precision, or recall instead</li>
@@ -2788,10 +2832,16 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                         <figcaption>The Transformer architecture — encoder (left) processes input, decoder (right) generates output.</figcaption>
                     </figure>
 
-<p>
-                            Transformers are the backbone of modern AI. GPT, BERT, T5, LLaMA — all built on the same core architecture.
-                            Understanding it in one read is the goal here.
-                        </p>
+<div class="blog-insight">
+                            <p>
+                                <strong>A transformer is a neural network architecture that processes entire sequences in parallel using self-attention, letting every token weigh its relevance to every other token directly.</strong>
+                                Introduced in the 2017 paper "Attention Is All You Need," it replaced recurrent networks as the default for sequence modeling by fixing their two core flaws:
+                                forgetting long-range context (vanishing gradients) and processing tokens one at a time (no parallelism).
+                                Six components make it work — input embeddings, positional encoding, multi-head self-attention, feed-forward layers, residual connections with layer normalization, and the encoder–decoder split.
+                                GPT, BERT, T5, and LLaMA are all variations of this one architecture, differing mainly in which half they keep and how they are trained.
+                                This post walks the full stack in one read.
+                            </p>
+                        </div>
 
                         <!-- Why Not RNNs -->
                         <h2 id="why-not-rnns">Why Not RNNs?</h2>
@@ -2804,6 +2854,19 @@ model_rbf.score(X_test, y_test)  # 0.9666</code></pre>
                             <li><strong>No parallelism</strong> — tokens processed one-by-one, making training painfully slow.</li>
                         </ul>
                         <p>Transformers solved both. Every token attends to every other token simultaneously.</p>
+
+                        <table>
+                            <thead>
+                                <tr><th></th><th>RNN / LSTM</th><th>Transformer</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>Token processing</td><td>Sequential, one at a time</td><td>All tokens in parallel</td></tr>
+                                <tr><td>Long-range context</td><td>Degrades with distance (vanishing gradients)</td><td>Direct attention between any two tokens</td></tr>
+                                <tr><td>Training speed</td><td>Slow — cannot parallelize across sequence</td><td>Fast — full-sequence parallelism on GPUs</td></tr>
+                                <tr><td>Path between distant tokens</td><td>O(n) steps</td><td>O(1) — one attention hop</td></tr>
+                                <tr><td>Order awareness</td><td>Built into recurrence</td><td>Added via positional encoding</td></tr>
+                            </tbody>
+                        </table>
 
                         <!-- 6 Components -->
                         <h2 id="the-6-core-components">The 6 Core Components</h2>
