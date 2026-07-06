@@ -12,8 +12,8 @@
   --sidebar-bg:   #e8e8d9;
   --surface:      #ffffff;
   --section-alt:  #ffffff;
-  --accent:       #a04590;
-  --accent-h:     #863878;
+  --accent:       #0891b2;
+  --accent-h:     #0e7490;
   --text-primary: #1a1a1a;
   --text-muted:   #6b6b6b;
   --border:       #dedede;
@@ -27,13 +27,47 @@
   --sidebar-bg:   #001d38;
   --surface:      #062f2d;
   --section-alt:  #001a30;
-  --accent:       #eca0c9;
-  --accent-h:     #d982b3;
+  --accent:       #22d3ee;
+  --accent-h:     #06b6d4;
   --text-primary: #f3f3eb;
   --text-muted:   #8c9db5;
   --border:       #1a3d5c;
   --card-bg:      rgba(6, 47, 45, 0.4);
   --shadow-clr:   rgba(0, 0, 0, 0.5);
+}
+
+/* ── Accent palettes (cyan is the default above) ── */
+html[data-accent="teal"] {
+  --accent:   #0d9488;
+  --accent-h: #0f766e;
+}
+html[data-accent="teal"][data-theme="dark"] {
+  --accent:   #2dd4bf;
+  --accent-h: #14b8a6;
+}
+html[data-accent="pink"] {
+  --accent:   #a04590;
+  --accent-h: #863878;
+}
+html[data-accent="pink"][data-theme="dark"] {
+  --accent:   #eca0c9;
+  --accent-h: #d982b3;
+}
+html[data-accent="violet"] {
+  --accent:   #7c3aed;
+  --accent-h: #6d28d9;
+}
+html[data-accent="violet"][data-theme="dark"] {
+  --accent:   #a78bfa;
+  --accent-h: #8b5cf6;
+}
+html[data-accent="amber"] {
+  --accent:   #d97706;
+  --accent-h: #b45309;
+}
+html[data-accent="amber"][data-theme="dark"] {
+  --accent:   #fbbf24;
+  --accent-h: #f59e0b;
 }
 
 /* ── Tailwind design tokens ── */
@@ -67,7 +101,7 @@
   }
 
   ::selection {
-    background-color: rgba(160, 69, 144, 0.2);
+    background-color: color-mix(in srgb, var(--accent) 20%, transparent);
     color: var(--text-primary);
   }
 
@@ -130,7 +164,7 @@
   .btn:hover {
     background-color: var(--accent-h);
     transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(160, 69, 144, 0.35);
+    box-shadow: 0 4px 16px color-mix(in srgb, var(--accent) 35%, transparent);
   }
   .btn:active {
     transform: translateY(0);
@@ -158,7 +192,7 @@
     background-color: var(--accent);
     color: #fff;
     transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(160, 69, 144, 0.25);
+    box-shadow: 0 4px 16px color-mix(in srgb, var(--accent) 25%, transparent);
   }
   .btn-outline:active {
     transform: translateY(0);
@@ -167,9 +201,9 @@
   .skill-tag {
     display: inline-block;
     padding: 0.25rem 0.75rem;
-    background-color: rgba(160, 69, 144, 0.08);
+    background-color: color-mix(in srgb, var(--accent) 8%, transparent);
     color: var(--accent);
-    border: 1px solid rgba(160, 69, 144, 0.25);
+    border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
     border-radius: 9999px;
     font-size: 0.75rem;
     font-weight: 500;
@@ -177,8 +211,8 @@
     transition: background-color 0.15s ease, border-color 0.15s ease;
   }
   .skill-tag:hover {
-    background-color: rgba(160, 69, 144, 0.16);
-    border-color: rgba(160, 69, 144, 0.45);
+    background-color: color-mix(in srgb, var(--accent) 16%, transparent);
+    border-color: color-mix(in srgb, var(--accent) 45%, transparent);
   }
 
   .card-glass {
@@ -590,10 +624,10 @@
 @keyframes pulse-accent {
   0%,
   100% {
-    box-shadow: 0 0 0 0 rgba(160, 69, 144, 0.4);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 40%, transparent);
   }
   50% {
-    box-shadow: 0 0 0 8px rgba(160, 69, 144, 0);
+    box-shadow: 0 0 0 8px color-mix(in srgb, var(--accent) 0%, transparent);
   }
 }
 

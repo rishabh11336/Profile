@@ -85,6 +85,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={plusJakartaSans.variable}>
       <body className="min-h-screen antialiased">
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var a=localStorage.getItem("accent");if(a&&a!=="cyan")document.documentElement.setAttribute("data-accent",a)}catch(e){}`,
+          }}
+        />
         <Providers>
           {/* Sidebar */}
           <Sidebar />

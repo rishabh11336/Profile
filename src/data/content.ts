@@ -27,7 +27,7 @@ export const hero = {
   paragraph1:
     "Data Scientist with hands-on experience delivering end-to-end analytics solutions — from data wrangling and modeling to building dashboards, APIs, and deployable prototypes. Worked on forecasting, mixed-effects sizing, MMM, and time-series pipelines with stakeholder-ready insight delivery.",
   paragraph2:
-    "Strong in Python, SQL, Streamlit, Flask, Figma, and cloud exposure (Azure/AWS), with experience mentoring junior analysts and collaborating across Forecasting, PACE, and I&A teams.",
+    "Strong in Python, SQL, Streamlit, Flask, Figma, and cloud exposure (Azure/AWS), with experience mentoring junior analysts and collaborating across Forecasting, Product, and I&A teams.",
   iitmCallout: {
     text: "IIT Madras BS student? I've put together notes, resources & guidance from my own journey.",
     linkText: "Explore the guide →",
