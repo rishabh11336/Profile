@@ -39,6 +39,6 @@ Series 3 — "Python" (8 posts): Virtual environments, conda, requirements.txt, 
 - GitHub: https://github.com/rishabh11336
 - LinkedIn: https://www.linkedin.com/in/rishabh-data-scientist/
 - Medium: https://medium.com/@asusrishabh
-- Kaggle: https://www.kaggle.com/rishabh11336
+- Kaggle: https://www.kaggle.com/rishabhsingh2538
 - IIT Madras BS Guidance: https://iitmbs.rishabhsingh.me
 - Blog listing: https://rishabhsingh.me/blog/

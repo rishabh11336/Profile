@@ -16,7 +16,7 @@ export const siteConfig = {
     github: "https://github.com/rishabh11336",
     linkedin: "https://www.linkedin.com/in/rishabh-data-scientist/",
     medium: "https://medium.com/@asusrishabh",
-    kaggle: "https://www.kaggle.com/rishabh11336",
+    kaggle: "https://www.kaggle.com/rishabhsingh2538",
     iitmbs: "https://iitmbs.rishabhsingh.me/",
   },
 };
@@ -227,7 +227,7 @@ export const projects = [
       "Hierarchical mixed-effects regression (LME) to quantify marketing campaign elasticity. Decomposed global vs. channel-level effects to support data-driven budget allocation and ROI optimisation using Marketing Mix Modeling.",
     github: null,
     live: null,
-    kaggle: "https://www.kaggle.com/rishabh11336",
+    kaggle: "https://www.kaggle.com/code/rishabhsingh2538/mixed-marketing-modeling",
   },
   {
     title: "Audio Classification — UrbanSound8K",
@@ -239,7 +239,7 @@ export const projects = [
       "End-to-end deep learning pipeline for urban audio classification. Extracted features using mel-spectrograms and MFCCs via Librosa. Trained CNN models with TensorFlow on the UrbanSound8K benchmark dataset.",
     github: null,
     live: null,
-    kaggle: "https://www.kaggle.com/rishabh11336",
+    kaggle: "https://www.kaggle.com/code/rishabhsingh2538/audio-classification-with-urbanaudio8k",
   },
   {
     title: "Bloglite — Compass",
@@ -614,7 +614,7 @@ export const structuredData = {
       "https://www.linkedin.com/in/rishabh-data-scientist/",
       "https://github.com/rishabh11336",
       "https://medium.com/@asusrishabh",
-      "https://www.kaggle.com/rishabh11336",
+      "https://www.kaggle.com/rishabhsingh2538",
     ],
     hasOccupation: {
       "@type": "Occupation",

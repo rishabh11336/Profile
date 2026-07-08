@@ -12,7 +12,7 @@ Drafted 2026-07-07. Everything below is ready to paste. Nothing has been posted 
 | CI-vs-PI simulator post | https://rishabhsingh.me/blog/ci-vs-pi-regression-bands/ |
 | Portfolio build guide | https://rishabhsingh.me/blog/how-i-built-my-data-science-portfolio/ |
 | GitHub | https://github.com/rishabh11336 |
-| Kaggle | https://kaggle.com/rishabh11336 |
+| Kaggle | https://kaggle.com/rishabhsingh2538 |
 | LinkedIn | https://linkedin.com/in/rishabh-data-scientist |
 
 ---
@@ -57,7 +57,7 @@ Entity consolidation via `sameAs` in the site's Person JSON-LD achieves most of 
 ```json
 "sameAs": [
   "https://github.com/rishabh11336",
-  "https://www.kaggle.com/rishabh11336",
+  "https://www.kaggle.com/rishabhsingh2538",
   "https://www.linkedin.com/in/rishabh-data-scientist",
   "https://medium.com/@rishabh11336",
   "https://orcid.org/XXXX-XXXX-XXXX-XXXX"
@@ -74,7 +74,7 @@ Concrete steps (no notability floor on any of these):
 
 ## 2. Kaggle Discussion Post
 
-For an existing "share your portfolio" / "portfolio examples" thread on Kaggle Discussions (Getting Started or Learn forum). Post from kaggle.com/rishabh11336. Do not start a new thread solely for this; reply where portfolios are already the topic.
+For an existing "share your portfolio" / "portfolio examples" thread on Kaggle Discussions (Getting Started or Learn forum). Post from kaggle.com/rishabhsingh2538. Do not start a new thread solely for this; reply where portfolios are already the topic.
 
 **Suggested reply title (if the thread format needs one):** Portfolio with an interactive CI-vs-PI regression simulator
 
