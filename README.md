@@ -65,7 +65,7 @@ IIT Madras graduate and Data Scientist with 2 years of pharma commercial analyti
 
 | Project | Stack | Link |
 |---|---|---|
-| **LLM YouTube Metadata Connector** | Python, LLM Pipelines, YouTube API, Claude Desktop | [GitHub](https://github.com/rishabh11336/LLM-Youtube-Metadataconnecter) |
+| **LLM YouTube Metadata Connector** | Python, LLM Pipelines, YouTube API, Claude Desktop | [GitHub](https://github.com/rishabh11336/LLM-Youtube-Metadata-connecter-) |
 | **Parking Management System** | Flask, Vue.js, Redis, Celery, Azure | [parking.rishabhsingh.me](https://parking.rishabhsingh.me) |
 | **Indian Housing ETL Pipeline** | PostgreSQL, MongoDB, Python, web scraping | [GitHub](https://github.com/rishabh11336/Indian-Housing-ETL-Pipeline) |
 | **Mixed-Effects Marketing Modeling** | Python, statsmodels, MMM | Kaggle |

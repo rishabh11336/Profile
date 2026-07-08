@@ -189,12 +189,12 @@ export const services = [
 export const projects = [
   {
     title: "LLM YouTube Metadata Connector",
-    image: "https://opengraph.githubassets.com/1/rishabh11336/LLM-Youtube-Metadataconnecter",
+    image: "https://opengraph.githubassets.com/1/rishabh11336/LLM-Youtube-Metadata-connecter-",
     imageAlt: "LLM YouTube Metadata Connector — Claude Desktop, YouTube API v3, LLM pipeline",
     tags: ["LLM Pipelines", "Claude", "YouTube API", "Python", "OAuth 2.0"],
     description:
       "End-to-end LLM pipeline using Claude Desktop + YouTube Data API v3 to automate SEO-optimised title & description writing, keyword tagging, and content optimisation for 500+ YouTube videos. Prompt engineering, deterministic validation, human-in-the-loop review.",
-    github: "https://github.com/rishabh11336/LLM-Youtube-Metadataconnecter",
+    github: "https://github.com/rishabh11336/LLM-Youtube-Metadata-connecter-",
     live: null,
   },
   {
