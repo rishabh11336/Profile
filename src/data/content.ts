@@ -209,12 +209,12 @@ export const projects = [
   },
   {
     title: "Indian Housing ETL Pipeline",
-    image: "https://opengraph.githubassets.com/1/rishabh11336/Indian-Housing-ETL-Pipeline",
+    image: "https://opengraph.githubassets.com/1/rishabh11336/ETL-INDIAN-House-Price-Data",
     imageAlt: "Indian Housing ETL Pipeline — PostgreSQL, MongoDB, Python web scraping, 180k records",
     tags: ["Python", "PostgreSQL", "MongoDB", "ETL", "Web Scraping"],
     description:
       "Scalable ETL pipeline covering scraping, cleaning, deduplication, and validation. Stored 180,000+ records across PostgreSQL and MongoDB for downstream statistical analysis and ML modelling.",
-    github: "https://github.com/rishabh11336/Indian-Housing-ETL-Pipeline",
+    github: "https://github.com/rishabh11336/ETL-INDIAN-House-Price-Data",
     live: null,
   },
   {
