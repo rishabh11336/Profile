@@ -204,7 +204,7 @@ export const projects = [
     tags: ["Flask", "Vue.js", "Azure", "Redis", "Celery", "CI/CD"],
     description:
       "Full-stack web app with Flask REST API and Vue.js frontend. Redis + Celery for async task queuing, deployed on Azure App Service with CI/CD. Real-time slot booking, role-based access control, operational analytics dashboard.",
-    github: "https://github.com/rishabh11336",
+    github: "https://github.com/rishabh11336/Vehicle-Parking-App",
     live: "https://parking.rishabhsingh.me",
   },
   {
