@@ -8,8 +8,6 @@ export const siteConfig = {
   url: "https://rishabhsingh.me",
   ogImage: "https://rishabhsingh.me/images/og-card.png",
   email: "asusrishabh@outlook.com",
-  themeColor: "#0b4975",
-  skinColor: "#4A90A0",
   ga: "G-CZJ3LXY6D0",
   formspree: "https://formspree.io/f/mwvdeywa",
   links: {
@@ -218,6 +216,16 @@ export const projects = [
     live: null,
   },
   {
+    title: "Phishing Domain Detection",
+    image: "https://opengraph.githubassets.com/1/rishabh11336/Phishing-Domain-Detection",
+    imageAlt: "Phishing Domain Detection — Random Forest URL classifier, Flask REST API, Azure, Cassandra",
+    tags: ["Python", "scikit-learn", "Flask", "Azure", "Cassandra", "Cybersecurity"],
+    description:
+      "ML pipeline to classify URLs as legitimate or malicious using a Random Forest trained on URL, domain, page, and content features. Served via Flask REST API with Cassandra logging every prediction. Deployed to Azure during iNeuron ML internship.",
+    github: "https://github.com/rishabh11336/Phishing-Domain-Detection",
+    live: null,
+  },
+  {
     title: "Mixed-Effects Marketing Modeling",
     image: null,
     imageAlt: null,
@@ -378,6 +386,7 @@ export const blogPosts = [
     image: "/images/blog/transformers-in-a-minute-01-5ee76c.webp",
     tags: ["Transformer Architecture", "Machine Learning", "AI"],
     series: "in-a-minute",
+    mediumUrl: "https://medium.com/stackademic/transformers-in-a-minute-00bfb19b2225",
   },
   {
     slug: "ci-vs-pi-regression-bands",
@@ -397,6 +406,7 @@ export const blogPosts = [
     image: "/images/blog/forecasting-in-a-minute-01-bc5b67.webp",
     tags: ["Forecasting", "Analytics", "Finance"],
     series: "in-a-minute",
+    mediumUrl: "https://medium.com/@asusrishabh/forecasting-in-a-minute-f145fc6d2e16",
   },
   {
     slug: "svms-kernel-trick-in-a-minute",
@@ -406,6 +416,7 @@ export const blogPosts = [
     image: "/images/blog/svms-kernel-trick-in-a-minute-02-2e57a8.webp",
     tags: ["Machine Learning", "SVM", "Kernel Trick"],
     series: "in-a-minute",
+    mediumUrl: "https://medium.com/@asusrishabh/svms-kernel-trick-in-a-minute-bd0554b31ec0",
   },
   {
     slug: "convolutional-neural-networks-cnns-in-a-minute",
@@ -415,6 +426,7 @@ export const blogPosts = [
     image: "/images/blog/convolutional-neural-networks-cnns-in-a-01-2faecc.webp",
     tags: ["Deep Learning", "CNN", "Computer Vision"],
     series: "in-a-minute",
+    mediumUrl: "https://medium.com/ai-in-plain-english/convolutional-neural-networks-cnns-in-a-minute-4c9ae1b9a2cf",
   },
   {
     slug: "scalars-vectors-matrices-tensor-in-a-minute",
@@ -424,6 +436,7 @@ export const blogPosts = [
     image: "/images/blog/scalars-vectors-matrices-tensor-in-a-min-01-d64a8e.webp",
     tags: ["Machine Learning", "Linear Algebra", "Deep Learning"],
     series: "in-a-minute",
+    mediumUrl: "https://medium.com/stackademic/scalars-vectors-matrices-tensor-in-a-minute-0ebcd7f8e3b7",
   },
   {
     slug: "multiclass-vs-multilabel-classification-in-a-minute",
@@ -433,6 +446,7 @@ export const blogPosts = [
     image: "/images/blog/multiclass-vs-multilabel-classification-01-db0093.webp",
     tags: ["Machine Learning", "Classification"],
     series: "in-a-minute",
+    mediumUrl: "https://medium.com/ai-in-plain-english/multiclass-vs-multilabel-classification-in-a-minute-261b6e320061",
   },
   {
     slug: "confusion-matrix-metrics-in-a-minute",
@@ -443,6 +457,7 @@ export const blogPosts = [
     image: "/images/blog/confusion-matrix-metrics-in-a-minute-01-b5307a.webp",
     tags: ["Machine Learning", "Classification Metrics"],
     series: "in-a-minute",
+    mediumUrl: "https://medium.com/ai-in-plain-english/confusion-matrix-metrics-in-a-minute-e1596872e90b",
   },
   {
     slug: "bayesian-learning-in-a-minute",
@@ -452,6 +467,7 @@ export const blogPosts = [
     image: "/images/blog/bayesian-learning-in-a-minute-01-334640.webp",
     tags: ["Machine Learning", "Bayesian", "Statistics"],
     series: "in-a-minute",
+    mediumUrl: "https://medium.com/ai-in-plain-english/bayesian-learning-in-a-minute-c93189e8993e",
   },
   {
     slug: "linear-regression-in-a-minute",
@@ -461,6 +477,7 @@ export const blogPosts = [
     image: "/images/blog/linear-regression-in-a-minute-01-d420eb.gif",
     tags: ["Machine Learning", "Linear Regression"],
     series: "in-a-minute",
+    mediumUrl: "https://medium.com/ai-in-plain-english/linear-regression-in-a-minute-c298faf54238",
   },
   {
     slug: "support-vector-machine-svm",
@@ -470,6 +487,7 @@ export const blogPosts = [
     image: "/images/blog/support-vector-machine-svm-01-d0f2e9.webp",
     tags: ["Machine Learning", "Python"],
     series: "in-a-minute",
+    mediumUrl: "https://medium.com/@asusrishabh/support-vector-machine-svm-736fb20b239b",
   },
   {
     slug: "lazy-loading-for-enhanced-user-experience",
@@ -480,6 +498,7 @@ export const blogPosts = [
     image: "/images/blog/lazy-loading-for-enhanced-user-experienc-01-e6524b.webp",
     tags: ["Web Development", "Performance"],
     series: "web-dev",
+    mediumUrl: "https://medium.com/stackademic/lazy-loading-for-enhanced-user-experience-c96441e432e0",
   },
   {
     slug: "cors-in-flask-bridging-frontend-and-backend",
@@ -489,6 +508,7 @@ export const blogPosts = [
     image: "/images/blog/cors-in-flask-bridging-frontend-and-back-01-3e50c1.webp",
     tags: ["Python", "Flask", "Web Development"],
     series: "web-dev",
+    mediumUrl: "https://medium.com/stackademic/cors-in-flask-bridging-frontend-and-backend-c4d5bdf160dc",
   },
   {
     slug: "http-methods-enhancing-web-communication",
@@ -498,6 +518,7 @@ export const blogPosts = [
     image: "/images/blog/http-methods-enhancing-web-communication-01-496709.webp",
     tags: ["Web Development", "HTTP"],
     series: "web-dev",
+    mediumUrl: "https://medium.com/@asusrishabh/http-methods-enhancing-web-communication-eebb2afdcddd",
   },
   {
     slug: "session-in-the-flask-for-login",
@@ -508,6 +529,7 @@ export const blogPosts = [
     image: "/images/blog/cors-in-flask-bridging-frontend-and-back-01-3e50c1.webp",
     tags: ["Python", "Flask"],
     series: "web-dev",
+    mediumUrl: "https://medium.com/@asusrishabh/session-in-the-flask-for-login-3c2f4132a3d8",
   },
   {
     slug: "list-vs-set-in-a-minute",
@@ -517,6 +539,7 @@ export const blogPosts = [
     image: "/images/blog/list-vs-set-in-a-minute-01-80b5bb.webp",
     tags: ["Python", "Data Structures", "Performance"],
     series: "python",
+    mediumUrl: "https://medium.com/@asusrishabh/list-vs-set-in-a-minute-fe8b278d53c9",
   },
   {
     slug: "sets-performance-better-vs-lists-why",
@@ -527,6 +550,7 @@ export const blogPosts = [
     image: "/images/blog/sets-performance-better-vs-lists-why-01-2cbd4d.webp",
     tags: ["Python", "Data Structures"],
     series: "python",
+    mediumUrl: "https://medium.com/@asusrishabh/sets-performance-better-vs-lists-why-89334b4468ad",
   },
   {
     slug: "python-virtual-environment-introduction",
@@ -537,6 +561,7 @@ export const blogPosts = [
     image: "/images/blog/python-virtual-environment-introduction-01-bbc28b.webp",
     tags: ["Python", "Virtual Environment"],
     series: "python",
+    mediumUrl: "https://medium.com/@asusrishabh/python-virtual-environment-introduction-6faf172bf53c",
   },
   {
     slug: "conda-virtual-environment-commands",
@@ -547,6 +572,7 @@ export const blogPosts = [
     image: "/images/blog/conda-virtual-environment-commands-01-9b6988.webp",
     tags: ["Python", "Anaconda"],
     series: "python",
+    mediumUrl: "https://medium.com/@asusrishabh/conda-virtual-environment-commands-9877b4730220",
   },
   {
     slug: "requirements-txt-in-python",
@@ -557,6 +583,7 @@ export const blogPosts = [
     image: "/images/blog/requirements-txt-in-python-01-f87954.webp",
     tags: ["Python", "pip"],
     series: "python",
+    mediumUrl: "https://medium.com/@asusrishabh/requirements-txt-in-python-947b0b43bbe6",
   },
   {
     slug: "python-program-for-matrix-multiplication",
@@ -566,6 +593,7 @@ export const blogPosts = [
     image: "/images/blog/python-program-for-matrix-multiplication-01-c6218c.webp",
     tags: ["Python", "NumPy"],
     series: "python",
+    mediumUrl: "https://medium.com/@asusrishabh/python-program-for-matrix-multiplication-5c1de08bb105",
   },
   {
     slug: "convert-python-program-to-exe",
@@ -575,6 +603,7 @@ export const blogPosts = [
     image: "/images/blog/convert-python-program-to-exe-01-2e57fd.webp",
     tags: ["Python", "PyInstaller"],
     series: "python",
+    mediumUrl: "https://medium.com/@asusrishabh/convert-python-program-to-exe-c773345716df",
   },
   {
     slug: "understanding-the-if-name-main",
@@ -585,6 +614,7 @@ export const blogPosts = [
     image: "/images/blog/understanding-the-if-name-main-01-f4594b.webp",
     tags: ["Python", "Programming"],
     series: "python",
+    mediumUrl: "https://medium.com/@asusrishabh/understanding-the-if-name-main-15538fd9df66",
   },
 ];
 

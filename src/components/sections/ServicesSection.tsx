@@ -1,7 +1,7 @@
 "use client";
 
-import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
+import { fadeInUp, container } from "@/lib/motion";
 import {
   Code2,
   Monitor,
@@ -24,31 +24,11 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 // ---------------------------------------------------------------------------
-// Animation variants
-// ---------------------------------------------------------------------------
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
-const container = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-
-const cardVariant = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
-// ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
 export function ServicesSection() {
-  const { ref, inView } = useInView({ threshold: 0.1, triggerOnce: true });
-
   return (
-    <section id="services" className="py-20 px-4 md:px-8" ref={ref}>
+    <section id="services" className="py-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* ----------------------------------------------------------------
             Section header
@@ -57,7 +37,8 @@ export function ServicesSection() {
           className="text-center mb-16"
           variants={container}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
         >
           <motion.h2
             className="text-3xl md:text-4xl font-bold text-text mb-2"
@@ -84,7 +65,8 @@ export function ServicesSection() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
           variants={container}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
         >
           {services.map((service) => {
             const Icon = iconMap[service.icon] ?? Code2;
@@ -93,7 +75,7 @@ export function ServicesSection() {
               <motion.div
                 key={service.title}
                 className="relative p-6 rounded-2xl border border-border bg-card backdrop-blur-sm group cursor-default overflow-hidden"
-                variants={cardVariant}
+                variants={fadeInUp}
                 whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >

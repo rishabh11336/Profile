@@ -2,15 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, Tag, ExternalLink } from "lucide-react";
 import { blogSeries } from "@/data/content";
-
-const SERIES_LABELS: Record<string, string> = {
-  "in-a-minute": "In a Minute",
-  "web-dev": "Web Development",
-  python: "Python",
-};
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -52,7 +47,7 @@ export default function BlogFilterClient({
           { key: "all", label: `All (${posts.length})` },
           ...blogSeries.map((s) => ({
             key: s.seriesSlug,
-            label: `${SERIES_LABELS[s.seriesSlug] ?? s.title} (${s.postCount})`,
+            label: `${s.title} (${s.postCount})`,
           })),
         ].map((tab) => (
           <button
@@ -85,14 +80,8 @@ export default function BlogFilterClient({
               initial="hidden"
               animate="visible"
               exit={{ opacity: 0, scale: 0.95 }}
-              className="group flex flex-col rounded-xl overflow-hidden border border-border hover:border-accent transition-all duration-300 hover:-translate-y-1"
+              className="group flex flex-col rounded-xl overflow-hidden border border-border hover:border-accent transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_24px_color-mix(in_srgb,var(--accent)_15%,transparent)]"
               style={{ background: "var(--sidebar-bg)" }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 24px color-mix(in srgb, var(--accent) 15%, transparent)";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.boxShadow = "none";
-              }}
             >
               <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
                 <Image
@@ -116,7 +105,7 @@ export default function BlogFilterClient({
                     })}
                   </span>
                   <span className="px-2 py-0.5 rounded-full text-accent border border-accent/30 bg-accent/8">
-                    {SERIES_LABELS[post.series] ?? post.series}
+                    {blogSeries.find((s) => s.seriesSlug === post.series)?.title ?? post.series}
                   </span>
                 </div>
 
@@ -140,13 +129,13 @@ export default function BlogFilterClient({
                   ))}
                 </div>
 
-                <a
+                <Link
                   href={`/blog/${post.slug}/`}
                   className="mt-1 inline-flex items-center gap-1.5 text-xs font-medium text-accent hover:underline"
                 >
                   Read article
                   <ExternalLink className="w-3 h-3" />
-                </a>
+                </Link>
               </div>
             </motion.article>
           ))}

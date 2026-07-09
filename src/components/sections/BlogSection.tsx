@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import { Zap, Globe, Code, Clock, ExternalLink } from "lucide-react";
 import { blogSeries } from "@/data/content";
 
@@ -24,8 +23,6 @@ const cardVariants = {
 };
 
 export default function BlogSection() {
-  const { ref, inView } = useInView({ threshold: 0.08, triggerOnce: true });
-
   return (
     <section id="blog" className="py-20 bg-bg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -44,10 +41,10 @@ export default function BlogSection() {
         </motion.div>
 
         <motion.div
-          ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.08 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {blogSeries.map((series) => {

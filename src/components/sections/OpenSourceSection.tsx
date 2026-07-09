@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import { GitBranch, CheckCircle, XCircle, GraduationCap, ExternalLink } from "lucide-react";
 import { opensource } from "@/data/content";
 
@@ -34,8 +33,6 @@ function StatusBadge({ status }: { status: "merged" | "closed" }) {
 }
 
 export default function OpenSourceSection() {
-  const { ref, inView } = useInView({ threshold: 0.08, triggerOnce: true });
-
   return (
     <section id="opensource" className="py-20 bg-section-alt">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -54,10 +51,10 @@ export default function OpenSourceSection() {
         </motion.div>
 
         <motion.div
-          ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.08 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {opensource.map((item) => {

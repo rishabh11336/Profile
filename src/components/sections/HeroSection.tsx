@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { fadeInUp, container } from "@/lib/motion";
 import { hero } from "@/data/content";
 
 function useTypingEffect(words: string[], speed = 100, pause = 1800) {
@@ -40,16 +41,6 @@ function useTypingEffect(words: string[], speed = 100, pause = 1800) {
 
   return display;
 }
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
-const container = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
 
 export function HeroSection() {
   const typedWord = useTypingEffect(hero.typingWords);

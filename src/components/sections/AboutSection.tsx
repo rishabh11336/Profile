@@ -1,7 +1,7 @@
 "use client";
 
-import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
+import { fadeInUp, container } from "@/lib/motion";
 import { about } from "@/data/content";
 import { getTenure } from "@/lib/utils";
 
@@ -15,16 +15,6 @@ type ExperienceEntry = {
   startDate?: Date;
 };
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-};
-
-const container = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-
 function TimelineDot() {
   return (
     <div className="absolute left-0 top-1 w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0 z-10">
@@ -34,17 +24,17 @@ function TimelineDot() {
 }
 
 export function AboutSection() {
-  const { ref: sectionRef, inView } = useInView({ threshold: 0.1, triggerOnce: true });
   const experience = about.experience as ExperienceEntry[];
 
   return (
-    <section id="about" className="py-20 px-4 md:px-8" ref={sectionRef}>
+    <section id="about" className="py-20 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         <motion.div
           className="text-center mb-16"
           variants={container}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
         >
           <motion.h2
             className="text-3xl md:text-4xl font-bold text-text mb-4"
@@ -60,7 +50,8 @@ export function AboutSection() {
           <motion.div
             variants={container}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
           >
             <motion.h3
               className="text-2xl md:text-3xl font-bold text-text mb-1"
@@ -120,7 +111,8 @@ export function AboutSection() {
           <motion.div
             variants={container}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
           >
             <motion.h3
               className="text-xl font-bold text-text mb-6"
@@ -141,7 +133,8 @@ export function AboutSection() {
                         key={skill}
                         className="px-3 py-1 text-xs rounded-full border border-accent/40 text-muted bg-accent/8"
                         initial={{ opacity: 0, scale: 0.9 }}
-                        animate={inView ? { opacity: 1, scale: 1 } : {}}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
                         transition={{ delay: i * 0.04, duration: 0.3 }}
                       >
                         {skill}
@@ -160,7 +153,8 @@ export function AboutSection() {
           <motion.div
             variants={container}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
           >
             <motion.h3
               className="text-xl font-bold text-text mb-8"
@@ -197,7 +191,8 @@ export function AboutSection() {
           <motion.div
             variants={container}
             initial="hidden"
-            animate={inView ? "visible" : "hidden"}
+            whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
           >
             <motion.h3
               className="text-xl font-bold text-text mb-8"

@@ -6,31 +6,6 @@ import { ArrowLeft, Calendar, Clock, ExternalLink } from "lucide-react";
 import { blogPosts } from "@/data/content";
 import { blogContent } from "@/data/blogContent";
 
-const MEDIUM_LINKS: Record<string, string> = {
-  "bayesian-learning-in-a-minute": "https://medium.com/ai-in-plain-english/bayesian-learning-in-a-minute-c93189e8993e",
-  "conda-virtual-environment-commands": "https://medium.com/@asusrishabh/conda-virtual-environment-commands-9877b4730220",
-  "confusion-matrix-metrics-in-a-minute": "https://medium.com/ai-in-plain-english/confusion-matrix-metrics-in-a-minute-e1596872e90b",
-  "convert-python-program-to-exe": "https://medium.com/@asusrishabh/convert-python-program-to-exe-c773345716df",
-  "convolutional-neural-networks-cnns-in-a-minute": "https://medium.com/ai-in-plain-english/convolutional-neural-networks-cnns-in-a-minute-4c9ae1b9a2cf",
-  "cors-in-flask-bridging-frontend-and-backend": "https://medium.com/stackademic/cors-in-flask-bridging-frontend-and-backend-c4d5bdf160dc",
-  "forecasting-in-a-minute": "https://medium.com/@asusrishabh/forecasting-in-a-minute-f145fc6d2e16",
-  "http-methods-enhancing-web-communication": "https://medium.com/@asusrishabh/http-methods-enhancing-web-communication-eebb2afdcddd",
-  "lazy-loading-for-enhanced-user-experience": "https://medium.com/stackademic/lazy-loading-for-enhanced-user-experience-c96441e432e0",
-  "linear-regression-in-a-minute": "https://medium.com/ai-in-plain-english/linear-regression-in-a-minute-c298faf54238",
-  "list-vs-set-in-a-minute": "https://medium.com/@asusrishabh/list-vs-set-in-a-minute-fe8b278d53c9",
-  "multiclass-vs-multilabel-classification-in-a-minute": "https://medium.com/ai-in-plain-english/multiclass-vs-multilabel-classification-in-a-minute-261b6e320061",
-  "python-program-for-matrix-multiplication": "https://medium.com/@asusrishabh/python-program-for-matrix-multiplication-5c1de08bb105",
-  "python-virtual-environment-introduction": "https://medium.com/@asusrishabh/python-virtual-environment-introduction-6faf172bf53c",
-  "requirements-txt-in-python": "https://medium.com/@asusrishabh/requirements-txt-in-python-947b0b43bbe6",
-  "scalars-vectors-matrices-tensor-in-a-minute": "https://medium.com/stackademic/scalars-vectors-matrices-tensor-in-a-minute-0ebcd7f8e3b7",
-  "session-in-the-flask-for-login": "https://medium.com/@asusrishabh/session-in-the-flask-for-login-3c2f4132a3d8",
-  "sets-performance-better-vs-lists-why": "https://medium.com/@asusrishabh/sets-performance-better-vs-lists-why-89334b4468ad",
-  "support-vector-machine-svm": "https://medium.com/@asusrishabh/support-vector-machine-svm-736fb20b239b",
-  "svms-kernel-trick-in-a-minute": "https://medium.com/@asusrishabh/svms-kernel-trick-in-a-minute-bd0554b31ec0",
-  "transformers-in-a-minute": "https://medium.com/stackademic/transformers-in-a-minute-00bfb19b2225",
-  "understanding-the-if-name-main": "https://medium.com/@asusrishabh/understanding-the-if-name-main-15538fd9df66",
-};
-
 export function generateStaticParams() {
   return blogPosts.map((p) => ({ slug: p.slug }));
 }
@@ -83,7 +58,7 @@ export default async function BlogPostPage({
   if (!post || !body) notFound();
 
   const readTime = estimateReadTime(body);
-  const mediumUrl = MEDIUM_LINKS[slug];
+  const mediumUrl = post.mediumUrl;
 
   const jsonLd = {
     "@context": "https://schema.org",
