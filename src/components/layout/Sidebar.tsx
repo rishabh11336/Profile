@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -18,22 +19,22 @@ import {
 import { cn } from "@/lib/utils";
 
 const NAV_ITEMS = [
-  { label: "Home", icon: House, href: "#home", id: "home" },
-  { label: "About", icon: User, href: "#about", id: "about" },
-  { label: "Services", icon: List, href: "#services", id: "services" },
-  { label: "Projects", icon: Briefcase, href: "#portfolio", id: "portfolio" },
+  { label: "Home", icon: House, href: "/#home", id: "home" },
+  { label: "About", icon: User, href: "/#about", id: "about" },
+  { label: "Services", icon: List, href: "/#services", id: "services" },
+  { label: "Projects", icon: Briefcase, href: "/#portfolio", id: "portfolio" },
   {
     label: "Open Source",
     icon: GitBranch,
-    href: "#opensource",
+    href: "/#opensource",
     id: "opensource",
   },
-  { label: "Blog", icon: Newspaper, href: "#blog", id: "blog" },
-  { label: "Visitors", icon: Globe, href: "#visitors", id: "visitors" },
+  { label: "Blog", icon: Newspaper, href: "/#blog", id: "blog" },
+  { label: "Visitors", icon: Globe, href: "/#visitors", id: "visitors" },
   {
     label: "Contact",
     icon: MessageCircle,
-    href: "#contact",
+    href: "/#contact",
     id: "contact",
   },
 ] as const;
@@ -120,8 +121,14 @@ function SidebarInner({
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const pathname = usePathname();
 
   useEffect(() => {
+    if (pathname.startsWith("/blog")) {
+      setActiveSection("blog");
+      return;
+    }
+
     function getActive(): string {
       // A section becomes active when its top edge scrolls into the top 30% of the viewport.
       // Iterating in order and always updating `current` means the last qualifying section wins
@@ -144,7 +151,7 @@ export default function Sidebar() {
     setActiveSection(getActive());
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
