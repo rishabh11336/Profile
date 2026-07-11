@@ -8,7 +8,7 @@ export const siteConfig = {
   url: "https://rishabhsingh.me",
   ogImage: "https://rishabhsingh.me/images/og-card.png",
   email: "asusrishabh@outlook.com",
-  ga: "G-CZJ3LXY6D0",
+  ga: "G-3REDBP6J91",
   formspree: "https://formspree.io/f/mwvdeywa",
   links: {
     github: "https://github.com/rishabh11336",
