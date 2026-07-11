@@ -1,5 +1,6 @@
 # Rishabh Singh — Data Scientist | IIT Madras
-> Data Scientist at Chryselys (Oct 2024 – present) specializing in time-series forecasting, mixed-effects models, Marketing Mix Modeling (MMM), and pharma commercial analytics. B.S. Data Science and Applications, IIT Madras, CGPA 7.89, Minor in Economics & Finance (Sep 2021 – Apr 2025). Open-source contributor to CPython (merged PR #134804), conda-build (merged PR #4782), and librosa (merged PR #1850).
+
+> Data Scientist at Chryselys (Oct 2024 – present) specialising in time-series forecasting, mixed-effects models, Marketing Mix Modeling (MMM), and pharma commercial analytics. B.S. Data Science and Applications, IIT Madras, CGPA 7.89, Minor in Economics & Finance (Sep 2021 – Apr 2025). Open-source contributor to [CPython](https://github.com/python/cpython/pull/134804), [conda-build](https://github.com/conda/conda-build/pull/4782), and [librosa](https://github.com/librosa/librosa/pull/1850).
 
 ## Identity
 - Full name: Rishabh Singh
@@ -7,8 +8,8 @@
 - Employer: Chryselys (Oct 2024 – present)
 - Education: Indian Institute of Technology Madras — B.S. Data Science and Applications, CGPA 7.89, Sep 2021 – Apr 2025, Minor in Economics & Finance
 - Prior experience: ML Engineer Intern, iNeuron.ai (Mar 2024 – Apr 2024)
-- Location: Delhi, India
-- Achievement: Rank-3, Codechef Competition
+- Location: Hyderabad, India
+- Achievement: Rank-3, CodeChef Programming Competition, IIT Madras (2022)
 
 ## Technical Skills
 - Languages: Python, SQL, R, Bash, JavaScript
@@ -17,28 +18,31 @@
 - Cloud & Infra: Azure, AWS, PostgreSQL, MongoDB, Redis, Docker, CI/CD, MLOps, REST APIs, ETL
 
 ## Open-Source Contributions
-- CPython (Python's core interpreter): PR #134804 — merged. Systems-level Python contribution.
-- conda-build (Anaconda): PR #4782 — merged. Package management improvement.
-- librosa (audio ML library): PR #1850 — merged. Feature enhancement.
+- [CPython PR #134804](https://github.com/python/cpython/pull/134804): Merged contribution to Python's core interpreter.
+- [conda-build PR #4782](https://github.com/conda/conda-build/pull/4782): Merged package management improvement.
+- [librosa PR #1850](https://github.com/librosa/librosa/pull/1850): Merged feature enhancement to the audio ML library.
 
 ## Projects
-1. Mixed-Effects Marketing Modeling: Hierarchical LME regression to quantify marketing campaign elasticity; decomposes global vs. channel-level effects for MMM and ROI optimization.
-2. Audio Classification — UrbanSound8K: End-to-end deep learning pipeline; mel-spectrograms and MFCCs via Librosa; CNN trained with TensorFlow on UrbanSound8K benchmark.
-3. Bloglite — Compass: Multi-user blogging platform with Flask, SQLAlchemy ORM, JWT authentication, full CRUD, RESTful API. Containerised and deployed.
-4. Parking Management System: Live parking system deployed to production.
-5. LLM YouTube Metadata Pipeline: End-to-end pipeline for extracting and processing YouTube metadata via LLM.
-6. Kisan Dost: Agricultural information system.
+- [Parking Management System](https://parking.rishabhsingh.me): Live full-stack parking system (Flask, Vue.js, Redis, Celery, Azure).
+- [Compass — Bloglite](https://compass.rishabhsingh.me): Multi-user blogging platform with Flask, SQLAlchemy ORM, JWT auth, REST API.
+- [LLM YouTube Metadata Pipeline](https://github.com/rishabh11336/LLM-Youtube-Metadata-connecter-): End-to-end LLM pipeline for YouTube metadata generation via Claude Desktop.
+- [Phishing Domain Detection](https://github.com/rishabh11336/Phishing-Domain-Detection): Random Forest URL classifier; Flask REST API deployed on Azure.
+- [Indian Housing ETL Pipeline](https://github.com/rishabh11336/ETL-INDIAN-House-Price-Data): 180k+ records scraped and loaded into PostgreSQL + MongoDB.
 
-## Blog (23 published articles on Medium and rishabhsingh.me)
-Series 1 — "In a Minute" (11 posts): Dense, visual breakdowns of ML concepts. Topics include Transformer Architecture, SVMs & Kernel Trick, CNNs, Forecasting, Bayesian Learning, Confusion Matrix Metrics, Multiclass vs. Multilabel Classification, Scalars/Vectors/Matrices/Tensors, Linear Regression, Support Vector Machines, Confidence Intervals vs Prediction Intervals.
-Series 2 — "Web Development" (4 posts): CORS in Flask, HTTP Methods, Lazy Loading, Flask Session Login.
-Series 3 — "Python" (8 posts): Virtual environments, conda, requirements.txt, matrix multiplication, sets vs. lists performance, if __name__ == '__main__', List vs Set, converting programs to exe.
+## Blog (23 published articles)
+Series "In a Minute" (11 posts): Dense visual breakdowns of ML concepts — Transformers, SVMs, CNNs, Forecasting, Bayesian Learning, Confusion Matrix, Linear Regression, Confidence Intervals vs Prediction Intervals.
+Series "Web Development" (4 posts): CORS in Flask, HTTP Methods, Lazy Loading, Flask Session Login.
+Series "Python" (8 posts): Virtual environments, conda, requirements.txt, matrix multiplication, sets vs lists, if __name__ == '__main__', converting programs to exe.
 
-## Links
-- Portfolio: https://rishabhsingh.me
-- GitHub: https://github.com/rishabh11336
-- LinkedIn: https://www.linkedin.com/in/rishabh-data-scientist/
-- Medium: https://medium.com/@asusrishabh
-- Kaggle: https://www.kaggle.com/rishabhsingh2538
-- IIT Madras BS Guidance: https://iitmbs.rishabhsingh.me
-- Blog listing: https://rishabhsingh.me/blog/
+## Pages
+
+- [Portfolio](https://rishabhsingh.me): Data science portfolio — projects, blog, open-source work, and contact
+- [Blog](https://rishabhsingh.me/blog/): 23 technical articles on ML, Python, and web development
+- [IIT Madras BS Planner](https://iitmbs.rishabhsingh.me): Elective planner for IITM BS Data Science students — 13 career tracks, 6 minors
+
+## Optional
+
+- [GitHub](https://github.com/rishabh11336): Open-source contributions and project repositories
+- [LinkedIn](https://www.linkedin.com/in/rishabh-data-scientist/): Professional profile
+- [Medium](https://medium.com/@asusrishabh): Blog mirror on Medium / Stackademic
+- [Kaggle](https://www.kaggle.com/rishabhsingh2538): ML competition notebooks
