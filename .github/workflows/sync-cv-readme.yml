@@ -1,4 +1,4 @@
-name: Sync CV filename to README
+name: Guard CV canonical filename
 
 on:
   push:
@@ -7,29 +7,17 @@ on:
       - CV/**
 
 jobs:
-  sync:
+  guard:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v4
-
-      - name: Update CV download link in README
+      - name: Enforce canonical CV filename
         run: |
-          CV_FILE=$(ls CV/*.pdf 2>/dev/null | head -1)
-          if [ -z "$CV_FILE" ]; then
-            echo "No PDF found in CV/ — skipping"
-            exit 0
+          CANONICAL="CV/Rishabh-Singh-Data-Scientist-CV.pdf"
+          if [ ! -f "$CANONICAL" ]; then
+            echo "ERROR: CV filename changed. The link https://rishabhsingh.me/CV/Rishabh-Singh-Data-Scientist-CV.pdf"
+            echo "is shared with recruiters and external sites — renaming breaks every copy."
+            echo "Rename your PDF back to: Rishabh-Singh-Data-Scientist-CV.pdf"
+            exit 1
           fi
-          CV_NAME=$(basename "$CV_FILE")
-          # Replace any existing CV filename in the README download link
-          sed -i "s|CV/[^)]*\.pdf|CV/$CV_NAME|g" README.md
-          if git diff --quiet README.md; then
-            echo "README already up to date"
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git commit -m "sync: update CV link in README → $CV_NAME"
-          git push
+          echo "OK: canonical CV filename present"
