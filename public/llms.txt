@@ -53,7 +53,7 @@
 - [Blog](https://rishabhsingh.me/blog/): 23 technical articles on ML, Python, and web development
 - [IIT Madras BS Planner](https://iitmbs.rishabhsingh.me): Elective planner for IITM BS Data Science students — 13 career tracks, 6 minors, handbook-verified
 
-## Optional
+## Connect
 
 - [GitHub](https://github.com/rishabh11336): Open-source contributions and project repositories
 - [LinkedIn](https://www.linkedin.com/in/rishabh-data-scientist/): Professional profile
