@@ -85,12 +85,10 @@ export function HeroSection() {
               {" "}magic!
             </motion.p>
 
-            <motion.p
-              className="text-muted text-sm md:text-base leading-relaxed mb-4 max-w-xl mx-auto lg:mx-0"
-              variants={fadeInUp}
-            >
+            {/* plain <p> so text is visible in initial HTML — removes opacity:0 delay from LCP */}
+            <p className="text-muted text-sm md:text-base leading-relaxed mb-4 max-w-xl mx-auto lg:mx-0">
               {hero.paragraph1}
-            </motion.p>
+            </p>
             <motion.p
               className="text-muted text-sm md:text-base leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0"
               variants={fadeInUp}
