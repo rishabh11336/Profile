@@ -1,44 +1,148 @@
-# Rishabh Singh — Data Scientist | IIT Madras
+# Rishabh Singh — Data Scientist | AI Engineer | IIT Madras
 
-> Data Scientist at Chryselys (Oct 2024 – present) specialising in time-series forecasting, mixed-effects models, Marketing Mix Modeling (MMM), and pharma commercial analytics. B.S. Data Science and Applications, IIT Madras, CGPA 7.89, Minor in Economics & Finance (Sep 2021 – Apr 2025). Open-source contributor to [CPython](https://github.com/python/cpython/pull/134804), [conda-build](https://github.com/conda/conda-build/pull/4782), and [librosa](https://github.com/librosa/librosa/pull/1850).
+> Data Scientist at Chryselys (Oct 2024 – present) specialising in time-series forecasting, mixed-effects models, Marketing Mix Modeling (MMM), and pharma commercial analytics. B.S. Data Science and Applications, IIT Madras, CGPA 7.89, Minor in Economics & Finance (Sep 2021 – Apr 2025). Open-source contributor to [CPython](https://github.com/python/cpython/pull/134804), [conda-build](https://github.com/conda/conda-build/pull/4782), and [librosa](https://github.com/librosa/librosa/pull/1850). 23 published technical articles on ML, Python, and web development.
 
 ## Identity
+
 - Full name: Rishabh Singh
 - Role: Data Scientist & AI Engineer
 - Employer: Chryselys (Oct 2024 – present)
-- Education: Indian Institute of Technology Madras — B.S. Data Science and Applications, CGPA 7.89, Sep 2021 – Apr 2025, Minor in Economics & Finance
+- Education: Indian Institute of Technology Madras — B.S. Data Science and Applications, CGPA 7.89, Sep 2021 – Apr 2025; Minor in Economics & Finance
 - Prior experience: ML Engineer Intern, iNeuron.ai (Mar 2024 – Apr 2024)
-- Location: Hyderabad, India
+- Location: Delhi, India
+- Email: asusrishabh@outlook.com
 - Achievement: Rank-3, CodeChef Programming Competition, IIT Madras (2022)
+- Leadership: oneArena Flask / Machine Learning Trainer
+
+## Experience
+
+### Data Scientist @ Chryselys (Oct 2024 – Present)
+Chryselys is a pharma commercial analytics firm. Responsibilities include:
+- Architecting and delivering core components of ForecastIQ — a live commercial pharma forecasting platform — including end-to-end dashboard delivery and scenario planner evaluation.
+- Designing time-series cross-validation, error-tracking (MAPE, RMSE), and model comparison frameworks.
+- Collaborating with backend engineering to operationalise statistical models into production-ready pipelines.
+- Engineering a Streamlit-based automation tool that reduced manual preprocessing by ~40%, enabling non-technical stakeholders to independently explore segmentation outputs.
+- Strengthening and extending Mixed-Effects sizing models across 3+ pharma client engagements with documentation for model reuse in go-to-market sizing.
+- Optimising feature engineering pipelines and developing promotion-response features integrating MMM outputs with ML forecasting models.
+- Coordinating with Forecasting, Product, and Insights & Analytics teams to ship end-to-end forecasting solutions.
+- Coaching a cohort of 6 junior analysts on Python workflows, model validation, production-readiness, code review, and stakeholder-ready presentations.
+- [Mentorship Certificate](https://www.linkedin.com/posts/rishabh-data-scientist_certificate-activity-7392448621314658305-_Qvd?utm_source=share&utm_medium=member_desktop&rcm=ACoAADjSymkBQD2fUi_0L5vVimxPW6vJmLTDKEE)
+
+### ML Engineer Intern @ iNeuron.ai (Mar 2024 – Apr 2024)
+- Developed a phishing-domain detection model using Random Forests on ~147,000 URLs with full feature engineering, model selection, and validation metrics evaluation.
+- Deployed the classifier as a Flask REST API on Microsoft Azure with a lightweight front-end for real-time URL classification.
+- Authored reproducible evaluation notebooks and workflow documentation.
+
+## Education
+
+- **B.S. Data Science and Applications** — Indian Institute of Technology Madras (IITM), Sep 2021 – Apr 2025, CGPA: 7.89
+- **Minor in Economics & Finance** — Indian Institute of Technology Madras (IITM)
+- Coursework: Machine Learning, Deep Learning, Neural Networks, NLP, Probability & Statistics, DBMS, Software Engineering, Data Structures & Algorithms, Business Analytics, Econometrics, Game Theory, Operations Research
 
 ## Technical Skills
+
 - Languages: Python, SQL, R, Bash, JavaScript
-- ML & Analytics: Time Series Forecasting, Mixed-Effects Models (LME/LMM), Marketing Mix Modeling (MMM), scikit-learn, XGBoost, PyTorch, TensorFlow, NLP, LLM Pipelines, A/B Testing, Bayesian Inference, Feature Engineering
-- Frameworks & Tools: Streamlit, Flask, FastAPI, Tableau, Databricks, Dataiku, PySpark, Git, Jupyter, Figma
-- Cloud & Infra: Azure, AWS, PostgreSQL, MongoDB, Redis, Docker, CI/CD, MLOps, REST APIs, ETL
+- ML & Analytics: Time Series Forecasting, Mixed-Effects Models (LME/LMM), Marketing Mix Modeling (MMM), scikit-learn, pandas, NumPy, XGBoost, NLP, LLM Pipelines, Feature Engineering, A/B Testing, Bayesian Inference, Regression, Classification, Clustering, Segmentation, Attribution Analytics, Statistical Modeling, Hypothesis Testing
+- Frameworks & Tools: Streamlit, Flask, FastAPI, PyTorch, TensorFlow, PySpark, Tableau, Dataiku, Databricks, Celery, Redis, Git, Jupyter, Figma, Jira, Bitbucket
+- Cloud & Infra: Azure (App Service, Functions, Blob Storage), AWS (S3, Lambda, Bedrock, App Runner), PostgreSQL, MongoDB, Docker, CI/CD, MLOps, REST APIs, ETL, Vercel, Render
+
+## Certifications & Achievements
+
+- Microsoft Certified: Azure Fundamentals (AZ-900) — cloud computing, Azure services, security, compliance, pricing
+- Microsoft Certified: Azure Data Fundamentals (DP-900) — relational & non-relational data, Azure data services, analytics workloads
+- Microsoft Certified: Azure AI Fundamentals (AI-900) — ML, computer vision, NLP, conversational AI on Azure
+- HarvardX: CS50 Introduction to Computer Science (2025) — algorithms, data structures, C, Python, SQL, web development
+- HarvardX: R Basics (2025) — statistical computing, data wrangling, visualization in R
+- UC Davis: Data Visualization with Tableau (2024) — dashboards, visual analytics, storytelling with data
+- Rank 3, IIT Madras CodeChef Programming Competition (2022)
 
 ## Open-Source Contributions
-- [CPython PR #134804](https://github.com/python/cpython/pull/134804): Merged contribution to Python's core interpreter.
-- [conda-build PR #4782](https://github.com/conda/conda-build/pull/4782): Merged package management improvement.
-- [librosa PR #1850](https://github.com/librosa/librosa/pull/1850): Merged feature enhancement to the audio ML library.
+
+- [CPython PR #134804](https://github.com/python/cpython/pull/134804): Merged contribution to Python's core interpreter (CPython). Systems-level Python contribution.
+- [conda-build PR #4782](https://github.com/conda/conda-build/pull/4782): Merged package management improvement to Anaconda's conda-build.
+- [librosa PR #1850](https://github.com/librosa/librosa/pull/1850): Documentation improvement fixing broken SciPy conference paper links in the audio ML library. Awaiting stable SciPy proceedings URL.
+- [Applied ML Course PR #1](https://github.com/moshesipper/Applied-Machine-Learning-Course/pull/1): Educational content improvement for ML learning resources.
+- [KDM Delhi Events PR #4](https://github.com/kdmdelhincr/events/pull/4): Contributing to local tech community initiatives.
 
 ## Projects
-- [Parking Management System](https://parking.rishabhsingh.me): Live full-stack parking system (Flask, Vue.js, Redis, Celery, Azure).
-- [Compass — Bloglite](https://compass.rishabhsingh.me): Multi-user blogging platform with Flask, SQLAlchemy ORM, JWT auth, REST API.
-- [LLM YouTube Metadata Pipeline](https://github.com/rishabh11336/LLM-Youtube-Metadata-connecter-): End-to-end LLM pipeline for YouTube metadata generation via Claude Desktop.
-- [Phishing Domain Detection](https://github.com/rishabh11336/Phishing-Domain-Detection): Random Forest URL classifier; Flask REST API deployed on Azure.
-- [Indian Housing ETL Pipeline](https://github.com/rishabh11336/ETL-INDIAN-House-Price-Data): 180k+ records scraped and loaded into PostgreSQL + MongoDB.
 
-## Blog (23 published articles)
-Series "In a Minute" (11 posts): Dense visual breakdowns of ML concepts — Transformers, SVMs, CNNs, Forecasting, Bayesian Learning, Confusion Matrix, Linear Regression, Confidence Intervals vs Prediction Intervals.
-Series "Web Development" (4 posts): CORS in Flask, HTTP Methods, Lazy Loading, Flask Session Login.
-Series "Python" (8 posts): Virtual environments, conda, requirements.txt, matrix multiplication, sets vs lists, if __name__ == '__main__', converting programs to exe.
+### [LLM YouTube Metadata Connector](https://github.com/rishabh11336/LLM-Youtube-Metadata-connecter-)
+Stack: LLM Pipelines, Claude, YouTube API v3, Python, OAuth 2.0
+End-to-end LLM pipeline using Claude Desktop + YouTube Data API v3 to automate SEO-optimised title & description writing, keyword tagging, and content optimisation for 500+ YouTube videos. Includes prompt engineering, deterministic validation layers, human-in-the-loop review, and OAuth 2.0 authentication.
+
+### [Parking Management System](https://parking.rishabhsingh.me)
+Stack: Flask, Vue.js, Azure App Service, Redis, Celery, CI/CD
+Full-stack web app with Flask REST API and Vue.js frontend. Redis + Celery for async task queuing, deployed on Azure App Service with CI/CD. Real-time slot booking, role-based access control, operational analytics dashboard.
+[GitHub](https://github.com/rishabh11336/Vehicle-Parking-App)
+
+### [Indian Housing ETL Pipeline](https://github.com/rishabh11336/ETL-INDIAN-House-Price-Data)
+Stack: Python, PostgreSQL, MongoDB, ETL, Web Scraping
+Scalable ETL pipeline covering scraping, cleaning, deduplication, and validation. Stored 180,000+ records across PostgreSQL and MongoDB for downstream statistical analysis and ML modelling.
+
+### [Phishing Domain Detection](https://github.com/rishabh11336/Phishing-Domain-Detection)
+Stack: Python, scikit-learn, Flask, Azure, Cassandra, Cybersecurity
+ML pipeline to classify URLs as legitimate or malicious using a Random Forest trained on URL, domain, page, and content features. Served via Flask REST API with Cassandra logging every prediction. Deployed to Azure during iNeuron ML internship. Trained on ~147,000 URLs.
+
+### Mixed-Effects Marketing Modeling
+Stack: Python, statsmodels, LME/LMM, Feature Engineering, MMM
+Hierarchical mixed-effects regression (LME) to quantify marketing campaign elasticity. Decomposes global vs. channel-level effects to support data-driven budget allocation and ROI optimisation using Marketing Mix Modeling.
+[Kaggle Notebook](https://www.kaggle.com/code/rishabhsingh2538/mixed-marketing-modeling)
+
+### Audio Classification — UrbanSound8K
+Stack: TensorFlow, Librosa, CNN, Deep Learning, Python
+End-to-end deep learning pipeline for urban audio classification. Extracted features using mel-spectrograms and MFCCs via Librosa. Trained CNN models with TensorFlow on the UrbanSound8K benchmark dataset.
+[Kaggle Notebook](https://www.kaggle.com/code/rishabhsingh2538/audio-classification-with-urbanaudio8k)
+
+### [Bloglite — Compass](https://compass.rishabhsingh.me)
+Stack: Flask, SQLAlchemy, REST API, PostgreSQL, JWT
+Multi-user blogging platform with Flask, SQLAlchemy ORM, JWT authentication, full CRUD operations, and RESTful API design. Containerised and deployed to cloud.
+[GitHub](https://github.com/rishabh11336/Blogsite)
+
+## Blog — Series Overview
+
+23 published technical articles across three series on [rishabhsingh.me/blog/](https://rishabhsingh.me/blog/) and [Medium](https://medium.com/@asusrishabh).
+
+### Series: In a Minute (11 posts)
+Dense, visual breakdowns of complex ML concepts — built to understand the big picture in a single read.
+
+### Series: Web Development (4 posts)
+Practical web development — HTTP methods, CORS, lazy loading, Flask session authentication.
+
+### Series: Python (8 posts)
+Python fundamentals, tools, and data science implementations.
+
+## Blog Posts
+
+- [Transformer Architecture Explained in a Minute](https://rishabhsingh.me/blog/transformers-in-a-minute/): 6 components, Attention formula, encoder vs decoder, GPT vs BERT. Visual breakdown. Series: In a Minute. [Medium](https://medium.com/stackademic/transformers-in-a-minute-00bfb19b2225)
+- [Confidence Interval vs Prediction Interval Explained](https://rishabhsingh.me/blog/ci-vs-pi-regression-bands/): Interactive simulation showing why CI and PI are fundamentally different. One band covers the mean; the other catches new individual points. Series: In a Minute.
+- [Forecasting in a Minute](https://rishabhsingh.me/blog/forecasting-in-a-minute/): What is forecasting, 6 types, inline forecasting, real interest-rate decision model walkthrough. Series: In a Minute. [Medium](https://medium.com/@asusrishabh/forecasting-in-a-minute-f145fc6d2e16)
+- [SVMs & Kernel Trick Explained](https://rishabhsingh.me/blog/svms-kernel-trick-in-a-minute/): Optimal hyperplane, support vectors, kernel trick, 4 kernel types with gamma tuning. Series: In a Minute. [Medium](https://medium.com/@asusrishabh/svms-kernel-trick-in-a-minute-bd0554b31ec0)
+- [CNNs Explained — Convolutional Neural Networks in a Minute](https://rishabhsingh.me/blog/convolutional-neural-networks-cnns-in-a-minute/): Kernel, stride, padding, pooling, flattening — how images flow from pixels to predictions. Series: In a Minute. [Medium](https://medium.com/ai-in-plain-english/convolutional-neural-networks-cnns-in-a-minute-4c9ae1b9a2cf)
+- [Scalars, Vectors, Matrices & Tensors Explained](https://rishabhsingh.me/blog/scalars-vectors-matrices-tensor-in-a-minute/): From a single number to n-dimensional arrays, defined and compared. Series: In a Minute. [Medium](https://medium.com/stackademic/scalars-vectors-matrices-tensor-in-a-minute-0ebcd7f8e3b7)
+- [Multiclass vs Multilabel Classification Explained](https://rishabhsingh.me/blog/multiclass-vs-multilabel-classification-in-a-minute/): Binary, multiclass, multilabel: one label vs many labels with real examples. Series: In a Minute. [Medium](https://medium.com/ai-in-plain-english/multiclass-vs-multilabel-classification-in-a-minute-261b6e320061)
+- [Confusion Matrix & Metrics Explained](https://rishabhsingh.me/blog/confusion-matrix-metrics-in-a-minute/): TP, TN, FP, FN, accuracy, precision, recall, F1, specificity — every classification metric defined. Series: In a Minute. [Medium](https://medium.com/ai-in-plain-english/confusion-matrix-metrics-in-a-minute-e1596872e90b)
+- [Bayesian Learning Explained](https://rishabhsingh.me/blog/bayesian-learning-in-a-minute/): Bayes theorem, prior, likelihood, posterior — how beliefs update with evidence. Series: In a Minute. [Medium](https://medium.com/ai-in-plain-english/bayesian-learning-in-a-minute-c93189e8993e)
+- [Linear Regression Explained](https://rishabhsingh.me/blog/linear-regression-in-a-minute/): y=mx+b, MSE, gradient descent, R² score, multivariable regression, Python implementation. Series: In a Minute. [Medium](https://medium.com/ai-in-plain-english/linear-regression-in-a-minute-c298faf54238)
+- [Support Vector Machine (SVM)](https://rishabhsingh.me/blog/support-vector-machine-svm/): Hyperplanes, margins, support vectors, C and gamma tuning, Iris dataset with scikit-learn. Series: In a Minute. [Medium](https://medium.com/@asusrishabh/support-vector-machine-svm-736fb20b239b)
+- [Lazy Loading vs Eager Loading](https://rishabhsingh.me/blog/lazy-loading-for-enhanced-user-experience/): HTML loading attribute, deferred images, load time and SEO impact. Series: Web Development. [Medium](https://medium.com/stackademic/lazy-loading-for-enhanced-user-experience-c96441e432e0)
+- [CORS in Flask — Bridging Frontend and Backend](https://rishabhsingh.me/blog/cors-in-flask-bridging-frontend-and-backend/): How CORS works and how flask-cors fixes cross-origin errors. Series: Web Development. [Medium](https://medium.com/stackademic/cors-in-flask-bridging-frontend-and-backend-c4d5bdf160dc)
+- [HTTP Methods — Enhancing Web Communication](https://rishabhsingh.me/blog/http-methods-enhancing-web-communication/): GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS with Python requests examples. Series: Web Development. [Medium](https://medium.com/@asusrishabh/http-methods-enhancing-web-communication-eebb2afdcddd)
+- [Flask Session for Login](https://rishabhsingh.me/blog/session-in-the-flask-for-login/): Session-based login in Flask: secret key, login route, protected route, logout with full code. Series: Web Development. [Medium](https://medium.com/@asusrishabh/session-in-the-flask-for-login-3c2f4132a3d8)
+- [List vs Set in Python — Performance, Use Cases](https://rishabhsingh.me/blog/list-vs-set-in-a-minute/): Iteration speed, O(1) membership testing, memory trade-offs, benchmark results. Series: Python. [Medium](https://medium.com/@asusrishabh/list-vs-set-in-a-minute-fe8b278d53c9)
+- [Sets Performance Better vs Lists — Why?](https://rishabhsingh.me/blog/sets-performance-better-vs-lists-why/): Hash tables, O(1) average-case operations, when sets dramatically outperform lists. Series: Python. [Medium](https://medium.com/@asusrishabh/sets-performance-better-vs-lists-why-89334b4468ad)
+- [Python Virtual Environment — Introduction](https://rishabhsingh.me/blog/python-virtual-environment-introduction/): Why virtual environments exist, virtualenv, Linux and Windows commands. Series: Python. [Medium](https://medium.com/@asusrishabh/python-virtual-environment-introduction-6faf172bf53c)
+- [Conda Virtual Environment & Commands](https://rishabhsingh.me/blog/conda-virtual-environment-commands/): Essential conda commands: create, activate, install, deactivate, delete. Series: Python. [Medium](https://medium.com/@asusrishabh/conda-virtual-environment-commands-9877b4730220)
+- [requirements.txt in Python](https://rishabhsingh.me/blog/requirements-txt-in-python/): pip freeze captures environment, pip install -r recreates it anywhere. Series: Python. [Medium](https://medium.com/@asusrishabh/requirements-txt-in-python-947b0b43bbe6)
+- [Python Matrix Multiplication — 3 Methods](https://rishabhsingh.me/blog/python-program-for-matrix-multiplication/): Nested loops, list comprehension, and NumPy.dot() with working examples. Series: Python. [Medium](https://medium.com/@asusrishabh/python-program-for-matrix-multiplication-5c1de08bb105)
+- [Convert Python Program to exe](https://rishabhsingh.me/blog/convert-python-program-to-exe/): PyInstaller and auto-py-to-exe — bundle Python apps into standalone executables. Series: Python. [Medium](https://medium.com/@asusrishabh/convert-python-program-to-exe-c773345716df)
+- [if __name__ == '__main__' in Python](https://rishabhsingh.me/blog/understanding-the-if-name-main/): The __name__ variable, top-level code, and preventing unintended execution on import. Series: Python. [Medium](https://medium.com/@asusrishabh/understanding-the-if-name-main-15538fd9df66)
+- [How I Built My Data Science Portfolio with Next.js and GitHub Pages](https://rishabhsingh.me/blog/how-i-built-my-data-science-portfolio/): Step-by-step guide to a free portfolio with Next.js static export, Tailwind CSS, and GitHub Pages.
 
 ## Pages
 
 - [Portfolio](https://rishabhsingh.me): Data science portfolio — projects, blog, open-source work, and contact
 - [Blog](https://rishabhsingh.me/blog/): 23 technical articles on ML, Python, and web development
-- [IIT Madras BS Planner](https://iitmbs.rishabhsingh.me): Elective planner for IITM BS Data Science students — 13 career tracks, 6 minors
+- [IIT Madras BS Planner](https://iitmbs.rishabhsingh.me): Elective planner for IITM BS Data Science students — 13 career tracks, 6 minors, handbook-verified
 
 ## Optional
 
@@ -46,3 +150,4 @@ Series "Python" (8 posts): Virtual environments, conda, requirements.txt, matrix
 - [LinkedIn](https://www.linkedin.com/in/rishabh-data-scientist/): Professional profile
 - [Medium](https://medium.com/@asusrishabh): Blog mirror on Medium / Stackademic
 - [Kaggle](https://www.kaggle.com/rishabhsingh2538): ML competition notebooks
+- [CV / Resume](https://rishabhsingh.me/CV/Rishabh-Singh-Data-Scientist-CV.pdf): Downloadable PDF resume
