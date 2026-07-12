@@ -76,13 +76,14 @@ export function HeroSection() {
               variants={fadeInUp}
             >
               I&apos;m all about that{" "}
-              <span className="text-accent inline-block min-w-[14ch]">{typedWord}</span>
-              {/* ml-1.5 gives visible gap between word and cursor */}
-              <span
-                className="inline-block w-[2px] h-7 ml-1.5 align-middle bg-accent animate-pulse"
-                aria-hidden="true"
-              />
-              {" "}magic!
+              <span className="whitespace-nowrap">
+                <span className="text-accent">{typedWord}</span>
+                <span
+                  className="inline-block w-[2px] h-7 ml-1.5 align-middle bg-accent animate-pulse"
+                  aria-hidden="true"
+                />
+                {" "}magic!
+              </span>
             </motion.p>
 
             {/* plain <p> so text is visible in initial HTML — removes opacity:0 delay from LCP */}
