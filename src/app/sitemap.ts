@@ -21,6 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    {
+      url: "https://rishabhsingh.me/privacy/",
+      lastModified: new Date("2026-07-12"),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
     ...blogPosts.map((post) => {
       const postDate = new Date(post.date);
       const isRecent = now.getTime() - postDate.getTime() < SIX_MONTHS_MS;

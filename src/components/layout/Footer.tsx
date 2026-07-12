@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowUp, ExternalLink } from "lucide-react";
 
 const SOCIAL_LINKS = [
@@ -39,6 +40,13 @@ export default function Footer() {
 
         {/* Social links */}
         <div className="flex items-center gap-4">
+          <Link
+            href="/privacy/"
+            className="text-xs font-medium transition-colors duration-200 hover:text-[var(--accent)]"
+            style={{ color: "var(--text-muted)" }}
+          >
+            Privacy
+          </Link>
           {SOCIAL_LINKS.map((link) => (
             <a
               key={link.label}
