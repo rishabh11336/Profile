@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Blog — AI, ML & Python",
@@ -34,5 +35,14 @@ export const metadata: Metadata = {
 };
 
 export default function BlogLayout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      <Script
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9086648309254904"
+        crossOrigin="anonymous"
+        strategy="afterInteractive"
+      />
+      {children}
+    </>
+  );
 }
