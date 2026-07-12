@@ -87,10 +87,6 @@ export default function VisitorsSection() {
             </a>
           </div>
 
-          <div className="px-6 py-3 border-t border-border/50 flex items-center gap-2">
-            <Globe className="w-3.5 h-3.5 text-muted" />
-            <p className="text-xs text-muted">Click map to view detailed country statistics</p>
-          </div>
         </motion.div>
       </div>
     </section>
