@@ -2,13 +2,14 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ExternalLink, BarChart2, TrendingUp, AudioWaveform } from "lucide-react";
+import { ExternalLink, BarChart2, TrendingUp, AudioWaveform, Wrench } from "lucide-react";
 import { GithubIcon } from "@/components/ui/GithubIcon";
 import { projects } from "@/data/content";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   "chart-line": TrendingUp,
   "wave-square": AudioWaveform,
+  wrench: Wrench,
 };
 
 const iconGradients = [

@@ -186,6 +186,17 @@ export const services = [
 
 export const projects = [
   {
+    title: "Tiny Tools",
+    image: null,
+    imageAlt: null,
+    icon: "wrench",
+    tags: ["Client-Side", "WASM", "Privacy", "PDF", "Image Tools"],
+    description:
+      "34 free, 100% client-side file utilities — image compression/conversion, PDF merge/split, SVG optimisation, audio/video conversion, plus QR, hashing, and encoding tools. Files never leave your device; all processing runs in-browser with no sign-up.",
+    github: null,
+    live: "https://tinytool.rishabhsingh.me/",
+  },
+  {
     title: "LLM YouTube Metadata Connector",
     image: "https://opengraph.githubassets.com/1/rishabh11336/LLM-Youtube-Metadata-connecter-",
     imageAlt: "LLM YouTube Metadata Connector — Claude Desktop, YouTube API v3, LLM pipeline",
