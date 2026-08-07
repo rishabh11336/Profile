@@ -164,7 +164,7 @@ export function HeroSection() {
               transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
               <Image
-                src="/me-2x.webp"
+                src="/me-2x.webp?v=2"
                 alt="Rishabh Singh — Data Scientist & AI Engineer"
                 width={263}
                 height={394}
