@@ -184,7 +184,20 @@ export const services = [
   },
 ];
 
-export const projects = [
+export type Project = {
+  title: string;
+  image: string | null;
+  imageAlt: string | null;
+  icon?: string;
+  cover?: string;
+  tags: string[];
+  description: string;
+  github: string | null;
+  live: string | null;
+  kaggle?: string;
+};
+
+export const projects: Project[] = [
   {
     title: "Tiny Tools",
     image: "/images/projects/tiny-tools.jpg",
