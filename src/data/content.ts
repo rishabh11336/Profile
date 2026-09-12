@@ -199,10 +199,10 @@ export const projects = [
   {
     title: "FraudNet",
     image: "/images/projects/fraud-network-viz.webp",
-    imageAlt: "FraudNet — unsupervised entity linkage of signup-abuse account clusters",
-    tags: ["Entity Linkage", "Fellegi–Sunter", "Unsupervised ML", "Graph Clustering", "Python"],
+    imageAlt: "FraudNet — fraud detection on unlabeled signup-offer account clusters",
+    tags: ["Fraud Detection", "Entity Linkage", "Fellegi–Sunter", "Unsupervised ML", "Graph Clustering", "Python"],
     description:
-      "Unsupervised entity linkage on ~15,000 unlabeled signups. Fellegi–Sunter weighted matching across email aliases, device hash, card, and address produced 251 suspected actor clusters — visualized so you can inspect why accounts were linked.",
+      "Fraud detection on ~15,000 unlabeled signups from an unknown platform running a signup offer. Fellegi–Sunter weighted entity linkage across email aliases, device hash, card, and address produced 251 suspected actor clusters — visualized so you can inspect why accounts were linked.",
     github: "https://github.com/rishabh11336/fraud-network-viz",
     live: "https://fraud-network-viz.vercel.app",
   },
