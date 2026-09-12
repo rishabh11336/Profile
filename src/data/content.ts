@@ -187,9 +187,8 @@ export const services = [
 export const projects = [
   {
     title: "Tiny Tools",
-    image: null,
-    imageAlt: null,
-    icon: "wrench",
+    image: "/images/projects/tiny-tools.jpg",
+    imageAlt: "Desk toolkit — client-side file utilities that never leave the device",
     tags: ["Client-Side", "WASM", "Privacy", "PDF", "Image Tools"],
     description:
       "34 free, 100% client-side file utilities — image compression/conversion, PDF merge/split, SVG optimisation, audio/video conversion, plus QR, hashing, and encoding tools. Files never leave your device; all processing runs in-browser with no sign-up.",
@@ -249,9 +248,8 @@ export const projects = [
   },
   {
     title: "Mixed-Effects Marketing Modeling",
-    image: null,
-    imageAlt: null,
-    icon: "chart-line",
+    image: "/images/projects/mmm.jpg",
+    imageAlt: "Layered tokens on a table — hierarchical mixed-effects marketing mix model",
     tags: ["Python", "MMM", "statsmodels", "LME/LMM", "Feature Engineering"],
     description:
       "Hierarchical mixed-effects regression (LME) to quantify marketing campaign elasticity. Decomposed global vs. channel-level effects to support data-driven budget allocation and ROI optimisation using Marketing Mix Modeling.",
@@ -261,9 +259,8 @@ export const projects = [
   },
   {
     title: "Audio Classification — UrbanSound8K",
-    image: null,
-    imageAlt: null,
-    icon: "wave-square",
+    image: "/images/projects/urbansound8k.jpg",
+    imageAlt: "Rain-slick city street at night — urban audio classification",
     tags: ["TensorFlow", "Librosa", "CNN", "Deep Learning", "Python"],
     description:
       "End-to-end deep learning pipeline for urban audio classification. Extracted features using mel-spectrograms and MFCCs via Librosa. Trained CNN models with TensorFlow on the UrbanSound8K benchmark dataset.",
