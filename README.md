@@ -65,6 +65,7 @@ IIT Madras graduate and Data Scientist with 2 years of pharma commercial analyti
 
 | Project | Stack | Link |
 |---|---|---|
+| **FraudNet** | Python, Next.js, D3, entity linkage | [fraud-network-viz.vercel.app](https://fraud-network-viz.vercel.app) |
 | **LLM YouTube Metadata Connector** | Python, LLM Pipelines, YouTube API, Claude Desktop | [GitHub](https://github.com/rishabh11336/LLM-Youtube-Metadata-connecter-) |
 | **Parking Management System** | Flask, Vue.js, Redis, Celery, Azure | [parking.rishabhsingh.me](https://parking.rishabhsingh.me) |
 | **Indian Housing ETL Pipeline** | PostgreSQL, MongoDB, Python, web scraping | [GitHub](https://github.com/rishabh11336/ETL-INDIAN-House-Price-Data) |
@@ -73,6 +74,8 @@ IIT Madras graduate and Data Scientist with 2 years of pharma commercial analyti
 | **Compass (Bloglite)** | Flask, SQLAlchemy, REST API | [compass.rishabhsingh.me](https://compass.rishabhsingh.me) |
 
 ### Project Details
+
+**FraudNet** — Interactive explorer for signup-abuse account clusters. Linked ~15,000 unlabeled signups into 251 suspected actor rings with Fellegi–Sunter weighted entity linkage, then built a Next.js + D3 graph so you can click a cluster and see why those accounts were glued together. [Live](https://fraud-network-viz.vercel.app) · [GitHub](https://github.com/rishabh11336/fraud-network-viz)
 
 **LLM YouTube Metadata Connector** — Engineered an end-to-end LLM pipeline using Claude Desktop and the YouTube Data API v3 to automate metadata generation, SEO-optimized title/description writing, keyword tagging, and content optimization for YouTube; used to update 500+ YouTube videos. Implemented deterministic validation layers, prompt engineering, and a human-in-the-loop review step. Integrated OAuth 2.0 authentication and rule-based post-processing to ensure production-grade reliability.
 

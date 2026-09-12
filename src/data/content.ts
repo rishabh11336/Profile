@@ -197,6 +197,16 @@ export const projects = [
     live: "https://tinytool.rishabhsingh.me/",
   },
   {
+    title: "FraudNet",
+    image: "/images/projects/fraud-network-viz.webp",
+    imageAlt: "FraudNet — interactive signup-abuse cluster explorer",
+    tags: ["Python", "Next.js", "D3", "Entity Linkage", "React"],
+    description:
+      "Interactive explorer for signup-abuse account clusters. Linked ~15,000 unlabeled signups into 251 suspected actor rings, then let you click a cluster and see why those accounts were glued together.",
+    github: "https://github.com/rishabh11336/fraud-network-viz",
+    live: "https://fraud-network-viz.vercel.app",
+  },
+  {
     title: "LLM YouTube Metadata Connector",
     image: "https://opengraph.githubassets.com/1/rishabh11336/LLM-Youtube-Metadata-connecter-",
     imageAlt: "LLM YouTube Metadata Connector — Claude Desktop, YouTube API v3, LLM pipeline",
