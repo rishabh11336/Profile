@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ExternalLink, BarChart2, TrendingUp, AudioWaveform, Wrench, Home, ShieldAlert } from "lucide-react";
+import { ExternalLink, BarChart2, TrendingUp, AudioWaveform, Wrench } from "lucide-react";
 import { GithubIcon } from "@/components/ui/GithubIcon";
 import { projects } from "@/data/content";
 
@@ -50,66 +50,8 @@ function YoutubeCover() {
   );
 }
 
-function HousingCover() {
-  return (
-    <div
-      className="relative w-full overflow-hidden bg-[#0c1929]"
-      style={{ aspectRatio: "16/9" }}
-    >
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(245,158,11,0.28),transparent_62%)]" />
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 pb-6">
-        <Home className="h-14 w-14 text-amber-400 drop-shadow-[0_0_22px_rgba(245,158,11,0.55)] transition-transform duration-300 group-hover:scale-110" />
-        <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-amber-100/80">
-          Housing ETL
-        </p>
-      </div>
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent px-3 pb-2.5 pt-8">
-        <div className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-wider text-amber-200/70">
-          <span>Scrape</span>
-          <span className="h-px flex-1 bg-amber-400/40" />
-          <span>Clean</span>
-          <span className="h-px flex-1 bg-amber-400/40" />
-          <span>Load</span>
-        </div>
-        <div className="mt-1.5 flex items-center justify-between text-[10px] text-white/50">
-          <span>PostgreSQL · MongoDB</span>
-          <span>180k records</span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function PhishingCover() {
-  return (
-    <div
-      className="relative w-full overflow-hidden bg-[#140606]"
-      style={{ aspectRatio: "16/9" }}
-    >
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(239,68,68,0.30),transparent_62%)]" />
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 pb-6">
-        <ShieldAlert className="h-14 w-14 text-red-400 drop-shadow-[0_0_22px_rgba(239,68,68,0.55)] transition-transform duration-300 group-hover:scale-110" />
-        <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-red-100/80">
-          Phishing
-        </p>
-      </div>
-      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent px-3 pb-2.5 pt-8">
-        <div className="h-0.5 w-full overflow-hidden rounded-full bg-white/20">
-          <div className="h-full w-3/4 rounded-full bg-red-500" />
-        </div>
-        <div className="mt-1.5 flex items-center justify-between text-[10px] text-white/50">
-          <span>Random Forest</span>
-          <span>URL classifier</span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 const coverMap: Record<string, React.ComponentType> = {
   youtube: YoutubeCover,
-  housing: HousingCover,
-  phishing: PhishingCover,
 };
 
 const iconGradients = [

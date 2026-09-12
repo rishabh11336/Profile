@@ -229,9 +229,8 @@ export const projects = [
   },
   {
     title: "Indian Housing ETL Pipeline",
-    image: null,
-    imageAlt: "House and ETL pipeline — 180k Indian housing records into PostgreSQL and MongoDB",
-    cover: "housing",
+    image: "/images/projects/housing-etl.webp",
+    imageAlt: "Indian residential apartment blocks — housing price ETL across major metros",
     tags: ["Python", "PostgreSQL", "MongoDB", "ETL", "Web Scraping"],
     description:
       "Scalable ETL pipeline covering scraping, cleaning, deduplication, and validation. Stored 180,000+ records across PostgreSQL and MongoDB for downstream statistical analysis and ML modelling.",
@@ -240,9 +239,8 @@ export const projects = [
   },
   {
     title: "Phishing Domain Detection",
-    image: null,
-    imageAlt: "Shield alert — Random Forest phishing URL classifier",
-    cover: "phishing",
+    image: "/images/projects/phishing-detection.webp",
+    imageAlt: "Warning shield over a laptop — Random Forest phishing URL classifier",
     tags: ["Python", "scikit-learn", "Flask", "Azure", "Cassandra", "Cybersecurity"],
     description:
       "ML pipeline to classify URLs as legitimate or malicious using a Random Forest trained on URL, domain, page, and content features. Served via Flask REST API with Cassandra logging every prediction. Deployed to Azure during iNeuron ML internship.",
