@@ -12,6 +12,44 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   wrench: Wrench,
 };
 
+function YoutubeLogo({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <path
+        fill="#FF0000"
+        d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.56A3.02 3.02 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.56a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8z"
+      />
+      <path fill="#fff" d="M9.75 15.02V8.98L15.5 12l-5.75 3.02z" />
+    </svg>
+  );
+}
+
+function YoutubeCover() {
+  return (
+    <div
+      className="relative w-full overflow-hidden bg-[#0f0f0f]"
+      style={{ aspectRatio: "16/9" }}
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,0,0,0.32),transparent_62%)]" />
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 pb-6">
+        <YoutubeLogo className="h-14 w-14 drop-shadow-[0_0_22px_rgba(255,0,0,0.55)] transition-transform duration-300 group-hover:scale-110" />
+        <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-white/75">
+          YouTube
+        </p>
+      </div>
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent px-3 pb-2.5 pt-8">
+        <div className="h-0.5 w-full overflow-hidden rounded-full bg-white/20">
+          <div className="h-full w-2/5 rounded-full bg-[#FF0000]" />
+        </div>
+        <div className="mt-1.5 flex items-center justify-between text-[10px] text-white/50">
+          <span>YouTube Data API v3</span>
+          <span>500+ videos</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 const iconGradients = [
   "from-purple-900/80 via-slate-900 to-gray-900",
   "from-fuchsia-900/70 via-purple-900/50 to-gray-900",
@@ -61,7 +99,9 @@ export default function ProjectsSection() {
                 variants={cardVariants}
                 className="group bg-section-alt rounded-xl overflow-hidden border border-border/50 hover:border-accent transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-accent/10 flex flex-col"
               >
-                {project.image ? (
+                {project.cover === "youtube" ? (
+                  <YoutubeCover />
+                ) : project.image ? (
                   <div className="relative w-full" style={{ aspectRatio: "16/9" }}>
                     <Image
                       src={project.image}
