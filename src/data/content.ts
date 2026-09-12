@@ -229,8 +229,9 @@ export const projects = [
   },
   {
     title: "Indian Housing ETL Pipeline",
-    image: "https://opengraph.githubassets.com/1/rishabh11336/ETL-INDIAN-House-Price-Data",
-    imageAlt: "Indian Housing ETL Pipeline — PostgreSQL, MongoDB, Python web scraping, 180k records",
+    image: null,
+    imageAlt: "House and ETL pipeline — 180k Indian housing records into PostgreSQL and MongoDB",
+    cover: "housing",
     tags: ["Python", "PostgreSQL", "MongoDB", "ETL", "Web Scraping"],
     description:
       "Scalable ETL pipeline covering scraping, cleaning, deduplication, and validation. Stored 180,000+ records across PostgreSQL and MongoDB for downstream statistical analysis and ML modelling.",
@@ -239,8 +240,9 @@ export const projects = [
   },
   {
     title: "Phishing Domain Detection",
-    image: "https://opengraph.githubassets.com/1/rishabh11336/Phishing-Domain-Detection",
-    imageAlt: "Phishing Domain Detection — Random Forest URL classifier, Flask REST API, Azure, Cassandra",
+    image: null,
+    imageAlt: "Shield alert — Random Forest phishing URL classifier",
+    cover: "phishing",
     tags: ["Python", "scikit-learn", "Flask", "Azure", "Cassandra", "Cybersecurity"],
     description:
       "ML pipeline to classify URLs as legitimate or malicious using a Random Forest trained on URL, domain, page, and content features. Served via Flask REST API with Cassandra logging every prediction. Deployed to Azure during iNeuron ML internship.",
