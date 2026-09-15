@@ -98,7 +98,7 @@ export function AboutSection() {
                 Hire Me
               </a>
               <a
-                href="/CV/Rishabh-Singh-Data-Scientist-CV.pdf"
+                href="/CV/Rishabh-Singh-Data-Scientist-CV.pdf?v=20260915"
                 download
                 className="px-6 py-3 rounded-full font-semibold border border-accent text-accent hover:bg-accent/10 transition-all duration-200 inline-block"
               >

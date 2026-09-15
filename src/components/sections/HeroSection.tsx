@@ -102,7 +102,7 @@ export function HeroSection() {
               variants={fadeInUp}
             >
               <a
-                href="/CV/Rishabh-Singh-Data-Scientist-CV.pdf"
+                href="/CV/Rishabh-Singh-Data-Scientist-CV.pdf?v=20260915"
                 download
                 className="btn"
               >

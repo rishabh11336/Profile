@@ -14,7 +14,7 @@ Built with Next.js (static export) and deployed free on GitHub Pages. Full write
 
 ## Summary
 
-IIT Madras graduate and Data Scientist with 2 years of pharma commercial analytics experience, specializing in time-series forecasting, mixed-effects modeling, and end-to-end ML pipeline delivery. At Chryselys, co-engineered ForecastIQ — a live commercial pharma forecasting platform — and delivered Streamlit tools adopted by pharma clients. Proficient in Python, SQL, Streamlit, scikit-learn, and Azure. Adept at presenting model outputs to non-technical stakeholders and mentoring junior analysts across model validation and production-readiness workflows.
+IIT Madras graduate and Data Scientist with 2 years of commercial analytics experience, specializing in statistical modeling, time-series forecasting, mixed-effects modeling, experimentation, and end-to-end data product delivery. At Chryselys, co-engineered ForecastIQ, a live commercial pharma forecasting platform, and delivered Streamlit tools and automated dashboards adopted by pharma clients. Proficient in Python, SQL, R, Streamlit, scikit-learn, and cloud-based data pipelines. Adept at operationalizing models with engineering teams, translating analytical findings for non-technical stakeholders, and mentoring junior analysts across model validation and production-readiness workflows.
 
 ---
 
@@ -46,7 +46,7 @@ IIT Madras graduate and Data Scientist with 2 years of pharma commercial analyti
 | Category | Technologies |
 |---|---|
 | **Languages** | Python, SQL, R (basics), Bash, JavaScript (familiar) |
-| **ML & Statistics** | Forecasting (ARIMA, ETS, Prophet, XGBoost), Mixed-Effects Models (LME/LMM), Marketing Mix Modeling (MMM), Regression, Tree-based Models (RF, GBM), SVM, Classification, Clustering, Segmentation, Time-Series CV, Feature Engineering, Attribution Analytics, Statistical Modeling, A/B Testing, Hypothesis Testing, Bayesian Inference, NLP, LLM Pipelines, Prompt Engineering, Agentic Development |
+| **ML & Statistics** | Forecasting (ARIMA, ETS, Prophet, XGBoost), Mixed-Effects Models (LME/LMM), Marketing Mix Modeling (MMM), Regression, Tree-based Models (RF, GBM), SVM, Classification, Clustering, Segmentation, Time-Series CV, Feature Engineering, Attribution Analytics, Statistical Modeling, A/B Testing, Hypothesis Testing, Bayesian Inference, NLP, LLM Pipelines, Prompt Engineering, MCP, Tool Calling, Agentic Development |
 | **Tools & Frameworks** | scikit-learn, pandas, NumPy, PySpark, PyTorch (familiar), TensorFlow (familiar), Streamlit, Flask, FastAPI, Jupyter, Git, GitHub, Tableau, Power BI (familiar), Figma, Dataiku, Databricks, Celery, Redis, Jira, Bitbucket |
 | **Cloud & Infra** | Azure (App Service, Functions, Blob Storage), AWS (S3, Lambda, Bedrock, App Runner), PostgreSQL, MongoDB, Docker, Vercel, Render, REST APIs, CI/CD, MLOps, Data Pipelines, ETL |
 
@@ -66,7 +66,7 @@ IIT Madras graduate and Data Scientist with 2 years of pharma commercial analyti
 | Project | Stack | Link |
 |---|---|---|
 | **FraudNet** | Fraud detection, entity linkage, Fellegi–Sunter, graph clustering | [fraud-network-viz.vercel.app](https://fraud-network-viz.vercel.app) |
-| **LLM YouTube Metadata Connector** | Python, LLM Pipelines, YouTube API, Claude Desktop | [GitHub](https://github.com/rishabh11336/LLM-Youtube-Metadata-connecter-) |
+| **LLM YouTube Metadata Connector** | MCP, tool calling, LLM pipelines, YouTube API, Claude Desktop | [GitHub](https://github.com/rishabh11336/LLM-Youtube-Metadata-connecter-) |
 | **Parking Management System** | Flask, Vue.js, Redis, Celery, Azure | [parking.rishabhsingh.me](https://parking.rishabhsingh.me) |
 | **Indian Housing ETL Pipeline** | PostgreSQL, MongoDB, Python, web scraping | [GitHub](https://github.com/rishabh11336/ETL-INDIAN-House-Price-Data) |
 | **Mixed-Effects Marketing Modeling** | Python, statsmodels, MMM | Kaggle |
@@ -77,7 +77,7 @@ IIT Madras graduate and Data Scientist with 2 years of pharma commercial analyti
 
 **FraudNet** — Fraud detection on ~15,000 unlabeled signups from an unknown platform running a signup offer. Fellegi–Sunter weighted entity linkage across email aliases, device hash, card, and address produced 251 suspected actor clusters. The graph is just a way to inspect why accounts were linked. [Live](https://fraud-network-viz.vercel.app) · [GitHub](https://github.com/rishabh11336/fraud-network-viz)
 
-**LLM YouTube Metadata Connector** — Engineered an end-to-end LLM pipeline using Claude Desktop and the YouTube Data API v3 to automate metadata generation, SEO-optimized title/description writing, keyword tagging, and content optimization for YouTube; used to update 500+ YouTube videos. Implemented deterministic validation layers, prompt engineering, and a human-in-the-loop review step. Integrated OAuth 2.0 authentication and rule-based post-processing to ensure production-grade reliability.
+**LLM YouTube Metadata Connector** — Built an MCP server that exposes YouTube Data API v3 tools to Claude Desktop for tool calling: fetch video data, generate SOP-compliant metadata, and publish updates through a two-step confirmation flow. Used to update 500+ YouTube videos. Prompt engineering, deterministic validation, OAuth 2.0, and a human-in-the-loop review step so writes require explicit confirmation. [GitHub](https://github.com/rishabh11336/LLM-Youtube-Metadata-connecter-)
 
 **Parking Management System** — Built a full-stack web application using Flask REST API and Vue.js. Leveraged Redis and Celery for async task queuing and deployed on Azure App Service with CI/CD. Implemented real-time slot booking, role-based access control, and an operational analytics dashboard.
 

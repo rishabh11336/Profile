@@ -221,11 +221,11 @@ export const projects: Project[] = [
   {
     title: "LLM YouTube Metadata Connector",
     image: null,
-    imageAlt: "YouTube play button — LLM metadata pipeline for YouTube Data API v3",
+    imageAlt: "YouTube play button — MCP tool calling for YouTube Data API v3",
     cover: "youtube",
-    tags: ["LLM Pipelines", "Claude", "YouTube API", "Python", "OAuth 2.0"],
+    tags: ["MCP", "Tool Calling", "LLM Pipelines", "YouTube API", "Claude"],
     description:
-      "End-to-end LLM pipeline using Claude Desktop + YouTube Data API v3 to automate SEO-optimised title & description writing, keyword tagging, and content optimisation for 500+ YouTube videos. Prompt engineering, deterministic validation, human-in-the-loop review.",
+      "MCP server that exposes YouTube Data API v3 tools to Claude Desktop for tool calling — fetch video data, generate SOP-compliant metadata, and publish updates through a two-step confirmation flow. Used to update 500+ YouTube videos. Prompt engineering, deterministic validation, human-in-the-loop review.",
     github: "https://github.com/rishabh11336/LLM-Youtube-Metadata-connecter-",
     live: null,
   },
