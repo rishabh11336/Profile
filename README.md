@@ -65,6 +65,7 @@ IIT Madras graduate and Data Scientist with 2 years of commercial analytics expe
 
 | Project | Stack | Link |
 |---|---|---|
+| **Meridian — AI Meeting Intelligence** | FastAPI, React, TypeScript, Groq, Gemini, JWT | [GitHub](https://github.com/rishabh11336/Meridian-Meeting-Summarizer) |
 | **FraudNet** | Fraud detection, entity linkage, Fellegi–Sunter, graph clustering | [fraud-network-viz.vercel.app](https://fraud-network-viz.vercel.app) |
 | **LLM YouTube Metadata Connector** | MCP, tool calling, LLM pipelines, YouTube API, Claude Desktop | [GitHub](https://github.com/rishabh11336/LLM-Youtube-Metadata-connecter-) |
 | **Parking Management System** | Flask, Vue.js, Redis, Celery, Azure | [parking.rishabhsingh.me](https://parking.rishabhsingh.me) |
@@ -74,6 +75,8 @@ IIT Madras graduate and Data Scientist with 2 years of commercial analytics expe
 | **Compass (Bloglite)** | Flask, SQLAlchemy, REST API | [compass.rishabhsingh.me](https://compass.rishabhsingh.me) |
 
 ### Project Details
+
+**Meridian — AI Meeting Intelligence** — Developed an AI-powered meeting intelligence platform using Groq for speech-to-text and Google Gemini for LLM-based summarization and contextual Q&A, converting unstructured meeting recordings into searchable, structured knowledge. Designed a modular FastAPI + React/TypeScript architecture with JWT authentication, project/meeting management, audio-processing pipelines, and user-scoped storage. [GitHub](https://github.com/rishabh11336/Meridian-Meeting-Summarizer)
 
 **FraudNet** — Fraud detection on ~15,000 unlabeled signups from an unknown platform running a signup offer. Fellegi–Sunter weighted entity linkage across email aliases, device hash, card, and address produced 251 suspected actor clusters. The graph is just a way to inspect why accounts were linked. [Live](https://fraud-network-viz.vercel.app) · [GitHub](https://github.com/rishabh11336/fraud-network-viz)
 

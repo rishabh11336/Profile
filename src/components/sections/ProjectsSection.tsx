@@ -24,6 +24,32 @@ function YoutubeLogo({ className }: { className?: string }) {
   );
 }
 
+function MeridianCover() {
+  return (
+    <div
+      className="relative w-full overflow-hidden bg-[#071318]"
+      style={{ aspectRatio: "16/9" }}
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(34,211,238,0.28),transparent_62%)]" />
+      <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5 pb-6">
+        <AudioWaveform className="h-14 w-14 text-cyan-300 drop-shadow-[0_0_22px_rgba(34,211,238,0.55)] transition-transform duration-300 group-hover:scale-110" />
+        <p className="text-[10px] font-medium uppercase tracking-[0.28em] text-white/75">
+          Meeting Intelligence
+        </p>
+      </div>
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent px-3 pb-2.5 pt-8">
+        <div className="h-0.5 w-full overflow-hidden rounded-full bg-white/20">
+          <div className="h-full w-3/5 rounded-full bg-cyan-400" />
+        </div>
+        <div className="mt-1.5 flex items-center justify-between text-[10px] text-white/50">
+          <span>Groq Transcription</span>
+          <span>Gemini Q&A</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function YoutubeCover() {
   return (
     <div
@@ -52,6 +78,7 @@ function YoutubeCover() {
 
 const coverMap: Record<string, React.ComponentType> = {
   youtube: YoutubeCover,
+  meridian: MeridianCover,
 };
 
 const iconGradients = [

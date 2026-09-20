@@ -39,7 +39,7 @@ export const about = {
   bio1:
     "Rishabh Singh is a Data Scientist and AI Engineer at Chryselys, building end-to-end analytics solutions — forecasting pipelines, mixed-effects models, Marketing Mix Modeling, and time-series systems with stakeholder-ready delivery. He graduated from IIT Madras with a B.S. in Data Science and Applications (2021–2025) and a Minor in Economics & Finance.",
   bio2:
-    "His open-source contributions include merged pull requests to CPython (Python's core interpreter), conda-build, and librosa — demonstrating systems-level Python expertise alongside applied ML work. Technical stack: Python, pandas, scikit-learn, Streamlit, Flask, FastAPI, SQL, Azure, AWS, Databricks, Dataiku, Redis, and MLOps. He has built and deployed full-stack ML applications including a live parking management system and an LLM YouTube metadata pipeline, and writes about AI and machine learning on Medium with 23 published technical articles.",
+    "His open-source contributions include merged pull requests to CPython (Python's core interpreter), conda-build, and librosa — demonstrating systems-level Python expertise alongside applied ML work. Technical stack: Python, pandas, scikit-learn, Streamlit, Flask, FastAPI, SQL, Azure, AWS, Databricks, Dataiku, Redis, and MLOps. He has built and deployed full-stack ML applications including Meridian, an AI meeting intelligence platform, a live parking management system, and an LLM YouTube metadata pipeline, and writes about AI and machine learning on Medium with 23 published technical articles.",
   info: [
     { label: "Degree", value: "Data Science and Applications" },
     { label: "Location", value: "Delhi, India" },
@@ -198,6 +198,17 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    title: "Meridian — AI Meeting Intelligence",
+    image: null,
+    imageAlt: "Meridian — AI meeting transcription, summarization, and contextual Q&A",
+    cover: "meridian",
+    tags: ["FastAPI", "React", "TypeScript", "Groq", "Gemini", "JWT"],
+    description:
+      "AI meeting intelligence platform that turns recordings into searchable transcripts, structured summaries, and contextual Q&A. Groq for speech-to-text, Google Gemini for summarization and chat, with FastAPI + React/TypeScript, JWT auth, and project-level organization.",
+    github: "https://github.com/rishabh11336/Meridian-Meeting-Summarizer",
+    live: null,
+  },
   {
     title: "Tiny Tools",
     image: "/images/projects/tiny-tools.jpg",
