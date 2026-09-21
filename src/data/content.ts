@@ -129,7 +129,7 @@ export const about = {
         "Enhancing cyber-security.",
         "Machine Learning.",
       ],
-      link: null,
+      links: [],
     },
     {
       period: "Oct 2024 – Present",
@@ -141,10 +141,16 @@ export const about = {
         "Product Development",
         "APLD Data Expertise",
       ],
-      link: {
-        href: "https://www.linkedin.com/posts/rishabh-data-scientist_certificate-activity-7392448621314658305-_Qvd?utm_source=share&utm_medium=member_desktop&rcm=ACoAADjSymkBQD2fUi_0L5vVimxPW6vJmLTDKEE",
-        text: "Mentorship: DS & MLOps",
-      },
+      links: [
+        {
+          href: "https://www.linkedin.com/posts/rishabh-data-scientist_certificate-activity-7392448621314658305-_Qvd?utm_source=share&utm_medium=member_desktop&rcm=ACoAADjSymkBQD2fUi_0L5vVimxPW6vJmLTDKEE",
+          text: "Mentorship: DS & MLOps",
+        },
+        {
+          href: "/images/chryselys-q2-2026-appreciation.jpg",
+          text: "Recognition Award",
+        },
+      ],
       isCurrent: true,
       startDate: new Date(2024, 9, 1), // Oct 2024
     },

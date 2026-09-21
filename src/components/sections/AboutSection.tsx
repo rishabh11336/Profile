@@ -10,7 +10,7 @@ type ExperienceEntry = {
   datetime: string;
   title: string;
   bullets: string[];
-  link: { href: string; text: string } | null;
+  links?: { href: string; text: string }[];
   isCurrent?: boolean;
   startDate?: Date;
 };
@@ -231,15 +231,20 @@ export function AboutSection() {
                         </li>
                       ))}
                     </ul>
-                    {exp.link && (
-                      <a
-                        href={exp.link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-accent text-xs hover:underline mt-2 inline-block"
-                      >
-                        {exp.link.text} →
-                      </a>
+                    {exp.links && exp.links.length > 0 && (
+                      <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1">
+                        {exp.links.map((link) => (
+                          <a
+                            key={link.href}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-accent text-xs hover:underline inline-block"
+                          >
+                            {link.text} →
+                          </a>
+                        ))}
+                      </div>
                     )}
                   </motion.div>
                 ))}
