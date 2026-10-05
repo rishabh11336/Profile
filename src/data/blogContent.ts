@@ -3901,7 +3901,7 @@ if __name__ == "__main__":
   "how-i-built-my-data-science-portfolio": `<div class="blog-insight">
     <p>
         An effective data science portfolio does two things: it proves you can build, and it proves you can explain.
-        Mine lives at rishabhsingh.me and costs $0 to host. The stack is Next.js 16 with static export
+        Mine lives at singhrishabh.com and costs $0 to host. The stack is Next.js 16 with static export
         (<code>output: "export"</code>), Tailwind CSS v4, and TypeScript, deployed to GitHub Pages through a GitHub
         Actions workflow, with a custom domain wired up via a single CNAME file. The site includes lazy-loaded
         sections, a dark/light theme with a five-accent color picker, an interactive regression simulator built on
@@ -4134,7 +4134,7 @@ jobs:
 </p>
 <ul>
     <li>Put a file named <code>CNAME</code> in your <code>public/</code> folder containing exactly one line: your
-        domain (mine says <code>rishabhsingh.me</code>). Next.js copies <code>public/</code> into the export, so
+        domain (mine says <code>singhrishabh.com</code>). Next.js copies <code>public/</code> into the export, so
         the file survives every deploy.</li>
     <li>At your DNS provider, add A records for the apex domain pointing at GitHub Pages' IPs, plus a CNAME record
         for <code>www</code> pointing to <code>&lt;username&gt;.github.io</code>.</li>

@@ -1,4 +1,4 @@
-# Off-Site SEO Submission Pack — rishabhsingh.me
+# Off-Site SEO Submission Pack — singhrishabh.com
 
 Drafted 2026-07-07. Everything below is ready to paste. Nothing has been posted anywhere; all submissions are manual and yours to make.
 
@@ -8,9 +8,9 @@ Drafted 2026-07-07. Everything below is ready to paste. Nothing has been posted 
 
 | Asset | URL |
 |---|---|
-| Site | https://rishabhsingh.me |
-| CI-vs-PI simulator post | https://rishabhsingh.me/blog/ci-vs-pi-regression-bands/ |
-| Portfolio build guide | https://rishabhsingh.me/blog/how-i-built-my-data-science-portfolio/ |
+| Site | https://singhrishabh.com |
+| CI-vs-PI simulator post | https://singhrishabh.com/blog/ci-vs-pi-regression-bands/ |
+| Portfolio build guide | https://singhrishabh.com/blog/how-i-built-my-data-science-portfolio/ |
 | GitHub | https://github.com/rishabh11336 |
 | Kaggle | https://kaggle.com/rishabhsingh2538 |
 | LinkedIn | https://linkedin.com/in/rishabh-data-scientist |
@@ -26,7 +26,7 @@ Wikidata's notability policy (WD:N) requires an item to meet at least one of thr
 A "Rishabh Singh (data scientist)" item currently meets **none** of these:
 
 - No Wikipedia article, no sitelinks.
-- All available references (rishabhsingh.me, GitHub, Kaggle, Medium) are self-published. Merged PRs to CPython/conda-build/librosa are verifiable facts but are primary sources, not independent coverage.
+- All available references (singhrishabh.com, GitHub, Kaggle, Medium) are self-published. Merged PRs to CPython/conda-build/librosa are verifiable facts but are primary sources, not independent coverage.
 - No other Wikidata item needs to reference you (no notable employer item, no award item, no publication item citing you as author).
 
 **Expected outcome if created today:** the item survives days-to-weeks, then gets flagged and deleted under the living-person deletion practice (items on non-notable living people are deleted more aggressively than other classes). Creating and losing an item is worse than not creating one — deleted-item history can make a later, legitimate creation harder.
@@ -45,10 +45,10 @@ Item: **Rishabh Singh** — Label (en): `Rishabh Singh` — Description (en): `I
 | occupation | P106 | Q29169143 (data scientist) | Verify QID before use — search "data scientist" at wikidata.org |
 | employer | P108 | Chryselys | **No Chryselys item exists.** Do NOT create one just for this — a non-notable company item compounds the deletion risk. Omit P108 until Chryselys has independent coverage. |
 | educated at | P69 | Q1356820 | Believed to be Indian Institute of Technology Madras — **verify before submitting** (live check was not possible when drafting; open https://www.wikidata.org/wiki/Q1356820 and confirm the label). Format with qualifiers: `P512 (academic degree) → Q1765120 (Bachelor of Science)`, `P812 (academic major) → Q2374463 (data science)`, `P580 (start time) → 2021`, `P582 (end time) → 2025`. Verify every qualifier QID the same way. |
-| official website | P856 | `https://rishabhsingh.me` | Full URL with https:// |
+| official website | P856 | `https://singhrishabh.com` | Full URL with https:// |
 | GitHub username | P2037 | `rishabh11336` | Username only, no URL |
 
-Every statement on a living person needs a reference. `P854 (reference URL) → https://rishabhsingh.me` is accepted mechanically but is self-published — which is precisely why the item fails notability today.
+Every statement on a living person needs a reference. `P854 (reference URL) → https://singhrishabh.com` is accepted mechanically but is self-published — which is precisely why the item fails notability today.
 
 ### 1c. The realistic alternative — do this now instead
 
@@ -67,7 +67,7 @@ Entity consolidation via `sameAs` in the site's Person JSON-LD achieves most of 
 Concrete steps (no notability floor on any of these):
 1. **Register an ORCID iD** (orcid.org — free, open to anyone, 5 minutes). Fill employment (Chryselys), education (IIT Madras BS Data Science 2021–2025), and websites. ORCID is a machine-readable identity registry that knowledge graphs and AI systems cross-reference; it is the closest non-notable-person equivalent to a Wikidata item.
 2. Add the ORCID URL to `sameAs` and to the site footer.
-3. Make every profile in the `sameAs` array link **back** to rishabhsingh.me (bidirectional links are what entity-resolution actually checks). Verify the Medium handle before adding it.
+3. Make every profile in the `sameAs` array link **back** to singhrishabh.com (bidirectional links are what entity-resolution actually checks). Verify the Medium handle before adding it.
 4. Revisit Wikidata only after an independent-coverage trigger from 1a fires.
 
 ---
@@ -80,11 +80,11 @@ For an existing "share your portfolio" / "portfolio examples" thread on Kaggle D
 
 **Body (137 words):**
 
-> The piece of my portfolio that gets the most feedback isn't a project card — it's an interactive simulator inside a blog post that lets you drag sample size and noise to watch confidence intervals and prediction intervals diverge in real time: https://rishabhsingh.me/blog/ci-vs-pi-regression-bands/
+> The piece of my portfolio that gets the most feedback isn't a project card — it's an interactive simulator inside a blog post that lets you drag sample size and noise to watch confidence intervals and prediction intervals diverge in real time: https://singhrishabh.com/blog/ci-vs-pi-regression-bands/
 >
 > My takeaway for anyone building a portfolio: one interactive demo teaches reviewers more about your understanding than ten static Jupyter screenshots, because you can't fake the edge cases — the widget has to behave correctly when n is tiny or noise is huge.
 >
-> The rest of the site is Next.js on GitHub Pages (free hosting, static export). I wrote up the full build process here if useful: https://rishabhsingh.me/blog/how-i-built-my-data-science-portfolio/
+> The rest of the site is Next.js on GitHub Pages (free hosting, static export). I wrote up the full build process here if useful: https://singhrishabh.com/blog/how-i-built-my-data-science-portfolio/
 >
 > Happy to answer questions about either — and genuinely curious what interactive elements others have tried.
 
@@ -94,7 +94,7 @@ For an existing "share your portfolio" / "portfolio examples" thread on Kaggle D
 
 ### Bio (79 words)
 
-> Data Scientist at Chryselys, working on forecasting pipelines, hierarchical mixed-effects models, and Marketing Mix Modeling for pharma analytics. IIT Madras B.S. in Data Science and Applications (2021–2025), with a Minor in Economics & Finance. Open-source contributor with merged pull requests to CPython (#134804), conda-build (#4782), and librosa (#1850). I write explainers at rishabhsingh.me — including an interactive simulator that teaches the difference between confidence and prediction intervals. Stack: Python, SQL, statsmodels, scikit-learn, Flask, Azure.
+> Data Scientist at Chryselys, working on forecasting pipelines, hierarchical mixed-effects models, and Marketing Mix Modeling for pharma analytics. IIT Madras B.S. in Data Science and Applications (2021–2025), with a Minor in Economics & Finance. Open-source contributor with merged pull requests to CPython (#134804), conda-build (#4782), and librosa (#1850). I write explainers at singhrishabh.com — including an interactive simulator that teaches the difference between confidence and prediction intervals. Stack: Python, SQL, statsmodels, scikit-learn, Flask, Azure.
 
 ### Project blurb 1 — LLM YouTube Metadata Pipeline (41 words)
 
@@ -108,19 +108,19 @@ For an existing "share your portfolio" / "portfolio examples" thread on Kaggle D
 
 > Full-stack web app: Flask REST API, Vue.js frontend, Redis + Celery for async task queuing, deployed on Azure App Service with CI/CD. Real-time slot booking, role-based access control, and an operational analytics dashboard — a complete production system, not a notebook.
 
-Link each project card to its GitHub repo and set the profile website field to `https://rishabhsingh.me`.
+Link each project card to its GitHub repo and set the profile website field to `https://singhrishabh.com`.
 
 ---
 
 ## 4. GitHub Repo Optimization
 
-Apply to the portfolio-site repo under github.com/rishabh11336 (the one deploying to rishabhsingh.me — confirm the exact repo name; likely `rishabh11336.github.io` or similar).
+Apply to the portfolio-site repo under github.com/rishabh11336 (the one deploying to singhrishabh.com — confirm the exact repo name; likely `rishabh11336.github.io` or similar).
 
 ### Repo description (About field, 158 chars)
 
-> Data science portfolio with 24 blog posts and an interactive CI-vs-PI regression simulator. Next.js static export on GitHub Pages. Live at rishabhsingh.me
+> Data science portfolio with 24 blog posts and an interactive CI-vs-PI regression simulator. Next.js static export on GitHub Pages. Live at singhrishabh.com
 
-Set the **Website** field in the About box to `https://rishabhsingh.me`.
+Set the **Website** field in the About box to `https://singhrishabh.com`.
 
 ### Topic tags
 
@@ -144,9 +144,9 @@ typescript
 ### README addition (3 lines, place directly under the title)
 
 ```markdown
-**Live site:** [rishabhsingh.me](https://rishabhsingh.me) — data science portfolio, 24 blog posts, and an [interactive CI-vs-PI regression simulator](https://rishabhsingh.me/blog/ci-vs-pi-regression-bands/).
+**Live site:** [singhrishabh.com](https://singhrishabh.com) — data science portfolio, 24 blog posts, and an [interactive CI-vs-PI regression simulator](https://singhrishabh.com/blog/ci-vs-pi-regression-bands/).
 
-Built with Next.js (static export) and deployed free on GitHub Pages. Full write-up: [How I Built My Data Science Portfolio with Next.js and GitHub Pages](https://rishabhsingh.me/blog/how-i-built-my-data-science-portfolio/).
+Built with Next.js (static export) and deployed free on GitHub Pages. Full write-up: [How I Built My Data Science Portfolio with Next.js and GitHub Pages](https://singhrishabh.com/blog/how-i-built-my-data-science-portfolio/).
 ```
 
 ---
@@ -179,7 +179,7 @@ For a question like *"My model's confidence interval is narrow but the predictio
 >
 > Quick sanity check: crank up your sample size. If the narrow band shrinks and the wide one plateaus, everything is behaving exactly as it should.
 >
-> If a visual helps, I built an interactive demo where you can drag n and σ and watch the two bands respond differently: https://rishabhsingh.me/blog/ci-vs-pi-regression-bands/ (my own post, for transparency).
+> If a visual helps, I built an interactive demo where you can drag n and σ and watch the two bands respond differently: https://singhrishabh.com/blog/ci-vs-pi-regression-bands/ (my own post, for transparency).
 
 Note the pattern: complete answer first, link last, self-disclosure included. Disclosing "my own post" is required by several subs' rules and reads as honest everywhere else.
 
@@ -211,14 +211,14 @@ YouTube presence is the strongest single correlate of AI citations in the Ahrefs
 > In this 5-minute walkthrough I use an interactive simulator to show exactly how the two intervals respond to sample size and noise — including the one behaviour that makes the difference click: the CI shrinks to zero with more data, the PI never does.
 >
 > Try the interactive simulator yourself (free, in the browser, no signup):
-> https://rishabhsingh.me/blog/ci-vs-pi-regression-bands/
+> https://singhrishabh.com/blog/ci-vs-pi-regression-bands/
 >
 > Written version of this explanation with the maths:
-> https://rishabhsingh.me/blog/ci-vs-pi-regression-bands/
+> https://singhrishabh.com/blog/ci-vs-pi-regression-bands/
 >
-> More explainers: https://rishabhsingh.me/blog/
+> More explainers: https://singhrishabh.com/blog/
 >
-> I'm Rishabh Singh, a data scientist at Chryselys (IIT Madras, B.S. Data Science). Site: https://rishabhsingh.me
+> I'm Rishabh Singh, a data scientist at Chryselys (IIT Madras, B.S. Data Science). Site: https://singhrishabh.com
 >
 > Chapters:
 > 0:00 The question everyone gets wrong

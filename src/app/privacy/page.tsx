@@ -4,8 +4,8 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "Privacy policy for rishabhsingh.me — how we use cookies, advertising (Google AdSense), analytics (GA4), and your rights under GDPR.",
-  alternates: { canonical: "https://rishabhsingh.me/privacy/" },
+    "Privacy policy for singhrishabh.com — how we use cookies, advertising (Google AdSense), analytics (GA4), and your rights under GDPR.",
+  alternates: { canonical: "https://singhrishabh.com/privacy/" },
 };
 
 export default function PrivacyPage() {
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-xl font-semibold text-text mb-3">1. Who We Are</h2>
             <p className="text-muted">
-              This website (<strong className="text-text">rishabhsingh.me</strong>) is operated by{" "}
+              This website (<strong className="text-text">singhrishabh.com</strong>) is operated by{" "}
               <strong className="text-text">Rishabh Singh</strong>, a Data Scientist and AI Engineer
               based in Delhi, India. If you have any questions about this policy, contact:{" "}
               <a href="mailto:asusrishabh@outlook.com" className="text-accent hover:underline">

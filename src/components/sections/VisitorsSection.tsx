@@ -78,7 +78,7 @@ export default function VisitorsSection() {
               {mounted && (
                 <img
                   src={src}
-                  alt="World map showing visitor locations for rishabhsingh.me"
+                  alt="World map showing visitor locations for singhrishabh.com"
                   className="w-full h-auto block"
                   loading="lazy"
                   decoding="async"

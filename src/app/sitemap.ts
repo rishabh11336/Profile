@@ -10,19 +10,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: "https://rishabhsingh.me/",
+      url: "https://singhrishabh.com/",
       lastModified: now,
       changeFrequency: "monthly",
       priority: 1,
     },
     {
-      url: "https://rishabhsingh.me/blog/",
+      url: "https://singhrishabh.com/blog/",
       lastModified: now,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
-      url: "https://rishabhsingh.me/privacy/",
+      url: "https://singhrishabh.com/privacy/",
       lastModified: new Date("2026-07-12"),
       changeFrequency: "yearly",
       priority: 0.3,
@@ -31,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const postDate = new Date(post.date);
       const isRecent = now.getTime() - postDate.getTime() < SIX_MONTHS_MS;
       return {
-        url: `https://rishabhsingh.me/blog/${post.slug}/`,
+        url: `https://singhrishabh.com/blog/${post.slug}/`,
         lastModified: postDate,
         changeFrequency: (isRecent ? "monthly" : "yearly") as "monthly" | "yearly",
         priority: isRecent ? 0.75 : 0.6,

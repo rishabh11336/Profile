@@ -6,17 +6,17 @@ export const metadata: Metadata = {
   description:
     "Technical articles on machine learning, data science, Python, and web development by Rishabh Singh (IIT Madras). Series: In a Minute, Web Development, Python.",
   alternates: {
-    canonical: "https://rishabhsingh.me/blog/",
+    canonical: "https://singhrishabh.com/blog/",
   },
   openGraph: {
     type: "website",
-    url: "https://rishabhsingh.me/blog/",
+    url: "https://singhrishabh.com/blog/",
     title: "Blog — AI, ML & Python | Rishabh Singh",
     description:
       "Dense, visual breakdowns of ML concepts — Transformers, SVMs, CNNs, Linear Regression, and more. Plus Python and web dev deep-dives.",
     images: [
       {
-        url: "https://rishabhsingh.me/images/og-card.png",
+        url: "https://singhrishabh.com/images/og-card.png",
         width: 720,
         height: 405,
         alt: "Rishabh Singh Blog — AI & ML",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Blog — AI, ML & Python | Rishabh Singh",
     description:
       "Dense, visual breakdowns of ML concepts — Transformers, SVMs, CNNs, Linear Regression, and more. Plus Python and web dev deep-dives.",
-    images: ["https://rishabhsingh.me/images/og-card.png"],
+    images: ["https://singhrishabh.com/images/og-card.png"],
   },
 };
 

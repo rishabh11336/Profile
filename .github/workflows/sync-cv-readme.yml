@@ -15,7 +15,7 @@ jobs:
         run: |
           CANONICAL="CV/Rishabh-Singh-Data-Scientist-CV.pdf"
           if [ ! -f "$CANONICAL" ]; then
-            echo "ERROR: CV filename changed. The link https://rishabhsingh.me/CV/Rishabh-Singh-Data-Scientist-CV.pdf"
+            echo "ERROR: CV filename changed. The link https://singhrishabh.com/CV/Rishabh-Singh-Data-Scientist-CV.pdf"
             echo "is shared with recruiters and external sites — renaming breaks every copy."
             echo "Rename your PDF back to: Rishabh-Singh-Data-Scientist-CV.pdf"
             exit 1
