@@ -1,14 +1,14 @@
 # Rishabh Singh — Data Scientist
 
-**Live site:** [rishabhsingh.me](https://rishabhsingh.me) — data science portfolio, 24 blog posts, and an [interactive CI-vs-PI regression simulator](https://rishabhsingh.me/blog/ci-vs-pi-regression-bands/).
+**Live site:** [singhrishabh.com](https://singhrishabh.com) — data science portfolio, 24 blog posts, and an [interactive CI-vs-PI regression simulator](https://singhrishabh.com/blog/ci-vs-pi-regression-bands/).
 
-Built with Next.js (static export) and deployed free on GitHub Pages. Full write-up: [How I Built My Data Science Portfolio with Next.js and GitHub Pages](https://rishabhsingh.me/blog/how-i-built-my-data-science-portfolio/).
+Built with Next.js (static export) and deployed free on GitHub Pages. Full write-up: [How I Built My Data Science Portfolio with Next.js and GitHub Pages](https://singhrishabh.com/blog/how-i-built-my-data-science-portfolio/).
 
 **Forecasting · Analytics · Applied ML**
 
-📍 Hyderabad, India &nbsp;|&nbsp; 📧 [asusrishabh@outlook.com](mailto:asusrishabh@outlook.com) &nbsp;|&nbsp; 🌐 [rishabhsingh.me](https://rishabhsingh.me) &nbsp;|&nbsp; [LinkedIn](https://linkedin.com/in/rishabh-data-scientist) &nbsp;|&nbsp; [GitHub](https://github.com/rishabh11336)
+📍 Hyderabad, India &nbsp;|&nbsp; 📧 [asusrishabh@outlook.com](mailto:asusrishabh@outlook.com) &nbsp;|&nbsp; 🌐 [singhrishabh.com](https://singhrishabh.com) &nbsp;|&nbsp; [LinkedIn](https://linkedin.com/in/rishabh-data-scientist) &nbsp;|&nbsp; [GitHub](https://github.com/rishabh11336)
 
-📄 **[Download PDF Resume](https://rishabhsingh.me/CV/Rishabh-Singh-Data-Scientist-CV.pdf)**
+📄 **[Download PDF Resume](https://singhrishabh.com/CV/Rishabh-Singh-Data-Scientist-CV.pdf)**
 
 ---
 
@@ -68,11 +68,11 @@ IIT Madras graduate and Data Scientist with 2 years of commercial analytics expe
 | **Meridian — AI Meeting Intelligence** | FastAPI, React, TypeScript, Groq, Gemini, JWT | [GitHub](https://github.com/rishabh11336/Meridian-Meeting-Summarizer) |
 | **FraudNet** | Fraud detection, entity linkage, Fellegi–Sunter, graph clustering | [fraud-network-viz.vercel.app](https://fraud-network-viz.vercel.app) |
 | **LLM YouTube Metadata Connector** | MCP, tool calling, LLM pipelines, YouTube API, Claude Desktop | [GitHub](https://github.com/rishabh11336/LLM-Youtube-Metadata-connecter-) |
-| **Parking Management System** | Flask, Vue.js, Redis, Celery, Azure | [parking.rishabhsingh.me](https://parking.rishabhsingh.me) |
+| **Parking Management System** | Flask, Vue.js, Redis, Celery, Azure | [parking.singhrishabh.com](https://parking.singhrishabh.com) |
 | **Indian Housing ETL Pipeline** | PostgreSQL, MongoDB, Python, web scraping | [GitHub](https://github.com/rishabh11336/ETL-INDIAN-House-Price-Data) |
 | **Mixed-Effects Marketing Modeling** | Python, statsmodels, MMM | Kaggle |
 | **Audio Classification (UrbanSound8K)** | Python, TensorFlow, Librosa, CNN | Kaggle |
-| **Compass (Bloglite)** | Flask, SQLAlchemy, REST API | [compass.rishabhsingh.me](https://compass.rishabhsingh.me) |
+| **Compass (Bloglite)** | Flask, SQLAlchemy, REST API | [compass.singhrishabh.com](https://compass.singhrishabh.com) |
 
 ### Project Details
 
@@ -109,7 +109,7 @@ IIT Madras graduate and Data Scientist with 2 years of commercial analytics expe
 
 ## Repository
 
-Source for [rishabhsingh.me](https://rishabhsingh.me) — Next.js 16 static site deployed to GitHub Pages.
+Source for [singhrishabh.com](https://singhrishabh.com) — Next.js 16 static site deployed to GitHub Pages.
 
 ```bash
 npm install && npm run dev

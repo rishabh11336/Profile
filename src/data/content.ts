@@ -5,8 +5,8 @@ export const siteConfig = {
   title: "Rishabh Singh - Data Scientist | AI Engineer | IIT Madras",
   description:
     "IIT Madras Data Scientist specializing in time-series forecasting, mixed-effects models, and Marketing Mix Modeling (MMM). Python · scikit-learn · Streamlit · Azure · AWS. Open-source contributor to CPython.",
-  url: "https://rishabhsingh.me",
-  ogImage: "https://rishabhsingh.me/images/og-card.png",
+  url: "https://singhrishabh.com",
+  ogImage: "https://singhrishabh.com/images/og-card.png",
   email: "asusrishabh@outlook.com",
   ga: "G-3REDBP6J91",
   formspree: "https://formspree.io/f/mwvdeywa",
@@ -15,7 +15,7 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/in/rishabh-data-scientist/",
     medium: "https://medium.com/@asusrishabh",
     kaggle: "https://www.kaggle.com/rishabhsingh2538",
-    iitmbs: "https://iitmbs.rishabhsingh.me/",
+    iitmbs: "https://iitmbs.singhrishabh.com/",
   },
 };
 
@@ -29,7 +29,7 @@ export const hero = {
   iitmCallout: {
     text: "IIT Madras BS student? I've put together notes, resources & guidance from my own journey.",
     linkText: "Explore the guide →",
-    href: "https://iitmbs.rishabhsingh.me/",
+    href: "https://iitmbs.singhrishabh.com/",
   },
 };
 
@@ -223,7 +223,7 @@ export const projects: Project[] = [
     description:
       "34 free, 100% client-side file utilities — image compression/conversion, PDF merge/split, SVG optimisation, audio/video conversion, plus QR, hashing, and encoding tools. Files never leave your device; all processing runs in-browser with no sign-up.",
     github: null,
-    live: "https://tinytool.rishabhsingh.me/",
+    live: "https://tinytool.singhrishabh.com/",
   },
   {
     title: "FraudNet",
@@ -254,7 +254,7 @@ export const projects: Project[] = [
     description:
       "Full-stack web app with Flask REST API and Vue.js frontend. Redis + Celery for async task queuing, deployed on Azure App Service with CI/CD. Real-time slot booking, role-based access control, operational analytics dashboard.",
     github: "https://github.com/rishabh11336/Vehicle-Parking-App",
-    live: "https://parking.rishabhsingh.me",
+    live: "https://parking.singhrishabh.com",
   },
   {
     title: "Indian Housing ETL Pipeline",
@@ -307,7 +307,7 @@ export const projects: Project[] = [
     description:
       "Multi-user blogging platform with Flask, SQLAlchemy ORM, JWT authentication, full CRUD operations, and RESTful API design. Containerised and deployed to cloud with environment-based configuration management.",
     github: "https://github.com/rishabh11336/Blogsite.git",
-    live: "https://compass.rishabhsingh.me",
+    live: "https://compass.singhrishabh.com",
   },
 ];
 
@@ -422,7 +422,7 @@ export const blogPosts = [
     title: "How I Built My Data Science Portfolio with Next.js and GitHub Pages (Free)",
     description: "A step-by-step guide to building a free data science portfolio with Next.js static export, Tailwind CSS, and GitHub Pages — plus what to put in it so recruiters actually care.",
     date: "2026-07-07",
-    image: "https://rishabhsingh.me/images/og-card.png",
+    image: "https://singhrishabh.com/images/og-card.png",
     tags: ["Portfolio", "Next.js", "Career", "Data Science"],
     series: "guides",
   },
@@ -671,10 +671,10 @@ export const structuredData = {
   person: {
     "@context": "https://schema.org",
     "@type": "Person",
-    "@id": "https://rishabhsingh.me/#person",
+    "@id": "https://singhrishabh.com/#person",
     name: "Rishabh Singh",
-    url: "https://rishabhsingh.me",
-    image: "https://rishabhsingh.me/images/me.webp",
+    url: "https://singhrishabh.com",
+    image: "https://singhrishabh.com/images/me.webp",
     jobTitle: "Data Scientist",
     worksFor: { "@type": "Organization", name: "Chryselys" },
     alumniOf: {

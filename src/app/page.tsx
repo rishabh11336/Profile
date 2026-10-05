@@ -11,22 +11,22 @@ import { structuredData, siteConfig } from "@/data/content";
 
 const websiteSchema = {
   "@type": "WebSite",
-  "@id": "https://rishabhsingh.me/#website",
+  "@id": "https://singhrishabh.com/#website",
   name: "Rishabh Singh Portfolio",
-  url: "https://rishabhsingh.me",
+  url: "https://singhrishabh.com",
   description: siteConfig.description,
-  author: { "@id": "https://rishabhsingh.me/#person" },
+  author: { "@id": "https://singhrishabh.com/#person" },
 };
 
 const profilePageSchema = {
   "@type": "ProfilePage",
-  "@id": "https://rishabhsingh.me/#profilepage",
-  url: "https://rishabhsingh.me/",
+  "@id": "https://singhrishabh.com/#profilepage",
+  url: "https://singhrishabh.com/",
   name: "Rishabh Singh - Data Scientist Portfolio",
   dateCreated: "2025-01-01T00:00:00Z",
   dateModified: new Date().toISOString(),
-  about: { "@id": "https://rishabhsingh.me/#person" },
-  mainEntity: { "@id": "https://rishabhsingh.me/#person" },
+  about: { "@id": "https://singhrishabh.com/#person" },
+  mainEntity: { "@id": "https://singhrishabh.com/#person" },
 };
 
 const jsonLd = {

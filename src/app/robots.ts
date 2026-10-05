@@ -11,6 +11,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/blog-scripts/", "/widgets/"],
       },
     ],
-    sitemap: "https://rishabhsingh.me/sitemap.xml",
+    sitemap: "https://singhrishabh.com/sitemap.xml",
   };
 }

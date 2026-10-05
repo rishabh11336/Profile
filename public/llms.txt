@@ -4,40 +4,40 @@
 
 ## Blog
 
-- [Transformer Architecture Explained in a Minute](https://rishabhsingh.me/blog/transformers-in-a-minute/): 6 components, Attention formula, encoder vs decoder, GPT vs BERT. Series: In a Minute.
-- [Confidence Interval vs Prediction Interval Explained](https://rishabhsingh.me/blog/ci-vs-pi-regression-bands/): Interactive simulation showing why CI and PI are fundamentally different — one covers the mean, the other catches new individual points. Series: In a Minute.
-- [Forecasting in a Minute](https://rishabhsingh.me/blog/forecasting-in-a-minute/): What is forecasting, 6 types, inline forecasting, real interest-rate decision model walkthrough. Series: In a Minute.
-- [SVMs & Kernel Trick Explained](https://rishabhsingh.me/blog/svms-kernel-trick-in-a-minute/): Optimal hyperplane, support vectors, kernel trick, 4 kernel types with gamma tuning. Series: In a Minute.
-- [CNNs Explained — Convolutional Neural Networks in a Minute](https://rishabhsingh.me/blog/convolutional-neural-networks-cnns-in-a-minute/): Kernel, stride, padding, pooling, flattening — how images flow from pixels to predictions. Series: In a Minute.
-- [Scalars, Vectors, Matrices & Tensors Explained](https://rishabhsingh.me/blog/scalars-vectors-matrices-tensor-in-a-minute/): From a single number to n-dimensional arrays, defined and compared. Series: In a Minute.
-- [Multiclass vs Multilabel Classification Explained](https://rishabhsingh.me/blog/multiclass-vs-multilabel-classification-in-a-minute/): Binary, multiclass, multilabel — one label vs many with real examples. Series: In a Minute.
-- [Confusion Matrix & Metrics Explained](https://rishabhsingh.me/blog/confusion-matrix-metrics-in-a-minute/): TP, TN, FP, FN, accuracy, precision, recall, F1, specificity. Series: In a Minute.
-- [Bayesian Learning Explained](https://rishabhsingh.me/blog/bayesian-learning-in-a-minute/): Bayes theorem, prior, likelihood, posterior — how beliefs update with evidence. Series: In a Minute.
-- [Linear Regression Explained](https://rishabhsingh.me/blog/linear-regression-in-a-minute/): y=mx+b, MSE, gradient descent, R² score, multivariable regression, Python implementation. Series: In a Minute.
-- [Support Vector Machine (SVM)](https://rishabhsingh.me/blog/support-vector-machine-svm/): Hyperplanes, margins, support vectors, C and gamma tuning, Iris dataset with scikit-learn. Series: In a Minute.
-- [Lazy Loading vs Eager Loading](https://rishabhsingh.me/blog/lazy-loading-for-enhanced-user-experience/): HTML loading attribute, deferred images, load time and SEO impact. Series: Web Development.
-- [CORS in Flask — Bridging Frontend and Backend](https://rishabhsingh.me/blog/cors-in-flask-bridging-frontend-and-backend/): How CORS works and how flask-cors fixes cross-origin errors. Series: Web Development.
-- [HTTP Methods — Enhancing Web Communication](https://rishabhsingh.me/blog/http-methods-enhancing-web-communication/): GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS with Python requests examples. Series: Web Development.
-- [Flask Session for Login](https://rishabhsingh.me/blog/session-in-the-flask-for-login/): Session-based login in Flask — secret key, login route, protected route, logout with full code. Series: Web Development.
-- [List vs Set in Python — Performance, Use Cases](https://rishabhsingh.me/blog/list-vs-set-in-a-minute/): Iteration speed, O(1) membership testing, memory trade-offs, benchmark results. Series: Python.
-- [Sets Performance Better vs Lists — Why?](https://rishabhsingh.me/blog/sets-performance-better-vs-lists-why/): Hash tables, O(1) average-case operations, when sets dramatically outperform lists. Series: Python.
-- [Python Virtual Environment — Introduction](https://rishabhsingh.me/blog/python-virtual-environment-introduction/): Why virtual environments exist, virtualenv, Linux and Windows commands. Series: Python.
-- [Conda Virtual Environment & Commands](https://rishabhsingh.me/blog/conda-virtual-environment-commands/): Essential conda commands — create, activate, install, deactivate, delete. Series: Python.
-- [requirements.txt in Python](https://rishabhsingh.me/blog/requirements-txt-in-python/): pip freeze captures environment, pip install -r recreates it anywhere. Series: Python.
-- [Python Matrix Multiplication — 3 Methods](https://rishabhsingh.me/blog/python-program-for-matrix-multiplication/): Nested loops, list comprehension, and NumPy.dot() with working examples. Series: Python.
-- [Convert Python Program to exe](https://rishabhsingh.me/blog/convert-python-program-to-exe/): PyInstaller and auto-py-to-exe — bundle Python apps into standalone executables. Series: Python.
-- [if __name__ == '__main__' in Python](https://rishabhsingh.me/blog/understanding-the-if-name-main/): The __name__ variable, top-level code, and preventing unintended execution on import. Series: Python.
-- [How I Built My Data Science Portfolio with Next.js and GitHub Pages](https://rishabhsingh.me/blog/how-i-built-my-data-science-portfolio/): Step-by-step guide to a free portfolio with Next.js static export, Tailwind CSS, and GitHub Pages.
+- [Transformer Architecture Explained in a Minute](https://singhrishabh.com/blog/transformers-in-a-minute/): 6 components, Attention formula, encoder vs decoder, GPT vs BERT. Series: In a Minute.
+- [Confidence Interval vs Prediction Interval Explained](https://singhrishabh.com/blog/ci-vs-pi-regression-bands/): Interactive simulation showing why CI and PI are fundamentally different — one covers the mean, the other catches new individual points. Series: In a Minute.
+- [Forecasting in a Minute](https://singhrishabh.com/blog/forecasting-in-a-minute/): What is forecasting, 6 types, inline forecasting, real interest-rate decision model walkthrough. Series: In a Minute.
+- [SVMs & Kernel Trick Explained](https://singhrishabh.com/blog/svms-kernel-trick-in-a-minute/): Optimal hyperplane, support vectors, kernel trick, 4 kernel types with gamma tuning. Series: In a Minute.
+- [CNNs Explained — Convolutional Neural Networks in a Minute](https://singhrishabh.com/blog/convolutional-neural-networks-cnns-in-a-minute/): Kernel, stride, padding, pooling, flattening — how images flow from pixels to predictions. Series: In a Minute.
+- [Scalars, Vectors, Matrices & Tensors Explained](https://singhrishabh.com/blog/scalars-vectors-matrices-tensor-in-a-minute/): From a single number to n-dimensional arrays, defined and compared. Series: In a Minute.
+- [Multiclass vs Multilabel Classification Explained](https://singhrishabh.com/blog/multiclass-vs-multilabel-classification-in-a-minute/): Binary, multiclass, multilabel — one label vs many with real examples. Series: In a Minute.
+- [Confusion Matrix & Metrics Explained](https://singhrishabh.com/blog/confusion-matrix-metrics-in-a-minute/): TP, TN, FP, FN, accuracy, precision, recall, F1, specificity. Series: In a Minute.
+- [Bayesian Learning Explained](https://singhrishabh.com/blog/bayesian-learning-in-a-minute/): Bayes theorem, prior, likelihood, posterior — how beliefs update with evidence. Series: In a Minute.
+- [Linear Regression Explained](https://singhrishabh.com/blog/linear-regression-in-a-minute/): y=mx+b, MSE, gradient descent, R² score, multivariable regression, Python implementation. Series: In a Minute.
+- [Support Vector Machine (SVM)](https://singhrishabh.com/blog/support-vector-machine-svm/): Hyperplanes, margins, support vectors, C and gamma tuning, Iris dataset with scikit-learn. Series: In a Minute.
+- [Lazy Loading vs Eager Loading](https://singhrishabh.com/blog/lazy-loading-for-enhanced-user-experience/): HTML loading attribute, deferred images, load time and SEO impact. Series: Web Development.
+- [CORS in Flask — Bridging Frontend and Backend](https://singhrishabh.com/blog/cors-in-flask-bridging-frontend-and-backend/): How CORS works and how flask-cors fixes cross-origin errors. Series: Web Development.
+- [HTTP Methods — Enhancing Web Communication](https://singhrishabh.com/blog/http-methods-enhancing-web-communication/): GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS with Python requests examples. Series: Web Development.
+- [Flask Session for Login](https://singhrishabh.com/blog/session-in-the-flask-for-login/): Session-based login in Flask — secret key, login route, protected route, logout with full code. Series: Web Development.
+- [List vs Set in Python — Performance, Use Cases](https://singhrishabh.com/blog/list-vs-set-in-a-minute/): Iteration speed, O(1) membership testing, memory trade-offs, benchmark results. Series: Python.
+- [Sets Performance Better vs Lists — Why?](https://singhrishabh.com/blog/sets-performance-better-vs-lists-why/): Hash tables, O(1) average-case operations, when sets dramatically outperform lists. Series: Python.
+- [Python Virtual Environment — Introduction](https://singhrishabh.com/blog/python-virtual-environment-introduction/): Why virtual environments exist, virtualenv, Linux and Windows commands. Series: Python.
+- [Conda Virtual Environment & Commands](https://singhrishabh.com/blog/conda-virtual-environment-commands/): Essential conda commands — create, activate, install, deactivate, delete. Series: Python.
+- [requirements.txt in Python](https://singhrishabh.com/blog/requirements-txt-in-python/): pip freeze captures environment, pip install -r recreates it anywhere. Series: Python.
+- [Python Matrix Multiplication — 3 Methods](https://singhrishabh.com/blog/python-program-for-matrix-multiplication/): Nested loops, list comprehension, and NumPy.dot() with working examples. Series: Python.
+- [Convert Python Program to exe](https://singhrishabh.com/blog/convert-python-program-to-exe/): PyInstaller and auto-py-to-exe — bundle Python apps into standalone executables. Series: Python.
+- [if __name__ == '__main__' in Python](https://singhrishabh.com/blog/understanding-the-if-name-main/): The __name__ variable, top-level code, and preventing unintended execution on import. Series: Python.
+- [How I Built My Data Science Portfolio with Next.js and GitHub Pages](https://singhrishabh.com/blog/how-i-built-my-data-science-portfolio/): Step-by-step guide to a free portfolio with Next.js static export, Tailwind CSS, and GitHub Pages.
 
 ## Projects
 
 - [LLM YouTube Metadata Connector](https://github.com/rishabh11336/LLM-Youtube-Metadata-connecter-): End-to-end LLM pipeline using Claude + YouTube Data API v3 to automate SEO-optimised title, description, and keyword tagging for 500+ videos. Stack: Claude, YouTube API v3, Python, OAuth 2.0.
-- [Parking Management System](https://parking.rishabhsingh.me): Full-stack Flask REST API + Vue.js frontend with Redis/Celery async queuing, deployed on Azure App Service. Real-time slot booking, role-based access, analytics dashboard.
+- [Parking Management System](https://parking.singhrishabh.com): Full-stack Flask REST API + Vue.js frontend with Redis/Celery async queuing, deployed on Azure App Service. Real-time slot booking, role-based access, analytics dashboard.
 - [Indian Housing ETL Pipeline](https://github.com/rishabh11336/ETL-INDIAN-House-Price-Data): Scalable ETL pipeline storing 180,000+ records across PostgreSQL and MongoDB. Stack: Python, PostgreSQL, MongoDB.
 - [Phishing Domain Detection](https://github.com/rishabh11336/Phishing-Domain-Detection): Random Forest classifier on ~147,000 URLs, Flask REST API with Cassandra logging, deployed on Azure. Built during iNeuron ML internship.
 - [Mixed-Effects Marketing Modeling](https://www.kaggle.com/code/rishabhsingh2538/mixed-marketing-modeling): Hierarchical LME regression decomposing global vs. channel-level marketing effects for budget allocation and ROI optimisation.
 - [Audio Classification — UrbanSound8K](https://www.kaggle.com/code/rishabhsingh2538/audio-classification-with-urbanaudio8k): CNN pipeline for urban audio classification using mel-spectrograms and MFCCs via TensorFlow and Librosa.
-- [Bloglite — Compass](https://compass.rishabhsingh.me): Multi-user blogging platform with Flask, SQLAlchemy, JWT authentication, full CRUD, RESTful API.
+- [Bloglite — Compass](https://compass.singhrishabh.com): Multi-user blogging platform with Flask, SQLAlchemy, JWT authentication, full CRUD, RESTful API.
 
 ## Open Source
 
@@ -49,9 +49,9 @@
 
 ## Pages
 
-- [Portfolio](https://rishabhsingh.me): Data science portfolio — projects, blog, open-source work, and contact
-- [Blog](https://rishabhsingh.me/blog/): 23 technical articles on ML, Python, and web development
-- [IIT Madras BS Planner](https://iitmbs.rishabhsingh.me): Elective planner for IITM BS Data Science students — 13 career tracks, 6 minors, handbook-verified
+- [Portfolio](https://singhrishabh.com): Data science portfolio — projects, blog, open-source work, and contact
+- [Blog](https://singhrishabh.com/blog/): 23 technical articles on ML, Python, and web development
+- [IIT Madras BS Planner](https://iitmbs.singhrishabh.com): Elective planner for IITM BS Data Science students — 13 career tracks, 6 minors, handbook-verified
 
 ## Connect
 
@@ -59,4 +59,4 @@
 - [LinkedIn](https://www.linkedin.com/in/rishabh-data-scientist/): Professional profile
 - [Medium](https://medium.com/@asusrishabh): Blog mirror on Medium / Stackademic
 - [Kaggle](https://www.kaggle.com/rishabhsingh2538): ML competition notebooks
-- [CV / Resume](https://rishabhsingh.me/CV/Rishabh-Singh-Data-Scientist-CV.pdf): Downloadable PDF resume
+- [CV / Resume](https://singhrishabh.com/CV/Rishabh-Singh-Data-Scientist-CV.pdf): Downloadable PDF resume

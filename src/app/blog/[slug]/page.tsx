@@ -36,7 +36,7 @@ export async function generateMetadata({
       images: [post.image],
     },
     alternates: {
-      canonical: `https://rishabhsingh.me/blog/${slug}/`,
+      canonical: `https://singhrishabh.com/blog/${slug}/`,
     },
   };
 }
@@ -68,29 +68,29 @@ export default async function BlogPostPage({
     image: post.image,
     author: {
       "@type": "Person",
-      "@id": "https://rishabhsingh.me/#person",
+      "@id": "https://singhrishabh.com/#person",
       name: "Rishabh Singh",
-      url: "https://rishabhsingh.me",
+      url: "https://singhrishabh.com",
     },
     publisher: { "@type": "Person", name: "Rishabh Singh" },
     datePublished: post.date,
     dateModified: ("updated" in post && post.updated) || post.date,
-    url: `https://rishabhsingh.me/blog/${slug}/`,
+    url: `https://singhrishabh.com/blog/${slug}/`,
     keywords: post.tags,
-    mainEntityOfPage: { "@type": "WebPage", "@id": `https://rishabhsingh.me/blog/${slug}/` },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `https://singhrishabh.com/blog/${slug}/` },
   };
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://rishabhsingh.me/" },
-      { "@type": "ListItem", position: 2, name: "Blog", item: "https://rishabhsingh.me/blog/" },
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://singhrishabh.com/" },
+      { "@type": "ListItem", position: 2, name: "Blog", item: "https://singhrishabh.com/blog/" },
       {
         "@type": "ListItem",
         position: 3,
         name: post.title,
-        item: `https://rishabhsingh.me/blog/${slug}/`,
+        item: `https://singhrishabh.com/blog/${slug}/`,
       },
     ],
   };

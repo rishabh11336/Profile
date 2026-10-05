@@ -7,12 +7,12 @@ const blogJsonLd = {
   "@context": "https://schema.org",
   "@type": "Blog",
   name: "Blog — AI, ML & Python | Rishabh Singh",
-  url: "https://rishabhsingh.me/blog/",
-  author: { "@id": "https://rishabhsingh.me/#person" },
+  url: "https://singhrishabh.com/blog/",
+  author: { "@id": "https://singhrishabh.com/#person" },
   blogPost: blogPosts.map((p) => ({
     "@type": "BlogPosting",
     headline: p.title,
-    url: `https://rishabhsingh.me/blog/${p.slug}/`,
+    url: `https://singhrishabh.com/blog/${p.slug}/`,
     datePublished: p.date,
   })),
 };
