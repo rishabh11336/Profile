@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "node -e \"require('fs').copyFileSync('CV/Rishabh-Singh-Data-Scientist-CV.pdf','public/CV/Rishabh-Singh-Data-Scientist-CV.pdf')\"",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
