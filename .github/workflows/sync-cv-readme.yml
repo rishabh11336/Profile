@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - CV/**
+      - public/CV/**
 
 jobs:
   guard:
@@ -13,11 +13,16 @@ jobs:
       - uses: actions/checkout@v4
       - name: Enforce canonical CV filename
         run: |
-          CANONICAL="CV/Rishabh-Singh-Data-Scientist-CV.pdf"
+          CANONICAL="public/CV/Rishabh-Singh-Data-Scientist-CV.pdf"
           if [ ! -f "$CANONICAL" ]; then
             echo "ERROR: CV filename changed. The link https://singhrishabh.com/CV/Rishabh-Singh-Data-Scientist-CV.pdf"
             echo "is shared with recruiters and external sites — renaming breaks every copy."
             echo "Rename your PDF back to: Rishabh-Singh-Data-Scientist-CV.pdf"
             exit 1
           fi
-          echo "OK: canonical CV filename present"
+          if [ -f "CV/Rishabh-Singh-Data-Scientist-CV.pdf" ] || [ -f "Rishabh-Singh-Data-Scientist-CV.pdf" ]; then
+            echo "ERROR: Found duplicate non-deployed CV copy at repository root."
+            echo "Only update public/CV/Rishabh-Singh-Data-Scientist-CV.pdf so the website stays in sync."
+            exit 1
+          fi
+          echo "OK: canonical deployed CV filename present"
