@@ -15,6 +15,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://singhrishabh.com"),
   title: {
     template: "%s | Rishabh Singh",
     default:
