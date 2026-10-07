@@ -40,7 +40,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
       <Script
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9086648309254904"
         crossOrigin="anonymous"
-        strategy="afterInteractive"
+        strategy="lazyOnload"
       />
       {children}
     </>

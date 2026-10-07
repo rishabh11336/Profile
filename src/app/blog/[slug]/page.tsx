@@ -65,7 +65,7 @@ export default async function BlogPostPage({
     "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
-    image: post.image,
+    image: post.image ? `https://singhrishabh.com${post.image}` : undefined,
     author: {
       "@type": "Person",
       "@id": "https://singhrishabh.com/#person",
