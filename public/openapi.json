@@ -1,0 +1,49 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "singhrishabh.com public content",
+    "version": "1.0.0",
+    "summary": "Read-only HTTP surface of Rishabh Singh's personal portfolio and blog.",
+    "description": "Static site. Public, unauthenticated HTTP GET only. No accounts, no API keys, no write operations. This spec documents the real machine-readable endpoints the site serves.",
+    "contact": { "name": "Rishabh Singh", "email": "rishabh11336@gmail.com", "url": "https://singhrishabh.com/" },
+    "license": { "name": "Content © Rishabh Singh" }
+  },
+  "servers": [{ "url": "https://singhrishabh.com" }],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Homepage",
+        "description": "Portfolio homepage (HTML) with Person/WebSite/ProfilePage JSON-LD.",
+        "responses": { "200": { "description": "HTML document", "content": { "text/html": {} } } }
+      }
+    },
+    "/sitemap.xml": {
+      "get": {
+        "summary": "XML sitemap",
+        "description": "List of all indexable URLs.",
+        "responses": { "200": { "description": "Sitemap", "content": { "application/xml": {} } } }
+      }
+    },
+    "/llms.txt": {
+      "get": {
+        "summary": "LLM-oriented site summary",
+        "description": "Plain-text overview of the site for AI agents.",
+        "responses": { "200": { "description": "Summary", "content": { "text/plain": {} } } }
+      }
+    },
+    "/blog/{slug}/": {
+      "get": {
+        "summary": "Blog post by slug",
+        "parameters": [
+          { "name": "slug", "in": "path", "required": true, "schema": { "type": "string" }, "description": "Post slug, e.g. transformers-in-a-minute" }
+        ],
+        "responses": {
+          "200": { "description": "Blog post", "content": { "text/html": {} } },
+          "404": { "description": "Unknown slug" }
+        }
+      }
+    }
+  },
+  "components": {},
+  "security": []
+}

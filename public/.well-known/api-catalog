@@ -1,0 +1,16 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://singhrishabh.com/",
+      "service-desc": [
+        { "href": "https://singhrishabh.com/openapi.json", "type": "application/openapi+json", "title": "OpenAPI 3.1 description of public GET endpoints" }
+      ],
+      "service-doc": [
+        { "href": "https://singhrishabh.com/llms.txt", "type": "text/plain", "title": "LLM-oriented site documentation" }
+      ],
+      "describedby": [
+        { "href": "https://singhrishabh.com/sitemap.xml", "type": "application/xml", "title": "XML sitemap" }
+      ]
+    }
+  ]
+}
