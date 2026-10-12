@@ -4,7 +4,7 @@ import Script from "next/script";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Calendar, Clock, ExternalLink } from "lucide-react";
 import { blogPosts } from "@/data/content";
-import { SERIES, SITE, formatDate, prevNext, related, seriesPath } from "@/lib/blog";
+import { SERIES, SITE, formatDate, modified, postUrl, prevNext, related, seriesPath } from "@/lib/blog";
 import { blogContent } from "@/data/blogContent";
 
 export function generateStaticParams() {
@@ -24,10 +24,12 @@ export async function generateMetadata({
     description: post.description,
     openGraph: {
       type: "article",
+      url: postUrl(slug),
       title: post.title,
       description: post.description,
       images: [{ url: post.image, alt: post.title }],
       publishedTime: post.date,
+      modifiedTime: modified(post),
       authors: ["Rishabh Singh"],
     },
     twitter: {
@@ -64,24 +66,30 @@ export default async function BlogPostPage({
   const relatedPosts = related(slug);
   const { prev, next } = prevNext(slug);
 
+  const author = {
+    "@type": "Person",
+    "@id": `${SITE}/#person`,
+    name: "Rishabh Singh",
+    url: `${SITE}/`,
+  };
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
+    "@id": `${postUrl(slug)}#article`,
     headline: post.title,
     description: post.description,
-    image: post.image ? `https://singhrishabh.com${post.image}` : undefined,
-    author: {
-      "@type": "Person",
-      "@id": "https://singhrishabh.com/#person",
-      name: "Rishabh Singh",
-      url: "https://singhrishabh.com",
-    },
-    publisher: { "@type": "Person", name: "Rishabh Singh" },
+    // new URL() handles both relative paths and the one post with an absolute image.
+    image: post.image ? new URL(post.image, SITE).href : undefined,
+    author,
+    publisher: author,
+    isPartOf: { "@id": `${SITE}/blog/#blog` },
+    inLanguage: "en",
     datePublished: post.date,
-    dateModified: ("updated" in post && post.updated) || post.date,
-    url: `https://singhrishabh.com/blog/${slug}/`,
+    dateModified: modified(post),
+    url: postUrl(slug),
     keywords: post.tags,
-    mainEntityOfPage: { "@type": "WebPage", "@id": `https://singhrishabh.com/blog/${slug}/` },
+    mainEntityOfPage: { "@type": "WebPage", "@id": postUrl(slug) },
   };
 
   const breadcrumbJsonLd = {

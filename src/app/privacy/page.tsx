@@ -6,6 +6,16 @@ export const metadata: Metadata = {
   description:
     "Privacy policy for singhrishabh.com — how we use cookies, advertising (Google AdSense), analytics (GA4), and your rights under GDPR.",
   alternates: { canonical: "https://singhrishabh.com/privacy/" },
+  // A page-level openGraph replaces the root one entirely, so restate it with this page's URL.
+  openGraph: {
+    type: "website",
+    url: "https://singhrishabh.com/privacy/",
+    title: "Privacy Policy | Rishabh Singh",
+    description:
+      "Privacy policy for singhrishabh.com — cookies, Google AdSense, GA4 analytics, and your rights under GDPR.",
+    images: [{ url: "https://singhrishabh.com/images/og-card.png", width: 1200, height: 630 }],
+    siteName: "Rishabh Singh Portfolio",
+  },
 };
 
 export default function PrivacyPage() {

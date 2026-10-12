@@ -7,9 +7,12 @@ import { SERIES, seriesPath } from "@/lib/blog";
 const blogJsonLd = {
   "@context": "https://schema.org",
   "@type": "Blog",
+  "@id": "https://singhrishabh.com/blog/#blog",
   name: "Blog — AI, ML & Python | Rishabh Singh",
   url: "https://singhrishabh.com/blog/",
   author: { "@id": "https://singhrishabh.com/#person" },
+  publisher: { "@id": "https://singhrishabh.com/#person" },
+  isPartOf: { "@id": "https://singhrishabh.com/#website" },
   blogPost: blogPosts.map((p) => ({
     "@type": "BlogPosting",
     headline: p.title,

@@ -24,8 +24,7 @@ const profilePageSchema = {
   "@id": "https://singhrishabh.com/#profilepage",
   url: "https://singhrishabh.com/",
   name: "Rishabh Singh - Data Scientist Portfolio",
-  dateCreated: "2025-01-01T00:00:00Z",
-  dateModified: new Date().toISOString(),
+  dateCreated: "2024-06-20",
   about: { "@id": "https://singhrishabh.com/#person" },
   mainEntity: { "@id": "https://singhrishabh.com/#person" },
 };
