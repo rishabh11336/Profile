@@ -1,41 +1,28 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/data/content";
+import { SERIES, SITE, latestModified, modified, postsInSeries, seriesPath } from "@/lib/blog";
 
 export const dynamic = "force-static";
 
-const SIX_MONTHS_MS = 1000 * 60 * 60 * 24 * 180;
+// Bump by hand when / or /blog/ change without a new post (last: Latest articles + series links).
+const INDEX_PAGES_UPDATED = "2026-10-12";
 
+// Only indexable, canonical, 200 URLs. Redirect stubs (public/blog/*.html) and 404s stay out.
+// lastmod always comes from real content dates, never the build time.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+  const newest = [latestModified(), INDEX_PAGES_UPDATED].sort().at(-1)!;
 
   return [
-    {
-      url: "https://singhrishabh.com/",
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: "https://singhrishabh.com/blog/",
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: "https://singhrishabh.com/privacy/",
-      lastModified: new Date("2026-07-12"),
-      changeFrequency: "yearly",
-      priority: 0.3,
-    },
-    ...blogPosts.map((post) => {
-      const postDate = new Date(post.date);
-      const isRecent = now.getTime() - postDate.getTime() < SIX_MONTHS_MS;
-      return {
-        url: `https://singhrishabh.com/blog/${post.slug}/`,
-        lastModified: postDate,
-        changeFrequency: (isRecent ? "monthly" : "yearly") as "monthly" | "yearly",
-        priority: isRecent ? 0.75 : 0.6,
-      };
-    }),
+    { url: `${SITE}/`, lastModified: newest },
+    { url: `${SITE}/blog/`, lastModified: newest },
+    { url: `${SITE}/privacy/`, lastModified: "2026-07-12" },
+    ...Object.keys(SERIES).map((series) => ({
+      url: `${SITE}${seriesPath(series)}`,
+      lastModified: latestModified(postsInSeries(series)),
+    })),
+    ...blogPosts.map((post) => ({
+      url: `${SITE}/blog/${post.slug}/`,
+      lastModified: modified(post),
+    })),
   ];
 }
