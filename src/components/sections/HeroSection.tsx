@@ -59,8 +59,9 @@ export function HeroSection() {
             initial="hidden"
             animate="visible"
           >
-            <h1 className="sr-only">
-              Rishabh Singh — Data Scientist &amp; AI Engineer, IIT Madras
+            {/* Plain <h1> (not motion) so the name is in the first paint. */}
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2 text-text">
+              Rishabh Singh
             </h1>
 
             <motion.h2

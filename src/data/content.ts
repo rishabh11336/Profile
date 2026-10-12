@@ -372,7 +372,7 @@ export const blogSeries = [
     imageAlt: "Transformers in a Minute",
     metaIcon: "bolt",
     metaLabel: "In a Minute",
-    postCount: 11,
+    postCount: 12,
     tags: ["ML", "Deep Learning", "AI"],
     description:
       "Dense, visual breakdowns of complex ML concepts — Transformers, SVMs, CNNs, Forecasting, Bayesian Learning & more. Built to understand the big picture in a single read.",

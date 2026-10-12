@@ -5,6 +5,7 @@ import { ServicesSection } from "@/components/sections/ServicesSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import OpenSourceSection from "@/components/sections/OpenSourceSection";
 import BlogSection from "@/components/sections/BlogSection";
+import LatestArticles from "@/components/sections/LatestArticles";
 import ContactSection from "@/components/sections/ContactSection";
 import VisitorsSection from "@/components/sections/VisitorsSection";
 import { structuredData, siteConfig } from "@/data/content";
@@ -51,6 +52,7 @@ export default function Home() {
         <ProjectsSection />
         <OpenSourceSection />
         <BlogSection />
+        <LatestArticles />
         <VisitorsSection />
         <ContactSection />
       </main>
