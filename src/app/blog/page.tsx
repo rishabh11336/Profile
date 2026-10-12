@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { blogPosts } from "@/data/content";
 import BlogFilterClient from "./BlogFilterClient";
+import { SERIES, seriesPath } from "@/lib/blog";
 
 const blogJsonLd = {
   "@context": "https://schema.org",
@@ -45,6 +46,15 @@ export default function BlogPage() {
             development.
           </p>
           <div className="mt-5 h-1 w-16 bg-accent rounded-full" />
+          {/* Crawlable series links; the filter tabs below are client-side only. */}
+          <nav aria-label="Series" className="mt-6 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+            <span className="text-muted">Browse by series:</span>
+            {Object.entries(SERIES).map(([slug, s]) => (
+              <Link key={slug} href={seriesPath(slug)} className="text-accent hover:underline">
+                {s.title}
+              </Link>
+            ))}
+          </nav>
         </div>
 
         {/* Filter tabs + article grid (client component handles interactivity) */}
