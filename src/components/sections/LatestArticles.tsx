@@ -1,8 +1,9 @@
+import Link from "next/link";
 import { Calendar, ArrowRight } from "lucide-react";
 import { blogPosts } from "@/data/content";
 import { postsByDate, formatDate } from "@/lib/blog";
 
-// Server component: plain <a> links so every post URL is in the static HTML.
+// Server component: <Link> exports as plain <a href> so every post URL is in the static HTML.
 export default function LatestArticles() {
   return (
     <section id="latest-articles" className="pb-20 bg-bg">
@@ -12,7 +13,7 @@ export default function LatestArticles() {
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {postsByDate.slice(0, 8).map((post) => (
             <li key={post.slug}>
-              <a
+              <Link
                 href={`/blog/${post.slug}/`}
                 className="block h-full p-5 rounded-xl bg-section-alt border border-border/50 hover:border-accent transition-colors duration-200"
               >
@@ -24,18 +25,18 @@ export default function LatestArticles() {
                 <span className="block text-sm text-muted leading-relaxed line-clamp-1">
                   {post.description}
                 </span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
-        <a
+        <Link
           href="/blog/"
           className="mt-8 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-accent/40 text-accent text-sm font-medium hover:bg-accent hover:text-white transition-colors duration-200"
         >
           View all {blogPosts.length} articles
           <ArrowRight className="w-4 h-4" />
-        </a>
+        </Link>
       </div>
     </section>
   );

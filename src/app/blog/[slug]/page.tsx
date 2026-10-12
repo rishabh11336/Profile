@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Calendar, Clock, ExternalLink } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, Clock, ExternalLink } from "lucide-react";
 import { blogPosts } from "@/data/content";
+import { SERIES, SITE, formatDate, prevNext, related, seriesPath } from "@/lib/blog";
 import { blogContent } from "@/data/blogContent";
 
 export function generateStaticParams() {
@@ -58,7 +59,10 @@ export default async function BlogPostPage({
   if (!post || !body) notFound();
 
   const readTime = estimateReadTime(body);
-  const mediumUrl = post.mediumUrl;
+  const mediumUrl = "mediumUrl" in post ? post.mediumUrl : undefined;
+  const series = SERIES[post.series];
+  const relatedPosts = related(slug);
+  const { prev, next } = prevNext(slug);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -86,9 +90,10 @@ export default async function BlogPostPage({
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://singhrishabh.com/" },
       { "@type": "ListItem", position: 2, name: "Blog", item: "https://singhrishabh.com/blog/" },
+      { "@type": "ListItem", position: 3, name: series.title, item: `${SITE}${seriesPath(post.series)}` },
       {
         "@type": "ListItem",
-        position: 3,
+        position: 4,
         name: post.title,
         item: `https://singhrishabh.com/blog/${slug}/`,
       },
@@ -121,28 +126,23 @@ export default async function BlogPostPage({
               <ArrowLeft className="w-4 h-4" />
               All Posts
             </Link>
-            <nav className="hidden sm:flex items-center gap-1 text-xs text-muted" aria-label="Breadcrumb">
-              <Link href="/" className="hover:text-accent transition-colors">Home</Link>
-              <span className="opacity-40 mx-1">/</span>
-              <Link href="/blog" className="hover:text-accent transition-colors">Blog</Link>
-              <span className="opacity-40 mx-1">/</span>
-              <span className="text-text truncate max-w-[200px]">{post.title}</span>
-            </nav>
-            {mediumUrl && (
-              <a
-                href={mediumUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden sm:inline-flex items-center gap-1.5 text-xs text-muted hover:text-accent transition-colors shrink-0"
-              >
-                Read on Medium
-                <ExternalLink className="w-3 h-3" />
-              </a>
-            )}
           </div>
         </nav>
 
         <article className="max-w-4xl mx-auto px-4 sm:px-6 py-10 lg:py-16">
+          {/* Breadcrumbs — visible at every width, mirrors the BreadcrumbList JSON-LD */}
+          <nav aria-label="Breadcrumb" className="mb-6">
+            <ol className="flex flex-wrap items-center gap-1 text-xs text-muted">
+              <li><Link href="/" className="hover:text-accent transition-colors">Home</Link></li>
+              <li aria-hidden="true" className="opacity-40 mx-1">/</li>
+              <li><Link href="/blog/" className="hover:text-accent transition-colors">Blog</Link></li>
+              <li aria-hidden="true" className="opacity-40 mx-1">/</li>
+              <li><Link href={seriesPath(post.series)} className="hover:text-accent transition-colors">{series.title}</Link></li>
+              <li aria-hidden="true" className="opacity-40 mx-1">/</li>
+              <li aria-current="page" className="text-text">{post.title}</li>
+            </ol>
+          </nav>
+
           {/* Tags */}
           <div className="flex flex-wrap gap-2 mb-6">
             {post.tags.map((tag) => (
@@ -169,11 +169,7 @@ export default async function BlogPostPage({
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted mb-8 pb-8 border-b border-border/50">
             <span className="flex items-center gap-1.5">
               <Calendar className="w-4 h-4" />
-              {new Date(post.date).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
+              {formatDate(post.date)}
             </span>
             <span className="flex items-center gap-1.5">
               <Clock className="w-4 h-4" />
@@ -193,8 +189,65 @@ export default async function BlogPostPage({
             <Script src="/blog-scripts/ci-pi-widget.js" strategy="afterInteractive" />
           )}
 
-          {/* Footer */}
-          <div className="mt-16 pt-8 border-t border-border/50 flex flex-wrap gap-4 items-center justify-between">
+          {mediumUrl && (
+            <p className="mt-10 text-sm text-muted">
+              <a
+                href={mediumUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 hover:text-accent transition-colors"
+              >
+                Also on Medium
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </p>
+          )}
+
+          {/* Related articles — chosen at build time from the same series / shared tags */}
+          <section aria-labelledby="related-heading" className="mt-16 pt-8 border-t border-border/50">
+            <h2 id="related-heading" className="text-xl font-bold text-text mb-4">Related articles</h2>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {relatedPosts.map((p) => (
+                <li key={p.slug}>
+                  <Link
+                    href={`/blog/${p.slug}/`}
+                    className="block h-full p-4 rounded-xl bg-section-alt border border-border/50 hover:border-accent transition-colors duration-200"
+                  >
+                    <span className="block text-sm font-semibold text-text mb-1">{p.title}</span>
+                    <span className="block text-xs text-muted line-clamp-2">{p.description}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {/* Previous / Next by publish date */}
+          <nav aria-label="Previous and next articles" className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {prev ? (
+              <Link
+                href={`/blog/${prev.slug}/`}
+                className="p-4 rounded-xl border border-border/50 hover:border-accent transition-colors duration-200"
+              >
+                <span className="flex items-center gap-1 text-xs text-muted mb-1">
+                  <ArrowLeft className="w-3.5 h-3.5" /> Previous
+                </span>
+                <span className="text-sm font-medium text-text">{prev.title}</span>
+              </Link>
+            ) : <span />}
+            {next && (
+              <Link
+                href={`/blog/${next.slug}/`}
+                className="p-4 rounded-xl border border-border/50 hover:border-accent transition-colors duration-200 sm:text-right"
+              >
+                <span className="flex items-center sm:justify-end gap-1 text-xs text-muted mb-1">
+                  Next <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+                <span className="text-sm font-medium text-text">{next.title}</span>
+              </Link>
+            )}
+          </nav>
+
+          <div className="mt-10">
             <Link
               href="/blog"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border text-sm text-muted hover:border-accent hover:text-accent transition-colors duration-200"
@@ -202,17 +255,6 @@ export default async function BlogPostPage({
               <ArrowLeft className="w-4 h-4" />
               Back to Blog
             </Link>
-            {mediumUrl && (
-              <a
-                href={mediumUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-accent text-white text-sm font-medium hover:bg-accent-h transition-colors duration-200"
-              >
-                Read on Medium
-                <ExternalLink className="w-4 h-4" />
-              </a>
-            )}
           </div>
         </article>
       </div>
